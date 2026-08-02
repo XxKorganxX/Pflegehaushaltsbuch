@@ -1,11 +1,11 @@
 ﻿# Pflegehaushaltsbuch
 
-Pflegehaushaltsbuch ist eine Windows-Desktopanwendung zur Verwaltung von Klienten, Betreuern, Assistenzdaten, Verwahrgeld, Kassenbewegungen, Dokumentlayouts und Auswertungen im Pflege- und Verwaltungsumfeld. Die Anwendung ist historisch gewachsen, wird aktuell auf .NET Framework 4.8 betrieben und setzt auf Windows Forms mit eigenen Controls, mehrsprachige `.resx`-Ressourcen und mehrere Datenbank-Backends.
+Pflegehaushaltsbuch ist eine Windows-Desktopanwendung fuer ambulante Pflege- und Betreuungsdienste. Die Anwendung unterstuetzt die Verwaltung von Klienten, Betreuern, Mitarbeitern, Verwahrgeld, Kassen- und Bankbewegungen, Dokumenten, Drucklayouts und Auswertungen. Sie ist historisch gewachsen, wird aktuell auf .NET Framework 4.8 betrieben und setzt auf Windows Forms mit eigenen Controls, mehrsprachige `.resx`-Ressourcen und mehrere Datenbank-Backends.
 
 ## Funktionsueberblick
 
-- Klienten, Betreuer, Assistenzpersonen und Stammdaten verwalten
-- Barbestand, Bankbestand, Verwahrgeld und Kassenbuchungen erfassen
+- Klienten, Betreuer, Mitarbeiter und Stammdaten verwalten
+- Barbestand, Bankbestand, Verwahrgeld, Bargeldzaehlung und Kassenbuchungen erfassen
 - Umbuchungen, Auszahlungen, Einzahlungen, Stornos und Journal-Eintraege abbilden
 - Benutzer, Rechte und Administratorfunktionen verwalten
 - Datenbanken erstellen, verbinden, aktualisieren, sichern und wiederherstellen
@@ -26,8 +26,9 @@ Pflegehaushaltsbuch ist eine Windows-Desktopanwendung zur Verwaltung von Kliente
 | Einstiegspunkt | `Program.Main()` startet `Forms.MDI` |
 | UI-Technologie | Windows Forms, eigene `FormControls`, einzelne WPF-Komponenten |
 | Datenbanken | Microsoft SQL Server, MySQL, SQLite |
-| Lokalisierung | `.resx` mit Satellitenassemblies fuer `de`, `de-DE` und `en` |
-| Tests | MSTest-Projekt fuer Passwortschutz, DPAPI-Schutz und SQL-Helfer |
+| Lokalisierung | `.resx` mit neutralen Ressourcen, deutschen Ressourcen und `Messages.zh-Hans.resx` |
+| Tests | MSTest fuer Logik-/Datenbanktests, NUnit/FlaUI fuer UI-Smoke-Tests |
+| Lizenz | GNU Affero General Public License v3.0, siehe `LICENSE.txt` |
 
 ## Architektur
 
@@ -63,6 +64,7 @@ Zentrale Aufgaben der Datenbankschicht:
 - Datenbankversionen aktualisieren
 - SQL-Skripte aus dem `Version`-Ordner ausfuehren
 - Backups erzeugen und wiederherstellen
+- Wiederherstellungen zunaechst in eine neue Datenbank schreiben, damit die bestehende Datenbank erhalten bleibt
 - Benutzer und Datenbankrechte verwalten
 
 Die fachlichen Selects und Spaltennamen werden ueber Enums in `SQLBase` gebuendelt. Dadurch verwenden Formulare und Dialoge keine frei verteilten Tabellen- oder Spaltennamen.
@@ -120,6 +122,8 @@ Die Anwendung enthaelt zwei moderne Sicherheitsbausteine fuer sensible Daten:
 - `PasswordHasher` verwendet PBKDF2-SHA256 mit Salt und Iterationen fuer neue Passwort-Hashes.
 - Legacy-MD5-Hashes werden weiterhin erkannt, koennen aber ueber `NeedsRehash` als migrationsbeduerftig markiert werden.
 - `CredentialProtector` schuetzt lokal gespeicherte Zugangsdaten ueber Windows DPAPI und kennzeichnet geschuetzte Werte mit einem Versionspraefix.
+- Datenbankoperationen in den Formularen werden gegen parallele Doppelstarts abgesichert, damit die Oberflaeche reaktionsfaehig bleibt und Verbindungen nicht gleichzeitig mehrfach benutzt werden.
+- SQL-Werte werden ueber Parameter uebergeben; dynamische Identifier werden validiert, bevor sie in SQL verwendet werden.
 
 Diese Funktionen sind durch Tests abgedeckt.
 
@@ -129,13 +133,14 @@ Mehrsprachigkeit wird ueber `.resx`-Dateien umgesetzt. Die neutralen Ressourcen 
 
 Beispiele:
 
-- `Errorcodes.resx` enthaelt neutrale Errorcode-Texte und erzeugt `Errorcodes.Designer.cs`.
-- `Errorcodes.de.resx` enthaelt deutsche Uebersetzungen und erzeugt keinen eigenen Designer.
+- `Messages.resx` enthaelt neutrale englische Meldungstexte und erzeugt `Messages.Designer.cs`.
+- `Messages.de.resx` enthaelt deutsche Meldungstexte.
+- `Messages.zh-Hans.resx` enthaelt vereinfachte chinesische Meldungstexte. Diese Datei lokalisiert aktuell nur zentrale Meldungen, nicht die komplette Formularoberflaeche.
 - `EnumResources.resx` enthaelt neutrale Enum-Anzeigetexte und erzeugt `EnumResources.Designer.cs`.
-- `EnumResources.de.resx` enthaelt deutsche Uebersetzungen und erzeugt keinen eigenen Designer.
+- `EnumResources.de.resx` enthaelt deutsche Enum-Anzeigetexte.
 - Formularressourcen liegen als `FormName.resx`, `FormName.de.resx` und teilweise `FormName.en.resx` vor.
 
-Beim Build erzeugt `BuildSatelliteAssemblies.ps1` Satellitenassemblies fuer `de`, `de-DE` und `en`. Die Anwendung verwendet beim Start entweder die explizit gespeicherte Sprache oder, wenn diese leer ist, die installierte UI-Kultur des Betriebssystems.
+Beim Build erzeugt `BuildSatelliteAssemblies.ps1` Satellitenassemblies fuer alle lokalisierten Ressourcen, die im Projekt enthalten sind. Aktuell sind `de` und `zh-Hans` als Satellite-Sprachen eingetragen. Die Anwendung verwendet beim Start entweder die explizit gespeicherte Sprache oder, wenn diese leer ist, die installierte UI-Kultur des Betriebssystems.
 
 Regeln fuer neue Resource-Eintraege:
 
@@ -180,11 +185,20 @@ msbuild Pflegehaushaltsbuch.csproj /p:Configuration=Debug /p:Platform="AnyCPU"
 
 Beim Build werden die lokalisierten Satellitenassemblies automatisch erzeugt.
 
+Hinweis: Wenn die Anwendung gerade laeuft, koennen Dateien in `bin` oder `obj` gesperrt sein. Fuer reine Build-Pruefungen kann deshalb ein separater Ausgabeordner verwendet werden:
+
+```powershell
+dotnet build Pflegehaushaltsbuch.csproj -p:OutputPath=artifacts\build-check\
+```
+
 ## Tests
 
-Das Testprojekt liegt unter `Pflegehaushaltsbuch.Tests` und verwendet MSTest.
+Es gibt zwei Testprojekte:
 
-Aktuell abgedeckt:
+- `Pflegehaushaltsbuch.Tests` verwendet MSTest fuer Logik-, Sicherheits- und Datenbanktests.
+- `Pflegehaushaltsbuch.UiTests` verwendet NUnit und FlaUI fuer UI-Smoke-Tests der Windows-Forms-Anwendung.
+
+Aktuell im MSTest-Projekt abgedeckt:
 
 - PBKDF2-Passwort-Hashing und Passwortpruefung
 - Ablehnung falscher Passwoerter
@@ -193,6 +207,7 @@ Aktuell abgedeckt:
 - Ablehnung ungueltiger Credential-Formate
 - SQL-Server-Identifier-Quoting
 - SQL-Server-Connection-String fuer SQL-Login und Windows-Login
+- Datenbank-Hilfsfunktionen und Smoke-/Rollback-Pruefungen fuer SQLite, MySQL und SQL Server
 
 Tests ausfuehren:
 
@@ -206,6 +221,26 @@ Nach einem bereits erfolgreichen Build:
 dotnet test Pflegehaushaltsbuch.slnx --no-build
 ```
 
+Die Integrationstests lesen ihre optionalen Zugangsdaten aus den INI-Dateien im Testprojekt. Ohne passende lokale Datenbankumgebung koennen einzelne Integrationstests uebersprungen werden.
+
+Die UI-Tests starten die Anwendung und interagieren ueber UI Automation. Wenn der Standardpfad nicht passt, kann der Anwendungspfad ueber den Testparameter `AppPath` gesetzt werden.
+
+## Release
+
+Fertige Programmdateien sollten nicht direkt als `.exe` im Repository abgelegt werden. Fuer Anwenderdownloads ist ein GitHub Release vorgesehen.
+
+Empfohlenes Vorgehen:
+
+1. Release-Konfiguration bauen.
+2. Den kompletten Ausgabeordner packen, nicht nur die einzelne `.exe`.
+3. ZIP-Datei als Asset an eine GitHub Release anhaengen.
+
+Der ZIP-Inhalt sollte neben `Pflegehaushaltsbuch.exe` auch die zugehoerige `.config`, benoetigte DLLs und Sprachordner wie `de` und `zh-Hans` enthalten.
+
+## Lizenz
+
+Pflegehaushaltsbuch ist freie und quelloffene Software unter der GNU Affero General Public License v3.0. Der vollstaendige Lizenztext liegt in `LICENSE.txt`. GitHub erkennt diese Lizenz als `AGPL-3.0 license`.
+
 ## Projektstruktur
 
 ```text
@@ -215,12 +250,15 @@ dotnet test Pflegehaushaltsbuch.slnx --no-build
 |-- FormControls/                 Eigene WinForms-Control-Basis und UI-Erweiterungen
 |-- Forms/                        Hauptfenster, Verwaltungsfenster und Dialoge
 |-- Pflegehaushaltsbuch.Tests/    MSTest-Projekt
+|-- Pflegehaushaltsbuch.UiTests/  NUnit-/FlaUI-Tests fuer UI-Smoke-Tests
 |-- Properties/                   Anwendungseinstellungen, Assemblyinfos und Ressourcen
 |-- Resources/                    Eingebettete Ressourcen wie Schriften
 |-- Tools/                        Hilfsklassen wie Druckfunktionen
 |-- Version/                      Eingebettete SQL-Update-Skripte
 |-- WPFControls/                  Einzelne WPF-basierte UI-Komponenten
 |-- BuildSatelliteAssemblies.ps1  Erzeugt lokalisierte Satellitenassemblies
+|-- LICENSE.txt                   GNU AGPLv3-Lizenztext
+|-- Messages.zh-Hans.resx         Vereinfachte chinesische Meldungstexte
 |-- Pflegehaushaltsbuch.csproj    Hauptprojekt
 |-- Pflegehaushaltsbuch.slnx      Solution-Datei
 ```
