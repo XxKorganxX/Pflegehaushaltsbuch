@@ -1,0 +1,864 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="advisor" xml:space="preserve">
+    <value>顾问</value>
+    <comment>Betreuer</comment>
+  </data>
+  <data name="advisor_changed_failed" xml:space="preserve">
+    <value>无法更改或添加顾问。</value>
+    <comment>Betreuer konnte nicht geändert/hinzugefügt werden</comment>
+  </data>
+  <data name="advisor_created_changed" xml:space="preserve">
+    <value>顾问已成功创建或更改。</value>
+    <comment>Betreuer wurde erfolgreich geändert/hinzugefügt</comment>
+  </data>
+  <data name="advisors_name_missing" xml:space="preserve">
+    <value>请输入顾问姓名。</value>
+    <comment>Bitte Geben Sie den Namen des Betreuers ein.</comment>
+  </data>
+  <data name="asistants_not_deleteable" xml:space="preserve">
+    <value>由于还有未结清的借款，无法删除员工 '{0}'。</value>
+    <comment>Mitarbeiter '{0}' hat noch ein offenes Darlehen und kann daher nicht gelöscht werden.</comment>
+  </data>
+  <data name="assistants_changed" xml:space="preserve">
+    <value>员工已成功更改。</value>
+    <comment>Mitarbeiter wurde erfolgreich geändert.</comment>
+  </data>
+  <data name="assistants_changed_failed" xml:space="preserve">
+    <value>无法更改员工。</value>
+    <comment>Mitarbeiter konnte nicht geändert werden.</comment>
+  </data>
+  <data name="assistants_created" xml:space="preserve">
+    <value>员工已成功创建。</value>
+    <comment>Mitarbeiter erfolgreich angelegt.</comment>
+  </data>
+  <data name="assistants_created_failed" xml:space="preserve">
+    <value>无法创建员工。</value>
+    <comment>Mitarbeiter konnte nicht angelegt werden.</comment>
+  </data>
+  <data name="assistants_delete" xml:space="preserve">
+    <value>确定要删除 '{0}' 吗？所有记账都将丢失。</value>
+    <comment>Möchten Sie wirklich den Mitarbeiter '{0}' vollständich löschen, alle Buchungen in der Bank und der Kasse gehen ebenfalls verloren?</comment>
+  </data>
+  <data name="assistants_name_missing" xml:space="preserve">
+    <value>请输入员工姓名。</value>
+    <comment>Bitte Geben Sie den Namen des Mitarbeiters ein.</comment>
+  </data>
+  <data name="assistants_not_deleteable_book" xml:space="preserve">
+    <value>无法删除该员工，因为至少有一条记账无法明确分配。</value>
+    <comment>Mitarbeiter Löschung nicht möglich, da mindestens eine Buchung nicht exakt zugewiesen werden kann."</comment>
+  </data>
+  <data name="booking_already_canceled" xml:space="preserve">
+    <value>该记账已被冲销。</value>
+    <comment>Buchung wurde bereits storniert.</comment>
+  </data>
+  <data name="booking_cancel" xml:space="preserve">
+    <value>冲销记账</value>
+    <comment>Buchung Stornieren</comment>
+  </data>
+  <data name="booking_canceled_failed" xml:space="preserve">
+    <value>无法冲销记账。</value>
+    <comment>Buchung wurde nicht storniert.</comment>
+  </data>
+  <data name="booking_canceled_success" xml:space="preserve">
+    <value>记账已成功冲销。</value>
+    <comment>Buchung erfolgreich storniert.</comment>
+  </data>
+  <data name="booking_canceling" xml:space="preserve">
+    <value>确定要冲销此记账吗？</value>
+    <comment>Möchten Sie wirklich die Buchung stornieren?</comment>
+  </data>
+  <data name="booking_failed" xml:space="preserve">
+    <value>记账失败。</value>
+    <comment>Buchung fehlgeschlagen.</comment>
+  </data>
+  <data name="booking_no_booking_canceled" xml:space="preserve">
+    <value>没有可冲销的记账。</value>
+    <comment>Keine Buchungen zum Stornieren vorhanden.</comment>
+  </data>
+  <data name="booking_sucess" xml:space="preserve">
+    <value>记账成功。</value>
+    <comment>Buchung erfolgreich.</comment>
+  </data>
+  <data name="clients_changed" xml:space="preserve">
+    <value>客户已成功创建或更改。</value>
+    <comment>Klient wurde erfolgreich angelegt/geändert.</comment>
+  </data>
+  <data name="clients_changed_failed" xml:space="preserve">
+    <value>无法创建或更改客户。</value>
+    <comment>Klient konnte nicht angelegt/geändert werden.</comment>
+  </data>
+  <data name="clients_enter_name" xml:space="preserve">
+    <value>请输入客户姓名。</value>
+    <comment>Bitte geben sie den Klienten Namen ein.</comment>
+  </data>
+  <data name="clients_previous_amount" xml:space="preserve">
+    <value>客户 {0} 的期初余额。</value>
+    <comment>Altbestand von Klient {0}.</comment>
+  </data>
+  <data name="clients_select_first" xml:space="preserve">
+    <value>请先选择一个客户。</value>
+    <comment>Bitte wählen Sie erst einen Klienten aus.</comment>
+  </data>
+  <data name="company_saved" xml:space="preserve">
+    <value>公司信息已保存。</value>
+    <comment>Firma wurde erfolgreich abgespeichert.</comment>
+  </data>
+  <data name="create_clients_first" xml:space="preserve">
+    <value>请先创建至少一个客户。</value>
+    <comment>Bitte legen Sie mindestens einen Klienten an.</comment>
+  </data>
+  <data name="createUserFailed" xml:space="preserve">
+    <value>无法创建用户，因为至少有一个名称已被使用。请检查用户名、登录名和电子邮件地址。</value>
+    <comment>Benutzer kann nicht angelegt werden, da mindestens ein Name davon bereits in Gebrauch ist. Es gibt den regulären Namen, Login Namen und die Email Adresse.</comment>
+  </data>
+  <data name="database" xml:space="preserve">
+    <value>数据库</value>
+    <comment>Datenbank</comment>
+  </data>
+  <data name="database_backup" xml:space="preserve">
+    <value>数据库备份已成功创建。</value>
+    <comment>Datenbank Backup wurde erfolgreich angelegt.</comment>
+  </data>
+  <data name="database_created" xml:space="preserve">
+    <value>数据库已创建。</value>
+    <comment>Neue Datenbank wurde angelegt.</comment>
+  </data>
+  <data name="database_creating" xml:space="preserve">
+    <value>这将创建一个新数据库。如果已存在同名数据库，它将被完全替换。</value>
+    <comment>Es wird eine neue Datenbank angelegt, sollte eine vorherige Datenbank mit gleichen Namen existieren so wird diese vollständig gelöscht.</comment>
+  </data>
+  <data name="database_enter_name" xml:space="preserve">
+    <value>请输入数据库名称。</value>
+    <comment>Bitte geben Sie einen Datenbank Namen ein.</comment>
+  </data>
+  <data name="database_reset" xml:space="preserve">
+    <value>确定要断开数据库连接吗？</value>
+    <comment>Möchten Sie wirklich Ihr Datenbank zurücksetzen?</comment>
+  </data>
+  <data name="database_restore" xml:space="preserve">
+    <value>数据库已成功还原。Pflegehaushaltsbuch 现在将重新启动。</value>
+    <comment>Datenbank wurde erfolgreich wiederhergestellt. Pflegehaushaltsbuch wird nun neu gestartet..</comment>
+  </data>
+  <data name="database_version_table_missing" xml:space="preserve">
+    <value>版本表缺失或无法访问。请联系支持人员。</value>
+    <comment>Version Tabelle oder Version konnte nicht ermittelt werden. Bitte nehmen Sie mit uns Kontakt auf.</comment>
+  </data>
+  <data name="datatable_update_failed" xml:space="preserve">
+    <value>无法更改数据表。</value>
+    <comment>Tabelle konnte nicht geändert werden.</comment>
+  </data>
+  <data name="datatable_updated" xml:space="preserve">
+    <value>数据表已成功更改。</value>
+    <comment>Tabelle erfolgreich aktualisiert.</comment>
+  </data>
+  <data name="deadlines_day_exist" xml:space="preserve">
+    <value>该日期已在您的期限列表中定义。</value>
+    <comment>Dieser Tag existiert bereits in den Terminen.</comment>
+  </data>
+  <data name="deadlines_delete_title" xml:space="preserve">
+    <value>删除期限</value>
+    <comment>Termin löschen</comment>
+  </data>
+  <data name="deadlines_deleting" xml:space="preserve">
+    <value>确定要删除所选期限吗？</value>
+    <comment>Möchten Sie wirklich den aktuellen Termin löschen?</comment>
+  </data>
+  <data name="deadlines_no_selection" xml:space="preserve">
+    <value>未选择要更改的期限。</value>
+    <comment>Kein Termin zum Ändern vorhanden.</comment>
+  </data>
+  <data name="deadlines_no_selection_delete" xml:space="preserve">
+    <value>未选择要删除的期限。</value>
+    <comment>Kein Termin zum Löschen vorhanden.</comment>
+  </data>
+  <data name="document_saved" xml:space="preserve">
+    <value>文档已另存为...</value>
+    <comment>Dokument wurde gespeichert unter..</comment>
+  </data>
+  <data name="email" xml:space="preserve">
+    <value>请输入电子邮件地址。</value>
+    <comment>Bitte geben Sie eine Email Adresse ein.</comment>
+  </data>
+  <data name="hardmoney_changed" xml:space="preserve">
+    <value>现金盘点已成功更改。</value>
+    <comment>Bargeldzählung wurde erfolgreich geändert.</comment>
+  </data>
+  <data name="hardmoney_changed_failed" xml:space="preserve">
+    <value>无法更改现金盘点。</value>
+    <comment>Bargeldzählung wurde nicht geändert.</comment>
+  </data>
+  <data name="invalid_city" xml:space="preserve">
+    <value>请输入城市。</value>
+    <comment>Bitte geben Sie einen Ort ein.</comment>
+  </data>
+  <data name="invalid_company" xml:space="preserve">
+    <value>请输入公司名称。</value>
+    <comment>Geben Sie den Namen der Firma ein.</comment>
+  </data>
+  <data name="invalid_date" xml:space="preserve">
+    <value>请设置有效范围内的日期。</value>
+    <comment>Setzen Sie das Datum in einem gültigen Zeitbereich.</comment>
+  </data>
+  <data name="invalid_email" xml:space="preserve">
+    <value>电子邮件地址无效。</value>
+    <comment>Email Adresse hat ein ungültiges Format</comment>
+  </data>
+  <data name="invalid_email_enter" xml:space="preserve">
+    <value>请输入您的电子邮件地址。</value>
+    <comment>Bitte geben Sie ihre Email Adresse ein.</comment>
+  </data>
+  <data name="invalid_fax" xml:space="preserve">
+    <value>请输入您的传真号码。</value>
+    <comment>Bitte geben Sie ihre Faxnummer ein.</comment>
+  </data>
+  <data name="invalid_no" xml:space="preserve">
+    <value>请输入有效的编号。</value>
+    <comment>Geben Sie eine gültige ID ein.</comment>
+  </data>
+  <data name="invalid_note" xml:space="preserve">
+    <value>请输入备注。</value>
+    <comment>Bitte geben Sie eine Beschreibung ein.</comment>
+  </data>
+  <data name="invalid_phone" xml:space="preserve">
+    <value>请输入您的电话号码。</value>
+    <comment>Bitte geben Sie ihre Rufnummer ein.</comment>
+  </data>
+  <data name="invalid_street" xml:space="preserve">
+    <value>请输入街道。</value>
+    <comment>Bitte geben Sie eine Straße ein.</comment>
+  </data>
+  <data name="invalid_zip" xml:space="preserve">
+    <value>请输入邮政编码。</value>
+    <comment>Bitte geben Sie eine Postleitzahl ein.</comment>
+  </data>
+  <data name="ioan_invalid_amount" xml:space="preserve">
+    <value>请输入有效金额。</value>
+    <comment>Geben Sie einen gültigen Betrag ein.</comment>
+  </data>
+  <data name="ioan_missing_repayment" xml:space="preserve">
+    <value>请指定还款类型。</value>
+    <comment>Geben Sie die Art der Rückzahlung an.</comment>
+  </data>
+  <data name="ioan_repaid" xml:space="preserve">
+    <value>借款已成功还清。</value>
+    <comment>Darlehen erfolgreich zurückerstattet.</comment>
+  </data>
+  <data name="ioan_repaid_by" xml:space="preserve">
+    <value>{0} 的借款还款</value>
+    <comment>Darlehenrückerstattung von {0}</comment>
+  </data>
+  <data name="ioan_repaid_failed" xml:space="preserve">
+    <value>无法还清借款。</value>
+    <comment>Darlehen konnte nicht zurückerstattet werden.</comment>
+  </data>
+  <data name="ioan_repaid_needless" xml:space="preserve">
+    <value>没有需要偿还的金额。</value>
+    <comment>Kein Betrag vorhanden, der zurückerstattet werden muss.</comment>
+  </data>
+  <data name="ioan_to" xml:space="preserve">
+    <value>向 {0} 发放借款</value>
+    <comment>Darlehensausgabe an {0}</comment>
+  </data>
+  <data name="keywords_not_equal" xml:space="preserve">
+    <value>密码不匹配。</value>
+    <comment>Kennwörter stimmen nicht überein.</comment>
+  </data>
+  <data name="license_check" xml:space="preserve">
+    <value>现在将检查许可证。
+请稍候。</value>
+    <comment>Lizenz wird überprüft,\nbitte haben Sie etwas Geduld...</comment>
+  </data>
+  <data name="license_valid_until" xml:space="preserve">
+    <value>您的许可证有效期至 {0}。
+您还剩 {1} 天。</value>
+    <comment>Ihre Lizenz ist bis zum {0} gültig.\nIhnen verbleiben noch {1} Tag(e).</comment>
+  </data>
+  <data name="login_enter_passwords" xml:space="preserve">
+    <value>请在两个字段中输入密码。</value>
+    <comment>Bitte geben Sie ein Kennwort in beiden Feldern ein.</comment>
+  </data>
+  <data name="login_guest" xml:space="preserve">
+    <value>访客</value>
+    <comment>Gast</comment>
+  </data>
+  <data name="login_guest_access_proteced" xml:space="preserve">
+    <value>无法更改访客访问权限。</value>
+    <comment>Gastzugänge dürfen nicht geändert werden.</comment>
+  </data>
+  <data name="login_insert_username" xml:space="preserve">
+    <value>请输入用户名或电子邮件地址。</value>
+    <comment>Bitte geben Sie einen Benutzernamen ein.</comment>
+  </data>
+  <data name="login_invalid_password" xml:space="preserve">
+    <value>用户名/电子邮件和密码不匹配。</value>
+    <comment>Benutzer/Email und Kennwort stimmten nicht überein.</comment>
+  </data>
+  <data name="database_login_failed" xml:space="preserve">
+    <value>登录失败。</value>
+    <comment>Benutzer stimmte nicht mit dem Passwort überein.</comment>
+  </data>
+  <data name="login_keyword_unchanged" xml:space="preserve">
+    <value>密码未更改。</value>
+    <comment>Kennwort wurde nicht geändert.</comment>
+  </data>
+  <data name="login_name" xml:space="preserve">
+    <value>请输入登录名。</value>
+    <comment>Bitte geben Sie einen Login-Namen ein.</comment>
+  </data>
+  <data name="login_passwords_not_match" xml:space="preserve">
+    <value>密码不匹配。</value>
+    <comment>Kennwörter stimmen nicht überein.</comment>
+  </data>
+  <data name="login_userdata_changed" xml:space="preserve">
+    <value>用户数据已更改。</value>
+    <comment>Benutzerzugsdaten wurden geändert.</comment>
+  </data>
+  <data name="missing_amount" xml:space="preserve">
+    <value>请输入有效金额。</value>
+    <comment>Bitte geben Sie einen gültigen Betrag ein</comment>
+  </data>
+  <data name="missing_bookingtext" xml:space="preserve">
+    <value>请输入记账文本。</value>
+    <comment>Bitte geben Sie einen Buchungstext ein.</comment>
+  </data>
+  <data name="missing_city" xml:space="preserve">
+    <value>请输入城市名称。</value>
+    <comment>Geben Sie den Namen des Ortes ein.</comment>
+  </data>
+  <data name="missing_street" xml:space="preserve">
+    <value>请输入街道名称。</value>
+    <comment>Geben Sie den Namen der Straße ein.</comment>
+  </data>
+  <data name="missing_zip" xml:space="preserve">
+    <value>请输入邮政编码。</value>
+    <comment>Geben Sie die Postleitzahl ein.</comment>
+  </data>
+  <data name="mysql_error" xml:space="preserve">
+    <value>{1}（MySQL Server，错误代码：{0}）</value>
+    <comment>{1} (MySQL Server,  Fehler: {0})</comment>
+  </data>
+  <data name="name" xml:space="preserve">
+    <value>请输入名称。</value>
+    <comment>Bitte geben Sie einen Namen ein.</comment>
+  </data>
+  <data name="database_not_available" xml:space="preserve">
+    <value>数据库不可用</value>
+    <comment>Datenbank nicht vorhanden</comment>
+  </data>
+  <data name="printpreview_email_missing_host" xml:space="preserve">
+    <value>可以发送电子邮件，但需要先在公司设置中配置 SMTP 服务器。</value>
+    <comment>Sie können Emails verschicken, vorher sollten Sie aber dringends einen Email SMTP Server einrichten (unter Firmen Einstellungen).</comment>
+  </data>
+  <data name="printpreview_email_send" xml:space="preserve">
+    <value>电子邮件已发送至 '{0}'。</value>
+    <comment>Email wurd an {0} gesendet.</comment>
+  </data>
+  <data name="printpreview_important_email" xml:space="preserve">
+    <value>此电子邮件由 "MR Care Management" 创建，并包含一个重要附件。
+
+联系人：{0}
+电话号码：{1}</value>
+    <comment>Diese E-Mail wurde automatisch von 'MR Care Management' erzeugt und beinhaltet einen wichtigen Anhang für Sie.
+
+Ansprechpartner: {0}
+Rufnummer: {1}</comment>
+  </data>
+  <data name="printpreview_missing_valid_email" xml:space="preserve">
+    <value>请输入有效的电子邮件地址。</value>
+    <comment>Geben Sie eine gültige Email Adresse ein.</comment>
+  </data>
+  <data name="quittance" xml:space="preserve">
+    <value>收据 {0}</value>
+    <comment>Quittung {0}</comment>
+  </data>
+  <data name="sql_error" xml:space="preserve">
+    <value>{1}（Microsoft SQL Server，错误代码：{0}）</value>
+    <comment>{1} (Microsoft SQL Server,  Fehler: {0})</comment>
+  </data>
+  <data name="sql_rules" xml:space="preserve">
+    <value>SQL 规则：
+1. 创建新数据库时，始终使用用户 sa 且不设置密码。
+2. 先创建数据库，然后创建用户。
+3. 创建新数据库后，请重新创建所有用户，因为旧用户不再有效。
+4. 使用本应用创建的用户具有以下权限：
+- 可在整个公司网络中使用
+- 可以更新数据库条目
+- 可以添加、更改和删除条目
+- 不能用于其他数据库
+5. 切勿尝试使用本应用创建的用户来创建数据库。
+6. 请不要忘记：
+- 在防火墙中打开入站端口 1433
+- 启用 TCP/IP 和命名管道
+提示：
+如果无法删除数据库，请打开 SQL Server Management Studio 并在那里删除。通常情况下不需要 Management Studio。</value>
+    <comment>SQL Regeln:
+1. Bnutzen Sie zum Erzeugen einer neuen SQL Datenbank immer 'Benutzer: sa ohne Passwort' wenn Sie sich nicht sicher sind.
+2. Erst erfolgt das Erzeugen der Datenbank und anschließend dürfen Benutzer angelegt werden.
+3. Wenn eine Datenbank neu angelegt wird, werden alle Benutzer die mit Pflegehaushaltsbuch angelegt wurden, ungültig. Diese dann also bitte löschen und erneut anlegen.
+4. Die Benutzer die mit diesem Programm angelegt werden, haben folgende Rechte:
+- Sind im gesamten Firmennetz verwendbar
+- Tabellen über ein Update neu anzupassen
+- Tabellen Einträge Anlegen, Ändern und Löschen
+- Sie können nicht mit anderen Datenbanken verwendet werden
+5. Versuchen Sie niemals mit einem angelegten Benutzer eine Neue Datenbank anzulegen
+6. Bitte nicht vergessen den Eingangsport 1433 in der Firewall zu öffnen und auch die TCP/IP und Namensräume auf enabled = true zu stellen
+Hinweis:
+Wenn sich eine Datenbank nicht löschen lässt, dann entfernen Sie diese bitte im SQL Server xxx Management Studio. Im Standardfall benötigen Sie diesen aber nicht.</comment>
+  </data>
+  <data name="update_download_finished" xml:space="preserve">
+    <value>下载完成。</value>
+    <comment>Download abgeschlossen.</comment>
+  </data>
+  <data name="update_found" xml:space="preserve">
+    <value>有新的更新 {0}。</value>
+    <comment>Es wurde ein neues Update {0} gefunden.</comment>
+  </data>
+  <data name="update_looking" xml:space="preserve">
+    <value>正在查找更新...</value>
+    <comment>Es wird nach Updates gesucht..</comment>
+  </data>
+  <data name="updateFailedMSSQL" xml:space="preserve">
+    <value>更新到版本 {1} 时发生错误 {0}
+
+{2}</value>
+    <comment>{0} Fehler beim Update zur Datenbank Version {1}
+
+{2}</comment>
+  </data>
+  <data name="updateFailedMySQL" xml:space="preserve">
+    <value>更新到数据库版本 {0} 时发生错误
+
+{1}</value>
+    <comment>Fehler beim Update zur Datenbank Version {0}
+
+{1}</comment>
+  </data>
+  <data name="user_created" xml:space="preserve">
+    <value>用户已成功创建。</value>
+    <comment>Benutzer wurde erfolgreich angelegt.</comment>
+  </data>
+  <data name="user_deleted" xml:space="preserve">
+    <value>用户已成功删除。</value>
+    <comment>Benutzer wurde erfolgreich gelöscht.</comment>
+  </data>
+  <data name="usermanagement_admin_delete" xml:space="preserve">
+    <value>不能删除管理员帐户。</value>
+    <comment>Administrator Konten können nicht gelöscht werden.</comment>
+  </data>
+  <data name="usermanagement_Change" xml:space="preserve">
+    <value>更改</value>
+    <comment>Ändern</comment>
+  </data>
+  <data name="usermanagement_Create" xml:space="preserve">
+    <value>创建</value>
+    <comment>Anlegen</comment>
+  </data>
+  <data name="usermanagement_Delete" xml:space="preserve">
+    <value>删除</value>
+    <comment>Löschen</comment>
+  </data>
+  <data name="usermanagement_user_changed" xml:space="preserve">
+    <value>用户已成功更改。</value>
+    <comment>Benutzer wurde geändert.</comment>
+  </data>
+  <data name="usermanagement_user_created" xml:space="preserve">
+    <value>用户已成功创建。</value>
+    <comment>Benutzer wurde angelegt.</comment>
+  </data>
+  <data name="usermanagement_user_delete" xml:space="preserve">
+    <value>确定要删除用户 '{0}' 吗？</value>
+    <comment>Möchten Sie wirklich den Benutzer '{0}' Löschen?</comment>
+  </data>
+  <data name="usermanagement_user_delete_title" xml:space="preserve">
+    <value>删除帐户</value>
+    <comment>Benutzer Löschen</comment>
+  </data>
+  <data name="usermanagement_user_deleted" xml:space="preserve">
+    <value>用户已成功删除。</value>
+    <comment>Benutzer wurde gelöscht.</comment>
+  </data>
+  <data name="usermanagement_user_no_deleted" xml:space="preserve">
+    <value>无法删除用户。</value>
+    <comment>Löschen des Benutzers nicht möglich.</comment>
+  </data>
+  <data name="usermanagement_user_selected" xml:space="preserve">
+    <value>未找到用户</value>
+    <comment>Benutzer ist nicht vorhanden</comment>
+  </data>
+  <data name="usermanagement_users_missing" xml:space="preserve">
+    <value>没有可用用户。</value>
+  </data>
+  <data name="database_connected_failed" xml:space="preserve">
+    <value>无法连接到数据库。</value>
+    <comment>Datenbank konnte nicht verbunden werden.</comment>
+  </data>
+  <data name="sql_transfer_bookings" xml:space="preserve">
+    <value>正在传输记账...</value>
+    <comment>Buchungen übertragen...</comment>
+  </data>
+  <data name="sql_transfer_bank" xml:space="preserve">
+    <value>正在传输银行记账...</value>
+    <comment>Bank übertragen...</comment>
+  </data>
+  <data name="sql_transfer_cash" xml:space="preserve">
+    <value>正在传输现金余额...</value>
+    <comment>Kasse übertragen...</comment>
+  </data>
+  <data name="sql_transfer_officecash" xml:space="preserve">
+    <value>正在传输办公室备用金...</value>
+    <comment>Bürokasse übertragen..</comment>
+  </data>
+  <data name="sql_transfer_advsisors" xml:space="preserve">
+    <value>正在传输顾问...</value>
+    <comment>Betreuer übertragen...</comment>
+  </data>
+  <data name="sql_transfer_clients" xml:space="preserve">
+    <value>正在传输客户...</value>
+    <comment>Klienten übertragen...</comment>
+  </data>
+  <data name="sql_transfer_assistants" xml:space="preserve">
+    <value>正在传输员工...</value>
+    <comment>Mitarbeiter übertragen...</comment>
+  </data>
+  <data name="sql_transfer_coins" xml:space="preserve">
+    <value>正在传输现金盘点...</value>
+    <comment>Bargeld übertragen...</comment>
+  </data>
+  <data name="sql_transfer_receipts" xml:space="preserve">
+    <value>正在传输收据...</value>
+    <comment>Belege übertragen...</comment>
+  </data>
+  <data name="sql_transfer_deadlines" xml:space="preserve">
+    <value>正在传输期限...</value>
+    <comment>Termine übertragen...</comment>
+  </data>
+  <data name="sql_load_database" xml:space="preserve">
+    <value>正在加载数据库...</value>
+    <comment>Lade Datenbank...</comment>
+  </data>
+  <data name="sql_activeDatabase_transaction" xml:space="preserve">
+    <value>数据库事务已处于活动状态。</value>
+    <comment>Es ist bereits eine Datenbanktransaktion aktiv.</comment>
+  </data>
+  <data name="sql_invalid_login_name" xml:space="preserve">
+    <value>登录名无效</value>
+    <comment>Ungültiger Login</comment>
+  </data>
+  <data name="mysql_invalid_identifier" xml:space="preserve">
+    <value>标识符无效</value>
+    <comment>Ungültiger Identifier.</comment>
+  </data>
+  <data name="about_license" xml:space="preserve">
+    <value>版本：{0}
+版权所有：© Michael Richter，2013-2026
+
+Care Household Ledger 帮助门诊护理服务机构清晰管理运营和财务流程。
+
+其功能包括管理现金和银行余额、办公室备用金帐户、客户、顾问和员工。应用还提供集中式文档管理、现金审计、统计报表、可自定义打印模板以及数据备份和恢复功能。
+
+自由和开源软件
+
+Care Household Ledger 是根据 GNU Affero General Public License 第 3 版（AGPLv3）发布的自由开源软件。
+
+您可以使用、研究、修改和再分发本软件。如果您分发修改后的版本，或通过网络提供使用，也必须按照 AGPLv3 提供相应的源代码。
+
+本软件不提供任何担保。
+
+许可证信息：
+完整许可证文本："LICENSE" 文件
+https://ftp.gnu.org/pub/pub/gnu/Licenses/agpl-3.0.txt
+
+支持开发
+
+如果您喜欢使用 Care Household Ledger，并希望支持其未来开发，我将感谢您的自愿捐赠。
+
+感谢您的支持。</value>
+  </data>
+  <data name="unknown_error" xml:space="preserve">
+    <value>未知错误</value>
+  </data>
+  <data name="error_caption" xml:space="preserve">
+    <value>错误</value>
+  </data>
+  <data name="database_restore_staging_success" xml:space="preserve">
+    <value>备份已还原到一个新数据库。原数据库保持不变。</value>
+  </data>
+  <data name="database_restore_missing_hardcash" xml:space="preserve">
+    <value>还原的数据库不包含现金余额。</value>
+  </data>
+  <data name="database_restore_missing_version" xml:space="preserve">
+    <value>还原的数据库不包含版本信息。</value>
+  </data>
+  <data name="database_connection_type_missing" xml:space="preserve">
+    <value>请选择 SQL 连接。</value>
+  </data>
+  <data name="database_default_login" xml:space="preserve">
+    <value>登录名：Admin
+密码：admin</value>
+  </data>
+  <data name="database_default_login_title" xml:space="preserve">
+    <value>SQL 登录</value>
+  </data>
+  <data name="sql_server_required" xml:space="preserve">
+    <value>请先选择 SQL Server。</value>
+  </data>
+  <data name="master_password_changed_restart" xml:space="preserve">
+    <value>主密码已更改。程序现在将重新启动。</value>
+  </data>
+  <data name="client_not_found" xml:space="preserve">
+    <value>未找到客户。</value>
+  </data>
+  <data name="client_not_found_name" xml:space="preserve">
+    <value>未找到客户：{0}</value>
+  </data>
+  <data name="clients_delete" xml:space="preserve">
+    <value>确定要完全删除客户 '{0}' 吗？所有银行和现金记账也将被删除。</value>
+  </data>
+  <data name="clients_delete_title" xml:space="preserve">
+    <value>删除帐户</value>
+  </data>
+  <data name="clients_delete_cash_not_assignable" xml:space="preserve">
+    <value>无法删除客户，因为至少有一条现金记账无法明确分配。</value>
+  </data>
+  <data name="clients_delete_books_not_assignable" xml:space="preserve">
+    <value>无法删除客户，因为至少有一条客户记账无法明确分配。</value>
+  </data>
+  <data name="clients_delete_bank_not_assignable" xml:space="preserve">
+    <value>无法删除客户，因为至少有一条银行记账无法明确分配。</value>
+  </data>
+  <data name="clients_imported" xml:space="preserve">
+    <value>客户已添加。</value>
+  </data>
+  <data name="clients_export_filename" xml:space="preserve">
+    <value>客户</value>
+  </data>
+  <data name="advisors_export_filename" xml:space="preserve">
+    <value>顾问</value>
+  </data>
+  <data name="assistants_export_filename" xml:space="preserve">
+    <value>员工</value>
+  </data>
+  <data name="bank_export_filename" xml:space="preserve">
+    <value>银行记账</value>
+  </data>
+  <data name="cash_export_filename" xml:space="preserve">
+    <value>现金簿</value>
+  </data>
+  <data name="books_export_filename" xml:space="preserve">
+    <value>记账</value>
+  </data>
+  <data name="deadlines_export_filename" xml:space="preserve">
+    <value>客户 {0} 期限</value>
+  </data>
+  <data name="export_success" xml:space="preserve">
+    <value>数据已成功导出到 {0}。</value>
+  </data>
+  <data name="advisor_delete" xml:space="preserve">
+    <value>确定要删除该顾问吗？</value>
+  </data>
+  <data name="advisor_delete_title" xml:space="preserve">
+    <value>删除顾问</value>
+  </data>
+  <data name="advisor_delete_failed" xml:space="preserve">
+    <value>无法删除顾问。</value>
+  </data>
+  <data name="advisors_imported" xml:space="preserve">
+    <value>顾问已添加。</value>
+  </data>
+  <data name="advisors_import_failed" xml:space="preserve">
+    <value>顾问未添加。</value>
+  </data>
+  <data name="assistant_not_found" xml:space="preserve">
+    <value>未找到员工。</value>
+  </data>
+  <data name="assistants_import_failed" xml:space="preserve">
+    <value>员工未添加。</value>
+  </data>
+  <data name="booking_for_client_failed" xml:space="preserve">
+    <value>{0} 的记账失败。</value>
+  </data>
+  <data name="bookings_success" xml:space="preserve">
+    <value>记账成功。</value>
+  </data>
+  <data name="book_entry_not_changed" xml:space="preserve">
+    <value>条目未更改。</value>
+  </data>
+  <data name="layout_saved" xml:space="preserve">
+    <value>已成功保存到数据库。</value>
+  </data>
+  <data name="layouts_exported" xml:space="preserve">
+    <value>布局已导出到 {0}。</value>
+  </data>
+  <data name="database_changed" xml:space="preserve">
+    <value>数据库已成功更改。</value>
+  </data>
+  <data name="improved_missing_text" xml:space="preserve">
+    <value>请先输入文本。</value>
+  </data>
+  <data name="improved_removed_license_server" xml:space="preserve">
+    <value>旧许可证服务器已移除。反馈功能将使用新的 REST API 重新构建。</value>
+  </data>
+  <data name="document_missing_filename" xml:space="preserve">
+    <value>未指定文件名。</value>
+  </data>
+  <data name="document_missing_description" xml:space="preserve">
+    <value>请输入收据说明。</value>
+  </data>
+  <data name="print_select_printer" xml:space="preserve">
+    <value>请选择打印机。</value>
+  </data>
+  <data name="print_select_client" xml:space="preserve">
+    <value>请至少选择一个客户。</value>
+  </data>
+  <data name="printpreview_email_missing_account" xml:space="preserve">
+    <value>请先为您的帐户配置电子邮件地址。</value>
+  </data>
+  <data name="layout_connect_elements" xml:space="preserve">
+    <value>确定要连接这些元素吗？</value>
+  </data>
+  <data name="layout_connect_title" xml:space="preserve">
+    <value>连接</value>
+  </data>
+  <data name="printpreview_file_create_failed" xml:space="preserve">
+    <value>无法创建文件。</value>
+  </data>
+  <data name="printpreview_email_message_sent" xml:space="preserve">
+    <value>消息已发送至 {0}。</value>
+  </data>
+  <data name="printpreview_email_message_failed" xml:space="preserve">
+    <value>无法向 {0} 发送消息。</value>
+  </data>
+  <data name="usermanagement_last_admin_delete_warning" xml:space="preserve">
+    <value>您即将删除最后一个管理员。如果这样做，默认帐户 Admin/admin 将重新启用。确定吗？</value>
+  </data>
+  <data name="design_restart_required" xml:space="preserve">
+    <value>更改需要重新启动。请稍候。</value>
+  </data>
+  <data name="import_clients_invalid_title" xml:space="preserve">
+    <value>{0}...只允许使用 'Frau' 或 'Herr' 作为称谓。</value>
+  </data>
+  <data name="import_clients_invalid_debtor_no" xml:space="preserve">
+    <value>{0}...债务人编号无效。</value>
+  </data>
+  <data name="delete_failed" xml:space="preserve">
+    <value>删除失败。</value>
+  </data>
+</root>
