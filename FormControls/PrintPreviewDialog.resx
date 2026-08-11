@@ -1,0 +1,1400 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="panel.ColumnCount" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="tableLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="label5.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 84</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 17</value>
+  </data>
+  <data name="label5.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>To:</value>
+  </data>
+  <data name="label5.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>Pflegehaushaltsbuch.FormControls.Label, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 572</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 17</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Zoom</value>
+  </data>
+  <data name="label2.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>Pflegehaushaltsbuch.FormControls.Label, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="zoomBox.DefaultText" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="zoomBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>54, 568</value>
+  </data>
+  <data name="zoomBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 25</value>
+  </data>
+  <data name="zoomBox.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="zoomBox.Text" xml:space="preserve">
+    <value>1,0</value>
+  </data>
+  <data name="&gt;&gt;zoomBox.Name" xml:space="preserve">
+    <value>zoomBox</value>
+  </data>
+  <data name="&gt;&gt;zoomBox.Type" xml:space="preserve">
+    <value>Pflegehaushaltsbuch.FormControls.TextBox, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;zoomBox.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;zoomBox.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="flowLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="printButton.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="printButton.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
+  </data>
+  <data name="printButton.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Zoom</value>
+  </data>
+  <data name="printButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="printButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="printButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 32</value>
+  </data>
+  <data name="printButton.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;printButton.Name" xml:space="preserve">
+    <value>printButton</value>
+  </data>
+  <data name="&gt;&gt;printButton.Type" xml:space="preserve">
+    <value>Pflegehaushaltsbuch.FormControls.Button, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;printButton.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;printButton.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="button1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="button1.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Zoom</value>
+  </data>
+  <data name="button1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>41, 3</value>
+  </data>
+  <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 32</value>
+  </data>
+  <data name="button1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;button1.Name" xml:space="preserve">
+    <value>button1</value>
+  </data>
+  <data name="&gt;&gt;button1.Type" xml:space="preserve">
+    <value>Pflegehaushaltsbuch.FormControls.Button, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="faxButton.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="faxButton.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Zoom</value>
+  </data>
+  <data name="faxButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="faxButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>79, 3</value>
+  </data>
+  <data name="faxButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 32</value>
+  </data>
+  <data name="faxButton.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="faxButton.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;faxButton.Name" xml:space="preserve">
+    <value>faxButton</value>
+  </data>
+  <data name="&gt;&gt;faxButton.Type" xml:space="preserve">
+    <value>Pflegehaushaltsbuch.FormControls.Button, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;faxButton.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;faxButton.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="emailButton.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="emailButton.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAH6SURBVGhD1ZgJrsIwDES5/wE4SC/CchDEXvZ8vUqD
+        qrjQT0gbbGkEuHQWJxINkxDCxDNMwxtMwxtMwxtMwxtMwxtMwxtMwxtMwxtMwxtMA1RVNa2qKvwQprHH
+        vgDNjb9QLS/GZ2+A5XIZ841a6CcHWK/XzY2LxSI8Ho/RgW7bR+yxN8Bmswm73a5ICJlHHx9JAbbbbdjv
+        9+F4PI4aQubRRR8fyQEOh0Oo6zqcz+dniPv9PhhkHj100U8OwPJBcDqdGsLr9TpoCJlHBz100dc2jj3+
+        KwDLCNHlcgm3260RGiKEzPMeHfTQRT97APYp1+fzedP7FvDAB+9oAagcIWSeGj1AOwT79lO0zRcLQKWE
+        iM1TxQJQn4ToMk8VDUApBN99hVfmqaIBZOpdiLb5rhDFAsRmukJ0TT7+XCRAbEJFfzabNb+ovL77nmr0
+        AK9MqbguvCtdHzVAn6lPC75BAsQPc5BLLDfghR+dLA9z8eM0U5EIk8oNDQedLI/T7QMN0xC5ViI34NWQ
+        tH2+OtDoSMkURMpktBq5IW4NS9sn+UjJYVrpIWMiLCsCQwF+dDQ09JMP9avV6knCJFhOiBUmN8SNDnoa
+        nnzEHnsD6GYmwDJCqDBDQRrooSvzKQF8/7XoCabhDabhDabhDabhDabhDabhDabhDabhDabhDX+CMAsp
+        SdSAZgAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="emailButton.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Zoom</value>
+  </data>
+  <data name="emailButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="emailButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>117, 3</value>
+  </data>
+  <data name="emailButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 32</value>
+  </data>
+  <data name="emailButton.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;emailButton.Name" xml:space="preserve">
+    <value>emailButton</value>
+  </data>
+  <data name="&gt;&gt;emailButton.Type" xml:space="preserve">
+    <value>Pflegehaushaltsbuch.FormControls.Button, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;emailButton.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;emailButton.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="flowLayoutPanel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 38</value>
+  </data>
+  <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Name" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Type" xml:space="preserve">
+    <value>Pflegehaushaltsbuch.FormControls.FlowLayoutPanel, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="printerBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="printerBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 376</value>
+  </data>
+  <data name="printerBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>251, 26</value>
+  </data>
+  <data name="printerBox.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;printerBox.Name" xml:space="preserve">
+    <value>printerBox</value>
+  </data>
+  <data name="&gt;&gt;printerBox.Type" xml:space="preserve">
+    <value>Pflegehaushaltsbuch.FormControls.ComboBox, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;printerBox.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;printerBox.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 350</value>
+  </data>
+  <data name="label1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 3</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>251, 23</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Printer</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>Pflegehaushaltsbuch.FormControls.Label, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="toEmailBox.DefaultText" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="toEmailBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="toEmailBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 104</value>
+  </data>
+  <data name="toEmailBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>251, 25</value>
+  </data>
+  <data name="toEmailBox.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;toEmailBox.Name" xml:space="preserve">
+    <value>toEmailBox</value>
+  </data>
+  <data name="&gt;&gt;toEmailBox.Type" xml:space="preserve">
+    <value>Pflegehaushaltsbuch.FormControls.TextBox, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;toEmailBox.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;toEmailBox.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="printsBox.DefaultText" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="printsBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>54, 517</value>
+  </data>
+  <data name="printsBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 25</value>
+  </data>
+  <data name="printsBox.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="printsBox.Text" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;printsBox.Name" xml:space="preserve">
+    <value>printsBox</value>
+  </data>
+  <data name="&gt;&gt;printsBox.Type" xml:space="preserve">
+    <value>Pflegehaushaltsbuch.FormControls.TextBox, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;printsBox.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;printsBox.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="label4.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 521</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>38, 17</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="label4.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>Pflegehaushaltsbuch.FormControls.Label, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="label6.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 490</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 17</value>
+  </data>
+  <data name="label6.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Page</value>
+  </data>
+  <data name="label6.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>Pflegehaushaltsbuch.FormControls.Label, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="pageBox.DefaultText" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="pageBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="pageBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 3</value>
+  </data>
+  <data name="pageBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="pageBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 25</value>
+  </data>
+  <data name="pageBox.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="pageBox.Text" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;pageBox.Name" xml:space="preserve">
+    <value>pageBox</value>
+  </data>
+  <data name="&gt;&gt;pageBox.Type" xml:space="preserve">
+    <value>Pflegehaushaltsbuch.FormControls.TextBox, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;pageBox.Parent" xml:space="preserve">
+    <value>flowLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;pageBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 11.25pt</value>
+  </data>
+  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>35, 3</value>
+  </data>
+  <data name="label3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>15, 20</value>
+  </data>
+  <data name="label3.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>/</value>
+  </data>
+  <data name="label3.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>Pflegehaushaltsbuch.FormControls.Label, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>flowLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="rowBox.DefaultText" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="rowBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="rowBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>50, 3</value>
+  </data>
+  <data name="rowBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="rowBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 25</value>
+  </data>
+  <data name="rowBox.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="rowBox.Text" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;rowBox.Name" xml:space="preserve">
+    <value>rowBox</value>
+  </data>
+  <data name="&gt;&gt;rowBox.Type" xml:space="preserve">
+    <value>Pflegehaushaltsbuch.FormControls.TextBox, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;rowBox.Parent" xml:space="preserve">
+    <value>flowLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;rowBox.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="flowLayoutPanel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="flowLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>51, 483</value>
+  </data>
+  <data name="flowLayoutPanel2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 31</value>
+  </data>
+  <data name="flowLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.Name" xml:space="preserve">
+    <value>flowLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.Type" xml:space="preserve">
+    <value>Pflegehaushaltsbuch.FormControls.FlowLayoutPanel, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="autoZoomButton.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="autoZoomButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="autoZoomButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>54, 599</value>
+  </data>
+  <data name="autoZoomButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 29</value>
+  </data>
+  <data name="autoZoomButton.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="autoZoomButton.Text" xml:space="preserve">
+    <value>Auto Zoom</value>
+  </data>
+  <data name="&gt;&gt;autoZoomButton.Name" xml:space="preserve">
+    <value>autoZoomButton</value>
+  </data>
+  <data name="&gt;&gt;autoZoomButton.Type" xml:space="preserve">
+    <value>Pflegehaushaltsbuch.FormControls.Button, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;autoZoomButton.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;autoZoomButton.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="printerSettingsButton.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="printerSettingsButton.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="printerSettingsButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="printerSettingsButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 408</value>
+  </data>
+  <data name="printerSettingsButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>251, 29</value>
+  </data>
+  <data name="printerSettingsButton.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="printerSettingsButton.Text" xml:space="preserve">
+    <value>Printer Settings</value>
+  </data>
+  <data name="&gt;&gt;printerSettingsButton.Name" xml:space="preserve">
+    <value>printerSettingsButton</value>
+  </data>
+  <data name="&gt;&gt;printerSettingsButton.Type" xml:space="preserve">
+    <value>Pflegehaushaltsbuch.FormControls.Button, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;printerSettingsButton.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;printerSettingsButton.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="emailPanel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="emailPanel.ColumnCount" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="label7.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 0</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 17</value>
+  </data>
+  <data name="label7.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>From:</value>
+  </data>
+  <data name="label7.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;label7.Name" xml:space="preserve">
+    <value>label7</value>
+  </data>
+  <data name="&gt;&gt;label7.Type" xml:space="preserve">
+    <value>Pflegehaushaltsbuch.FormControls.Label, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
+    <value>emailPanel</value>
+  </data>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label8.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="label8.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 48</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 17</value>
+  </data>
+  <data name="label8.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>SMTP Server</value>
+  </data>
+  <data name="label8.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;label8.Name" xml:space="preserve">
+    <value>label8</value>
+  </data>
+  <data name="&gt;&gt;label8.Type" xml:space="preserve">
+    <value>Pflegehaushaltsbuch.FormControls.Label, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
+    <value>emailPanel</value>
+  </data>
+  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="smtpServerBox.DefaultText" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="smtpServerBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="smtpServerBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 68</value>
+  </data>
+  <data name="smtpServerBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>245, 25</value>
+  </data>
+  <data name="smtpServerBox.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;smtpServerBox.Name" xml:space="preserve">
+    <value>smtpServerBox</value>
+  </data>
+  <data name="&gt;&gt;smtpServerBox.Type" xml:space="preserve">
+    <value>Pflegehaushaltsbuch.FormControls.TextBox, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;smtpServerBox.Parent" xml:space="preserve">
+    <value>emailPanel</value>
+  </data>
+  <data name="&gt;&gt;smtpServerBox.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label9.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="label9.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label9.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 96</value>
+  </data>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 17</value>
+  </data>
+  <data name="label9.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Username:</value>
+  </data>
+  <data name="label9.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;label9.Name" xml:space="preserve">
+    <value>label9</value>
+  </data>
+  <data name="&gt;&gt;label9.Type" xml:space="preserve">
+    <value>Pflegehaushaltsbuch.FormControls.Label, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
+    <value>emailPanel</value>
+  </data>
+  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="label10.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="label10.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label10.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 144</value>
+  </data>
+  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 17</value>
+  </data>
+  <data name="label10.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Keyword:</value>
+  </data>
+  <data name="label10.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;label10.Name" xml:space="preserve">
+    <value>label10</value>
+  </data>
+  <data name="&gt;&gt;label10.Type" xml:space="preserve">
+    <value>Pflegehaushaltsbuch.FormControls.Label, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
+    <value>emailPanel</value>
+  </data>
+  <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="smtpUsernameBox.DefaultText" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="smtpUsernameBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="smtpUsernameBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 116</value>
+  </data>
+  <data name="smtpUsernameBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>245, 25</value>
+  </data>
+  <data name="smtpUsernameBox.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;smtpUsernameBox.Name" xml:space="preserve">
+    <value>smtpUsernameBox</value>
+  </data>
+  <data name="&gt;&gt;smtpUsernameBox.Type" xml:space="preserve">
+    <value>Pflegehaushaltsbuch.FormControls.TextBox, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;smtpUsernameBox.Parent" xml:space="preserve">
+    <value>emailPanel</value>
+  </data>
+  <data name="&gt;&gt;smtpUsernameBox.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="smtpKeywordBox.DefaultText" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="smtpKeywordBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="smtpKeywordBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 164</value>
+  </data>
+  <data name="smtpKeywordBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>245, 25</value>
+  </data>
+  <data name="smtpKeywordBox.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;smtpKeywordBox.Name" xml:space="preserve">
+    <value>smtpKeywordBox</value>
+  </data>
+  <data name="&gt;&gt;smtpKeywordBox.Type" xml:space="preserve">
+    <value>Pflegehaushaltsbuch.FormControls.TextBox, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;smtpKeywordBox.Parent" xml:space="preserve">
+    <value>emailPanel</value>
+  </data>
+  <data name="&gt;&gt;smtpKeywordBox.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="fromEmailBox.DefaultText" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="fromEmailBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="fromEmailBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 20</value>
+  </data>
+  <data name="fromEmailBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>245, 25</value>
+  </data>
+  <data name="fromEmailBox.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;fromEmailBox.Name" xml:space="preserve">
+    <value>fromEmailBox</value>
+  </data>
+  <data name="&gt;&gt;fromEmailBox.Type" xml:space="preserve">
+    <value>Pflegehaushaltsbuch.FormControls.TextBox, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;fromEmailBox.Parent" xml:space="preserve">
+    <value>emailPanel</value>
+  </data>
+  <data name="&gt;&gt;fromEmailBox.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="emailPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="emailPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 135</value>
+  </data>
+  <data name="emailPanel.RowCount" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="emailPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>251, 192</value>
+  </data>
+  <data name="emailPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="emailPanel.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;emailPanel.Name" xml:space="preserve">
+    <value>emailPanel</value>
+  </data>
+  <data name="&gt;&gt;emailPanel.Type" xml:space="preserve">
+    <value>Pflegehaushaltsbuch.FormControls.TableLayoutPanel, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;emailPanel.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;emailPanel.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="emailPanel.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="label7" Row="2" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="label8" Row="4" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="smtpServerBox" Row="5" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="label9" Row="6" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="label10" Row="8" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="smtpUsernameBox" Row="7" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="smtpKeywordBox" Row="9" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="fromEmailBox" Row="3" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="emailSettingsLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="emailSettingsLabel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="emailSettingsLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="emailSettingsLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 61</value>
+  </data>
+  <data name="emailSettingsLabel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 3</value>
+  </data>
+  <data name="emailSettingsLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>251, 23</value>
+  </data>
+  <data name="emailSettingsLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="emailSettingsLabel.Text" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="emailSettingsLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;emailSettingsLabel.Name" xml:space="preserve">
+    <value>emailSettingsLabel</value>
+  </data>
+  <data name="&gt;&gt;emailSettingsLabel.Type" xml:space="preserve">
+    <value>Pflegehaushaltsbuch.FormControls.Label, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;emailSettingsLabel.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;emailSettingsLabel.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="label11.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label11.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="label11.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 460</value>
+  </data>
+  <data name="label11.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 3</value>
+  </data>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>251, 23</value>
+  </data>
+  <data name="label11.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Page</value>
+  </data>
+  <data name="&gt;&gt;label11.Name" xml:space="preserve">
+    <value>label11</value>
+  </data>
+  <data name="&gt;&gt;label11.Type" xml:space="preserve">
+    <value>Pflegehaushaltsbuch.FormControls.Label, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="tableLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tableLayoutPanel1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="tableLayoutPanel1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>263, 686</value>
+  </data>
+  <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.Name" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.Type" xml:space="preserve">
+    <value>Pflegehaushaltsbuch.FormControls.TableLayoutPanel, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.Parent" xml:space="preserve">
+    <value>panel</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="label5" Row="4" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="label2" Row="17" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="zoomBox" Row="17" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="flowLayoutPanel1" Row="0" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="printerBox" Row="10" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="label1" Row="9" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="toEmailBox" Row="5" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="printsBox" Row="15" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label4" Row="15" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label6" Row="14" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="flowLayoutPanel2" Row="14" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="autoZoomButton" Row="18" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="printerSettingsButton" Row="11" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="emailPanel" Row="7" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="emailSettingsLabel" Row="2" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="label11" Row="13" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,Absolute,20,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,Absolute,20,AutoSize,0,AutoSize,0,AutoSize,0,Absolute,20,AutoSize,0,AutoSize,0,AutoSize,0,Absolute,20,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="panel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="panel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 22</value>
+  </data>
+  <data name="panel.RowCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="panel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>845, 692</value>
+  </data>
+  <data name="panel.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;panel.Name" xml:space="preserve">
+    <value>panel</value>
+  </data>
+  <data name="&gt;&gt;panel.Type" xml:space="preserve">
+    <value>Pflegehaushaltsbuch.FormControls.TableLayoutPanel, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;panel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panel.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="tableLayoutPanel1" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,100" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>845, 714</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Drucken</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>PrintPreviewDialog</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PrintPreviewDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>

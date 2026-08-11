@@ -1,0 +1,720 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="advisor" xml:space="preserve">
+    <value>Betreuer</value>
+  </data>
+  <data name="advisor_changed_failed" xml:space="preserve">
+    <value>Betreuer konnte nicht geändert/hinzugefügt werden.</value>
+  </data>
+  <data name="advisor_created_changed" xml:space="preserve">
+    <value>Betreuer wurde erfolgreich geändert/hinzugefügt.</value>
+  </data>
+  <data name="advisors_name_missing" xml:space="preserve">
+    <value>Bitte Geben Sie den Namen des Betreuers ein.</value>
+  </data>
+  <data name="asistants_not_deleteable" xml:space="preserve">
+    <value>Mitarbeiter '{0}' hat noch ein offenes Darlehen und kann daher nicht gelöscht werden.</value>
+  </data>
+  <data name="assistants_changed" xml:space="preserve">
+    <value>Mitarbeiter wurde erfolgreich geändert.</value>
+  </data>
+  <data name="assistants_changed_failed" xml:space="preserve">
+    <value>Mitarbeiter konnte nicht geändert werden.</value>
+  </data>
+  <data name="assistants_created" xml:space="preserve">
+    <value>Mitarbeiter erfolgreich angelegt.</value>
+  </data>
+  <data name="assistants_created_failed" xml:space="preserve">
+    <value>Mitarbeiter konnte nicht angelegt werden.</value>
+  </data>
+  <data name="assistants_delete" xml:space="preserve">
+    <value>Möchten Sie wirklich den Mitarbeiter '{0}' löschen? Alle Buchungen in der Bank und der Kasse gehen ebenfalls verloren!</value>
+  </data>
+  <data name="assistants_name_missing" xml:space="preserve">
+    <value>Bitte Geben Sie den Namen des Mitarbeiters ein.</value>
+  </data>
+  <data name="assistants_not_deleteable_book" xml:space="preserve">
+    <value>Mitarbeiter Löschung nicht möglich, da mindestens eine Buchung nicht exakt zugewiesen werden kann.</value>
+  </data>
+  <data name="booking_already_canceled" xml:space="preserve">
+    <value>Buchung wurde bereits storniert.</value>
+  </data>
+  <data name="booking_cancel" xml:space="preserve">
+    <value>Buchung Stornieren</value>
+  </data>
+  <data name="booking_canceled_failed" xml:space="preserve">
+    <value>Buchung wurde nicht storniert.</value>
+  </data>
+  <data name="booking_canceled_success" xml:space="preserve">
+    <value>Buchung erfolgreich storniert.</value>
+  </data>
+  <data name="booking_canceling" xml:space="preserve">
+    <value>Möchten Sie wirklich die Buchung stornieren?</value>
+  </data>
+  <data name="booking_failed" xml:space="preserve">
+    <value>Buchung fehlgeschlagen.</value>
+  </data>
+  <data name="booking_no_booking_canceled" xml:space="preserve">
+    <value>Keine Buchungen zum Stornieren vorhanden.</value>
+  </data>
+  <data name="booking_sucess" xml:space="preserve">
+    <value>Buchung erfolgreich.</value>
+  </data>
+  <data name="clients_changed" xml:space="preserve">
+    <value>Klient wurde erfolgreich angelegt/geändert.</value>
+  </data>
+  <data name="clients_changed_failed" xml:space="preserve">
+    <value>Klient konnte nicht angelegt/geändert werden.</value>
+  </data>
+  <data name="clients_enter_name" xml:space="preserve">
+    <value>Bitte geben sie den Klienten Namen ein.</value>
+  </data>
+  <data name="clients_previous_amount" xml:space="preserve">
+    <value>Altbestand von Klient {0}.</value>
+  </data>
+  <data name="clients_select_first" xml:space="preserve">
+    <value>Bitte wählen Sie erst einen Klienten aus.</value>
+  </data>
+  <data name="company_saved" xml:space="preserve">
+    <value>Firma wurde erfolgreich abgespeichert.</value>
+  </data>
+  <data name="create_clients_first" xml:space="preserve">
+    <value>Bitte legen Sie mindestens einen Klienten an.</value>
+  </data>
+  <data name="createUserFailed" xml:space="preserve">
+    <value>Benutzer kann nicht angelegt werden, da mindestens ein Name davon bereits in Gebrauch ist.</value>
+  </data>
+  <data name="database" xml:space="preserve">
+    <value>Datenbank</value>
+  </data>
+  <data name="database_backup" xml:space="preserve">
+    <value>Datenbanksicherung wurde erfolgreich angelegt.</value>
+  </data>
+  <data name="database_created" xml:space="preserve">
+    <value>Neue Datenbank wurde angelegt.</value>
+  </data>
+  <data name="database_creating" xml:space="preserve">
+    <value>Es wird eine neue Datenbank angelegt, sollte eine vorherige Datenbank mit gleichen Namen existieren so wird diese vollständig gelöscht.</value>
+  </data>
+  <data name="database_enter_name" xml:space="preserve">
+    <value>Bitte geben Sie einen Datenbank Namen ein.</value>
+  </data>
+  <data name="database_reset" xml:space="preserve">
+    <value>Möchten Sie wirklich die Datenbank vom Pflegehaushaltsbuch trennen?</value>
+  </data>
+  <data name="database_restore" xml:space="preserve">
+    <value>Datenbank wurde erfolgreich wiederhergestellt. Pflegehaushaltsbuch wird nun neu gestartet..</value>
+  </data>
+  <data name="database_version_table_missing" xml:space="preserve">
+    <value>Version Tabelle oder Version konnte nicht ermittelt werden. Bitte nehmen Sie mit uns Kontakt auf.</value>
+  </data>
+  <data name="datatable_update_failed" xml:space="preserve">
+    <value>Tabelle konnte nicht geändert werden.</value>
+  </data>
+  <data name="datatable_updated" xml:space="preserve">
+    <value>Tabelle erfolgreich aktualisiert.</value>
+  </data>
+  <data name="deadlines_day_exist" xml:space="preserve">
+    <value>Dieser Tag existiert bereits in den Terminen.</value>
+  </data>
+  <data name="deadlines_delete_title" xml:space="preserve">
+    <value>Termin löschen</value>
+  </data>
+  <data name="deadlines_deleting" xml:space="preserve">
+    <value>Möchten Sie wirklich den aktuellen Termin löschen?</value>
+  </data>
+  <data name="deadlines_no_selection" xml:space="preserve">
+    <value>Kein Termin zum Ändern vorhanden.</value>
+  </data>
+  <data name="deadlines_no_selection_delete" xml:space="preserve">
+    <value>Kein Termin zum Löschen vorhanden.</value>
+  </data>
+  <data name="document_saved" xml:space="preserve">
+    <value>Dokument wurde gespeichert unter..</value>
+  </data>
+  <data name="email" xml:space="preserve">
+    <value>Bitte geben Sie eine E-Mail-Adresse ein.</value>
+  </data>
+  <data name="hardmoney_changed" xml:space="preserve">
+    <value>Bargeldzählung wurde erfolgreich geändert.</value>
+  </data>
+  <data name="hardmoney_changed_failed" xml:space="preserve">
+    <value>Bargeldzählung wurde nicht geändert.</value>
+  </data>
+  <data name="invalid_city" xml:space="preserve">
+    <value>Bitte geben Sie einen Ort ein.</value>
+  </data>
+  <data name="invalid_company" xml:space="preserve">
+    <value>Geben Sie den Namen der Firma ein.</value>
+  </data>
+  <data name="invalid_date" xml:space="preserve">
+    <value>Setzen Sie das Datum in einem gültigen Zeitbereich.</value>
+  </data>
+  <data name="client_invalid_born_date" xml:space="preserve">
+    <value>Das gespeicherte Geburtsdatum ist ungueltig oder leer. Pruefen Sie die Klientendaten.</value>
+  </data>
+  <data name="invalid_email" xml:space="preserve">
+    <value>E-Mail-Adresse hat ein ungültiges Format.</value>
+  </data>
+  <data name="invalid_email_enter" xml:space="preserve">
+    <value>Bitte geben Sie Ihre E-Mail-Adresse ein.</value>
+  </data>
+  <data name="invalid_fax" xml:space="preserve">
+    <value>Bitte geben Sie ihre Faxnummer ein.</value>
+  </data>
+  <data name="invalid_no" xml:space="preserve">
+    <value>Geben Sie eine gültige ID ein.</value>
+  </data>
+  <data name="invalid_note" xml:space="preserve">
+    <value>Bitte geben Sie eine Beschreibung ein.</value>
+  </data>
+  <data name="invalid_phone" xml:space="preserve">
+    <value>Bitte geben Sie ihre Rufnummer ein.</value>
+  </data>
+  <data name="invalid_street" xml:space="preserve">
+    <value>Bitte geben Sie eine Straße ein.</value>
+  </data>
+  <data name="invalid_zip" xml:space="preserve">
+    <value>Bitte geben Sie eine Postleitzahl ein.</value>
+  </data>
+  <data name="ioan_invalid_amount" xml:space="preserve">
+    <value>Geben Sie einen gültigen Betrag ein.</value>
+  </data>
+  <data name="ioan_missing_repayment" xml:space="preserve">
+    <value>Geben Sie die Art der Rückzahlung an.</value>
+  </data>
+  <data name="ioan_repaid" xml:space="preserve">
+    <value>Darlehen erfolgreich zurückerstattet.</value>
+  </data>
+  <data name="ioan_repaid_by" xml:space="preserve">
+    <value>Darlehenrückerstattung von {0}</value>
+  </data>
+  <data name="ioan_repaid_failed" xml:space="preserve">
+    <value>Darlehen konnte nicht zurückerstattet werden.</value>
+  </data>
+  <data name="ioan_repaid_needless" xml:space="preserve">
+    <value>Kein Betrag vorhanden, der zurückerstattet werden muss.</value>
+  </data>
+  <data name="ioan_to" xml:space="preserve">
+    <value>Darlehensausgabe an {0}</value>
+  </data>
+  <data name="keywords_not_equal" xml:space="preserve">
+    <value>Kennwörter stimmen nicht überein.</value>
+  </data>
+  <data name="license_check" xml:space="preserve">
+    <value>Lizenz wird überprüft,
+bitte haben Sie etwas Geduld...</value>
+  </data>
+  <data name="license_valid_until" xml:space="preserve">
+    <value>Ihre Lizenz ist bis zum {0} gültig.
+Ihnen verbleiben noch {1} Tag(e).</value>
+  </data>
+  <data name="login_enter_passwords" xml:space="preserve">
+    <value>Bitte geben Sie ein Kennwort in beiden Feldern ein.</value>
+  </data>
+  <data name="login_guest" xml:space="preserve">
+    <value>gast</value>
+  </data>
+  <data name="login_guest_access_proteced" xml:space="preserve">
+    <value>Gastzugänge dürfen nicht geändert werden.</value>
+  </data>
+  <data name="login_insert_username" xml:space="preserve">
+    <value>Bitte geben Sie einen Benutzernamen ein.</value>
+  </data>
+  <data name="login_invalid_password" xml:space="preserve">
+    <value>Benutzer/E-Mail und Kennwort stimmten nicht überein.</value>
+  </data>
+  <data name="database_login_failed" xml:space="preserve">
+    <value>Fehler bei der Anmeldung.</value>
+  </data>
+  <data name="login_keyword_unchanged" xml:space="preserve">
+    <value>Kennwort blieb unverändert.</value>
+  </data>
+  <data name="login_name" xml:space="preserve">
+    <value>Bitte geben Sie einen Anmeldenamen ein.</value>
+  </data>
+  <data name="login_passwords_not_match" xml:space="preserve">
+    <value>Kennwörter stimmen nicht überein.</value>
+  </data>
+  <data name="login_userdata_changed" xml:space="preserve">
+    <value>Benutzerzugsdaten wurden geändert.</value>
+  </data>
+  <data name="missing_amount" xml:space="preserve">
+    <value>Bitte geben Sie einen gültigen Betrag ein.</value>
+  </data>
+  <data name="missing_bookingtext" xml:space="preserve">
+    <value>Bitte geben Sie einen Buchungstext ein.</value>
+  </data>
+  <data name="missing_city" xml:space="preserve">
+    <value>Geben Sie den Namen des Ortes ein.</value>
+  </data>
+  <data name="missing_street" xml:space="preserve">
+    <value>Geben Sie den Namen der Straße ein.</value>
+  </data>
+  <data name="missing_zip" xml:space="preserve">
+    <value>Geben Sie die Postleitzahl ein.</value>
+  </data>
+  <data name="mysql_error" xml:space="preserve">
+    <value>{1} (MySQL Server,  Fehler: {0})</value>
+  </data>
+  <data name="name" xml:space="preserve">
+    <value>Bitte geben Sie einen Namen ein.</value>
+  </data>
+  <data name="database_not_available" xml:space="preserve">
+    <value>Datenbank nicht vorhanden</value>
+  </data>
+  <data name="printpreview_email_missing_host" xml:space="preserve">
+    <value>Sie können E-Mails verschicken, vorher sollten Sie aber dringend einen E-Mail-SMTP-Server einrichten (Firmeneinstellungen).</value>
+  </data>
+  <data name="printpreview_email_send" xml:space="preserve">
+    <value>E-Mail wurde an {0} gesendet.</value>
+  </data>
+  <data name="printpreview_important_email" xml:space="preserve">
+    <value>Diese E-Mail wurde automatisch von 'MR Care Management' erzeugt und beinhaltet einen wichtigen Anhang für Sie.
+
+Ansprechpartner: {0}
+Rufnummer: {1}</value>
+  </data>
+  <data name="printpreview_missing_valid_email" xml:space="preserve">
+    <value>Geben Sie eine gültige E-Mail-Adresse ein.</value>
+  </data>
+  <data name="quittance" xml:space="preserve">
+    <value>Quittung {0}</value>
+  </data>
+  <data name="sql_error" xml:space="preserve">
+    <value>{1} (Microsoft SQL Server,  Fehler: {0})</value>
+  </data>
+  <data name="sql_rules" xml:space="preserve">
+    <value>SQL Regeln:
+1. Benutzen Sie zum Erzeugen einer neuen SQL Datenbank immer 'Benutzer: sa ohne Passwort' wenn Sie sich nicht sicher sind.
+2. Erst erfolgt das Erzeugen der Datenbank und anschließend dürfen Benutzer angelegt werden.
+3. Wenn eine Datenbank neu angelegt wird, werden alle Benutzer die mit Pflegehaushaltsbuch angelegt wurden, ungültig. Diese dann also bitte löschen und erneut anlegen.
+4. Die Benutzer die mit diesem Programm angelegt werden, haben folgende Rechte:
+- Sie können im gesamten Firmennetz verwendet werden
+- Tabelleneinträge über eine Aktualisierung verändern
+- Tabellen Einträge Anlegen, Ändern und Löschen
+- Sie können nicht mit anderen Datenbanken verwendet werden
+5. Versuchen Sie niemals mit einem angelegten Benutzer eine neue Datenbank anzulegen
+6. Bitte nicht vergessen, den Eingangsport 1433 in der Firewall zu öffnen und TCP/IP sowie die Namensräume zu aktivieren
+Hinweis:
+Wenn sich eine Datenbank nicht löschen lässt, dann entfernen Sie diese bitte im SQL Server xxx Management Studio. Im Standardfall benötigen Sie diesen aber nicht.</value>
+  </data>
+  <data name="update_download_finished" xml:space="preserve">
+    <value>Herunterladen abgeschlossen.</value>
+  </data>
+  <data name="update_found" xml:space="preserve">
+    <value>Es wurde eine neue Version {0} gefunden.</value>
+  </data>
+  <data name="update_looking" xml:space="preserve">
+    <value>Es wird nach Aktualisierungen gesucht..</value>
+  </data>
+  <data name="updateFailedMSSQL" xml:space="preserve">
+    <value>{0} Fehler bei der Aktualisierung auf Datenbankversion {1}
+
+{2}</value>
+  </data>
+  <data name="updateFailedMySQL" xml:space="preserve">
+    <value>Fehler bei der Aktualisierung auf Datenbankversion {0}
+
+{1}</value>
+  </data>
+  <data name="user_created" xml:space="preserve">
+    <value>Benutzer wurde erfolgreich angelegt.</value>
+  </data>
+  <data name="user_deleted" xml:space="preserve">
+    <value>Benutzer wurde erfolgreich gelöscht.</value>
+  </data>
+  <data name="usermanagement_admin_delete" xml:space="preserve">
+    <value>Administrator Konten können nicht gelöscht werden.</value>
+  </data>
+  <data name="usermanagement_Change" xml:space="preserve">
+    <value>Ändern</value>
+  </data>
+  <data name="usermanagement_Create" xml:space="preserve">
+    <value>Anlegen</value>
+  </data>
+  <data name="usermanagement_Delete" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="usermanagement_user_changed" xml:space="preserve">
+    <value>Benutzer wurde geändert.</value>
+  </data>
+  <data name="usermanagement_user_created" xml:space="preserve">
+    <value>Benutzer wurde angelegt.</value>
+  </data>
+  <data name="usermanagement_user_delete" xml:space="preserve">
+    <value>Möchten Sie wirklich den Benutzer '{0}' Löschen?</value>
+  </data>
+  <data name="usermanagement_user_delete_title" xml:space="preserve">
+    <value>Benutzer Löschen</value>
+  </data>
+  <data name="usermanagement_user_deleted" xml:space="preserve">
+    <value>Benutzer wurde gelöscht.</value>
+  </data>
+  <data name="usermanagement_user_no_deleted" xml:space="preserve">
+    <value>Löschen des Benutzers nicht möglich.</value>
+  </data>
+  <data name="usermanagement_user_selected" xml:space="preserve">
+    <value>Benutzer ist nicht vorhanden</value>
+  </data>
+  <data name="usermanagement_users_missing" xml:space="preserve">
+    <value>Keine Benutzer vorhanden.</value>
+  </data>
+  <data name="database_connected_failed" xml:space="preserve">
+    <value>Datenbank konnte nicht verbunden werden.</value>
+  </data>
+  <data name="sql_transfer_bookings" xml:space="preserve">
+    <value>Buchungen übertragen...</value>
+  </data>
+  <data name="sql_transfer_bank" xml:space="preserve">
+    <value>Bank übertragen...</value>
+  </data>
+  <data name="sql_transfer_cash" xml:space="preserve">
+    <value>Kasse übertragen...</value>
+  </data>
+  <data name="sql_transfer_officecash" xml:space="preserve">
+    <value>Bürokasse übertragen...</value>
+  </data>
+  <data name="sql_transfer_advsisors" xml:space="preserve">
+    <value>Betreuer übertragen...</value>
+  </data>
+  <data name="sql_transfer_clients" xml:space="preserve">
+    <value>Klienten übertragen...</value>
+  </data>
+  <data name="sql_transfer_assistants" xml:space="preserve">
+    <value>Mitarbeiter übertragen...</value>
+  </data>
+  <data name="sql_transfer_coins" xml:space="preserve">
+    <value>Bargeldzählung übertragen...</value>
+  </data>
+  <data name="sql_transfer_receipts" xml:space="preserve">
+    <value>Belege übertragen...</value>
+  </data>
+  <data name="sql_transfer_deadlines" xml:space="preserve">
+    <value>Termine übertragen...</value>
+  </data>
+  <data name="sql_load_database" xml:space="preserve">
+    <value>Lade Datenbank...</value>
+  </data>
+  <data name="sql_activeDatabase_transaction" xml:space="preserve">
+    <value>Es ist bereits eine Datenbanktransaktion aktiv.</value>
+  </data>
+  <data name="sql_invalid_login_name" xml:space="preserve">
+    <value>Ungültige Anmeldung</value>
+  </data>
+  <data name="mysql_invalid_identifier" xml:space="preserve">
+    <value>Ungültiger Bezeichner</value>
+  </data>
+  <data name="about_license" xml:space="preserve">
+    <value>Version: {0}
+Copyright: © Michael Richter, 2013–2026
+
+Das Pflegehaushaltsbuch unterstützt ambulante Pflegeeinrichtungen bei der übersichtlichen Verwaltung ihrer betrieblichen und finanziellen Abläufe.
+
+Zu den Funktionen gehören die Verwaltung von Kassen- und Bankbeständen, Bürokassen, Klienten, Betreuern und Mitarbeitern. Ergänzt wird die Anwendung durch Dokumentenverwaltung, Kassenprüfungen, statistische Auswertungen, anpassbare Druckvorlagen sowie Funktionen zur Datensicherung und Wiederherstellung.
+
+Freie und quelloffene Software
+
+Das Pflegehaushaltsbuch ist freie und quelloffene Software und wird unter der GNU Affero General Public License, Version 3 (AGPLv3) veröffentlicht.
+
+Sie dürfen die Software verwenden, untersuchen, verändern und weitergeben. Wenn Sie eine veränderte Version verbreiten oder über ein Netzwerk bereitstellen, müssen Sie auch den dazugehörigen Quellcode gemäß der AGPLv3 zugänglich machen.
+
+Die Software wird ohne Gewährleistung bereitgestellt.
+
+Lizenzinformationen:
+Vollständiger Lizenztext: Datei „LICENSE“
+https://ftp.gnu.org/pub/pub/gnu/Licenses/agpl-3.0.txt
+
+Entwicklung unterstützen
+
+Wenn Ihnen das Pflegehaushaltsbuch gefällt und Sie seine zukünftige Weiterentwicklung unterstützen möchten, freue ich mich über eine freiwillige Spende.
+
+Vielen Dank für Ihre Unterstützung.</value>
+  </data>
+  <data name="unknown_error" xml:space="preserve">
+    <value>Unbekannter Fehler</value>
+  </data>
+  <data name="error_caption" xml:space="preserve">
+    <value>Fehler</value>
+  </data>
+  <data name="database_restore_staging_success" xml:space="preserve">
+    <value>Die Sicherung wurde in eine neue Datenbank wiederhergestellt. Die bisherige Datenbank bleibt unverändert erhalten.</value>
+  </data>
+  <data name="database_restore_missing_hardcash" xml:space="preserve">
+    <value>Die wiederhergestellte Datenbank enthält keinen Kassenbestand.</value>
+  </data>
+  <data name="database_restore_missing_version" xml:space="preserve">
+    <value>Die wiederhergestellte Datenbank enthält keine Versionsinformation.</value>
+  </data>
+  <data name="database_connection_type_missing" xml:space="preserve">
+    <value>Bitte wählen Sie eine SQL Verbindung aus.</value>
+  </data>
+  <data name="database_default_login" xml:space="preserve">
+    <value>Anmeldung: Admin
+Kennwort: admin</value>
+  </data>
+  <data name="database_default_login_title" xml:space="preserve">
+    <value>SQL-Anmeldung</value>
+  </data>
+  <data name="sql_server_required" xml:space="preserve">
+    <value>Bitte wählen Sie erst einen SQL Server aus.</value>
+  </data>
+  <data name="master_password_changed_restart" xml:space="preserve">
+    <value>Master Passwort wurde geändert. Das Programm wird neu gestartet.</value>
+  </data>
+  <data name="client_not_found" xml:space="preserve">
+    <value>Klient wurde nicht gefunden.</value>
+  </data>
+  <data name="client_not_found_name" xml:space="preserve">
+    <value>Klient wurde nicht gefunden: {0}</value>
+  </data>
+  <data name="clients_delete" xml:space="preserve">
+    <value>Möchten Sie wirklich den Klienten '{0}' vollständig löschen? Alle Buchungen in der Bank und der Kasse gehen ebenfalls verloren.</value>
+  </data>
+  <data name="clients_delete_title" xml:space="preserve">
+    <value>Konto Löschung</value>
+  </data>
+  <data name="clients_delete_cash_not_assignable" xml:space="preserve">
+    <value>Klienten Löschung nicht möglich, da mindestens eine Buchung der Kasse nicht exakt zugewiesen werden kann.</value>
+  </data>
+  <data name="clients_delete_books_not_assignable" xml:space="preserve">
+    <value>Klienten Löschung nicht möglich, da mindestens eine Buchung der Buchungen nicht exakt zugewiesen werden kann.</value>
+  </data>
+  <data name="clients_delete_bank_not_assignable" xml:space="preserve">
+    <value>Klienten Löschung nicht möglich, da mindestens eine Buchung der Bank nicht exakt zugewiesen werden kann.</value>
+  </data>
+  <data name="clients_imported" xml:space="preserve">
+    <value>Klienten wurden hinzugefügt.</value>
+  </data>
+  <data name="clients_export_filename" xml:space="preserve">
+    <value>Klienten</value>
+  </data>
+  <data name="advisors_export_filename" xml:space="preserve">
+    <value>Betreuer</value>
+  </data>
+  <data name="assistants_export_filename" xml:space="preserve">
+    <value>Mitarbeiter</value>
+  </data>
+  <data name="bank_export_filename" xml:space="preserve">
+    <value>Bankbuchungen</value>
+  </data>
+  <data name="cash_export_filename" xml:space="preserve">
+    <value>Kassenbuch</value>
+  </data>
+  <data name="books_export_filename" xml:space="preserve">
+    <value>Buchungen</value>
+  </data>
+  <data name="deadlines_export_filename" xml:space="preserve">
+    <value>Klient {0} Termine</value>
+  </data>
+  <data name="export_success" xml:space="preserve">
+    <value>Daten wurden erfolgreich in {0} übertragen.</value>
+  </data>
+  <data name="advisor_delete" xml:space="preserve">
+    <value>Möchten Sie wirklich den Betreuer löschen?</value>
+  </data>
+  <data name="advisor_delete_title" xml:space="preserve">
+    <value>Betreuer löschen</value>
+  </data>
+  <data name="advisor_delete_failed" xml:space="preserve">
+    <value>Betreuer konnte nicht gelöscht werden.</value>
+  </data>
+  <data name="advisors_imported" xml:space="preserve">
+    <value>Betreuer wurden angelegt.</value>
+  </data>
+  <data name="advisors_import_failed" xml:space="preserve">
+    <value>Betreuer wurden nicht hinzugefügt.</value>
+  </data>
+  <data name="assistant_not_found" xml:space="preserve">
+    <value>Mitarbeiter wurde nicht gefunden.</value>
+  </data>
+  <data name="assistants_import_failed" xml:space="preserve">
+    <value>Mitarbeiter wurden nicht hinzugefügt.</value>
+  </data>
+  <data name="booking_for_client_failed" xml:space="preserve">
+    <value>Buchung von {0} fehlgeschlagen.</value>
+  </data>
+  <data name="bookings_success" xml:space="preserve">
+    <value>Buchung(en) erfolgreich.</value>
+  </data>
+  <data name="book_entry_not_changed" xml:space="preserve">
+    <value>Eintrag wurde nicht geändert.</value>
+  </data>
+  <data name="layout_saved" xml:space="preserve">
+    <value>Erfolgreich in Datenbank abgespeichert.</value>
+  </data>
+  <data name="layouts_exported" xml:space="preserve">
+    <value>Layouts wurden nach {0} exportiert.</value>
+  </data>
+  <data name="database_changed" xml:space="preserve">
+    <value>Datenbank wurde geändert.</value>
+  </data>
+  <data name="improved_missing_text" xml:space="preserve">
+    <value>Bitte geben Sie erst einen Text ein.</value>
+  </data>
+  <data name="improved_removed_license_server" xml:space="preserve">
+    <value>Der alte Lizenzserver wurde entfernt. Die Rückmeldefunktion wird mit der neuen REST-API neu umgesetzt.</value>
+  </data>
+  <data name="document_missing_filename" xml:space="preserve">
+    <value>Sie haben keinen Dateinamen angegeben.</value>
+  </data>
+  <data name="document_missing_description" xml:space="preserve">
+    <value>Bitte geben Sie zum Beleg eine Beschreibung an.</value>
+  </data>
+  <data name="print_select_printer" xml:space="preserve">
+    <value>Bitte wählen Sie einen Drucker aus.</value>
+  </data>
+  <data name="print_select_client" xml:space="preserve">
+    <value>Bitte wählen Sie mindestens einen Klienten aus.</value>
+  </data>
+  <data name="printpreview_email_missing_account" xml:space="preserve">
+    <value>Bitte richten Sie zuerst eine E-Mail-Adresse in Ihrem Konto ein.</value>
+  </data>
+  <data name="layout_connect_elements" xml:space="preserve">
+    <value>Möchten Sie wirklich die Elemente verbinden?</value>
+  </data>
+  <data name="layout_connect_title" xml:space="preserve">
+    <value>Verbinden</value>
+  </data>
+  <data name="printpreview_file_create_failed" xml:space="preserve">
+    <value>Datei konnte nicht erzeugt werden.</value>
+  </data>
+  <data name="printpreview_email_message_sent" xml:space="preserve">
+    <value>Nachricht wurde an {0} verschickt.</value>
+  </data>
+  <data name="printpreview_email_message_failed" xml:space="preserve">
+    <value>Nachricht konnte nicht an {0} verschickt werden.</value>
+  </data>
+  <data name="usermanagement_last_admin_delete_warning" xml:space="preserve">
+    <value>Sie sind dabei, den letzten Administrator zu löschen. Falls Sie das tun, wird das Standardkonto Admin/admin wieder aktiv. Sind Sie sicher?</value>
+  </data>
+  <data name="design_restart_required" xml:space="preserve">
+    <value>Die Änderungen erfordern einen Neustart, bitte warten Sie.</value>
+  </data>
+  <data name="import_clients_invalid_title" xml:space="preserve">
+    <value>{0}...Sie dürfen als Titel nur 'Frau' oder 'Herr' verwenden.</value>
+  </data>
+  <data name="import_clients_invalid_debtor_no" xml:space="preserve">
+    <value>{0}...ungültige Debitoren Nr.</value>
+  </data>
+  <data name="delete_failed" xml:space="preserve">
+    <value>Löschen fehlgeschlagen.</value>
+  </data>
+</root>

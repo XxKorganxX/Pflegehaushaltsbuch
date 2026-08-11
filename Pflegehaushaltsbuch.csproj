@@ -1,0 +1,1364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{16985666-BEC4-4FED-BF97-5B8F1EFCE96F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Pflegehaushaltsbuch</RootNamespace>
+    <AssemblyName>Pflegehaushaltsbuch</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
+    <GenerateSatelliteAssembliesForCore>true</GenerateSatelliteAssembliesForCore>
+    <SatelliteResourceLanguages>de;zh-Hans</SatelliteResourceLanguages>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>2</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+    <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Office.Interop.Excel.15.0.4795.1001\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Outlook, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Office.Interop.Outlook.15.0.4797.1004\lib\net20\Microsoft.Office.Interop.Outlook.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=8.0.0.2, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.DependencyInjection.Abstractions.8.0.2\lib\net462\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=8.0.0.2, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Logging.Abstractions.8.0.2\lib\net462\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySqlConnector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=d33d3e53aa5f8c92, processorArchitecture=MSIL">
+      <HintPath>packages\MySqlConnector.2.6.1\lib\net48\MySqlConnector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.6.1.2\lib\net462\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Resources.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Resources.Extensions.4.6.0\lib\netstandard2.0\System.Resources.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Threading.Tasks.Extensions.4.6.3\lib\net462\System.Threading.Tasks.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="PdfSharp-gdi, Version=1.50.3638.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>packages\PDFsharp-gdi.1.50.3638-beta\lib\net20\PdfSharp-gdi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PdfSharp.Charting-gdi, Version=1.50.3638.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>packages\PDFsharp-gdi.1.50.3638-beta\lib\net20\PdfSharp.Charting-gdi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.99.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>packages\System.Data.SQLite.Core.1.0.99.0\lib\net45\System.Data.SQLite.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6, Version=1.0.99.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>packages\System.Data.SQLite.EF6.1.0.99.0\lib\net45\System.Data.SQLite.EF6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.99.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>packages\System.Data.SQLite.Linq.1.0.99.0\lib\net45\System.Data.SQLite.Linq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.Common, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Data.Common.4.3.0\lib\net451\System.Data.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.Data.SqlClient, Version=7.0.0.0, Culture=neutral, PublicKeyToken=23ec7fc2d6eaa4a5, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Data.SqlClient.7.0.2\lib\net462\Microsoft.Data.SqlClient.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationClient" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="System.Buffers, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.6.1\lib\net462\System.Buffers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=10.0.0.3, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Diagnostics.DiagnosticSource.10.0.3\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.6.3\lib\net462\System.Memory.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.ValueTuple.4.6.2\lib\net462\System.ValueTuple.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Threading.Channels, Version=10.0.0.3, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Threading.Channels.10.0.3\lib\net462\System.Threading.Channels.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=10.0.0.3, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Json.10.0.3\lib\net462\System.Text.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.Cryptography, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Bcl.Cryptography.8.0.0\lib\net462\Microsoft.Bcl.Cryptography.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Data.SqlClient.Extensions.Abstractions, Version=7.0.0.0, Culture=neutral, PublicKeyToken=23ec7fc2d6eaa4a5, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Data.SqlClient.Extensions.Abstractions.7.0.2\lib\netstandard2.0\Microsoft.Data.SqlClient.Extensions.Abstractions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Data.SqlClient.Internal.Logging, Version=7.0.0.0, Culture=neutral, PublicKeyToken=23ec7fc2d6eaa4a5, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Data.SqlClient.Internal.Logging.7.0.2\lib\netstandard2.0\Microsoft.Data.SqlClient.Internal.Logging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Caching.Memory, Version=8.0.0.1, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Caching.Memory.8.0.1\lib\net462\Microsoft.Extensions.Caching.Memory.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=8.16.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IdentityModel.JsonWebTokens.8.16.0\lib\net462\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Pkcs, Version=8.0.0.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Cryptography.Pkcs.8.0.1\lib\net462\System.Security.Cryptography.Pkcs.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=10.0.0.3, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.10.0.3\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Numerics.Vectors, Version=4.1.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.6.1\lib\net462\System.Numerics.Vectors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Caching.Abstractions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Caching.Abstractions.8.0.0\lib\net462\Microsoft.Extensions.Caching.Abstractions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=8.0.0.2, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Options.8.0.2\lib\net462\Microsoft.Extensions.Options.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Primitives.8.0.0\lib\net462\Microsoft.Extensions.Primitives.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=8.16.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IdentityModel.Tokens.8.16.0\lib\net462\Microsoft.IdentityModel.Tokens.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.TimeProvider, Version=8.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Bcl.TimeProvider.8.0.1\lib\net462\Microsoft.Bcl.TimeProvider.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols, Version=8.16.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IdentityModel.Protocols.8.16.0\lib\net462\Microsoft.IdentityModel.Protocols.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=8.16.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\System.IdentityModel.Tokens.Jwt.8.16.0\lib\net462\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Pipelines, Version=10.0.0.3, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.IO.Pipelines.10.0.3\lib\net462\System.IO.Pipelines.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=10.0.0.3, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Encodings.Web.10.0.3\lib\net462\System.Text.Encodings.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=8.16.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IdentityModel.Logging.8.16.0\lib\net462\Microsoft.IdentityModel.Logging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CredentialProtector.cs" />
+    <Compile Include="Databases\SqlSession.cs" />
+    <Compile Include="FormControls\DataGridViewCheckedColumnHeaderCell.cs" />
+    <Compile Include="Forms\Contracts\IDataExchangeFormContract.cs" />
+    <Compile Include="Forms\DataExchangeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DataExchangeForm.Designer.cs">
+      <DependentUpon>DataExchangeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MessageBox.cs" />
+    <Compile Include="PasswordHasher.cs" />
+    <Compile Include="Databases\SQLITE.cs" />
+    <Compile Include="Data\Company.cs" />
+    <Compile Include="Data\Excel.cs" />
+    <Compile Include="Data\Graphics\DataTableItem.cs" />
+    <Compile Include="Data\DocumentLayer.cs" />
+    <Compile Include="Data\Graphics\FontItem.cs" />
+    <Compile Include="Data\Graphics\GraphicsItem.cs" />
+    <Compile Include="Data\Graphics\ImageItem.cs" />
+    <Compile Include="Data\Graphics\LineItem.cs" />
+    <Compile Include="Data\Graphics\RectangleItem.cs" />
+    <Compile Include="Data\Graphics\TextItem.cs" />
+    <Compile Include="Data\ID_Client_Data.cs" />
+    <Compile Include="Data\Printing.cs" />
+    <Compile Include="Data\Print\PrintBase.cs" />
+    <Compile Include="Data\Print\Quittance.cs" />
+    <Compile Include="Data\User.cs" />
+    <Compile Include="Data\UserAuthenticator.cs" />
+    <Compile Include="EnumExtension.cs" />
+    <Compile Include="EnumResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EnumResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Messages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Messages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="FormControls\Button.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FormControls\CheckBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FormControls\CheckedListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FormControls\ColorSet.cs" />
+    <Compile Include="FormControls\ComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FormControls\ControlColors.cs" />
+    <Compile Include="FormControls\ControlConverter.cs" />
+    <Compile Include="FormControls\DataGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FormControls\DateTimeBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FormControls\DateTimeBox.Designer.cs">
+      <DependentUpon>DateTimeBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormControls\EmbededForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormControls\EmbededForm.designer.cs">
+      <DependentUpon>EmbededForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormControls\FlowLayoutPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form.Designer.cs">
+      <DependentUpon>Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormControls\GeometryControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FormControls\GroupBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FormControls\Label.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FormControls\Layout.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FormControls\ListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FormControls\MenuStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FormControls\MessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormControls\NumericUpDown.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FormControls\Panel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FormControls\PictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FormControls\PrintPreviewDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormControls\PrintPreviewDialog.Designer.cs">
+      <DependentUpon>PrintPreviewDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormControls\IPrintPreviewDialogContract.cs" />
+    <Compile Include="FormControls\RadioButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FormControls\RichTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FormControls\TabControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FormControls\TableLayoutPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FormControls\TextArea.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FormControls\TextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FormControls\Win32.cs" />
+    <Compile Include="Forms\AboutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AboutForm.Designer.cs">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AdvisorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AdvisorForm.designer.cs">
+      <DependentUpon>AdvisorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\EmployeesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EmployeesForm.designer.cs">
+      <DependentUpon>EmployeesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\BankForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\BankForm.designer.cs">
+      <DependentUpon>BankForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\BookForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\BookForm.designer.cs">
+      <DependentUpon>BookForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CashCheckUpForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CashCheckUpForm.Designer.cs">
+      <DependentUpon>CashCheckUpForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CashForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CashForm.designer.cs">
+      <DependentUpon>CashForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ChangeUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ChangeUserForm.Designer.cs">
+      <DependentUpon>ChangeUserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ClientsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ClientsForm.designer.cs">
+      <DependentUpon>ClientsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DatabaseManagerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DatabaseManagerForm.Designer.cs">
+      <DependentUpon>DatabaseManagerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DatabaseServerConnectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DatabaseServerConnectForm.Designer.cs">
+      <DependentUpon>DatabaseServerConnectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dialoge\CashOfficeBookDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dialoge\CashOfficeBookDialog.Designer.cs">
+      <DependentUpon>CashOfficeBookDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dialoge\CreateAdvisorDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dialoge\CreateAdvisorDialog.designer.cs">
+      <DependentUpon>CreateAdvisorDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dialoge\CreateClientDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dialoge\CreateClientDialog.designer.cs">
+      <DependentUpon>CreateClientDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ChangeDeadlineForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ChangeDeadlineForm.designer.cs">
+      <DependentUpon>ChangeDeadlineForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dialoge\CreateEmployeesDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dialoge\CreateEmployeesDialog.designer.cs">
+      <DependentUpon>CreateEmployeesDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CreationUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CreationUserForm.designer.cs">
+      <DependentUpon>CreationUserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DeadLinesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DeadLinesForm.designer.cs">
+      <DependentUpon>DeadLinesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dialoge\InputDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dialoge\InputDialog.Designer.cs">
+      <DependentUpon>InputDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dialoge\IoanPaybackDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dialoge\IoanPaybackDialog.Designer.cs">
+      <DependentUpon>IoanPaybackDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dialoge\BankBookDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dialoge\BankBookDialog.designer.cs">
+      <DependentUpon>BankBookDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dialoge\BarDiagramControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\Dialoge\ClientBookDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dialoge\ClientBookDialog.designer.cs">
+      <DependentUpon>ClientBookDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dialoge\DatabaseUpdateDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dialoge\DatabaseUpdateDialog.Designer.cs">
+      <DependentUpon>DatabaseUpdateDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dialoge\EditDataTableDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dialoge\EditDataTableDialog.Designer.cs">
+      <DependentUpon>EditDataTableDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dialoge\EditTextDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dialoge\EditTextDialog.Designer.cs">
+      <DependentUpon>EditTextDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dialoge\ImportClientsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dialoge\ImportClientsDialog.Designer.cs">
+      <DependentUpon>ImportClientsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dialoge\CreateDocumentDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dialoge\CreateDocumentDialog.Designer.cs">
+      <DependentUpon>CreateDocumentDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dialoge\CashBookDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dialoge\CashBookDialog.designer.cs">
+      <DependentUpon>CashBookDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dialoge\LicenseCheckDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dialoge\LicenseCheckDialog.Designer.cs">
+      <DependentUpon>LicenseCheckDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dialoge\MonthCalendarDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dialoge\MonthCalendarDialog.Designer.cs">
+      <DependentUpon>MonthCalendarDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dialoge\PrintBooksDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dialoge\PrintBooksDialog.Designer.cs">
+      <DependentUpon>PrintBooksDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dialoge\PrintClientsBooksDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dialoge\PrintClientsBooksDialog.Designer.cs">
+      <DependentUpon>PrintClientsBooksDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dialoge\ProgressDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dialoge\ProgressDialog.Designer.cs">
+      <DependentUpon>ProgressDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dialoge\ResetLayoutsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dialoge\ResetLayoutsDialog.Designer.cs">
+      <DependentUpon>ResetLayoutsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AdministrationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AdministrationForm.designer.cs">
+      <DependentUpon>AdministrationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DatabaseFileForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DatabaseFileForm.Designer.cs">
+      <DependentUpon>DatabaseFileForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ImprovedForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ImprovedForm.Designer.cs">
+      <DependentUpon>ImprovedForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LayoutManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LayoutManager.Designer.cs">
+      <DependentUpon>LayoutManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MainMenuForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainMenuForm.designer.cs">
+      <DependentUpon>MainMenuForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainForm.designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DocumentsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DocumentsForm.designer.cs">
+      <DependentUpon>DocumentsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\OfficeCashForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\OfficeCashForm.Designer.cs">
+      <DependentUpon>OfficeCashForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CompanySettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CompanySettingsForm.Designer.cs">
+      <DependentUpon>CompanySettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PageSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PageSettingsForm.Designer.cs">
+      <DependentUpon>PageSettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DesignForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DesignForm.Designer.cs">
+      <DependentUpon>DesignForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\StatisticsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\StatisticsForm.designer.cs">
+      <DependentUpon>StatisticsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UserLoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UserLoginForm.designer.cs">
+      <DependentUpon>UserLoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UserManagerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UserManagerForm.designer.cs">
+      <DependentUpon>UserManagerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationEnums.cs" />
+    <Compile Include="Databases\SQL.cs" />
+    <Compile Include="Databases\MySQL.cs" />
+    <Compile Include="Forms\Presenters\DataExchangeFormPresenter.cs" />
+    <Compile Include="Program.cs">
+      <SubType>
+      </SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Databases\SQLBase.cs" />
+    <Compile Include="StringEnum.cs" />
+    <Compile Include="Tools\Printer.cs" />
+    <Compile Include="XmlConfig.cs" />
+    <Compile Include="Forms\Contracts\IAboutFormContract.cs" />
+    <Compile Include="Forms\Contracts\UserRights.cs" />
+    <Compile Include="Forms\Contracts\IAdministrationFormContract.cs" />
+    <Compile Include="Forms\Contracts\IAdvisorFormContract.cs" />
+    <Compile Include="Forms\Contracts\IEmployeesFormContract.cs" />
+    <Compile Include="Forms\Contracts\IBankBookDialogContract.cs" />
+    <Compile Include="Forms\Contracts\IBankFormContract.cs" />
+    <Compile Include="Forms\Contracts\IBookFormContract.cs" />
+    <Compile Include="Forms\Contracts\ICashBookDialogContract.cs" />
+    <Compile Include="Forms\Contracts\ICashCheckUpFormContract.cs" />
+    <Compile Include="Forms\Contracts\ICashFormContract.cs" />
+    <Compile Include="Forms\Contracts\ICashOfficeBookDialogContract.cs" />
+    <Compile Include="Forms\Contracts\IChangeUserFormContract.cs" />
+    <Compile Include="Forms\Contracts\IClientBookDialogContract.cs" />
+    <Compile Include="Forms\Contracts\ICreateClientDialogContract.cs" />
+    <Compile Include="Forms\Contracts\IClientsFormContract.cs" />
+    <Compile Include="Forms\Contracts\ICompanySettingsFormContract.cs" />
+    <Compile Include="Forms\Contracts\ICreateAdvisorDialogContract.cs" />
+    <Compile Include="Forms\Contracts\ICreateEmployeesDialogContract.cs" />
+    <Compile Include="Forms\Contracts\ICreateDeadlineFormContract.cs" />
+    <Compile Include="Forms\Contracts\ICreateDocumentDialogContract.cs" />
+    <Compile Include="Forms\Contracts\ICreationUserFormContract.cs" />
+    <Compile Include="Forms\Contracts\IDatabaseFileFormContract.cs" />
+    <Compile Include="Forms\Contracts\IDatabaseManagerFormContract.cs" />
+    <Compile Include="Forms\Contracts\IDatabaseServerConnectFormContract.cs" />
+    <Compile Include="Forms\Contracts\IDatabaseUpdateDialogContract.cs" />
+    <Compile Include="Forms\Contracts\IDeadLinesFormContract.cs" />
+    <Compile Include="Forms\Contracts\IDesignFormContract.cs" />
+    <Compile Include="Forms\Contracts\IDocumentsFormContract.cs" />
+    <Compile Include="Forms\Contracts\IEditDataTableDialogContract.cs" />
+    <Compile Include="Forms\Contracts\IEditTextDialogContract.cs" />
+    <Compile Include="Forms\Contracts\IImportClientsDialogContract.cs" />
+    <Compile Include="Forms\Contracts\IImprovedFormContract.cs" />
+    <Compile Include="Forms\Contracts\IInputDialogContract.cs" />
+    <Compile Include="Forms\Contracts\IIoanPaybackDialogContract.cs" />
+    <Compile Include="Forms\Contracts\ILicenseCheckDialogContract.cs" />
+    <Compile Include="Forms\Contracts\ILayoutManagerContract.cs" />
+    <Compile Include="Forms\Contracts\IMainMenuFormContract.cs" />
+    <Compile Include="Forms\Contracts\IMainFormContract.cs" />
+    <Compile Include="Forms\Contracts\IMonthCalendarDialogContract.cs" />
+    <Compile Include="Forms\Contracts\IPrintBooksDialogContract.cs" />
+    <Compile Include="Forms\Contracts\IPrintClientsBooksDialogContract.cs" />
+    <Compile Include="Forms\Contracts\IProgressDialogContract.cs" />
+    <Compile Include="Forms\Contracts\IResetLayoutsDialogContract.cs" />
+    <Compile Include="Forms\Contracts\IOfficeCashFormContract.cs" />
+    <Compile Include="Forms\Contracts\IPageSettingsFormContract.cs" />
+    <Compile Include="Forms\Contracts\IStatisticsFormContract.cs" />
+    <Compile Include="Forms\Contracts\IUserLoginFormContract.cs" />
+    <Compile Include="Forms\Contracts\IUserManagerFormContract.cs" />
+    <Compile Include="Forms\Presenters\AboutFormPresenter.cs" />
+    <Compile Include="Forms\Presenters\AdministrationFormPresenter.cs" />
+    <Compile Include="Forms\Presenters\AdvisorFormPresenter.cs" />
+    <Compile Include="Forms\Presenters\EmployeesFormPresenter.cs" />
+    <Compile Include="Forms\Presenters\BankBookDialogPresenter.cs" />
+    <Compile Include="Forms\Presenters\BankFormPresenter.cs" />
+    <Compile Include="Forms\Presenters\BookFormPresenter.cs" />
+    <Compile Include="Forms\Presenters\CashBookDialogPresenter.cs" />
+    <Compile Include="Forms\Presenters\CashCheckUpFormPresenter.cs" />
+    <Compile Include="Forms\Presenters\CashFormPresenter.cs" />
+    <Compile Include="Forms\Presenters\CashOfficeBookDialogPresenter.cs" />
+    <Compile Include="Forms\Presenters\ChangeUserFormPresenter.cs" />
+    <Compile Include="Forms\Presenters\ClientBookDialogPresenter.cs" />
+    <Compile Include="Forms\Presenters\CreateClientDialogPresenter.cs" />
+    <Compile Include="Forms\Presenters\ClientsFormPresenter.cs" />
+    <Compile Include="Databases\Columns.cs" />
+    <Compile Include="Forms\Presenters\CompanySettingsFormPresenter.cs" />
+    <Compile Include="Forms\Presenters\CreateAdvisorDialogPresenter.cs" />
+    <Compile Include="Forms\Presenters\CreateEmployeesDialogPresenter.cs" />
+    <Compile Include="Forms\Presenters\CreateDeadlineFormPresenter.cs" />
+    <Compile Include="Forms\Presenters\CreateDocumentDialogPresenter.cs" />
+    <Compile Include="Forms\Presenters\CreationUserFormPresenter.cs" />
+    <Compile Include="Forms\Presenters\DatabaseFileFormPresenter.cs" />
+    <Compile Include="Forms\Presenters\DatabaseManagerFormPresenter.cs" />
+    <Compile Include="Forms\Presenters\DatabaseServerConnectFormPresenter.cs" />
+    <Compile Include="Forms\Presenters\DatabaseUpdateDialogPresenter.cs" />
+    <Compile Include="Forms\Presenters\DeadLinesFormPresenter.cs" />
+    <Compile Include="Forms\Presenters\DesignFormPresenter.cs" />
+    <Compile Include="Forms\Presenters\DocumentsFormPresenter.cs" />
+    <Compile Include="Forms\Presenters\EditDataTableDialogPresenter.cs" />
+    <Compile Include="Forms\Presenters\EditTextDialogPresenter.cs" />
+    <Compile Include="Forms\Presenters\ImprovedFormPresenter.cs" />
+    <Compile Include="Forms\Presenters\ImportClientsDialogPresenter.cs" />
+    <Compile Include="Forms\Presenters\InputDialogPresenter.cs" />
+    <Compile Include="Forms\Presenters\IoanPaybackDialogPresenter.cs" />
+    <Compile Include="Forms\Presenters\LicenseCheckDialogPresenter.cs" />
+    <Compile Include="Forms\Presenters\LayoutManagerPresenter.cs" />
+    <Compile Include="Forms\Presenters\MainMenuFormPresenter.cs" />
+    <Compile Include="Forms\Presenters\MainFormPresenter.cs" />
+    <Compile Include="Forms\Presenters\MonthCalendarDialogPresenter.cs" />
+    <Compile Include="Forms\Presenters\OfficeCashFormPresenter.cs" />
+    <Compile Include="Forms\Presenters\PrintBooksDialogPresenter.cs" />
+    <Compile Include="Forms\Presenters\PrintClientsBooksDialogPresenter.cs" />
+    <Compile Include="Forms\Presenters\ProgressDialogPresenter.cs" />
+    <Compile Include="Forms\Presenters\PrintPreviewDialogPresenter.cs" />
+    <Compile Include="Forms\Presenters\ResetLayoutsDialogPresenter.cs" />
+    <Compile Include="Forms\Presenters\PageSettingsFormPresenter.cs" />
+    <Compile Include="Forms\Presenters\StatisticsFormPresenter.cs" />
+    <Compile Include="Forms\Presenters\UserLoginFormPresenter.cs" />
+    <Compile Include="Forms\Presenters\UserManagerFormPresenter.cs" />
+    <EmbeddedResource Include="EnumResources.de.resx">
+      <DependentUpon>EnumResources.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EnumResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>EnumResources1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DataExchangeForm.resx">
+      <DependentUpon>DataExchangeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\ProgressDialog.de.resx">
+      <DependentUpon>ProgressDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Messages.de.resx">
+      <DependentUpon>Messages.resx</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Messages.zh-Hans.resx">
+      <DependentUpon>Messages.resx</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Messages.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Messages1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormControls\Button.resx">
+      <DependentUpon>Button.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormControls\ComboBox.resx">
+      <DependentUpon>ComboBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormControls\DataGridView.resx">
+      <DependentUpon>DataGridView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormControls\DateTimeBox.de.resx">
+      <DependentUpon>DateTimeBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormControls\DateTimeBox.resx">
+      <DependentUpon>DateTimeBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormControls\EmbededForm.en.resx">
+      <DependentUpon>EmbededForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormControls\EmbededForm.resx">
+      <DependentUpon>EmbededForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form.resx">
+      <DependentUpon>Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormControls\Label.resx">
+      <DependentUpon>Label.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormControls\Layout.resx">
+      <DependentUpon>Layout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormControls\ListBox.resx">
+      <DependentUpon>ListBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormControls\MenuStrip.resx">
+      <DependentUpon>MenuStrip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormControls\MessageBox.de.resx">
+      <DependentUpon>MessageBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormControls\MessageBox.resx">
+      <DependentUpon>MessageBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormControls\NumericUpDown.resx">
+      <DependentUpon>NumericUpDown.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormControls\PrintPreviewDialog.de.resx">
+      <DependentUpon>PrintPreviewDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormControls\PrintPreviewDialog.resx">
+      <DependentUpon>PrintPreviewDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormControls\RadioButton.resx">
+      <DependentUpon>RadioButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormControls\RichTextBox.resx">
+      <DependentUpon>RichTextBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormControls\TabControl.resx">
+      <DependentUpon>TabControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormControls\TableLayoutPanel.resx">
+      <DependentUpon>TableLayoutPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormControls\TextArea.resx">
+      <DependentUpon>TextArea.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormControls\TextBox.resx">
+      <DependentUpon>TextBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AboutForm.de.resx">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AboutForm.resx">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EmployeesForm.de.resx">
+      <DependentUpon>EmployeesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CashCheckUpForm.de.resx">
+      <DependentUpon>CashCheckUpForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ChangeUserForm.de.resx">
+      <DependentUpon>ChangeUserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AdvisorForm.de.resx">
+      <DependentUpon>AdvisorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AdvisorForm.resx">
+      <DependentUpon>AdvisorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EmployeesForm.resx">
+      <DependentUpon>EmployeesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\BankForm.de.resx">
+      <DependentUpon>BankForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\BankForm.resx">
+      <DependentUpon>BankForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\BookForm.de.resx">
+      <DependentUpon>BookForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\BookForm.resx">
+      <DependentUpon>BookForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CashCheckUpForm.resx">
+      <DependentUpon>CashCheckUpForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CashForm.de.resx">
+      <DependentUpon>CashForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CashForm.resx">
+      <DependentUpon>CashForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ChangeUserForm.resx">
+      <DependentUpon>ChangeUserForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ClientsForm.de.resx">
+      <DependentUpon>ClientsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ClientsForm.resx">
+      <DependentUpon>ClientsForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DatabaseManagerForm.de.resx">
+      <DependentUpon>DatabaseManagerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DatabaseManagerForm.resx">
+      <DependentUpon>DatabaseManagerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DatabaseServerConnectForm.de.resx">
+      <DependentUpon>DatabaseServerConnectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DatabaseServerConnectForm.resx">
+      <DependentUpon>DatabaseServerConnectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CreationUserForm.de.resx">
+      <DependentUpon>CreationUserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\CashOfficeBookDialog.de.resx">
+      <DependentUpon>CashOfficeBookDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\CashOfficeBookDialog.resx">
+      <DependentUpon>CashOfficeBookDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\CreateAdvisorDialog.de.resx">
+      <DependentUpon>CreateAdvisorDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\CreateAdvisorDialog.resx">
+      <DependentUpon>CreateAdvisorDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\CreateClientDialog.de.resx">
+      <DependentUpon>CreateClientDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\CreateClientDialog.resx">
+      <DependentUpon>CreateClientDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ChangeDeadlineForm.de.resx">
+      <DependentUpon>ChangeDeadlineForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ChangeDeadlineForm.resx">
+      <DependentUpon>ChangeDeadlineForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\CreateEmployeesDialog.de.resx">
+      <DependentUpon>CreateEmployeesDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\CreateEmployeesDialog.resx">
+      <DependentUpon>CreateEmployeesDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CreationUserForm.resx">
+      <DependentUpon>CreationUserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DeadLinesForm.de.resx">
+      <DependentUpon>DeadLinesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DeadLinesForm.resx">
+      <DependentUpon>DeadLinesForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\BankBookDialog.de.resx">
+      <DependentUpon>BankBookDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\EditDataTableDialog.de.resx">
+      <DependentUpon>EditDataTableDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\EditTextDialog.de.resx">
+      <DependentUpon>EditTextDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\ImportClientsDialog.de.resx">
+      <DependentUpon>ImportClientsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\CreateDocumentDialog.de.resx">
+      <DependentUpon>CreateDocumentDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\InputDialog.de.resx">
+      <DependentUpon>InputDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\InputDialog.resx">
+      <DependentUpon>InputDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\IoanPaybackDialog.de.resx">
+      <DependentUpon>IoanPaybackDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\IoanPaybackDialog.resx">
+      <DependentUpon>IoanPaybackDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\BankBookDialog.resx">
+      <DependentUpon>BankBookDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\ClientBookDialog.de.resx">
+      <DependentUpon>ClientBookDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\ClientBookDialog.resx">
+      <DependentUpon>ClientBookDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\DatabaseUpdateDialog.de.resx">
+      <DependentUpon>DatabaseUpdateDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\DatabaseUpdateDialog.resx">
+      <DependentUpon>DatabaseUpdateDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\EditDataTableDialog.resx">
+      <DependentUpon>EditDataTableDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\EditTextDialog.resx">
+      <DependentUpon>EditTextDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\ImportClientsDialog.resx">
+      <DependentUpon>ImportClientsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\CreateDocumentDialog.resx">
+      <DependentUpon>CreateDocumentDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\CashBookDialog.de.resx">
+      <DependentUpon>CashBookDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\CashBookDialog.resx">
+      <DependentUpon>CashBookDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\LicenseCheckDialog.resx">
+      <DependentUpon>LicenseCheckDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\MonthCalendarDialog.resx">
+      <DependentUpon>MonthCalendarDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\PrintBooksDialog.de.resx">
+      <DependentUpon>PrintBooksDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\PrintBooksDialog.resx">
+      <DependentUpon>PrintBooksDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\PrintClientsBooksDialog.de.resx">
+      <DependentUpon>PrintClientsBooksDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\PrintClientsBooksDialog.resx">
+      <DependentUpon>PrintClientsBooksDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\ProgressDialog.resx">
+      <DependentUpon>ProgressDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\ResetLayoutsDialog.de.resx">
+      <DependentUpon>ResetLayoutsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\ResetLayoutsDialog.resx">
+      <DependentUpon>ResetLayoutsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AdministrationForm.de.resx">
+      <DependentUpon>AdministrationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AdministrationForm.resx">
+      <DependentUpon>AdministrationForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DatabaseFileForm.de.resx">
+      <DependentUpon>DatabaseFileForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DatabaseFileForm.resx">
+      <DependentUpon>DatabaseFileForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ImprovedForm.de.resx">
+      <DependentUpon>ImprovedForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ImprovedForm.resx">
+      <DependentUpon>ImprovedForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LayoutManager.de.resx">
+      <DependentUpon>LayoutManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LayoutManager.resx">
+      <DependentUpon>LayoutManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PageSettingsForm.de.resx">
+      <DependentUpon>PageSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DesignForm.de.resx">
+      <DependentUpon>DesignForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DesignForm.resx">
+      <DependentUpon>DesignForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserLoginForm.de.resx">
+      <DependentUpon>UserLoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainMenuForm.de.resx">
+      <DependentUpon>MainMenuForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainMenuForm.resx">
+      <DependentUpon>MainMenuForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForm.de.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DocumentsForm.de.resx">
+      <DependentUpon>DocumentsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DocumentsForm.resx">
+      <DependentUpon>DocumentsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\OfficeCashForm.de.resx">
+      <DependentUpon>OfficeCashForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\OfficeCashForm.resx">
+      <DependentUpon>OfficeCashForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CompanySettingsForm.de.resx">
+      <DependentUpon>CompanySettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CompanySettingsForm.resx">
+      <DependentUpon>CompanySettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PageSettingsForm.resx">
+      <DependentUpon>PageSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\StatisticsForm.de.resx">
+      <DependentUpon>StatisticsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\StatisticsForm.resx">
+      <DependentUpon>StatisticsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserLoginForm.resx">
+      <DependentUpon>UserLoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserManagerForm.de.resx">
+      <DependentUpon>UserManagerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserManagerForm.resx">
+      <DependentUpon>UserManagerForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Resources\ELINA.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Version\update 1.0.9.0.sql" />
+    <EmbeddedResource Include="Version\update 1.0.7.2.sql" />
+    <EmbeddedResource Include="Version\1.0.7.1.sql" />
+    <EmbeddedResource Include="Version\update 1.0.7.1.sql" />
+    <None Include="Resources\backupSymbol.jpg" />
+    <None Include="Resources\restoreSymbol.jpg" />
+    <None Include="Resources\testbild.png" />
+    <Content Include="logo.ico" />
+    <None Include="Resources\calendar.png" />
+    <None Include="Resources\Adobe_PDF_file_icon_32x32.png" />
+    <None Include="Resources\advisor.png" />
+    <None Include="Resources\bank.png" />
+    <None Include="Resources\check.png" />
+    <None Include="Resources\client.png" />
+    <None Include="Resources\documents.png" />
+    <None Include="Resources\nurse.png" />
+    <None Include="Resources\settings.png" />
+    <None Include="Resources\statistic.png" />
+    <None Include="Resources\kdefax.png" />
+    <None Include="Resources\mail2.png" />
+    <None Include="Resources\font.png" />
+    <None Include="Resources\font1.png" />
+    <Content Include="PdfSharp-gdi.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PdfSharp.Charting-gdi.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="layouts\de\accounts.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="layouts\de\advisors.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="layouts\de\employees.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="layouts\de\bank.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="layouts\de\cash.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="layouts\de\cashaudit.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="layouts\de\clients.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="layouts\de\officecash.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="layouts\de\quittance.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="layouts\en\accounts.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="layouts\en\advisors.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="layouts\en\employees.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="layouts\en\bank.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="layouts\en\cash.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="layouts\en\cashaudit.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="layouts\en\clients.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="layouts\en\officecash.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="layouts\en\quittance.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\logo.jpg" />
+    <Content Include="Resources\host.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\logo-mysql-170x115.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\microsoft-sql-server-logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\sqlite.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Update_de.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="Version\update 1.0.7.0.sql" />
+    <EmbeddedResource Include="Version\update 1.0.6.9.sql" />
+    <EmbeddedResource Include="Version\update 1.0.6.7.sql" />
+    <EmbeddedResource Include="Version\update 1.0.6.6.sql" />
+    <None Include="Resources\verticalCenterText.png" />
+    <None Include="Resources\topText.png" />
+    <None Include="Resources\rightText.png" />
+    <None Include="Resources\ok.png" />
+    <None Include="Resources\lupe.jpg" />
+    <None Include="Resources\logo_medical1.jpg" />
+    <None Include="Resources\logo_medical.jpg" />
+    <None Include="Resources\license_person.jpg" />
+    <None Include="Resources\license.jpg" />
+    <None Include="Resources\left.png" />
+    <None Include="Resources\kalender.png" />
+    <None Include="Resources\Info.jpg" />
+    <None Include="Resources\exit.jpg" />
+    <None Include="Resources\construction_person.jpg" />
+    <None Include="Resources\centerText.png" />
+    <None Include="Resources\center.png" />
+    <None Include="Resources\bottomText.png" />
+    <None Include="Resources\admin_person.jpg" />
+    <None Include="Resources\admin.jpg" />
+    <EmbeddedResource Include="Version\update 1.0.6.5.sql" />
+    <EmbeddedResource Include="Version\update 1.0.6.4.sql" />
+    <EmbeddedResource Include="Version\update 1.0.6.3.sql" />
+    <None Include="Version\1.0.7.0.sql" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\System.Data.SQLite.Core.1.0.99.0\build\net45\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\System.Data.SQLite.Core.1.0.99.0\build\net45\System.Data.SQLite.Core.targets'))" />
+    <Error Condition="!Exists('packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets'))" />
+  </Target>
+  <Import Project="packages\System.Data.SQLite.Core.1.0.99.0\build\net45\System.Data.SQLite.Core.targets" Condition="Exists('packages\System.Data.SQLite.Core.1.0.99.0\build\net45\System.Data.SQLite.Core.targets')" />
+  <Import Project="packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets')" />
+  <Target Name="GenerateStronglyTypedResxDesigners" BeforeTargets="CoreCompile">
+    <PropertyGroup>
+      <NetFxResGenPath Condition="'$(NetFxResGenPath)' == '' And Exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\ResGen.exe')">$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\ResGen.exe</NetFxResGenPath>
+      <NetFxResGenPath Condition="'$(NetFxResGenPath)' == '' And Exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8.1 Tools\ResGen.exe')">$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8.1 Tools\ResGen.exe</NetFxResGenPath>
+    </PropertyGroup>
+    <Error Condition="'$(NetFxResGenPath)' == '' Or !Exists('$(NetFxResGenPath)')" Text="ResGen.exe was not found. Install the .NET Framework 4.8 Developer Pack or set NetFxResGenPath." />
+    <ItemGroup>
+      <StronglyTypedResx Include="EnumResources.resx">
+        <ClassName>EnumResources</ClassName>
+      </StronglyTypedResx>
+      <StronglyTypedResx Include="Messages.resx">
+        <ClassName>Messages</ClassName>
+      </StronglyTypedResx>
+    </ItemGroup>
+    <Exec Command="&quot;$(NetFxResGenPath)&quot; &quot;%(StronglyTypedResx.FullPath)&quot; &quot;$(IntermediateOutputPath)Pflegehaushaltsbuch.%(StronglyTypedResx.ClassName).resources&quot; /str:C#,Pflegehaushaltsbuch,%(StronglyTypedResx.ClassName),&quot;$(MSBuildProjectDirectory)\%(StronglyTypedResx.ClassName).Designer.cs&quot; /publicClass" />
+  </Target>
+  <Target Name="CreateDotNetSdkSatelliteAssemblies" AfterTargets="CoreCompile" Condition="'$(GenerateSatelliteAssembliesForCore)' == 'true'">
+    <PropertyGroup>
+      <AlToolPath Condition="'$(AlToolPath)' == ''">C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\al.exe</AlToolPath>
+    </PropertyGroup>
+    <Exec Command="powershell.exe -NoProfile -ExecutionPolicy Bypass -Command &quot;&amp; '$(MSBuildProjectDirectory)\BuildSatelliteAssemblies.ps1' -IntermediateOutputPath '$(IntermediateOutputPath)' -TargetName '$(TargetName)' -AlToolPath '$(AlToolPath)'&quot;" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <OutputType>Library</OutputType>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
+    <PackageReference Include="MSTest.TestAdapter" Version="3.10.4" />
+    <PackageReference Include="MSTest.TestFramework" Version="3.10.4" />
+    <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.6.3" />
+    <PackageReference Include="System.Memory" Version="4.6.3" />
+    <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="10.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Pflegehaushaltsbuch.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="*.ini">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <Target Name="CopyMainProjectDependencies" AfterTargets="Build">
+    <ItemGroup>
+      <MainProjectDependencies Include="..\bin\$(Configuration)\*.dll" />
+      <MainProjectNativeDependencyX86 Include="..\bin\$(Configuration)\x86\SQLite.Interop.dll" />
+      <MainProjectNativeDependencyX64 Include="..\bin\$(Configuration)\x64\SQLite.Interop.dll" />
+    </ItemGroup>
+    <Copy SourceFiles="@(MainProjectDependencies)" DestinationFolder="$(OutputPath)" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(MainProjectNativeDependencyX86)" DestinationFolder="$(OutputPath)x86" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(MainProjectNativeDependencyX64)" DestinationFolder="$(OutputPath)x64" SkipUnchangedFiles="true" />
+  </Target>
+</Project>

@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Pflegehaushaltsbuch.csproj" Id="16985666-bec4-4fed-bf97-5b8f1efce96f" />
+  <Project Path="Pflegehaushaltsbuch.Tests/Pflegehaushaltsbuch.Tests.csproj" Id="f4e26d89-64a1-4b5b-8a60-0328b0776a15" />
+  <Project Path="Pflegehaushaltsbuch.UiTests/Pflegehaushaltsbuch.UiTests.csproj" Id="33b3d6b2-5816-4296-a714-768992f46d12" />
+</Solution>

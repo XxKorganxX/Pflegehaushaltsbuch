@@ -1,0 +1,328 @@
+<?xml version="1.0"?>
+<DocumentLayer xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Items>
+    <GraphicsItem xsi:type="TextItem">
+      <ID>1</ID>
+      <Parent>0</Parent>
+      <ForeColor>buttontext</ForeColor>
+      <BackColor>White</BackColor>
+      <BorderColor>White</BorderColor>
+      <Rectangles>
+        <RectangleF>
+          <Location>
+            <X>50</X>
+            <Y>140</Y>
+          </Location>
+          <Size>
+            <Width>302</Width>
+            <Height>20</Height>
+          </Size>
+          <X>50</X>
+          <Y>140</Y>
+          <Width>302</Width>
+          <Height>20</Height>
+        </RectangleF>
+        <RectangleF>
+          <Location>
+            <X>50</X>
+            <Y>140</Y>
+          </Location>
+          <Size>
+            <Width>302</Width>
+            <Height>20</Height>
+          </Size>
+          <X>50</X>
+          <Y>140</Y>
+          <Width>302</Width>
+          <Height>20</Height>
+        </RectangleF>
+      </Rectangles>
+      <BorderWidth>0</BorderWidth>
+      <PrintOn>All</PrintOn>
+      <Style>Solid</Style>
+      <Font>Arial, 16world</Font>
+      <Text>Clients summary &lt;date&gt;</Text>
+      <CalculateTextHeight>false</CalculateTextHeight>
+      <HorizontalAlignment>Near</HorizontalAlignment>
+      <VerticalAlignment>Near</VerticalAlignment>
+    </GraphicsItem>
+    <GraphicsItem xsi:type="DataTableItem">
+      <ID>2</ID>
+      <Parent>0</Parent>
+      <Child>3</Child>
+      <ForeColor>Black</ForeColor>
+      <BackColor>White</BackColor>
+      <BorderColor>Gray</BorderColor>
+      <Rectangles>
+        <RectangleF>
+          <Location>
+            <X>50</X>
+            <Y>170</Y>
+          </Location>
+          <Size>
+            <Width>725</Width>
+            <Height>930</Height>
+          </Size>
+          <X>50</X>
+          <Y>170</Y>
+          <Width>725</Width>
+          <Height>930</Height>
+        </RectangleF>
+        <RectangleF>
+          <Location>
+            <X>50</X>
+            <Y>170</Y>
+          </Location>
+          <Size>
+            <Width>725</Width>
+            <Height>930</Height>
+          </Size>
+          <X>50</X>
+          <Y>170</Y>
+          <Width>725</Width>
+          <Height>930</Height>
+        </RectangleF>
+      </Rectangles>
+      <BorderWidth>1</BorderWidth>
+      <PrintOn>All</PrintOn>
+      <Style>Solid</Style>
+      <Font>Arial, 12world</Font>
+      <TableDesign>
+        <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+          <xs:element name="dataTable">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="name" type="xs:string" minOccurs="0" />
+                <xs:element name="id" type="xs:string" minOccurs="0" />
+                <xs:element name="columnAlign" type="xs:int" default="0" minOccurs="0" />
+                <xs:element name="textAlign" type="xs:int" default="0" minOccurs="0" />
+                <xs:element name="width" type="xs:int" default="0" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:MainDataTable="dataTable" msdata:UseCurrentLocale="true">
+            <xs:complexType>
+              <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="dataTable" />
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+        </xs:schema>
+        <diffgr:diffgram xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:diffgr="urn:schemas-microsoft-com:xml-diffgram-v1">
+          <DocumentElement>
+            <dataTable diffgr:id="dataTable1" msdata:rowOrder="0" diffgr:hasChanges="inserted">
+              <name>No.</name>
+              <id>id</id>
+              <columnAlign>0</columnAlign>
+              <textAlign>0</textAlign>
+              <width>8</width>
+            </dataTable>
+            <dataTable diffgr:id="dataTable2" msdata:rowOrder="1" diffgr:hasChanges="inserted">
+              <name>Name</name>
+              <id>name</id>
+              <columnAlign>0</columnAlign>
+              <textAlign>0</textAlign>
+              <width>30</width>
+            </dataTable>
+            <dataTable diffgr:id="dataTable3" msdata:rowOrder="2" diffgr:hasChanges="inserted">
+              <name>Date (created)</name>
+              <id>date</id>
+              <columnAlign>0</columnAlign>
+              <textAlign>0</textAlign>
+              <width>10</width>
+            </dataTable>
+            <dataTable diffgr:id="dataTable4" msdata:rowOrder="3" diffgr:hasChanges="inserted">
+              <name>Balance</name>
+              <id>amount</id>
+              <columnAlign>0</columnAlign>
+              <textAlign>0</textAlign>
+              <width>15</width>
+            </dataTable>
+            <dataTable diffgr:id="dataTable5" msdata:rowOrder="4" diffgr:hasChanges="inserted">
+              <name>Date (llast entry)</name>
+              <id>lastbook</id>
+              <columnAlign>0</columnAlign>
+              <textAlign>0</textAlign>
+              <width>12</width>
+            </dataTable>
+            <dataTable diffgr:id="dataTable6" msdata:rowOrder="5" diffgr:hasChanges="inserted">
+              <name>State</name>
+              <id>active</id>
+              <columnAlign>0</columnAlign>
+              <textAlign>0</textAlign>
+              <width>11</width>
+            </dataTable>
+            <dataTable diffgr:id="dataTable7" msdata:rowOrder="6" diffgr:hasChanges="inserted">
+              <name>Hs</name>
+              <id>handsign</id>
+              <columnAlign>2</columnAlign>
+              <textAlign>2</textAlign>
+              <width>14</width>
+            </dataTable>
+          </DocumentElement>
+        </diffgr:diffgram>
+      </TableDesign>
+    </GraphicsItem>
+    <GraphicsItem xsi:type="TextItem">
+      <ID>3</ID>
+      <Parent>2</Parent>
+      <ForeColor>Black</ForeColor>
+      <BackColor>White</BackColor>
+      <BorderColor>Gray</BorderColor>
+      <Rectangles>
+        <RectangleF>
+          <Location>
+            <X>575</X>
+            <Y>1024</Y>
+          </Location>
+          <Size>
+            <Width>200</Width>
+            <Height>30</Height>
+          </Size>
+          <X>575</X>
+          <Y>1024</Y>
+          <Width>200</Width>
+          <Height>30</Height>
+        </RectangleF>
+        <RectangleF>
+          <Location>
+            <X>575</X>
+            <Y>1024</Y>
+          </Location>
+          <Size>
+            <Width>200</Width>
+            <Height>30</Height>
+          </Size>
+          <X>575</X>
+          <Y>1024</Y>
+          <Width>200</Width>
+          <Height>30</Height>
+        </RectangleF>
+      </Rectangles>
+      <BorderWidth>1</BorderWidth>
+      <PrintOn>All</PrintOn>
+      <Style>Solid</Style>
+      <Font>Arial, 12world</Font>
+      <Text>Total amount: &lt;amount_clients&gt;</Text>
+      <CalculateTextHeight>false</CalculateTextHeight>
+      <HorizontalAlignment>Center</HorizontalAlignment>
+      <VerticalAlignment>Center</VerticalAlignment>
+    </GraphicsItem>
+    <GraphicsItem xsi:type="LineItem">
+      <ID>4</ID>
+      <Parent>0</Parent>
+      <ForeColor>#FF8000</ForeColor>
+      <BackColor>White</BackColor>
+      <BorderColor>White</BorderColor>
+      <Rectangles>
+        <RectangleF>
+          <Location>
+            <X>50</X>
+            <Y>125</Y>
+          </Location>
+          <Size>
+            <Width>725</Width>
+            <Height>0</Height>
+          </Size>
+          <X>50</X>
+          <Y>125</Y>
+          <Width>725</Width>
+          <Height>0</Height>
+        </RectangleF>
+        <RectangleF>
+          <Location>
+            <X>50</X>
+            <Y>125</Y>
+          </Location>
+          <Size>
+            <Width>725</Width>
+            <Height>0</Height>
+          </Size>
+          <X>50</X>
+          <Y>125</Y>
+          <Width>725</Width>
+          <Height>0</Height>
+        </RectangleF>
+      </Rectangles>
+      <BorderWidth>2</BorderWidth>
+      <PrintOn>All</PrintOn>
+      <Style>Solid</Style>
+      <Width>5</Width>
+    </GraphicsItem>
+    <GraphicsItem xsi:type="ImageItem">
+      <ID>5</ID>
+      <Parent>0</Parent>
+      <ForeColor>buttontext</ForeColor>
+      <BackColor>White</BackColor>
+      <BorderColor>White</BorderColor>
+      <Rectangles>
+        <RectangleF>
+          <Location>
+            <X>50</X>
+            <Y>50</Y>
+          </Location>
+          <Size>
+            <Width>725</Width>
+            <Height>70</Height>
+          </Size>
+          <X>50</X>
+          <Y>50</Y>
+          <Width>725</Width>
+          <Height>70</Height>
+        </RectangleF>
+        <RectangleF>
+          <Location>
+            <X>50</X>
+            <Y>50</Y>
+          </Location>
+          <Size>
+            <Width>725</Width>
+            <Height>70</Height>
+          </Size>
+          <X>50</X>
+          <Y>50</Y>
+          <Width>725</Width>
+          <Height>70</Height>
+        </RectangleF>
+      </Rectangles>
+      <BorderWidth>0</BorderWidth>
+      <PrintOn>All</PrintOn>
+      <Style>Solid</Style>
+      <HorizontalAlignment>Near</HorizontalAlignment>
+      <Hyperlink>&lt;company_logo&gt;</Hyperlink>
+    </GraphicsItem>
+  </Items>
+  <Paging>
+    <Print>true</Print>
+    <Rect>
+      <Location>
+        <X>50</X>
+        <Y>40</Y>
+      </Location>
+      <Size>
+        <Width>727</Width>
+        <Height>1089</Height>
+      </Size>
+      <X>50</X>
+      <Y>40</Y>
+      <Width>727</Width>
+      <Height>1089</Height>
+    </Rect>
+    <Horizontal>Far</Horizontal>
+    <Vertical>Far</Vertical>
+    <Font>Arial, 11world</Font>
+    <Text>- {0} -</Text>
+    <Margins>
+      <Left>50</Left>
+      <Right>50</Right>
+      <Top>40</Top>
+      <Bottom>40</Bottom>
+    </Margins>
+  </Paging>
+  <Landscape>false</Landscape>
+  <Kind>A4</Kind>
+  <Size>
+    <Width>827</Width>
+    <Height>1169</Height>
+  </Size>
+</DocumentLayer>
