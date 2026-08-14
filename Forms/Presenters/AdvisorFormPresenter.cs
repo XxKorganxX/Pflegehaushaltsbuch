@@ -34,7 +34,7 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
         {
             View.ClearAdvisors();
             table = new DataTable();
-            await session.SQL.FillAdapterAsync(SQLBase.SELECT.Advisors, table);
+            await session.SQL.FillAdapterAsync(SQLBase.SELECT.Representatives, table);
             table.PrimaryKey = new DataColumn[] { table.Columns[Columns.Id] };
 
             if (!string.IsNullOrWhiteSpace(View.CurrentSortColumn))
@@ -64,7 +64,7 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
             if (!View.ShowChangeAdvisorDialog(table, position))
                 return;
 
-            if (await session.SQL.UpdateAdapterAsync(SQLBase.SELECT.Advisors, table))
+            if (await session.SQL.UpdateAdapterAsync(SQLBase.SELECT.Representatives, table))
                 View.ShowMessage(Messages.advisor_created_changed);
             else
                 View.ShowError(Messages.advisor_changed_failed);
@@ -80,7 +80,7 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
                 if (!View.ShowCreateAdvisorDialog(table))
                     return;
 
-                if (await session.SQL.UpdateAdapterAsync(SQLBase.SELECT.Advisors, table))
+                if (await session.SQL.UpdateAdapterAsync(SQLBase.SELECT.Representatives, table))
                     View.ShowMessage(Messages.advisor_created_changed);
                 else
                     View.ShowError(Messages.advisor_changed_failed);
@@ -121,12 +121,18 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
                 if (row == null)
                     return;
 
+                if (await IsAdvisorAssignedToClientAsync(advisorId.Value))
+                {
+                    View.ShowError(Messages.advisor_delete_used_by_client);
+                    return;
+                }
+
                 if (!View.ConfirmMessage(Messages.advisor_delete))
                     return;
 
                 View.ClearAdvisors();
                 row.Delete();
-                bool value = await session.SQL.UpdateAdapterAsync(SQLBase.SELECT.Advisors, table);
+                bool value = await session.SQL.UpdateAdapterAsync(SQLBase.SELECT.Representatives, table);
                 if (!value)
                 {
                     table.RejectChanges();
@@ -147,6 +153,26 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
             }
         }
 
+        private async Task<bool> IsAdvisorAssignedToClientAsync(int advisorId)
+        {
+            DataTable clients = new DataTable();
+            await session.SQL.FillAdapterAsync(SQLBase.SELECT.Clients, clients);
+
+            if (!clients.Columns.Contains(Columns.AdvisorId))
+                return false;
+
+            foreach (DataRow client in clients.Rows)
+            {
+                if (client.RowState == DataRowState.Deleted || client[Columns.AdvisorId] == DBNull.Value)
+                    continue;
+
+                if (Convert.ToInt32(client[Columns.AdvisorId]) == advisorId)
+                    return true;
+            }
+
+            return false;
+        }
+
         public virtual async Task ChangeSelectedAdvisorAsync(int rowIndex)
         {
             if (rowIndex < 0)
@@ -163,7 +189,7 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
 
             try
             {
-                bool valid = await session.SQL.UpdateAdapterAsync(SQLBase.SELECT.Advisors, table);
+                bool valid = await session.SQL.UpdateAdapterAsync(SQLBase.SELECT.Representatives, table);
                 if (!valid)
                 {
                     table.RejectChanges();

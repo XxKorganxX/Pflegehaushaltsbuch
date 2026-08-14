@@ -173,9 +173,6 @@ löschen</value>
   <data name="amountColumn.Width" type="System.Int32, mscorlib">
     <value>105</value>
   </data>
-  <data name="handSignColumn.HeaderText" xml:space="preserve">
-    <value>Hz</value>
-  </data>
   <data name="activeColumn.HeaderText" xml:space="preserve">
     <value>Aktiv</value>
   </data>

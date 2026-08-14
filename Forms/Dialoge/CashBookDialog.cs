@@ -252,7 +252,7 @@ namespace Pflegehaushaltsbuch.Forms.Dialoge
         void ICashBookDialogContract.BindFields()
         {
             bookTextBox.DataBindings.Add("Text", this, "BookText");
-            amountBox.DataBindings.Add("Text", this, "Amount", true, DataSourceUpdateMode.OnValidation, string.Empty, "C");
+            amountBox.DataBindings.Add("Text", this, "Amount", true, DataSourceUpdateMode.OnValidation, string.Empty, "C", Session.Company.Currencies);
         }
 
         /// <summary>

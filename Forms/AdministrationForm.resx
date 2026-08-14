@@ -145,163 +145,17 @@
   <data name="tableLayoutPanel4.ColumnCount" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="databaseBackupButton.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="databaseBackupButton.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="databaseBackupButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="databaseBackupButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 76</value>
-  </data>
-  <data name="databaseBackupButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 6, 3, 6</value>
-  </data>
-  <data name="databaseBackupButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 58</value>
-  </data>
-  <data name="databaseBackupButton.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="databaseBackupButton.Text" xml:space="preserve">
-    <value>Backup database</value>
-  </data>
-  <data name="&gt;&gt;databaseBackupButton.Name" xml:space="preserve">
-    <value>databaseBackupButton</value>
-  </data>
-  <data name="&gt;&gt;databaseBackupButton.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.Button, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;databaseBackupButton.Parent" xml:space="preserve">
-    <value>tableLayoutPanel4</value>
-  </data>
-  <data name="&gt;&gt;databaseBackupButton.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="restoreButton.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="restoreButton.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="restoreButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="restoreButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>173, 76</value>
-  </data>
-  <data name="restoreButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 6, 3, 6</value>
-  </data>
-  <data name="restoreButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 58</value>
-  </data>
-  <data name="restoreButton.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="restoreButton.Text" xml:space="preserve">
-    <value>Restore database</value>
-  </data>
-  <data name="&gt;&gt;restoreButton.Name" xml:space="preserve">
-    <value>restoreButton</value>
-  </data>
-  <data name="&gt;&gt;restoreButton.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.Button, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;restoreButton.Parent" xml:space="preserve">
-    <value>tableLayoutPanel4</value>
-  </data>
-  <data name="&gt;&gt;restoreButton.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="connectDatabaseButton.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="connectDatabaseButton.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="connectDatabaseButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="connectDatabaseButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>512, 76</value>
-  </data>
-  <data name="connectDatabaseButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 6, 3, 6</value>
-  </data>
-  <data name="connectDatabaseButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 58</value>
-  </data>
-  <data name="connectDatabaseButton.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="connectDatabaseButton.Text" xml:space="preserve">
-    <value>Connect
-Database</value>
-  </data>
-  <data name="&gt;&gt;connectDatabaseButton.Name" xml:space="preserve">
-    <value>connectDatabaseButton</value>
-  </data>
-  <data name="&gt;&gt;connectDatabaseButton.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.Button, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;connectDatabaseButton.Parent" xml:space="preserve">
-    <value>tableLayoutPanel4</value>
-  </data>
-  <data name="&gt;&gt;connectDatabaseButton.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="disconnectDatabaseButton.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="disconnectDatabaseButton.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="disconnectDatabaseButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="disconnectDatabaseButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>342, 76</value>
-  </data>
-  <data name="disconnectDatabaseButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 6, 3, 6</value>
-  </data>
-  <data name="disconnectDatabaseButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 58</value>
-  </data>
-  <data name="disconnectDatabaseButton.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="disconnectDatabaseButton.Text" xml:space="preserve">
-    <value>Disconnect
-Database</value>
-  </data>
-  <data name="&gt;&gt;disconnectDatabaseButton.Name" xml:space="preserve">
-    <value>disconnectDatabaseButton</value>
-  </data>
-  <data name="&gt;&gt;disconnectDatabaseButton.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.Button, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;disconnectDatabaseButton.Parent" xml:space="preserve">
-    <value>tableLayoutPanel4</value>
-  </data>
-  <data name="&gt;&gt;disconnectDatabaseButton.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="userRightsButton.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="userRightsButton.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
   <data name="userRightsButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="userRightsButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>173, 6</value>
   </data>
@@ -327,7 +181,7 @@ Database</value>
     <value>tableLayoutPanel4</value>
   </data>
   <data name="&gt;&gt;userRightsButton.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>0</value>
   </data>
   <data name="companyButton.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -348,7 +202,7 @@ Database</value>
     <value>164, 58</value>
   </data>
   <data name="companyButton.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>0</value>
   </data>
   <data name="companyButton.Text" xml:space="preserve">
     <value>Business</value>
@@ -363,7 +217,7 @@ Database</value>
     <value>tableLayoutPanel4</value>
   </data>
   <data name="&gt;&gt;companyButton.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>1</value>
   </data>
   <data name="layoutButton.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -384,7 +238,7 @@ Database</value>
     <value>164, 58</value>
   </data>
   <data name="layoutButton.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="layoutButton.Text" xml:space="preserve">
     <value>Print Layouts</value>
@@ -399,7 +253,44 @@ Database</value>
     <value>tableLayoutPanel4</value>
   </data>
   <data name="&gt;&gt;layoutButton.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>2</value>
+  </data>
+  <data name="connectDatabaseButton.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="connectDatabaseButton.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="connectDatabaseButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="connectDatabaseButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 76</value>
+  </data>
+  <data name="connectDatabaseButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 6, 3, 6</value>
+  </data>
+  <data name="connectDatabaseButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>164, 58</value>
+  </data>
+  <data name="connectDatabaseButton.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="connectDatabaseButton.Text" xml:space="preserve">
+    <value>Connect
+Database</value>
+  </data>
+  <data name="&gt;&gt;connectDatabaseButton.Name" xml:space="preserve">
+    <value>connectDatabaseButton</value>
+  </data>
+  <data name="&gt;&gt;connectDatabaseButton.Type" xml:space="preserve">
+    <value>Pflegehaushaltsbuch.FormControls.Button, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;connectDatabaseButton.Parent" xml:space="preserve">
+    <value>tableLayoutPanel4</value>
+  </data>
+  <data name="&gt;&gt;connectDatabaseButton.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="dataExchangeButton.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -411,16 +302,16 @@ Database</value>
     <value>NoControl</value>
   </data>
   <data name="dataExchangeButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 146</value>
+    <value>512, 6</value>
   </data>
   <data name="dataExchangeButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 6, 3, 6</value>
   </data>
   <data name="dataExchangeButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 58</value>
+    <value>165, 58</value>
   </data>
   <data name="dataExchangeButton.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>3</value>
   </data>
   <data name="dataExchangeButton.Text" xml:space="preserve">
     <value>Data exchange </value>
@@ -435,55 +326,125 @@ Database</value>
     <value>tableLayoutPanel4</value>
   </data>
   <data name="&gt;&gt;dataExchangeButton.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>4</value>
   </data>
-  <data name="designButton.AutoSize" type="System.Boolean, mscorlib">
+  <data name="disconnectDatabaseButton.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="designButton.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="disconnectDatabaseButton.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="designButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="disconnectDatabaseButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="designButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>512, 6</value>
+  <data name="disconnectDatabaseButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>173, 76</value>
   </data>
-  <data name="designButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="disconnectDatabaseButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 6, 3, 6</value>
   </data>
-  <data name="designButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 58</value>
+  <data name="disconnectDatabaseButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>163, 58</value>
   </data>
-  <data name="designButton.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+  <data name="disconnectDatabaseButton.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
-  <data name="designButton.Text" xml:space="preserve">
-    <value>General Settings</value>
+  <data name="disconnectDatabaseButton.Text" xml:space="preserve">
+    <value>Disconnect
+Database</value>
   </data>
-  <data name="&gt;&gt;designButton.Name" xml:space="preserve">
-    <value>designButton</value>
+  <data name="&gt;&gt;disconnectDatabaseButton.Name" xml:space="preserve">
+    <value>disconnectDatabaseButton</value>
   </data>
-  <data name="&gt;&gt;designButton.Type" xml:space="preserve">
+  <data name="&gt;&gt;disconnectDatabaseButton.Type" xml:space="preserve">
     <value>Pflegehaushaltsbuch.FormControls.Button, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;designButton.Parent" xml:space="preserve">
+  <data name="&gt;&gt;disconnectDatabaseButton.Parent" xml:space="preserve">
     <value>tableLayoutPanel4</value>
   </data>
-  <data name="&gt;&gt;designButton.ZOrder" xml:space="preserve">
-    <value>8</value>
+  <data name="&gt;&gt;disconnectDatabaseButton.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="restoreButton.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="restoreButton.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="restoreButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="restoreButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>512, 76</value>
+  </data>
+  <data name="restoreButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 6, 3, 6</value>
+  </data>
+  <data name="restoreButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 58</value>
+  </data>
+  <data name="restoreButton.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="restoreButton.Text" xml:space="preserve">
+    <value>Restore database</value>
+  </data>
+  <data name="&gt;&gt;restoreButton.Name" xml:space="preserve">
+    <value>restoreButton</value>
+  </data>
+  <data name="&gt;&gt;restoreButton.Type" xml:space="preserve">
+    <value>Pflegehaushaltsbuch.FormControls.Button, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;restoreButton.Parent" xml:space="preserve">
+    <value>tableLayoutPanel4</value>
+  </data>
+  <data name="&gt;&gt;restoreButton.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="databaseBackupButton.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="databaseBackupButton.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="databaseBackupButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="databaseBackupButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>342, 76</value>
+  </data>
+  <data name="databaseBackupButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 6, 3, 6</value>
+  </data>
+  <data name="databaseBackupButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>164, 58</value>
+  </data>
+  <data name="databaseBackupButton.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="databaseBackupButton.Text" xml:space="preserve">
+    <value>Backup database</value>
+  </data>
+  <data name="&gt;&gt;databaseBackupButton.Name" xml:space="preserve">
+    <value>databaseBackupButton</value>
+  </data>
+  <data name="&gt;&gt;databaseBackupButton.Type" xml:space="preserve">
+    <value>Pflegehaushaltsbuch.FormControls.Button, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;databaseBackupButton.Parent" xml:space="preserve">
+    <value>tableLayoutPanel4</value>
+  </data>
+  <data name="&gt;&gt;databaseBackupButton.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
   <data name="exitButton.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="exitButton.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
   </data>
   <data name="exitButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="exitButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>173, 146</value>
+    <value>3, 146</value>
   </data>
   <data name="exitButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 6, 3, 6</value>
@@ -492,7 +453,7 @@ Database</value>
     <value>163, 58</value>
   </data>
   <data name="exitButton.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="exitButton.Text" xml:space="preserve">
     <value>Back</value>
@@ -507,7 +468,7 @@ Database</value>
     <value>tableLayoutPanel4</value>
   </data>
   <data name="&gt;&gt;exitButton.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>8</value>
   </data>
   <data name="tableLayoutPanel4.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 9</value>
@@ -519,7 +480,7 @@ Database</value>
     <value>680, 210</value>
   </data>
   <data name="tableLayoutPanel4.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel4.Name" xml:space="preserve">
     <value>tableLayoutPanel4</value>
@@ -534,7 +495,7 @@ Database</value>
     <value>0</value>
   </data>
   <data name="tableLayoutPanel4.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="databaseBackupButton" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="restoreButton" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="connectDatabaseButton" Row="1" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="disconnectDatabaseButton" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="userRightsButton" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="companyButton" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="layoutButton" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="dataExchangeButton" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="designButton" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="exitButton" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,25,14535,Percent,24,85465,Percent,25,Percent,25" /&gt;&lt;Rows Styles="Percent,33,33333,Percent,33,33333,Percent,33,33333" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="userRightsButton" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="companyButton" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="layoutButton" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="connectDatabaseButton" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="dataExchangeButton" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="disconnectDatabaseButton" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="restoreButton" Row="1" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="databaseBackupButton" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="exitButton" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,25,14535,Percent,24,85465,Percent,25,Percent,25" /&gt;&lt;Rows Styles="Percent,33,33333,Percent,33,33333,Percent,33,33333" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="tableLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -549,7 +510,7 @@ Database</value>
     <value>698, 228</value>
   </data>
   <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel1.Name" xml:space="preserve">
     <value>tableLayoutPanel1</value>

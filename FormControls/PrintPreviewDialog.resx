@@ -128,43 +128,6 @@
     <value>2</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="label5.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 84</value>
-  </data>
-  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>25, 17</value>
-  </data>
-  <data name="label5.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>To:</value>
-  </data>
-  <data name="label5.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="&gt;&gt;label5.Name" xml:space="preserve">
-    <value>label5</value>
-  </data>
-  <data name="&gt;&gt;label5.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.Label, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="label2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
   </data>
@@ -174,8 +137,9 @@
   <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 572</value>
+    <value>6, 304</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>42, 17</value>
@@ -193,19 +157,19 @@
     <value>label2</value>
   </data>
   <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.Label, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+    <value>Pflegehaushaltsbuch.FormControls.Label, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;label2.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="zoomBox.DefaultText" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
   <data name="zoomBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>54, 568</value>
+    <value>54, 300</value>
   </data>
   <data name="zoomBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 25</value>
@@ -220,13 +184,13 @@
     <value>zoomBox</value>
   </data>
   <data name="&gt;&gt;zoomBox.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.TextBox, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+    <value>Pflegehaushaltsbuch.FormControls.TextBox, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;zoomBox.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;zoomBox.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="flowLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -423,7 +387,7 @@
     <value>printButton</value>
   </data>
   <data name="&gt;&gt;printButton.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.Button, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+    <value>Pflegehaushaltsbuch.FormControls.Button, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;printButton.Parent" xml:space="preserve">
     <value>flowLayoutPanel1</value>
@@ -453,91 +417,13 @@
     <value>button1</value>
   </data>
   <data name="&gt;&gt;button1.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.Button, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+    <value>Pflegehaushaltsbuch.FormControls.Button, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;button1.Parent" xml:space="preserve">
     <value>flowLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="faxButton.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="faxButton.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Zoom</value>
-  </data>
-  <data name="faxButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="faxButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>79, 3</value>
-  </data>
-  <data name="faxButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 32</value>
-  </data>
-  <data name="faxButton.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="faxButton.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;faxButton.Name" xml:space="preserve">
-    <value>faxButton</value>
-  </data>
-  <data name="&gt;&gt;faxButton.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.Button, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;faxButton.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;faxButton.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="emailButton.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="emailButton.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAH6SURBVGhD1ZgJrsIwDES5/wE4SC/CchDEXvZ8vUqD
-        qrjQT0gbbGkEuHQWJxINkxDCxDNMwxtMwxtMwxtMwxtMwxtMwxtMwxtMwxtMwxtMA1RVNa2qKvwQprHH
-        vgDNjb9QLS/GZ2+A5XIZ841a6CcHWK/XzY2LxSI8Ho/RgW7bR+yxN8Bmswm73a5ICJlHHx9JAbbbbdjv
-        9+F4PI4aQubRRR8fyQEOh0Oo6zqcz+dniPv9PhhkHj100U8OwPJBcDqdGsLr9TpoCJlHBz100dc2jj3+
-        KwDLCNHlcgm3260RGiKEzPMeHfTQRT97APYp1+fzedP7FvDAB+9oAagcIWSeGj1AOwT79lO0zRcLQKWE
-        iM1TxQJQn4ToMk8VDUApBN99hVfmqaIBZOpdiLb5rhDFAsRmukJ0TT7+XCRAbEJFfzabNb+ovL77nmr0
-        AK9MqbguvCtdHzVAn6lPC75BAsQPc5BLLDfghR+dLA9z8eM0U5EIk8oNDQedLI/T7QMN0xC5ViI34NWQ
-        tH2+OtDoSMkURMpktBq5IW4NS9sn+UjJYVrpIWMiLCsCQwF+dDQ09JMP9avV6knCJFhOiBUmN8SNDnoa
-        nnzEHnsD6GYmwDJCqDBDQRrooSvzKQF8/7XoCabhDabhDabhDabhDabhDabhDabhDabhDabhDX+CMAsp
-        SdSAZgAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="emailButton.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Zoom</value>
-  </data>
-  <data name="emailButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="emailButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>117, 3</value>
-  </data>
-  <data name="emailButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 32</value>
-  </data>
-  <data name="emailButton.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;emailButton.Name" xml:space="preserve">
-    <value>emailButton</value>
-  </data>
-  <data name="&gt;&gt;emailButton.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.Button, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;emailButton.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;emailButton.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
@@ -546,7 +432,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 38</value>
+    <value>76, 38</value>
   </data>
   <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -555,19 +441,19 @@
     <value>flowLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel1.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.FlowLayoutPanel, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+    <value>Pflegehaushaltsbuch.FormControls.FlowLayoutPanel, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel1.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="printerBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
   <data name="printerBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 376</value>
+    <value>6, 107</value>
   </data>
   <data name="printerBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>251, 26</value>
@@ -579,13 +465,13 @@
     <value>printerBox</value>
   </data>
   <data name="&gt;&gt;printerBox.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.ComboBox, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+    <value>Pflegehaushaltsbuch.FormControls.ComboBox, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;printerBox.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;printerBox.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -597,7 +483,7 @@
     <value>NoControl</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 350</value>
+    <value>6, 81</value>
   </data>
   <data name="label1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 3</value>
@@ -615,46 +501,19 @@
     <value>label1</value>
   </data>
   <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.Label, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+    <value>Pflegehaushaltsbuch.FormControls.Label, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;label1.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="toEmailBox.DefaultText" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="toEmailBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="toEmailBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 104</value>
-  </data>
-  <data name="toEmailBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>251, 25</value>
-  </data>
-  <data name="toEmailBox.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;toEmailBox.Name" xml:space="preserve">
-    <value>toEmailBox</value>
-  </data>
-  <data name="&gt;&gt;toEmailBox.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.TextBox, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;toEmailBox.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;toEmailBox.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>4</value>
   </data>
   <data name="printsBox.DefaultText" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
   <data name="printsBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>54, 517</value>
+    <value>54, 249</value>
   </data>
   <data name="printsBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>32, 25</value>
@@ -669,13 +528,13 @@
     <value>printsBox</value>
   </data>
   <data name="&gt;&gt;printsBox.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.TextBox, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+    <value>Pflegehaushaltsbuch.FormControls.TextBox, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;printsBox.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;printsBox.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>5</value>
   </data>
   <data name="label4.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
@@ -687,7 +546,7 @@
     <value>NoControl</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 521</value>
+    <value>6, 253</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>38, 17</value>
@@ -705,13 +564,13 @@
     <value>label4</value>
   </data>
   <data name="&gt;&gt;label4.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.Label, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+    <value>Pflegehaushaltsbuch.FormControls.Label, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;label4.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>6</value>
   </data>
   <data name="label6.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
@@ -723,7 +582,7 @@
     <value>NoControl</value>
   </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 490</value>
+    <value>6, 222</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
     <value>37, 17</value>
@@ -741,13 +600,13 @@
     <value>label6</value>
   </data>
   <data name="&gt;&gt;label6.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.Label, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+    <value>Pflegehaushaltsbuch.FormControls.Label, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;label6.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>7</value>
   </data>
   <data name="pageBox.DefaultText" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
@@ -774,7 +633,7 @@
     <value>pageBox</value>
   </data>
   <data name="&gt;&gt;pageBox.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.TextBox, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+    <value>Pflegehaushaltsbuch.FormControls.TextBox, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;pageBox.Parent" xml:space="preserve">
     <value>flowLayoutPanel2</value>
@@ -816,7 +675,7 @@
     <value>label3</value>
   </data>
   <data name="&gt;&gt;label3.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.Label, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+    <value>Pflegehaushaltsbuch.FormControls.Label, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;label3.Parent" xml:space="preserve">
     <value>flowLayoutPanel2</value>
@@ -849,7 +708,7 @@
     <value>rowBox</value>
   </data>
   <data name="&gt;&gt;rowBox.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.TextBox, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+    <value>Pflegehaushaltsbuch.FormControls.TextBox, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;rowBox.Parent" xml:space="preserve">
     <value>flowLayoutPanel2</value>
@@ -861,7 +720,7 @@
     <value>Fill</value>
   </data>
   <data name="flowLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>51, 483</value>
+    <value>51, 215</value>
   </data>
   <data name="flowLayoutPanel2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -876,13 +735,13 @@
     <value>flowLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel2.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.FlowLayoutPanel, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+    <value>Pflegehaushaltsbuch.FormControls.FlowLayoutPanel, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel2.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel2.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>8</value>
   </data>
   <data name="autoZoomButton.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -891,7 +750,7 @@
     <value>NoControl</value>
   </data>
   <data name="autoZoomButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>54, 599</value>
+    <value>54, 331</value>
   </data>
   <data name="autoZoomButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>89, 29</value>
@@ -906,13 +765,13 @@
     <value>autoZoomButton</value>
   </data>
   <data name="&gt;&gt;autoZoomButton.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.Button, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+    <value>Pflegehaushaltsbuch.FormControls.Button, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;autoZoomButton.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;autoZoomButton.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>9</value>
   </data>
   <data name="printerSettingsButton.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -924,7 +783,7 @@
     <value>NoControl</value>
   </data>
   <data name="printerSettingsButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 408</value>
+    <value>6, 140</value>
   </data>
   <data name="printerSettingsButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>251, 29</value>
@@ -939,343 +798,13 @@
     <value>printerSettingsButton</value>
   </data>
   <data name="&gt;&gt;printerSettingsButton.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.Button, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+    <value>Pflegehaushaltsbuch.FormControls.Button, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;printerSettingsButton.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;printerSettingsButton.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="emailPanel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="emailPanel.ColumnCount" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="label7.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 0</value>
-  </data>
-  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 17</value>
-  </data>
-  <data name="label7.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>From:</value>
-  </data>
-  <data name="label7.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="&gt;&gt;label7.Name" xml:space="preserve">
-    <value>label7</value>
-  </data>
-  <data name="&gt;&gt;label7.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.Label, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
-    <value>emailPanel</value>
-  </data>
-  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="label8.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="label8.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 48</value>
-  </data>
-  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 17</value>
-  </data>
-  <data name="label8.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="label8.Text" xml:space="preserve">
-    <value>SMTP Server</value>
-  </data>
-  <data name="label8.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="&gt;&gt;label8.Name" xml:space="preserve">
-    <value>label8</value>
-  </data>
-  <data name="&gt;&gt;label8.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.Label, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
-    <value>emailPanel</value>
-  </data>
-  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="smtpServerBox.DefaultText" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="smtpServerBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="smtpServerBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 68</value>
-  </data>
-  <data name="smtpServerBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>245, 25</value>
-  </data>
-  <data name="smtpServerBox.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;smtpServerBox.Name" xml:space="preserve">
-    <value>smtpServerBox</value>
-  </data>
-  <data name="&gt;&gt;smtpServerBox.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.TextBox, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;smtpServerBox.Parent" xml:space="preserve">
-    <value>emailPanel</value>
-  </data>
-  <data name="&gt;&gt;smtpServerBox.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="label9.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="label9.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label9.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 96</value>
-  </data>
-  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 17</value>
-  </data>
-  <data name="label9.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="label9.Text" xml:space="preserve">
-    <value>Username:</value>
-  </data>
-  <data name="label9.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="&gt;&gt;label9.Name" xml:space="preserve">
-    <value>label9</value>
-  </data>
-  <data name="&gt;&gt;label9.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.Label, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
-    <value>emailPanel</value>
-  </data>
-  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="label10.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="label10.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label10.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 144</value>
-  </data>
-  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 17</value>
-  </data>
-  <data name="label10.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="label10.Text" xml:space="preserve">
-    <value>Keyword:</value>
-  </data>
-  <data name="label10.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="&gt;&gt;label10.Name" xml:space="preserve">
-    <value>label10</value>
-  </data>
-  <data name="&gt;&gt;label10.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.Label, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
-    <value>emailPanel</value>
-  </data>
-  <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="smtpUsernameBox.DefaultText" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="smtpUsernameBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="smtpUsernameBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 116</value>
-  </data>
-  <data name="smtpUsernameBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>245, 25</value>
-  </data>
-  <data name="smtpUsernameBox.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;smtpUsernameBox.Name" xml:space="preserve">
-    <value>smtpUsernameBox</value>
-  </data>
-  <data name="&gt;&gt;smtpUsernameBox.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.TextBox, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;smtpUsernameBox.Parent" xml:space="preserve">
-    <value>emailPanel</value>
-  </data>
-  <data name="&gt;&gt;smtpUsernameBox.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="smtpKeywordBox.DefaultText" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="smtpKeywordBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="smtpKeywordBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 164</value>
-  </data>
-  <data name="smtpKeywordBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>245, 25</value>
-  </data>
-  <data name="smtpKeywordBox.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;smtpKeywordBox.Name" xml:space="preserve">
-    <value>smtpKeywordBox</value>
-  </data>
-  <data name="&gt;&gt;smtpKeywordBox.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.TextBox, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;smtpKeywordBox.Parent" xml:space="preserve">
-    <value>emailPanel</value>
-  </data>
-  <data name="&gt;&gt;smtpKeywordBox.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="fromEmailBox.DefaultText" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="fromEmailBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="fromEmailBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 20</value>
-  </data>
-  <data name="fromEmailBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>245, 25</value>
-  </data>
-  <data name="fromEmailBox.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;fromEmailBox.Name" xml:space="preserve">
-    <value>fromEmailBox</value>
-  </data>
-  <data name="&gt;&gt;fromEmailBox.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.TextBox, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;fromEmailBox.Parent" xml:space="preserve">
-    <value>emailPanel</value>
-  </data>
-  <data name="&gt;&gt;fromEmailBox.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="emailPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="emailPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 135</value>
-  </data>
-  <data name="emailPanel.RowCount" type="System.Int32, mscorlib">
     <value>10</value>
-  </data>
-  <data name="emailPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>251, 192</value>
-  </data>
-  <data name="emailPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="emailPanel.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;emailPanel.Name" xml:space="preserve">
-    <value>emailPanel</value>
-  </data>
-  <data name="&gt;&gt;emailPanel.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.TableLayoutPanel, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;emailPanel.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;emailPanel.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="emailPanel.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="label7" Row="2" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="label8" Row="4" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="smtpServerBox" Row="5" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="label9" Row="6" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="label10" Row="8" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="smtpUsernameBox" Row="7" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="smtpKeywordBox" Row="9" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="fromEmailBox" Row="3" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
-  <data name="emailSettingsLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="emailSettingsLabel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="emailSettingsLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="emailSettingsLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 61</value>
-  </data>
-  <data name="emailSettingsLabel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 3</value>
-  </data>
-  <data name="emailSettingsLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>251, 23</value>
-  </data>
-  <data name="emailSettingsLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="emailSettingsLabel.Text" xml:space="preserve">
-    <value>Email</value>
-  </data>
-  <data name="emailSettingsLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="&gt;&gt;emailSettingsLabel.Name" xml:space="preserve">
-    <value>emailSettingsLabel</value>
-  </data>
-  <data name="&gt;&gt;emailSettingsLabel.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.Label, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;emailSettingsLabel.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;emailSettingsLabel.ZOrder" xml:space="preserve">
-    <value>14</value>
   </data>
   <data name="label11.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1287,7 +816,7 @@
     <value>NoControl</value>
   </data>
   <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 460</value>
+    <value>6, 192</value>
   </data>
   <data name="label11.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 3</value>
@@ -1305,13 +834,13 @@
     <value>label11</value>
   </data>
   <data name="&gt;&gt;label11.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.Label, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+    <value>Pflegehaushaltsbuch.FormControls.Label, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;label11.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>11</value>
   </data>
   <data name="tableLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1338,7 +867,7 @@
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel1.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.TableLayoutPanel, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+    <value>Pflegehaushaltsbuch.FormControls.TableLayoutPanel, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel1.Parent" xml:space="preserve">
     <value>panel</value>
@@ -1347,7 +876,7 @@
     <value>0</value>
   </data>
   <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="label5" Row="4" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="label2" Row="17" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="zoomBox" Row="17" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="flowLayoutPanel1" Row="0" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="printerBox" Row="10" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="label1" Row="9" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="toEmailBox" Row="5" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="printsBox" Row="15" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label4" Row="15" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label6" Row="14" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="flowLayoutPanel2" Row="14" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="autoZoomButton" Row="18" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="printerSettingsButton" Row="11" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="emailPanel" Row="7" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="emailSettingsLabel" Row="2" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="label11" Row="13" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,Absolute,20,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,Absolute,20,AutoSize,0,AutoSize,0,AutoSize,0,Absolute,20,AutoSize,0,AutoSize,0,AutoSize,0,Absolute,20,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="label2" Row="17" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="zoomBox" Row="17" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="flowLayoutPanel1" Row="0" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="printerBox" Row="10" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="label1" Row="9" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="printsBox" Row="15" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label4" Row="15" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label6" Row="14" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="flowLayoutPanel2" Row="14" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="autoZoomButton" Row="18" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="printerSettingsButton" Row="11" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="label11" Row="13" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,Absolute,20,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,Absolute,20,AutoSize,0,AutoSize,0,AutoSize,0,Absolute,20,AutoSize,0,AutoSize,0,AutoSize,0,Absolute,20,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="panel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1368,7 +897,7 @@
     <value>panel</value>
   </data>
   <data name="&gt;&gt;panel.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.TableLayoutPanel, Pflegehaushaltsbuch, Version=1.5.0.63, Culture=neutral, PublicKeyToken=null</value>
+    <value>Pflegehaushaltsbuch.FormControls.TableLayoutPanel, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;panel.Parent" xml:space="preserve">
     <value>$this</value>

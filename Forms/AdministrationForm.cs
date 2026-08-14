@@ -201,14 +201,6 @@ namespace Pflegehaushaltsbuch.Forms
         }
 
         /// <summary>
-        /// Handles the click event for design Button and updates the related state.
-        /// </summary>
-        private void designButton_Click(object sender, EventArgs e)
-        {
-            presenter.Design();
-        }
-
-        /// <summary>
         /// Runs the data exchange button_click action.
         /// </summary>
         private void dataExchangeButton_Click(object sender, EventArgs e)
@@ -229,7 +221,7 @@ namespace Pflegehaushaltsbuch.Forms
         /// </summary>
         bool IAdministrationFormContract.CanAdministrateDatabase
         {
-            get { return Session.SQL != null && (Session.SQL.User.Admin || Session.SQL.User.Supervisor); }
+            get { return Session.SQL != null && Session.SQL.User.Admin; }
         }
 
         /// <summary>
@@ -238,12 +230,13 @@ namespace Pflegehaushaltsbuch.Forms
         void IAdministrationFormContract.SetAdministrationButtonsEnabled(bool enabled)
         {
             layoutButton.Enabled =
-                userRightsButton.Enabled =
-                companyButton.Enabled =
-                databaseBackupButton.Enabled =
-                restoreButton.Enabled =
-                disconnectDatabaseButton.Enabled =
-                    enabled;
+            userRightsButton.Enabled =
+            companyButton.Enabled =
+            databaseBackupButton.Enabled =
+            restoreButton.Enabled =
+            disconnectDatabaseButton.Enabled =
+            dataExchangeButton.Enabled =
+                enabled;
         }
 
         /// <summary>
@@ -354,7 +347,7 @@ namespace Pflegehaushaltsbuch.Forms
         /// </summary>
         bool IAdministrationFormContract.ShowDatabaseServerConnectDialog(SqlSession session, XmlConfig config)
         {
-            using (DatabaseServerConnectForm connectForm = new DatabaseServerConnectForm(session, config))
+            using (DatabaseConnectionForm connectForm = new DatabaseConnectionForm(session, config))
             {
                 return connectForm.ShowDialog(this) == DialogResult.OK;
             }
@@ -396,15 +389,5 @@ namespace Pflegehaushaltsbuch.Forms
             }
         }
 
-        /// <summary>
-        /// Runs the show design dialog view action for the presenter.
-        /// </summary>
-        void IAdministrationFormContract.ShowDesignDialog(SqlSession session)
-        {
-            using (DesignForm settingsForm = new DesignForm(session))
-            {
-                settingsForm.ShowDialog(this);
-            }
-        }
     }
 }

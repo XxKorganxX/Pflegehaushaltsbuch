@@ -53,16 +53,17 @@ namespace Pflegehaushaltsbuch.Forms
         /// </summary>
         void ICashCheckUpFormContract.ShowCashAudit(CashCheckUpSummary summary)
         {
-            clientsActiveBox.Text = summary.ClientsActive.ToString("C");
-            clientsInActiveBox.Text = summary.ClientsInactive.ToString("C");
-            clientsHistoryBox.Text = summary.ClientsHistory.ToString("C");
-            clientsBox.Text = summary.ClientsTotal.ToString("C");
-            amountEmployeesBox.Text = summary.AssistantsAmount.ToString("C");
-            bankSaldoBox.Text = summary.BankSaldo.ToString("C");
-            calculatedSaldoBox.Text = summary.CalculatedSaldo.ToString("C");
-            differenceAmountBox.Text = summary.DifferenceAmount.ToString("C");
-            cashHoldingBox.Text = summary.CashHolding.ToString("C");
-            hardCashAmountBox.Text = summary.HardCashAmount.ToString("C");
+            var currency = Session.Company.Currencies;
+            clientsActiveBox.Text = summary.ClientsActive.ToString("C", currency);
+            clientsInActiveBox.Text = summary.ClientsInactive.ToString("C", currency);
+            clientsHistoryBox.Text = summary.ClientsHistory.ToString("C", currency);
+            clientsBox.Text = summary.ClientsTotal.ToString("C", currency);
+            amountEmployeesBox.Text = summary.AssistantsAmount.ToString("C", currency);
+            bankSaldoBox.Text = summary.BankSaldo.ToString("C", currency);
+            calculatedSaldoBox.Text = summary.CalculatedSaldo.ToString("C", currency);
+            differenceAmountBox.Text = summary.DifferenceAmount.ToString("C", currency);
+            cashHoldingBox.Text = summary.CashHolding.ToString("C", currency);
+            hardCashAmountBox.Text = summary.HardCashAmount.ToString("C", currency);
         }
 
         /// <summary>

@@ -31,6 +31,7 @@ namespace Pflegehaushaltsbuch
             SQLite
         }
         private string host, port, user, database;
+        private bool trustServerCertificate;
         /// <summary>
         /// Creates a new Xml Config instance and initializes the required state.
         /// </summary>
@@ -42,6 +43,7 @@ namespace Pflegehaushaltsbuch
             Database = "Verwahrgeld";
             port = "3306";
             keyword = string.Empty;
+            trustServerCertificate = true;
         }
         [XmlIgnore]
         public string Keyword
@@ -67,6 +69,11 @@ namespace Pflegehaushaltsbuch
             }
         }
         public DataBaseTypes DBType { get; set; }
+        public bool TrustServerCertificate
+        {
+            get { return trustServerCertificate; }
+            set { trustServerCertificate = value; FirePropertyChanged("TrustServerCertificate"); }
+        }
         public string User { get { return user; } set { user = value; FirePropertyChanged("User"); } }
         public string Host { get { return host; } set { host = value; FirePropertyChanged("Host"); } }
         public string Database { get { return database; } set { database = value; FirePropertyChanged("Database"); } }
@@ -175,6 +182,7 @@ namespace Pflegehaushaltsbuch
                 Host = Host,
                 User = User,
                 Database = Database,
+                TrustServerCertificate = TrustServerCertificate,
                 keyword = keyword
             };
         }

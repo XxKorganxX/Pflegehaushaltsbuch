@@ -57,6 +57,7 @@
             this.label7 = new Pflegehaushaltsbuch.FormControls.Label();
             this.label8 = new Pflegehaushaltsbuch.FormControls.Label();
             this.changeMasterkeywordLabel = new Pflegehaushaltsbuch.FormControls.Label();
+            this.openButton = new Pflegehaushaltsbuch.FormControls.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.masterkeyPanel.SuspendLayout();
             this.userPanel.SuspendLayout();
@@ -205,6 +206,7 @@
             this.connectPanel.Controls.Add(this.label6, 0, 0);
             this.connectPanel.Controls.Add(this.databasesBox, 1, 0);
             this.connectPanel.Controls.Add(this.connectButton, 1, 1);
+            this.connectPanel.Controls.Add(this.openButton, 2, 0);
             this.connectPanel.Name = "connectPanel";
             // 
             // label6
@@ -295,6 +297,16 @@
             this.changeMasterkeywordLabel.Name = "changeMasterkeywordLabel";
             this.changeMasterkeywordLabel.Click += new System.EventHandler(this.changeMasterkeywordLabel_Click);
             // 
+            // openButton
+            // 
+            this.openButton.BackColor = System.Drawing.Color.Transparent;
+            this.openButton.BorderColor = System.Drawing.Color.Black;
+            this.openButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            resources.ApplyResources(this.openButton, "openButton");
+            this.openButton.Name = "openButton";
+            this.openButton.UseVisualStyleBackColor = true;
+            this.openButton.Click += new System.EventHandler(this.openDatabaseButton_Click);
+            // 
             // DatabaseManagerForm
             // 
             resources.ApplyResources(this, "$this");
@@ -350,5 +362,6 @@
         private FormControls.TextBox masterKeywordIIBox;
         private FormControls.Label label9;
         private FormControls.Label changeMasterkeywordLabel;
+        private FormControls.Button openButton;
     }
 }

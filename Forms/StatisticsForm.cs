@@ -3,6 +3,7 @@ using System.ComponentModel;
 using Pflegehaushaltsbuch.Databases;
 using Pflegehaushaltsbuch.Forms.Presenters;
 using System.Collections.Generic;
+
 namespace Pflegehaushaltsbuch.Forms
 {
     /// <summary>
@@ -11,6 +12,7 @@ namespace Pflegehaushaltsbuch.Forms
     public partial class StatisticsForm : Form, IStatisticsFormContract
     {
         private readonly StatisticsFormPresenter presenter;
+        private bool initializingDateRange;
 
         /// <summary>
         /// Creates a new StatisticsForm view.
@@ -19,17 +21,14 @@ namespace Pflegehaushaltsbuch.Forms
         {
             InitializeComponent();
             Session = session;
+
             presenter = new StatisticsFormPresenter(this, session);
+
+            comboBox.SelectedIndex = 0;
+            dateBegin.Date = new DateTime(DateTime.Now.Year, 1, 1);
+            dateEnd.Date = new DateTime(DateTime.Now.Year, 12, 31);
         }
 
-        /// <summary>
-        /// Handles the load event for statistics Form and updates the related state.
-        /// </summary>
-        private void StatisticsForm_Load(object sender, EventArgs e)
-        {
-            if (Program.DesignMode)
-                return;
-        }
         /// <summary>
         /// Handles the enter event for statistics Form and updates the related state.
         /// </summary>
@@ -41,10 +40,6 @@ namespace Pflegehaushaltsbuch.Forms
             ApplyCurrentUserRights();
             await presenter.EnterAsync();
         }
-        //{
-        //    if (Program.DesignMode)
-        //        return;
-        //}
         /// <summary>
         /// Handles the click event for back Button and updates the related state.
         /// </summary>
@@ -81,6 +76,9 @@ namespace Pflegehaushaltsbuch.Forms
         /// </summary>
         private void allDateBoxes_ValueChanged()
         {
+            if (initializingDateRange)
+                return;
+
             presenter.DateChanged();
         }
 
@@ -111,11 +109,26 @@ namespace Pflegehaushaltsbuch.Forms
             set { dateEnd.Date = value; }
         }
 
+        void IStatisticsFormContract.SetDateRange(DateTime beginDate, DateTime endDate)
+        {
+            initializingDateRange = true;
+            try
+            {
+                dateBegin.Date = beginDate;
+                dateEnd.Date = endDate;
+            }
+            finally
+            {
+                initializingDateRange = false;
+            }
+        }
+
         /// <summary>
         /// Runs the update diagram view action for the presenter.
         /// </summary>
         void IStatisticsFormContract.UpdateDiagram(Dictionary<DateTime, decimal[]> values, decimal maxAmount)
         {
+            barDiagram2.CurrencyCulture = Session.Company.Currencies;
             barDiagram2.UpdateTable(values, maxAmount);
         }
 

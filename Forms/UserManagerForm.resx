@@ -124,47 +124,20 @@
   <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <metadata name="nameColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="nameColumn.HeaderText" xml:space="preserve">
-    <value>Name (Hs)</value>
-  </data>
   <metadata name="loginColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="loginColumn.HeaderText" xml:space="preserve">
     <value>Login</value>
   </data>
-  <data name="loginColumn.Width" type="System.Int32, mscorlib">
-    <value>68</value>
-  </data>
-  <metadata name="phoneColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="nameColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="phoneColumn.HeaderText" xml:space="preserve">
-    <value>Phone</value>
+  <data name="nameColumn.HeaderText" xml:space="preserve">
+    <value>✍️</value>
   </data>
-  <data name="phoneColumn.Width" type="System.Int32, mscorlib">
-    <value>73</value>
-  </data>
-  <metadata name="faxColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="faxColumn.HeaderText" xml:space="preserve">
-    <value>Fax</value>
-  </data>
-  <data name="faxColumn.Width" type="System.Int32, mscorlib">
-    <value>54</value>
-  </data>
-  <metadata name="emailColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="emailColumn.HeaderText" xml:space="preserve">
-    <value>Email</value>
-  </data>
-  <data name="emailColumn.Width" type="System.Int32, mscorlib">
-    <value>66</value>
+  <data name="nameColumn.Width" type="System.Int32, mscorlib">
+    <value>53</value>
   </data>
   <metadata name="accessColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -219,31 +192,31 @@
   <data name="tableLayoutPanel3.ColumnCount" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="clientBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="userNameTextBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="clientBox.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="userNameTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>86, 4</value>
   </data>
-  <data name="clientBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="userNameTextBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
   </data>
-  <data name="clientBox.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="userNameTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>192, 26</value>
   </data>
-  <data name="clientBox.TabIndex" type="System.Int32, mscorlib">
+  <data name="userNameTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;clientBox.Name" xml:space="preserve">
-    <value>clientBox</value>
+  <data name="&gt;&gt;userNameTextBox.Name" xml:space="preserve">
+    <value>userNameTextBox</value>
   </data>
-  <data name="&gt;&gt;clientBox.Type" xml:space="preserve">
+  <data name="&gt;&gt;userNameTextBox.Type" xml:space="preserve">
     <value>Pflegehaushaltsbuch.FormControls.ComboBox, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;clientBox.Parent" xml:space="preserve">
+  <data name="&gt;&gt;userNameTextBox.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
   </data>
-  <data name="&gt;&gt;clientBox.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;userNameTextBox.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
@@ -313,7 +286,7 @@
     <value>1</value>
   </data>
   <data name="tableLayoutPanel3.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="clientBox" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label1" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="userNameTextBox" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label1" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="tableLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -597,34 +570,16 @@
   <data name="$this.Text" xml:space="preserve">
     <value>User management</value>
   </data>
-  <data name="&gt;&gt;nameColumn.Name" xml:space="preserve">
-    <value>nameColumn</value>
-  </data>
-  <data name="&gt;&gt;nameColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;loginColumn.Name" xml:space="preserve">
     <value>loginColumn</value>
   </data>
   <data name="&gt;&gt;loginColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;phoneColumn.Name" xml:space="preserve">
-    <value>phoneColumn</value>
+  <data name="&gt;&gt;nameColumn.Name" xml:space="preserve">
+    <value>nameColumn</value>
   </data>
-  <data name="&gt;&gt;phoneColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;faxColumn.Name" xml:space="preserve">
-    <value>faxColumn</value>
-  </data>
-  <data name="&gt;&gt;faxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;emailColumn.Name" xml:space="preserve">
-    <value>emailColumn</value>
-  </data>
-  <data name="&gt;&gt;emailColumn.Type" xml:space="preserve">
+  <data name="&gt;&gt;nameColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;accessColumn.Name" xml:space="preserve">

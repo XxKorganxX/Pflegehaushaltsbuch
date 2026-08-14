@@ -1,11 +1,9 @@
 using Pflegehaushaltsbuch.Databases;
 using Pflegehaushaltsbuch.Forms.Presenters;
 using System;
-using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.IO;
-using System.Net.Mail;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -63,36 +61,6 @@ namespace Pflegehaushaltsbuch.FormControls
             get { return printPreviewControl; }
         }
 
-        string IPrintPreviewDialogContract.SmtpServer
-        {
-            get { return smtpServerBox.Text; }
-            set { smtpServerBox.Text = value; }
-        }
-
-        string IPrintPreviewDialogContract.SmtpUser
-        {
-            get { return smtpUsernameBox.Text; }
-            set { smtpUsernameBox.Text = value; }
-        }
-
-        string IPrintPreviewDialogContract.SmtpPassword
-        {
-            get { return smtpKeywordBox.Text; }
-            set { smtpKeywordBox.Text = value; }
-        }
-
-        string IPrintPreviewDialogContract.FromEmail
-        {
-            get { return fromEmailBox.Text; }
-            set { fromEmailBox.Text = value; }
-        }
-
-        string IPrintPreviewDialogContract.ToEmail
-        {
-            get { return toEmailBox.Text; }
-            set { toEmailBox.Text = value; }
-        }
-
         string IPrintPreviewDialogContract.SelectedPrinter
         {
             get { return printerBox.SelectedItem == null ? string.Empty : printerBox.SelectedItem.ToString(); }
@@ -145,12 +113,6 @@ namespace Pflegehaushaltsbuch.FormControls
             set { printPreviewControl.AutoZoom = value; }
         }
 
-        bool IPrintPreviewDialogContract.EmailSettingsVisible
-        {
-            get { return emailPanel.Visible; }
-            set { emailPanel.Visible = value; }
-        }
-
         void IPrintPreviewDialogContract.AddPrinter(string printerName)
         {
             printerBox.Items.Add(printerName);
@@ -197,9 +159,16 @@ namespace Pflegehaushaltsbuch.FormControls
 
         void IPrintPreviewDialogContract.PrintDocument()
         {
-            Document.DefaultPageSettings.Margins = new Margins(0, 0, 0, 0);
-            Document.OriginAtMargins = true;
-            Document.Print();
+            try
+            {
+                Document.DefaultPageSettings.Margins = new Margins(0, 0, 0, 0);
+                Document.OriginAtMargins = true;
+                Document.Print();
+            }
+            catch (Exception ex)
+            {
+                ShowError(ex.Message);
+            }
         }
 
         void IPrintPreviewDialogContract.ShowDocumentSaved(string filename)
@@ -226,64 +195,57 @@ namespace Pflegehaushaltsbuch.FormControls
         {
         }
 
-        void IPrintPreviewDialogContract.ShowEmailSent(MailMessage mail)
-        {
-            if (InvokeRequired)
-            {
-                BeginInvoke((MethodInvoker)delegate
-                {
-                    ((IPrintPreviewDialogContract)this).ShowEmailSent(mail);
-                });
-                return;
-            }
-
-            MessageBox.ShowDialog(this, string.Format(Messages.printpreview_email_message_sent, mail.To));
-        }
-
-        void IPrintPreviewDialogContract.ShowEmailFailed(MailMessage mail)
-        {
-            if (InvokeRequired)
-            {
-                BeginInvoke((MethodInvoker)delegate
-                {
-                    ((IPrintPreviewDialogContract)this).ShowEmailFailed(mail);
-                });
-                return;
-            }
-
-            MessageBox.ShowDialog(this, string.Format(Messages.printpreview_email_message_failed, mail.To));
-        }
-
         void IPrintPreviewDialogContract.ApplyPrinterSettings()
         {
-            Document.PrinterSettings.PrinterName = printerBox.SelectedItem.ToString();
-            hDevMode = Document.PrinterSettings.GetHdevmode();
-            pDevMode = GlobalLock(hDevMode);
-            int sizeNeeded = DocumentProperties(Handle, IntPtr.Zero, Document.PrinterSettings.PrinterName, IntPtr.Zero, pDevMode, 0);
-            devModeData = Marshal.AllocHGlobal(sizeNeeded);
-            DocumentProperties(Handle, IntPtr.Zero, printerBox.SelectedItem.ToString(), devModeData, pDevMode, 14);
-            GlobalUnlock(hDevMode);
-            Document.PrinterSettings.SetHdevmode(devModeData);
-            Document.PrinterSettings.DefaultPageSettings.SetHdevmode(devModeData);
-            GlobalFree(hDevMode);
-            Marshal.FreeHGlobal(devModeData);
+            if (printerBox.SelectedItem == null)
+            {
+                ShowError(Messages.print_select_printer);
+                return;
+            }
+
+            try
+            {
+                Document.PrinterSettings.PrinterName = printerBox.SelectedItem.ToString();
+                hDevMode = Document.PrinterSettings.GetHdevmode();
+                pDevMode = GlobalLock(hDevMode);
+                int sizeNeeded = DocumentProperties(Handle, IntPtr.Zero, Document.PrinterSettings.PrinterName, IntPtr.Zero, pDevMode, 0);
+                if (sizeNeeded <= 0)
+                    return;
+
+                devModeData = Marshal.AllocHGlobal(sizeNeeded);
+                DocumentProperties(Handle, IntPtr.Zero, printerBox.SelectedItem.ToString(), devModeData, pDevMode, 14);
+                Document.PrinterSettings.SetHdevmode(devModeData);
+                Document.PrinterSettings.DefaultPageSettings.SetHdevmode(devModeData);
+            }
+            catch (Exception ex)
+            {
+                ShowError(ex.Message);
+            }
+            finally
+            {
+                if (pDevMode != IntPtr.Zero)
+                {
+                    GlobalUnlock(hDevMode);
+                    pDevMode = IntPtr.Zero;
+                }
+
+                if (hDevMode != IntPtr.Zero)
+                {
+                    GlobalFree(hDevMode);
+                    hDevMode = IntPtr.Zero;
+                }
+
+                if (devModeData != IntPtr.Zero)
+                {
+                    Marshal.FreeHGlobal(devModeData);
+                    devModeData = IntPtr.Zero;
+                }
+            }
         }
 
         private void printPreviewControl_MouseWheel(object sender, MouseEventArgs e)
         {
             presenter.ScrollPreview(e.Delta);
-        }
-
-        /// <summary>
-        /// Updates the email data and refreshes the related application state.
-        /// </summary>
-        public void UpdateEmail(string email)
-        {
-            presenter.UpdateEmail(email);
-        }
-
-        private void printPreviewControl_MouseClick(object sender, MouseEventArgs e)
-        {
         }
 
         /// <summary>
@@ -380,43 +342,11 @@ namespace Pflegehaushaltsbuch.FormControls
         }
 
         /// <summary>
-        /// Handles the click event for email Button and updates the related state.
-        /// </summary>
-        private void emailButton_Click(object sender, EventArgs e)
-        {
-            presenter.SendEmail();
-        }
-
-        /// <summary>
-        /// Handles the send Completed event for smtp Client and updates the related state.
-        /// </summary>
-        private void SmtpClient_SendCompleted(object sender, AsyncCompletedEventArgs e)
-        {
-            presenter.SendCompleted(sender as SmtpClient, e);
-        }
-
-        /// <summary>
-        /// Handles the send Completed event for smtp and updates the related state.
-        /// </summary>
-        private void Smtp_SendCompleted(object sender, AsyncCompletedEventArgs e)
-        {
-            presenter.SendCompleted(sender as SmtpClient, e);
-        }
-
-        /// <summary>
         /// Handles the validated event for zoom Box and updates the related state.
         /// </summary>
         private void zoomBox_Validated(object sender, EventArgs e)
         {
             presenter.ZoomValidated();
-        }
-
-        /// <summary>
-        /// Handles the click event for email Settings Label and updates the related state.
-        /// </summary>
-        private void emailSettingsLabel_Click(object sender, EventArgs e)
-        {
-            presenter.ToggleEmailSettings();
         }
 
         /// <summary>

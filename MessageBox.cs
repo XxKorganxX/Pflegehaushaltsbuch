@@ -26,6 +26,7 @@ namespace Pflegehaushaltsbuch
 
         public static void ShowError(IWin32Window owner, Exception err)
         {
+            ApplicationLogger.LogException(err, "ShowError");
             string message = GetErrorMessage(err);
 
             if (Application.OpenForms.Count > 0)

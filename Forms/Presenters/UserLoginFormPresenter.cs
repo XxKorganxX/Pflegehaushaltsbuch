@@ -1,7 +1,6 @@
 using Pflegehaushaltsbuch.Data;
 using Pflegehaushaltsbuch.Databases;
 using System;
-using System.Data;
 using System.Threading.Tasks;
 
 namespace Pflegehaushaltsbuch.Forms.Presenters
@@ -39,32 +38,24 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
             await UserAuthenticator.LoginAsync(session.SQL, user, keyword);
 
             if (string.IsNullOrWhiteSpace(keyword))
-            {
-                DataTable users = new DataTable();
-                await session.SQL.FillAdapterAsync(SQLBase.SELECT.Users, users);
-
-                if (!View.ShowChangeUserDialog(session, user, keyword, users))
-                    throw new Exception(Messages.login_keyword_unchanged);
-            }
+                await ChangePasswordForCurrentUserAsync();
         }
 
         public virtual async Task ResetUserAsync()
         {
-            string user = View.UserName;
-            string keyword = View.Password;
+            User currentUser = session.User;
+            string user = currentUser == null ? View.UserName : currentUser.Login;
+            string keyword = currentUser == null ? View.Password : string.Empty;
 
             if (string.IsNullOrWhiteSpace(user))
                 throw new Exception(Messages.login_insert_username);
             if (user.ToLower().StartsWith(Messages.login_guest))
                 throw new Exception(Messages.login_guest_access_proteced);
 
-            await UserAuthenticator.LoginAsync(session.SQL, user, keyword);
+            if (currentUser == null)
+                await UserAuthenticator.LoginAsync(session.SQL, user, keyword);
 
-            DataTable users = new DataTable();
-            await session.SQL.FillAdapterAsync(SQLBase.SELECT.Users, users);
-
-            if (!View.ShowChangeUserDialog(session, user, keyword, users))
-                throw new Exception(Messages.login_keyword_unchanged);
+            await ChangePasswordForCurrentUserAsync();
 
             View.ShowUserDataChanged();
         }
@@ -94,6 +85,18 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
         public virtual void Close()
         {
             View.CloseView();
+        }
+
+        private async Task ChangePasswordForCurrentUserAsync()
+        {
+            User currentUser = session.User;
+            if (currentUser == null || string.IsNullOrWhiteSpace(currentUser.Login))
+                throw new Exception(Messages.login_insert_username);
+
+            if (!View.ShowChangePasswordDialog(out string keyword))
+                throw new Exception(Messages.login_keyword_unchanged);
+
+            await User.UpdatePassword(session.SQL, currentUser.Login, keyword, currentUser.Login);
         }
     }
 }

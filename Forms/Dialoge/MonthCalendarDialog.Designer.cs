@@ -60,13 +60,13 @@ namespace Pflegehaushaltsbuch.Forms.Dialoge
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(234, 195);
+            this.ClientSize = new System.Drawing.Size(203, 165);
             this.Controls.Add(this.monthCalendar);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3);
             this.Name = "MonthCalendarDialog";
-            this.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            this.Padding = new System.Windows.Forms.Padding(0);
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.ResumeLayout(false);
             this.PerformLayout();

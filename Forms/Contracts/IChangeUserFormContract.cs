@@ -2,8 +2,6 @@
 {
     public interface IChangeUserFormContract
     {
-        string UserName { get; set; }
-        string Login { get; set; }
         string Keyword { get; }
         string KeywordAgain { get; }
         void AcceptDialog();

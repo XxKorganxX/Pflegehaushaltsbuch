@@ -31,14 +31,14 @@ namespace Pflegehaushaltsbuch.Forms.Dialoge
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditDataTableDialog));
             this.tableLayoutPanel1 = new Pflegehaushaltsbuch.FormControls.TableLayoutPanel();
             this.view = new Pflegehaushaltsbuch.FormControls.DataGridView();
-            this.flowLayoutPanel1 = new Pflegehaushaltsbuch.FormControls.FlowLayoutPanel();
-            this.okButton = new Pflegehaushaltsbuch.FormControls.Button();
-            this.abortButton = new Pflegehaushaltsbuch.FormControls.Button();
             this.nameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.columnAlignColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.textAlignColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.widthColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.flowLayoutPanel1 = new Pflegehaushaltsbuch.FormControls.FlowLayoutPanel();
+            this.okButton = new Pflegehaushaltsbuch.FormControls.Button();
+            this.abortButton = new Pflegehaushaltsbuch.FormControls.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.view)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
@@ -47,7 +47,6 @@ namespace Pflegehaushaltsbuch.Forms.Dialoge
             // tableLayoutPanel1
             // 
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel1.BorderColor = System.Drawing.Color.Empty;
             this.tableLayoutPanel1.Controls.Add(this.view, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 1);
@@ -56,6 +55,8 @@ namespace Pflegehaushaltsbuch.Forms.Dialoge
             // view
             // 
             this.view.AllowDrop = true;
+            this.view.AllowUserToAddRows = false;
+            this.view.AllowUserToDeleteRows = false;
             this.view.AllowUserToOrderColumns = true;
             this.view.BackgroundColor = System.Drawing.Color.Silver;
             this.view.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -71,35 +72,6 @@ namespace Pflegehaushaltsbuch.Forms.Dialoge
             this.view.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(177)))), ((int)(((byte)(210)))));
             this.view.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
             this.view.StandardTab = true;
-            // 
-            // flowLayoutPanel1
-            // 
-            resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
-            this.flowLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
-            this.flowLayoutPanel1.Controls.Add(this.okButton);
-            this.flowLayoutPanel1.Controls.Add(this.abortButton);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            // 
-            // okButton
-            // 
-            resources.ApplyResources(this.okButton, "okButton");
-            this.okButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.okButton.BorderColor = System.Drawing.Color.DimGray;
-            this.okButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.okButton.Name = "okButton";
-            this.okButton.Radius = -1F;
-            this.okButton.UseVisualStyleBackColor = false;
-            this.okButton.Click += new System.EventHandler(this.okButton_Click);
-            // 
-            // abortButton
-            // 
-            resources.ApplyResources(this.abortButton, "abortButton");
-            this.abortButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.abortButton.BorderColor = System.Drawing.Color.DimGray;
-            this.abortButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.abortButton.Name = "abortButton";
-            this.abortButton.Radius = -1F;
-            this.abortButton.UseVisualStyleBackColor = false;
             // 
             // nameColumn
             // 
@@ -167,6 +139,37 @@ namespace Pflegehaushaltsbuch.Forms.Dialoge
             this.widthColumn.DataPropertyName = "width";
             resources.ApplyResources(this.widthColumn, "widthColumn");
             this.widthColumn.Name = "widthColumn";
+            // 
+            // flowLayoutPanel1
+            // 
+            resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.flowLayoutPanel1.Controls.Add(this.okButton);
+            this.flowLayoutPanel1.Controls.Add(this.abortButton);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            // 
+            // okButton
+            // 
+            resources.ApplyResources(this.okButton, "okButton");
+            this.okButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.okButton.BorderColor = System.Drawing.Color.DimGray;
+            this.okButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.okButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.okButton.Name = "okButton";
+            this.okButton.Radius = -1F;
+            this.okButton.UseVisualStyleBackColor = false;
+            this.okButton.Click += new System.EventHandler(this.okButton_Click);
+            // 
+            // abortButton
+            // 
+            resources.ApplyResources(this.abortButton, "abortButton");
+            this.abortButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.abortButton.BorderColor = System.Drawing.Color.DimGray;
+            this.abortButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.abortButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.abortButton.Name = "abortButton";
+            this.abortButton.Radius = -1F;
+            this.abortButton.UseVisualStyleBackColor = false;
             // 
             // EditDataTableDialog
             // 

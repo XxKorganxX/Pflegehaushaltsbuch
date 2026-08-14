@@ -18,6 +18,7 @@ namespace Pflegehaushaltsbuch.Databases
         private readonly SemaphoreSlim connectionLock = new SemaphoreSlim(1, 1);
         private Dictionary<SELECT, SqlDataAdapter> adapters = new Dictionary<SELECT, SqlDataAdapter>();
         private string dataBase;
+        public bool TrustServerCertificate { get; set; } = true;
         // Quotes a SQL Server identifier and escapes closing brackets inside the name.
         /// <summary>
         /// Quotes the sql Server Identifier value so it can be used safely by the caller.
@@ -39,7 +40,7 @@ namespace Pflegehaushaltsbuch.Databases
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder
             {
                 DataSource = host,
-                TrustServerCertificate = true
+                TrustServerCertificate = TrustServerCertificate
             };
             if (string.IsNullOrWhiteSpace(password))
             {
@@ -224,15 +225,43 @@ namespace Pflegehaushaltsbuch.Databases
                 await UpdateAsync(checkVersion);
                 Version = checkVersion;
             }
+            if (Version < (checkVersion = new Version(1, 0, 10, 0)))
+            {
+                await UpdateAsync(checkVersion);
+                Version = checkVersion;
+            }
+            if (Version < (checkVersion = new Version(1, 0, 11, 0)))
+            {
+                await UpdateAsync(checkVersion);
+                Version = checkVersion;
+            }
+            if (Version < (checkVersion = new Version(1, 0, 12, 0)))
+            {
+                await UpdateAsync(checkVersion);
+                Version = checkVersion;
+            }
+            if (Version < (checkVersion = new Version(1, 0, 13, 0)))
+            {
+                await UpdateAsync(checkVersion);
+                Version = checkVersion;
+            }
+            if (Version >= new Version(1, 0, 13, 0))
+            {
+                await EnsureUserLoginValuesAsync();
+                await EnsureUserLoginThrottleColumnsAsync();
+                await EnsureInitialAdminUserAsync();
+            }
         }
         /// <summary>
         /// Gets the view value from the current application state.
         /// </summary>
         public override async Task<object> GetViewAsync(string name)
         {
-            SqlCommand cmd = new SqlCommand(string.Format("SELECT * FROM {0}", ValidateSqlIdentifier(name)), connect);
-            cmd.CommandType = CommandType.Text;
-            return await cmd.ExecuteScalarAsync();
+            using (SqlCommand cmd = CreateCommand(string.Format("SELECT * FROM {0}", ValidateSqlIdentifier(name))))
+            {
+                cmd.CommandType = CommandType.Text;
+                return await cmd.ExecuteScalarAsync();
+            }
         }
         /// <summary>
         /// Updates the update data and refreshes the related application state.
@@ -241,7 +270,26 @@ namespace Pflegehaushaltsbuch.Databases
         {
             OnPrintVersion(version);
             StringBuilder sb = new StringBuilder();
-            if (version <= new Version("1.0.7.1"))
+            if (version == new Version("1.0.7.0"))
+            {
+                sb.AppendLine("ALTER TABLE version ALTER COLUMN main varchar(64) NOT NULL;");
+                sb.AppendLine("IF OBJECT_ID('license', 'U') IS NULL");
+                sb.AppendLine("CREATE TABLE license");
+                sb.AppendLine("(");
+                sb.AppendLine("id int IDENTITY PRIMARY KEY,");
+                sb.AppendLine("grade int,");
+                sb.AppendLine("[begin] date,");
+                sb.AppendLine("expired date,");
+                sb.AppendLine("[key] varbinary(2048)");
+                sb.AppendLine(");");
+                sb.AppendLine("IF COL_LENGTH('advisors', 'email') IS NULL");
+                sb.AppendLine("ALTER TABLE advisors ADD email varchar(128);");
+                sb.AppendLine("IF COL_LENGTH('assistants', 'active') IS NOT NULL");
+                sb.AppendLine("EXEC(N'UPDATE assistants SET [active] = 1 WHERE [active] IS NULL; ALTER TABLE assistants ALTER COLUMN [active] int NOT NULL;');");
+                sb.AppendLine("IF COL_LENGTH('barge', 'email') IS NOT NULL");
+                sb.AppendLine("EXEC(N'ALTER TABLE barge DROP COLUMN email;');");
+            }
+            if (version == new Version("1.0.7.1"))
             {
                 sb.AppendLine("ALTER TABLE deadlines ALTER COLUMN note varchar(512) NOT NULL");
                 sb.AppendLine("ALTER TABLE layouts ADD quittance varbinary(MAX)");
@@ -263,18 +311,18 @@ namespace Pflegehaushaltsbuch.Databases
                 sb.AppendLine("iban varchar(128),");
                 sb.AppendLine("bic varchar(64)");
                 sb.AppendLine(");");
-                sb.AppendLine("CREATE TABLE office_cash");
+                sb.AppendLine("CREATE TABLE petty_cash");
                 sb.AppendLine("(");
                 sb.AppendLine("id int IDENTITY PRIMARY KEY,");
                 sb.AppendLine("date date,");
                 sb.AppendLine("note varchar(512),");
-                sb.AppendLine("account int,");
+                sb.AppendLine("account_id int,");
                 sb.AppendLine("book_cat int,");
                 sb.AppendLine("amount decimal(10,2),");
                 sb.AppendLine("handsign varchar(64)");
                 sb.AppendLine(");");
             }
-            if (version <= new Version("1.0.7.2"))
+            if (version == new Version("1.0.7.2"))
             {
                 sb.AppendLine("ALTER TABLE company ADD logo varbinary(MAX)");
                 sb.AppendLine("ALTER TABLE company ADD logo_alignment int");
@@ -307,32 +355,44 @@ namespace Pflegehaushaltsbuch.Databases
                 sb.AppendLine("ALTER TABLE clients ADD [account_id] INTEGER NULL;");
                 sb.AppendLine("IF COL_LENGTH('employees', 'account_id') IS NULL");
                 sb.AppendLine("ALTER TABLE employees ADD [account_id] INTEGER NULL;");
-                sb.AppendLine("WITH ClientAccounts AS");
+                sb.AppendLine("EXEC(N'WITH ClientAccounts AS");
                 sb.AppendLine("(");
                 sb.AppendLine("SELECT [id], ROW_NUMBER() OVER (ORDER BY [id]) + 1 AS [account_id] FROM clients");
                 sb.AppendLine(")");
                 sb.AppendLine("UPDATE clients SET [account_id] = ClientAccounts.[account_id]");
                 sb.AppendLine("FROM clients INNER JOIN ClientAccounts ON clients.[id] = ClientAccounts.[id]");
-                sb.AppendLine("WHERE clients.[account_id] IS NULL;");
-                sb.AppendLine("WITH EmployeeAccounts AS");
+                sb.AppendLine("WHERE clients.[account_id] IS NULL;');");
+                sb.AppendLine("EXEC(N'WITH EmployeeAccounts AS");
                 sb.AppendLine("(");
                 sb.AppendLine("SELECT [id], ROW_NUMBER() OVER (ORDER BY [id]) + (SELECT COUNT(*) + 1 FROM clients) AS [account_id] FROM employees");
                 sb.AppendLine(")");
                 sb.AppendLine("UPDATE employees SET [account_id] = EmployeeAccounts.[account_id]");
                 sb.AppendLine("FROM employees INNER JOIN EmployeeAccounts ON employees.[id] = EmployeeAccounts.[id]");
-                sb.AppendLine("WHERE employees.[account_id] IS NULL;");
-                sb.AppendLine("INSERT INTO accounts ([id], [type], [active], [created_at])");
-                sb.AppendLine("SELECT clients.[account_id], 'Client', ISNULL(clients.[active], 1), GETDATE()");
+                sb.AppendLine("WHERE employees.[account_id] IS NULL;');");
+                sb.AppendLine("EXEC(N'INSERT INTO accounts ([id], [type], [active], [created_at])");
+                sb.AppendLine("SELECT clients.[account_id], ''Client'', ISNULL(clients.[active], 1), GETDATE()");
                 sb.AppendLine("FROM clients");
-                sb.AppendLine("WHERE clients.[account_id] IS NOT NULL AND NOT EXISTS (SELECT 1 FROM accounts WHERE accounts.[id] = clients.[account_id]);");
-                sb.AppendLine("INSERT INTO accounts ([id], [type], [active], [created_at])");
-                sb.AppendLine("SELECT employees.[account_id], 'Employee', ISNULL(employees.[active], 1), GETDATE()");
+                sb.AppendLine("WHERE clients.[account_id] IS NOT NULL AND NOT EXISTS (SELECT 1 FROM accounts WHERE accounts.[id] = clients.[account_id]);');");
+                sb.AppendLine("EXEC(N'INSERT INTO accounts ([id], [type], [active], [created_at])");
+                sb.AppendLine("SELECT employees.[account_id], ''Employee'', ISNULL(employees.[active], 1), GETDATE()");
                 sb.AppendLine("FROM employees");
-                sb.AppendLine("WHERE employees.[account_id] IS NOT NULL AND NOT EXISTS (SELECT 1 FROM accounts WHERE accounts.[id] = employees.[account_id]);");
+                sb.AppendLine("WHERE employees.[account_id] IS NOT NULL AND NOT EXISTS (SELECT 1 FROM accounts WHERE accounts.[id] = employees.[account_id]);');");
                 sb.AppendLine("IF COL_LENGTH('cash_books', 'account_id') IS NULL");
                 sb.AppendLine("ALTER TABLE cash_books ADD [account_id] INTEGER NULL;");
                 sb.AppendLine("IF COL_LENGTH('bank_books', 'account_id') IS NULL");
                 sb.AppendLine("ALTER TABLE bank_books ADD [account_id] INTEGER NULL;");
+                sb.AppendLine("IF COL_LENGTH('cash_books', 'account') IS NOT NULL");
+                sb.AppendLine("EXEC(N'UPDATE cash_books SET [account_id] = COALESCE(clients.[account_id], employees.[account_id], CASE WHEN cash_books.[account] IN (''Barbestand'', ''Cash'', ''Kasse'') THEN 0 WHEN cash_books.[account] IN (''Bankbestand'', ''Bank'') THEN 1 ELSE NULL END)");
+                sb.AppendLine("FROM cash_books LEFT JOIN clients ON cash_books.[account] = ''K'' + RIGHT(''000'' + CAST(clients.[id] AS varchar(10)), 3) LEFT JOIN employees ON cash_books.[account] = ''M'' + RIGHT(''000'' + CAST(employees.[id] AS varchar(10)), 3)");
+                sb.AppendLine("WHERE cash_books.[account_id] IS NULL;');");
+                sb.AppendLine("IF COL_LENGTH('bank_books', 'account') IS NOT NULL");
+                sb.AppendLine("EXEC(N'UPDATE bank_books SET [account_id] = COALESCE(clients.[account_id], employees.[account_id], CASE WHEN bank_books.[account] IN (''Barbestand'', ''Cash'', ''Kasse'') THEN 0 WHEN bank_books.[account] IN (''Bankbestand'', ''Bank'') THEN 1 ELSE NULL END)");
+                sb.AppendLine("FROM bank_books LEFT JOIN clients ON bank_books.[account] = ''K'' + RIGHT(''000'' + CAST(clients.[id] AS varchar(10)), 3) LEFT JOIN employees ON bank_books.[account] = ''M'' + RIGHT(''000'' + CAST(employees.[id] AS varchar(10)), 3)");
+                sb.AppendLine("WHERE bank_books.[account_id] IS NULL;');");
+                sb.AppendLine("IF COL_LENGTH('office_cash', 'account_id') IS NULL");
+                sb.AppendLine("ALTER TABLE office_cash ADD [account_id] INTEGER NULL;");
+                sb.AppendLine("IF COL_LENGTH('office_cash', 'account') IS NOT NULL");
+                sb.AppendLine("EXEC(N'UPDATE office_cash SET [account_id] = [account] WHERE [account_id] IS NULL;');");
                 sb.AppendLine("IF OBJECT_ID('books_AUPD', 'TR') IS NOT NULL DROP TRIGGER books_AUPD;");
                 sb.AppendLine("IF OBJECT_ID('books_AINS', 'TR') IS NOT NULL DROP TRIGGER books_AINS;");
                 sb.AppendLine("IF OBJECT_ID('books_ADEL', 'TR') IS NOT NULL DROP TRIGGER books_ADEL;");
@@ -346,8 +406,64 @@ namespace Pflegehaushaltsbuch.Databases
                 sb.AppendLine("DROP VIEW IF EXISTS cash_total_amount;");
                 sb.AppendLine("DROP VIEW IF EXISTS office_total_amount;");
             }
+            if (version == new Version("1.0.10.0"))
+            {
+                sb.AppendLine("IF COL_LENGTH('office_cash', 'account_id') IS NULL");
+                sb.AppendLine("ALTER TABLE office_cash ADD [account_id] INTEGER NULL;");
+                sb.AppendLine("IF COL_LENGTH('office_cash', 'account') IS NOT NULL");
+                sb.AppendLine("EXEC(N'UPDATE office_cash SET [account_id] = [account] WHERE [account_id] IS NULL;');");
+                sb.AppendLine("IF COL_LENGTH('cash_books', 'account') IS NOT NULL");
+                sb.AppendLine("ALTER TABLE cash_books DROP COLUMN [account];");
+                sb.AppendLine("IF COL_LENGTH('bank_books', 'account') IS NOT NULL");
+                sb.AppendLine("ALTER TABLE bank_books DROP COLUMN [account];");
+                sb.AppendLine("IF COL_LENGTH('office_cash', 'account') IS NOT NULL");
+                sb.AppendLine("ALTER TABLE office_cash DROP COLUMN [account];");
+            }
+            if (version == new Version("1.0.11.0"))
+            {
+                sb.AppendLine("DECLARE @dropUserContactConstraints nvarchar(max) = N'';");
+                sb.AppendLine("SELECT @dropUserContactConstraints += N'ALTER TABLE users DROP CONSTRAINT ' + QUOTENAME(kc.name) + N';'");
+                sb.AppendLine("FROM sys.key_constraints kc");
+                sb.AppendLine("INNER JOIN sys.index_columns ic ON kc.parent_object_id = ic.object_id AND kc.unique_index_id = ic.index_id");
+                sb.AppendLine("INNER JOIN sys.columns c ON ic.object_id = c.object_id AND ic.column_id = c.column_id");
+                sb.AppendLine("WHERE kc.parent_object_id = OBJECT_ID('users') AND c.name IN ('phone', 'fax', 'email');");
+                sb.AppendLine("IF LEN(@dropUserContactConstraints) > 0 EXEC sp_executesql @dropUserContactConstraints;");
+                sb.AppendLine("IF COL_LENGTH('users', 'phone') IS NOT NULL");
+                sb.AppendLine("ALTER TABLE users DROP COLUMN [phone];");
+                sb.AppendLine("IF COL_LENGTH('users', 'fax') IS NOT NULL");
+                sb.AppendLine("ALTER TABLE users DROP COLUMN [fax];");
+                sb.AppendLine("IF COL_LENGTH('users', 'email') IS NOT NULL");
+                sb.AppendLine("ALTER TABLE users DROP COLUMN [email];");
+            }
+            if (version == new Version("1.0.12.0"))
+            {
+                sb.AppendLine("IF OBJECT_ID('office_cash', 'U') IS NOT NULL AND OBJECT_ID('petty_cash', 'U') IS NULL");
+                sb.AppendLine("EXEC sp_rename 'office_cash', 'petty_cash';");
+                sb.AppendLine("DROP VIEW IF EXISTS office_total_amount;");
+                sb.AppendLine("IF COL_LENGTH('users', 'handsign') IS NULL AND COL_LENGTH('users', 'name') IS NOT NULL");
+                sb.AppendLine("EXEC sp_rename 'users.name', 'handsign', 'COLUMN';");
+                sb.AppendLine("IF COL_LENGTH('users', 'handsign') IS NOT NULL AND COL_LENGTH('users', 'login') IS NOT NULL");
+                sb.AppendLine("EXEC(N'UPDATE users SET [login] = [handsign] WHERE [login] IS NULL OR LTRIM(RTRIM([login])) = '''';');");
+            }
+            if (version == new Version("1.0.13.0"))
+            {
+                sb.AppendLine("IF COL_LENGTH('company', 'currency_code') IS NULL");
+                sb.AppendLine("ALTER TABLE company ADD [currency_code] nvarchar(3) NULL CONSTRAINT DF_company_currency_code DEFAULT 'EUR';");
+                sb.AppendLine("EXEC(N'UPDATE company SET [currency_code] = ''EUR'' WHERE [currency_code] IS NULL OR LTRIM(RTRIM([currency_code])) = '''';');");
+                sb.AppendLine("IF COL_LENGTH('users', 'failed_login_attempts') IS NULL");
+                sb.AppendLine("ALTER TABLE users ADD [failed_login_attempts] INTEGER NOT NULL CONSTRAINT DF_users_failed_login_attempts DEFAULT 0;");
+                sb.AppendLine("IF COL_LENGTH('users', 'last_failed_login') IS NULL");
+                sb.AppendLine("ALTER TABLE users ADD [last_failed_login] datetime NULL;");
+                sb.AppendLine("IF COL_LENGTH('users', 'locked_until') IS NULL");
+                sb.AppendLine("ALTER TABLE users ADD [locked_until] datetime NULL;");
+            }
             SqlCommand command = new SqlCommand(sb.ToString(), connect);
             await command.ExecuteNonQueryAsync();
+            if (version == new Version("1.0.12.0"))
+            {
+                using (command = new SqlCommand("CREATE VIEW office_total_amount AS Select COALESCE(SUM(amount),0) amount from petty_cash;", connect))
+                    await command.ExecuteNonQueryAsync();
+            }
             if (version == new Version("1.0.9.0"))
             {
                 await CreateTriggerAsync();
@@ -363,7 +479,6 @@ namespace Pflegehaushaltsbuch.Databases
                 sb.AppendLine("CREATE VIEW office_total_amount AS Select COALESCE(SUM(amount),0) amount from office_cash;");
                 using (command = new SqlCommand(sb.ToString(), connect))
                     await command.ExecuteNonQueryAsync();
-                await ApplyLegacyAccountIdsToCashAndBankBooksAsync();
             }
             DataTable versionTable = new DataTable();
             await FillAdapterAsync(SQLBase.SELECT.Version, versionTable);
@@ -400,7 +515,7 @@ namespace Pflegehaushaltsbuch.Databases
             using (var command = new SqlCommand(sb.ToString(), connect))
                 await command.ExecuteNonQueryAsync();
             sb.Clear();
-            sb.AppendLine("INSERT INTO version VALUES ('1.0.9.0');");
+            sb.AppendLine("INSERT INTO version VALUES ('1.0.13.0');");
             using (var command = new SqlCommand(sb.ToString(), connect))
                 await command.ExecuteNonQueryAsync();
             sb.Clear();
@@ -413,7 +528,7 @@ namespace Pflegehaushaltsbuch.Databases
             using (var command = new SqlCommand(sb.ToString(), connect))
                 await command.ExecuteNonQueryAsync();
             sb.Clear();
-            sb.AppendLine("CREATE VIEW office_total_amount AS Select COALESCE(SUM(amount),0) amount from office_cash;");
+            sb.AppendLine("CREATE VIEW office_total_amount AS Select COALESCE(SUM(amount),0) amount from petty_cash;");
             using (var command = new SqlCommand(sb.ToString(), connect))
                 await command.ExecuteNonQueryAsync();
             sb.Clear();
@@ -437,11 +552,23 @@ namespace Pflegehaushaltsbuch.Databases
         {
             return connect.BeginTransaction();
         }
-        private SqlCommand CreateSelectCommand(AdapterCommandInfo commandInfo)
+        private SqlCommand CreateCommand(string commandText)
         {
-            SqlCommand command = new SqlCommand(commandInfo.CommandText, connect);
+            SqlCommand command = new SqlCommand(commandText, connect);
             if (ActiveTransaction != null)
                 command.Transaction = (SqlTransaction)ActiveTransaction;
+            return command;
+        }
+
+        private void UseActiveTransaction(SqlCommand command)
+        {
+            if (command != null && ActiveTransaction != null)
+                command.Transaction = (SqlTransaction)ActiveTransaction;
+        }
+
+        private SqlCommand CreateSelectCommand(AdapterCommandInfo commandInfo)
+        {
+            SqlCommand command = CreateCommand(commandInfo.CommandText);
             foreach (AdapterCommandParameter parameter in commandInfo.Parameters)
                 command.Parameters.AddWithValue(parameter.Name, parameter.Value ?? DBNull.Value);
             return command;
@@ -459,8 +586,7 @@ namespace Pflegehaushaltsbuch.Databases
                 using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                     await Task.Run(() => adapter.Fill(loadedTable));
 
-                table.Clear();
-                table.Merge(loadedTable, false, MissingSchemaAction.Add);
+                ReplaceTableContents(table, loadedTable);
             }
             finally
             {
@@ -483,8 +609,7 @@ namespace Pflegehaushaltsbuch.Databases
                 using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                     await Task.Run(() => adapter.Fill(loadedTable));
 
-                table.Clear();
-                table.Merge(loadedTable, false, MissingSchemaAction.Add);
+                ReplaceTableContents(table, loadedTable);
             }
             finally
             {
@@ -512,12 +637,10 @@ namespace Pflegehaushaltsbuch.Databases
                     adapter.InsertCommand = builder.GetInsertCommand();
                     adapter.DeleteCommand = builder.GetDeleteCommand();
                     adapter.UpdateCommand = builder.GetUpdateCommand();
-                    if (ActiveTransaction != null)
-                    {
-                        adapter.InsertCommand.Transaction = (SqlTransaction)ActiveTransaction;
-                        adapter.DeleteCommand.Transaction = (SqlTransaction)ActiveTransaction;
-                        adapter.UpdateCommand.Transaction = (SqlTransaction)ActiveTransaction;
-                    }
+                    UseActiveTransaction(adapter.SelectCommand);
+                    UseActiveTransaction(adapter.InsertCommand);
+                    UseActiveTransaction(adapter.DeleteCommand);
+                    UseActiveTransaction(adapter.UpdateCommand);
 
                     int value = await Task.Run(() => adapter.Update(table));
                     return value == changes.Rows.Count;
@@ -539,36 +662,36 @@ namespace Pflegehaushaltsbuch.Databases
         /// </summary>
         public override async Task<int> UpdateDataBaseAsync(string command)
         {
-            SqlCommand cmd = connect.CreateCommand();
             connect.ChangeDatabase(dataBase);
-            cmd.CommandText = command;
-            return await cmd.ExecuteNonQueryAsync();
+            using (SqlCommand cmd = CreateCommand(command))
+                return await cmd.ExecuteNonQueryAsync();
         }
         /// <summary>
         /// Runs the call Functions operation and updates the related application state.
         /// </summary>
         public override async Task<object> CallFunctionsAsync(string name, params object[] values)
         {
-            SqlCommand cmd = new SqlCommand("new_function", connect);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add("@ireturnvalue", SqlDbType.Int);
-            cmd.Parameters["@ireturnvalue"].Direction = ParameterDirection.ReturnValue;
-            return await cmd.ExecuteScalarAsync();
+            using (SqlCommand cmd = CreateCommand("new_function"))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@ireturnvalue", SqlDbType.Int);
+                cmd.Parameters["@ireturnvalue"].Direction = ParameterDirection.ReturnValue;
+                return await cmd.ExecuteScalarAsync();
+            }
         }
         /// <summary>
         /// Creates the new Password data or user interface element for the current workflow.
         /// </summary>
         public override async Task CreateNewPasswordAsync(string host, string username, string password, string new_password)
         {
+            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+                throw new Exception(Messages.sql_server_required);
+
             using (SqlCommand command = connect.CreateCommand())
             {
-                command.CommandText = "ALTER LOGIN [sa] ENABLE;";
-                await command.ExecuteNonQueryAsync();
-            }
-            using (SqlCommand command = connect.CreateCommand())
-            {
-                command.CommandText = "ALTER LOGIN [sa] WITH PASSWORD = @password;";
-                command.Parameters.Add("@password", SqlDbType.NVarChar, 128).Value = new_password;
+                command.CommandText = "ALTER LOGIN " + QuoteSqlServerIdentifier(username) + " WITH PASSWORD = @newPassword OLD_PASSWORD = @oldPassword;";
+                command.Parameters.Add("@newPassword", SqlDbType.NVarChar, 128).Value = new_password;
+                command.Parameters.Add("@oldPassword", SqlDbType.NVarChar, 128).Value = password;
                 await command.ExecuteNonQueryAsync();
             }
         }
@@ -580,15 +703,15 @@ namespace Pflegehaushaltsbuch.Databases
             sb.AppendLine("create table");
             sb.AppendLine("users");
             sb.AppendLine("(");
-            sb.AppendLine("[name] nvarchar(255) NOT NULL UNIQUE,");
+            sb.AppendLine("[handsign] nvarchar(255) NOT NULL UNIQUE,");
             sb.AppendLine("[login] nvarchar(255) NOT NULL UNIQUE,");
             sb.AppendLine("[pw] nvarchar(255) NOT NULL,");
-            sb.AppendLine("[phone] nvarchar(255),");
-            sb.AppendLine("[fax] nvarchar(255),");
-            sb.AppendLine("[email] nvarchar(255) UNIQUE,");
             sb.AppendLine("[access] INTEGER NOT NULL,");
             sb.AppendLine("[admin] bit NOT NULL,");
-            sb.AppendLine("PRIMARY KEY(name,login)");
+            sb.AppendLine("[failed_login_attempts] INTEGER NOT NULL CONSTRAINT DF_users_failed_login_attempts DEFAULT 0,");
+            sb.AppendLine("[last_failed_login] datetime NULL,");
+            sb.AppendLine("[locked_until] datetime NULL,");
+            sb.AppendLine("PRIMARY KEY(handsign,login)");
             sb.AppendLine(");");
             sb.AppendLine("create table");
             sb.AppendLine("company");
@@ -609,6 +732,7 @@ namespace Pflegehaushaltsbuch.Databases
             sb.AppendLine("[smtp_host] nvarchar(255),");
             sb.AppendLine("[smtp_user] nvarchar(255),");
             sb.AppendLine("[smtp_key] nvarchar(255),");
+            sb.AppendLine("[currency_code] nvarchar(3) NULL CONSTRAINT DF_company_currency_code DEFAULT 'EUR',");
             sb.AppendLine("[logo] image,");
             sb.AppendLine("[logo_alignment] Integer");
             sb.AppendLine(");");
@@ -651,6 +775,37 @@ namespace Pflegehaushaltsbuch.Databases
             sb.AppendLine("[id] INTEGER PRIMARY KEY IDENTITY(1,1),");
             sb.AppendLine("[main] nvarchar(64)");
             sb.AppendLine(");");
+        }
+
+        private async Task EnsureUserLoginThrottleColumnsAsync()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("IF COL_LENGTH('users', 'failed_login_attempts') IS NULL");
+            sb.AppendLine("ALTER TABLE users ADD [failed_login_attempts] INTEGER NOT NULL CONSTRAINT DF_users_failed_login_attempts DEFAULT 0;");
+            sb.AppendLine("IF COL_LENGTH('users', 'last_failed_login') IS NULL");
+            sb.AppendLine("ALTER TABLE users ADD [last_failed_login] datetime NULL;");
+            sb.AppendLine("IF COL_LENGTH('users', 'locked_until') IS NULL");
+            sb.AppendLine("ALTER TABLE users ADD [locked_until] datetime NULL;");
+            using (SqlCommand command = new SqlCommand(sb.ToString(), connect))
+                await command.ExecuteNonQueryAsync();
+        }
+
+        private async Task EnsureUserLoginValuesAsync()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("IF COL_LENGTH('users', 'handsign') IS NOT NULL AND COL_LENGTH('users', 'login') IS NOT NULL");
+            sb.AppendLine("EXEC(N'UPDATE users SET [login] = [handsign] WHERE [login] IS NULL OR LTRIM(RTRIM([login])) = '''';');");
+            using (SqlCommand command = new SqlCommand(sb.ToString(), connect))
+                await command.ExecuteNonQueryAsync();
+        }
+
+        private async Task EnsureInitialAdminUserAsync()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("IF COL_LENGTH('users', 'handsign') IS NOT NULL AND COL_LENGTH('users', 'login') IS NOT NULL AND NOT EXISTS (SELECT 1 FROM users)");
+            sb.AppendLine("INSERT INTO users ([handsign], [login], [pw], [access], [admin], [failed_login_attempts]) VALUES (N'🛡️', 'Admin', '', 0, 1, 0);");
+            using (SqlCommand command = new SqlCommand(sb.ToString(), connect))
+                await command.ExecuteNonQueryAsync();
         }
         /// <summary>
         /// Creates the user Tables data or user interface element for the current workflow.
@@ -700,7 +855,6 @@ namespace Pflegehaushaltsbuch.Databases
             sb.AppendLine("[date] datetime,");
             sb.AppendLine("[note] nvarchar(512),");
             sb.AppendLine("[amount] DECIMAL(18,2),");
-            sb.AppendLine("[account] nvarchar(64),");
             sb.AppendLine("[account_id] INTEGER,");
             sb.AppendLine("[book_to] INTEGER,");
             sb.AppendLine("[book_cat] INTEGER,");
@@ -715,7 +869,6 @@ namespace Pflegehaushaltsbuch.Databases
             sb.AppendLine("[book_cat] INTEGER,");
             sb.AppendLine("[book_to] INTEGER,");
             sb.AppendLine("[amount] DECIMAL(18,2),");
-            sb.AppendLine("[account] nvarchar(64),");
             sb.AppendLine("[account_id] INTEGER,");
             sb.AppendLine("[handsign] nvarchar(64)");
             sb.AppendLine(");");
@@ -781,12 +934,12 @@ namespace Pflegehaushaltsbuch.Databases
             sb.AppendLine("[handsign] nvarchar(64)");
             sb.AppendLine(");");
             sb.AppendLine("create table");
-            sb.AppendLine("office_cash");
+            sb.AppendLine("petty_cash");
             sb.AppendLine("(");
             sb.AppendLine("[id] INTEGER PRIMARY KEY IDENTITY(1,1),");
             sb.AppendLine("[date] datetime,");
             sb.AppendLine("[note] nvarchar(512),");
-            sb.AppendLine("[account] INTEGER,");
+            sb.AppendLine("[account_id] INTEGER,");
             sb.AppendLine("[book_cat] INTEGER,");
             sb.AppendLine("[amount] DECIMAL(18,2),");
             sb.AppendLine("[handsign] nvarchar(64)");
@@ -859,7 +1012,7 @@ namespace Pflegehaushaltsbuch.Databases
             sb.AppendLine("DROP TABLE client_books;");
             sb.AppendLine("DROP TABLE clients;");
             sb.AppendLine("DROP TABLE deadlines;");
-            sb.AppendLine("DROP TABLE office_cash;");
+            sb.AppendLine("DROP TABLE petty_cash;");
             sb.AppendLine("DROP TABLE record;");
             await CreateUserTablesAsync(sb);
             using (SqlCommand command = new SqlCommand(sb.ToString(), connect))

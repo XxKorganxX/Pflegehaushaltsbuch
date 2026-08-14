@@ -61,7 +61,17 @@ namespace Pflegehaushaltsbuch
             None = 0,
             Insert = 1,
             Change = 2,
-            Delete = 4
+            Book = 4,
+            CancelBooking = 8,
+            CashBalance = 16,
+            BankBalance = 32,
+            PettyCash = 64,
+            Clients = 128,
+            Representatives = 256,
+            Employees = 512,
+            Documents = 1024,
+            CashAudit = 2048,
+            Statistics = 4096
         }
     }
 }

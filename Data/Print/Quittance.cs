@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 using Pflegehaushaltsbuch.Databases;
@@ -27,7 +28,7 @@ namespace Pflegehaushaltsbuch.Data.Print
         {
             DataRow row = rows.First();
             Session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.date, ((DateTime)row["date"]).ToShortDateString());
-            Session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.amount, ((decimal)row["amount"]).ToString("C2"));
+            Session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.amount, ((decimal)row["amount"]).ToString("C2", Session?.Company?.Currencies ?? CultureInfo.CurrentCulture));
             //DataRow clientRow = clientsTable.Select(string.Format("id='{0}'", row["id"])).First();
             Session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.client, doumentName);//clientRow["name"].ToString());
             Session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.statement_note, row["note"].ToString());

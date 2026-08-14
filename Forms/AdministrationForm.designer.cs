@@ -35,16 +35,15 @@
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.tableLayoutPanel1 = new Pflegehaushaltsbuch.FormControls.TableLayoutPanel();
             this.tableLayoutPanel4 = new Pflegehaushaltsbuch.FormControls.TableLayoutPanel();
-            this.databaseBackupButton = new Pflegehaushaltsbuch.FormControls.Button();
-            this.restoreButton = new Pflegehaushaltsbuch.FormControls.Button();
-            this.connectDatabaseButton = new Pflegehaushaltsbuch.FormControls.Button();
-            this.disconnectDatabaseButton = new Pflegehaushaltsbuch.FormControls.Button();
             this.userRightsButton = new Pflegehaushaltsbuch.FormControls.Button();
             this.companyButton = new Pflegehaushaltsbuch.FormControls.Button();
             this.layoutButton = new Pflegehaushaltsbuch.FormControls.Button();
-            this.exitButton = new Pflegehaushaltsbuch.FormControls.Button();
-            this.designButton = new Pflegehaushaltsbuch.FormControls.Button();
+            this.connectDatabaseButton = new Pflegehaushaltsbuch.FormControls.Button();
             this.dataExchangeButton = new Pflegehaushaltsbuch.FormControls.Button();
+            this.disconnectDatabaseButton = new Pflegehaushaltsbuch.FormControls.Button();
+            this.restoreButton = new Pflegehaushaltsbuch.FormControls.Button();
+            this.databaseBackupButton = new Pflegehaushaltsbuch.FormControls.Button();
+            this.exitButton = new Pflegehaushaltsbuch.FormControls.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
@@ -72,61 +71,16 @@
             // 
             resources.ApplyResources(this.tableLayoutPanel4, "tableLayoutPanel4");
             this.tableLayoutPanel1.SetColumnSpan(this.tableLayoutPanel4, 4);
-            this.tableLayoutPanel4.Controls.Add(this.databaseBackupButton, 0, 1);
-            this.tableLayoutPanel4.Controls.Add(this.restoreButton, 1, 1);
-            this.tableLayoutPanel4.Controls.Add(this.connectDatabaseButton, 3, 1);
-            this.tableLayoutPanel4.Controls.Add(this.disconnectDatabaseButton, 2, 1);
             this.tableLayoutPanel4.Controls.Add(this.userRightsButton, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.companyButton, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.layoutButton, 2, 0);
-            this.tableLayoutPanel4.Controls.Add(this.dataExchangeButton, 0, 2);
-            this.tableLayoutPanel4.Controls.Add(this.designButton, 3, 0);
-            this.tableLayoutPanel4.Controls.Add(this.exitButton, 1, 2);
+            this.tableLayoutPanel4.Controls.Add(this.connectDatabaseButton, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.dataExchangeButton, 3, 0);
+            this.tableLayoutPanel4.Controls.Add(this.disconnectDatabaseButton, 1, 1);
+            this.tableLayoutPanel4.Controls.Add(this.restoreButton, 3, 1);
+            this.tableLayoutPanel4.Controls.Add(this.databaseBackupButton, 2, 1);
+            this.tableLayoutPanel4.Controls.Add(this.exitButton, 0, 2);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            // 
-            // databaseBackupButton
-            // 
-            resources.ApplyResources(this.databaseBackupButton, "databaseBackupButton");
-            this.databaseBackupButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.databaseBackupButton.BorderColor = System.Drawing.Color.DimGray;
-            this.databaseBackupButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.databaseBackupButton.Name = "databaseBackupButton";
-            this.databaseBackupButton.Radius = -1F;
-            this.databaseBackupButton.UseVisualStyleBackColor = false;
-            this.databaseBackupButton.Click += new System.EventHandler(this.databaseBackupButton_Click);
-            // 
-            // restoreButton
-            // 
-            resources.ApplyResources(this.restoreButton, "restoreButton");
-            this.restoreButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.restoreButton.BorderColor = System.Drawing.Color.DimGray;
-            this.restoreButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.restoreButton.Name = "restoreButton";
-            this.restoreButton.Radius = -1F;
-            this.restoreButton.UseVisualStyleBackColor = false;
-            this.restoreButton.Click += new System.EventHandler(this.restoreButton_Click);
-            // 
-            // connectDatabaseButton
-            // 
-            resources.ApplyResources(this.connectDatabaseButton, "connectDatabaseButton");
-            this.connectDatabaseButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.connectDatabaseButton.BorderColor = System.Drawing.Color.DimGray;
-            this.connectDatabaseButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.connectDatabaseButton.Name = "connectDatabaseButton";
-            this.connectDatabaseButton.Radius = -1F;
-            this.connectDatabaseButton.UseVisualStyleBackColor = false;
-            this.connectDatabaseButton.Click += new System.EventHandler(this.dbConnectButton_Click);
-            // 
-            // disconnectDatabaseButton
-            // 
-            resources.ApplyResources(this.disconnectDatabaseButton, "disconnectDatabaseButton");
-            this.disconnectDatabaseButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.disconnectDatabaseButton.BorderColor = System.Drawing.Color.DimGray;
-            this.disconnectDatabaseButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.disconnectDatabaseButton.Name = "disconnectDatabaseButton";
-            this.disconnectDatabaseButton.Radius = -1F;
-            this.disconnectDatabaseButton.UseVisualStyleBackColor = false;
-            this.disconnectDatabaseButton.Click += new System.EventHandler(this.resetDatabase_Click);
             // 
             // userRightsButton
             // 
@@ -161,27 +115,16 @@
             this.layoutButton.UseVisualStyleBackColor = false;
             this.layoutButton.Click += new System.EventHandler(this.layoutButton_Click);
             // 
-            // exitButton
+            // connectDatabaseButton
             // 
-            resources.ApplyResources(this.exitButton, "exitButton");
-            this.exitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.exitButton.BorderColor = System.Drawing.Color.DimGray;
-            this.exitButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.exitButton.Name = "exitButton";
-            this.exitButton.Radius = -1F;
-            this.exitButton.UseVisualStyleBackColor = false;
-            this.exitButton.Click += new System.EventHandler(this.exitButton_Click_1);
-            // 
-            // designButton
-            // 
-            resources.ApplyResources(this.designButton, "designButton");
-            this.designButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.designButton.BorderColor = System.Drawing.Color.DimGray;
-            this.designButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.designButton.Name = "designButton";
-            this.designButton.Radius = -1F;
-            this.designButton.UseVisualStyleBackColor = false;
-            this.designButton.Click += new System.EventHandler(this.designButton_Click);
+            resources.ApplyResources(this.connectDatabaseButton, "connectDatabaseButton");
+            this.connectDatabaseButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.connectDatabaseButton.BorderColor = System.Drawing.Color.DimGray;
+            this.connectDatabaseButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.connectDatabaseButton.Name = "connectDatabaseButton";
+            this.connectDatabaseButton.Radius = -1F;
+            this.connectDatabaseButton.UseVisualStyleBackColor = false;
+            this.connectDatabaseButton.Click += new System.EventHandler(this.dbConnectButton_Click);
             // 
             // dataExchangeButton
             // 
@@ -193,6 +136,50 @@
             this.dataExchangeButton.Radius = -1F;
             this.dataExchangeButton.UseVisualStyleBackColor = false;
             this.dataExchangeButton.Click += new System.EventHandler(this.dataExchangeButton_Click);
+            // 
+            // disconnectDatabaseButton
+            // 
+            resources.ApplyResources(this.disconnectDatabaseButton, "disconnectDatabaseButton");
+            this.disconnectDatabaseButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.disconnectDatabaseButton.BorderColor = System.Drawing.Color.DimGray;
+            this.disconnectDatabaseButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.disconnectDatabaseButton.Name = "disconnectDatabaseButton";
+            this.disconnectDatabaseButton.Radius = -1F;
+            this.disconnectDatabaseButton.UseVisualStyleBackColor = false;
+            this.disconnectDatabaseButton.Click += new System.EventHandler(this.resetDatabase_Click);
+            // 
+            // restoreButton
+            // 
+            resources.ApplyResources(this.restoreButton, "restoreButton");
+            this.restoreButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.restoreButton.BorderColor = System.Drawing.Color.DimGray;
+            this.restoreButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.restoreButton.Name = "restoreButton";
+            this.restoreButton.Radius = -1F;
+            this.restoreButton.UseVisualStyleBackColor = false;
+            this.restoreButton.Click += new System.EventHandler(this.restoreButton_Click);
+            // 
+            // databaseBackupButton
+            // 
+            resources.ApplyResources(this.databaseBackupButton, "databaseBackupButton");
+            this.databaseBackupButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.databaseBackupButton.BorderColor = System.Drawing.Color.DimGray;
+            this.databaseBackupButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.databaseBackupButton.Name = "databaseBackupButton";
+            this.databaseBackupButton.Radius = -1F;
+            this.databaseBackupButton.UseVisualStyleBackColor = false;
+            this.databaseBackupButton.Click += new System.EventHandler(this.databaseBackupButton_Click);
+            // 
+            // exitButton
+            // 
+            resources.ApplyResources(this.exitButton, "exitButton");
+            this.exitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.exitButton.BorderColor = System.Drawing.Color.DimGray;
+            this.exitButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.exitButton.Name = "exitButton";
+            this.exitButton.Radius = -1F;
+            this.exitButton.UseVisualStyleBackColor = false;
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click_1);
             // 
             // AdministrationForm
             // 
@@ -223,7 +210,6 @@
         private System.Windows.Forms.ToolTip toolTip;
         private FormControls.Button connectDatabaseButton;
         private FormControls.TableLayoutPanel tableLayoutPanel4;
-        private FormControls.Button designButton;
         private FormControls.Button dataExchangeButton;
     }
 }

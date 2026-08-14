@@ -1,4 +1,4 @@
-using MySqlConnector;
+﻿using MySqlConnector;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,8 +24,9 @@ namespace Pflegehaushaltsbuch.Databases
         {
             selectCommand[SELECT.BargeByPeriod] = "SELECT * FROM cash_books WHERE (date) >= {0:yyyy-MM-dd} AND (date) < {1:yyyy-MM-dd}";
             selectCommand[SELECT.BankByPeriod] = "SELECT * FROM bank_books WHERE (date) >= {0:yyyy-MM-dd} AND (date) < {1:yyyy-MM-dd}";
-            selectCommand[SELECT.OfficeByPeriod] = "SELECT * FROM office_cash WHERE (date) >= {0:yyyy-MM-dd} AND (date) < {1:yyyy-MM-dd}";
+            selectCommand[SELECT.OfficeByPeriod] = "SELECT * FROM petty_cash WHERE (date) >= {0:yyyy-MM-dd} AND (date) < {1:yyyy-MM-dd}";
             selectCommand[SELECT.BooksByPeriod] = "SELECT * FROM client_books WHERE id='{0}' AND (date) >= {1:yyyy-MM-dd} AND (date) < {2:yyyy-MM-dd}";
+            selectCommand[SELECT.DeadlineByDay] = "SELECT * FROM deadlines WHERE MONTH(date)=MONTH({0:yyyy-MM-dd}) AND DAY(date)=DAY({0:yyyy-MM-dd})";
         }
         private MySqlConnection connect;
         private readonly SemaphoreSlim connectionLock = new SemaphoreSlim(1, 1);
@@ -183,6 +184,32 @@ namespace Pflegehaushaltsbuch.Databases
                 await UpdateAsync(checkVersion);
                 Version = checkVersion;
             }
+            if (Version < (checkVersion = new Version(1, 0, 10, 0)))
+            {
+                await UpdateAsync(checkVersion);
+                Version = checkVersion;
+            }
+            if (Version < (checkVersion = new Version(1, 0, 11, 0)))
+            {
+                await UpdateAsync(checkVersion);
+                Version = checkVersion;
+            }
+            if (Version < (checkVersion = new Version(1, 0, 12, 0)))
+            {
+                await UpdateAsync(checkVersion);
+                Version = checkVersion;
+            }
+            if (Version < (checkVersion = new Version(1, 0, 13, 0)))
+            {
+                await UpdateAsync(checkVersion);
+                Version = checkVersion;
+            }
+            if (Version >= new Version(1, 0, 13, 0))
+            {
+                await EnsureUserLoginValuesAsync();
+                await EnsureUserLoginThrottleColumnsAsync();
+                await EnsureInitialAdminUserAsync();
+            }
         }
 
         /// <summary>
@@ -203,9 +230,11 @@ namespace Pflegehaushaltsbuch.Databases
         /// </summary>
         public override async Task<object> GetViewAsync(string name)
         {
-            MySqlCommand cmd = new MySqlCommand(string.Format("SELECT * FROM {0}", ValidateSqlIdentifier(name)), connect);
-            cmd.CommandType = CommandType.Text;
-            return await cmd.ExecuteScalarAsync();
+            using (MySqlCommand cmd = CreateCommand(string.Format("SELECT * FROM {0}", ValidateSqlIdentifier(name))))
+            {
+                cmd.CommandType = CommandType.Text;
+                return await cmd.ExecuteScalarAsync();
+            }
         }
         /// <summary>
         /// Updates the update data and refreshes the related application state.
@@ -235,7 +264,6 @@ namespace Pflegehaushaltsbuch.Databases
             {
                 await CreateTriggerAsync();
                 await CreateView();
-                await ApplyLegacyAccountIdsToCashAndBankBooksAsync();
             }
             if (version > new Version("1.0.7.0"))
             {
@@ -285,7 +313,7 @@ namespace Pflegehaushaltsbuch.Databases
             await FillAdapterAsync(SELECT.Version, version);
             DataRow row = version.NewRow();
             version.Rows.Add(row);
-            row["main"] = "1.0.9.0";
+            row["main"] = "1.0.13.0";
             if (!await UpdateAdapterAsync(SELECT.Version, version))
                 throw new Exception(Messages.datatable_update_failed);
             await CreateTriggerAsync();
@@ -309,6 +337,49 @@ VALUES
 VALUES
 (0, 'Cash', 1, CURRENT_TIMESTAMP),
 (1, 'Bank', 1, CURRENT_TIMESTAMP);";
+            using (MySqlCommand command = new MySqlCommand(commandText, connect))
+                await command.ExecuteNonQueryAsync();
+        }
+
+        private async Task EnsureUserLoginThrottleColumnsAsync()
+        {
+            if (!await HasColumnAsync("users", "failed_login_attempts"))
+                await ExecuteNonQueryAsync("ALTER TABLE `users` ADD COLUMN `failed_login_attempts` int(11) NOT NULL DEFAULT 0;");
+            if (!await HasColumnAsync("users", "last_failed_login"))
+                await ExecuteNonQueryAsync("ALTER TABLE `users` ADD COLUMN `last_failed_login` DATETIME NULL;");
+            if (!await HasColumnAsync("users", "locked_until"))
+                await ExecuteNonQueryAsync("ALTER TABLE `users` ADD COLUMN `locked_until` DATETIME NULL;");
+        }
+
+        private async Task EnsureUserLoginValuesAsync()
+        {
+            if (await HasColumnAsync("users", "handsign") && await HasColumnAsync("users", "login"))
+                await ExecuteNonQueryAsync("UPDATE `users` SET `login` = `handsign` WHERE `login` IS NULL OR TRIM(`login`) = '';");
+        }
+
+        private async Task EnsureInitialAdminUserAsync()
+        {
+            if (await HasColumnAsync("users", "handsign") && await HasColumnAsync("users", "login"))
+                await ExecuteNonQueryAsync("INSERT INTO `users` (`handsign`, `login`, `pw`, `access`, `admin`, `failed_login_attempts`) SELECT '🛡️', 'Admin', '', 0, 1, 0 WHERE NOT EXISTS (SELECT 1 FROM `users`);");
+        }
+
+        private async Task<bool> HasColumnAsync(string tableName, string columnName)
+        {
+            const string commandText = @"SELECT COUNT(*)
+FROM information_schema.COLUMNS
+WHERE TABLE_SCHEMA = DATABASE()
+  AND TABLE_NAME = @tableName
+  AND COLUMN_NAME = @columnName;";
+            using (MySqlCommand command = new MySqlCommand(commandText, connect))
+            {
+                command.Parameters.AddWithValue("@tableName", tableName);
+                command.Parameters.AddWithValue("@columnName", columnName);
+                return Convert.ToInt32(await command.ExecuteScalarAsync()) > 0;
+            }
+        }
+
+        private async Task ExecuteNonQueryAsync(string commandText)
+        {
             using (MySqlCommand command = new MySqlCommand(commandText, connect))
                 await command.ExecuteNonQueryAsync();
         }
@@ -349,7 +420,7 @@ VALUES
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("CREATE VIEW bank_total_amount AS Select COALESCE(SUM(amount),0) from bank_books;");
             sb.AppendLine("CREATE VIEW cash_total_amount AS Select COALESCE(SUM(amount),0) from cash_books;");
-            sb.AppendLine("CREATE VIEW office_total_amount AS Select COALESCE(SUM(amount),0) from office_cash;");
+            sb.AppendLine("CREATE VIEW office_total_amount AS Select COALESCE(SUM(amount),0) from petty_cash;");
             using (var command = new MySqlCommand(sb.ToString(), connect))
                 await command.ExecuteNonQueryAsync();
         }
@@ -358,14 +429,16 @@ VALUES
         /// </summary>
         public override async Task<object> CallFunctionsAsync(string name, params object[] values)
         {
-            MySqlCommand cmd = new MySqlCommand(name, connect);
-            cmd.CommandType = CommandType.StoredProcedure;
-            MySqlParameter param = new MySqlParameter("amount1", MySqlDbType.Decimal, 10);
-            param.Direction = ParameterDirection.Output;
-            param.Precision = 10;
-            param.Scale = 2;
-            cmd.Parameters.Add(param);
-            return await cmd.ExecuteScalarAsync();
+            using (MySqlCommand cmd = CreateCommand(name))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                MySqlParameter param = new MySqlParameter("amount1", MySqlDbType.Decimal, 10);
+                param.Direction = ParameterDirection.Output;
+                param.Precision = 10;
+                param.Scale = 2;
+                cmd.Parameters.Add(param);
+                return await cmd.ExecuteScalarAsync();
+            }
         }
         /// <summary>
         /// Fills the adapter data structure with values from the current source.
@@ -374,11 +447,23 @@ VALUES
         {
             return connect.BeginTransaction();
         }
-        private MySqlCommand CreateSelectCommand(AdapterCommandInfo commandInfo)
+        private MySqlCommand CreateCommand(string commandText)
         {
-            MySqlCommand command = new MySqlCommand(commandInfo.CommandText, connect);
+            MySqlCommand command = new MySqlCommand(commandText, connect);
             if (ActiveTransaction != null)
                 command.Transaction = (MySqlTransaction)ActiveTransaction;
+            return command;
+        }
+
+        private void UseActiveTransaction(MySqlCommand command)
+        {
+            if (command != null && ActiveTransaction != null)
+                command.Transaction = (MySqlTransaction)ActiveTransaction;
+        }
+
+        private MySqlCommand CreateSelectCommand(AdapterCommandInfo commandInfo)
+        {
+            MySqlCommand command = CreateCommand(commandInfo.CommandText);
             foreach (AdapterCommandParameter parameter in commandInfo.Parameters)
                 command.Parameters.AddWithValue(parameter.Name, parameter.Value ?? DBNull.Value);
             return command;
@@ -396,8 +481,7 @@ VALUES
                 using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                     await Task.Run(() => adapter.Fill(loadedTable));
 
-                table.Clear();
-                table.Merge(loadedTable, false, MissingSchemaAction.Add);
+                ReplaceTableContents(table, loadedTable);
             }
             finally
             {
@@ -420,8 +504,7 @@ VALUES
                 using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                     await Task.Run(() => adapter.Fill(loadedTable));
 
-                table.Clear();
-                table.Merge(loadedTable, false, MissingSchemaAction.Add);
+                ReplaceTableContents(table, loadedTable);
             }
             finally
             {
@@ -449,12 +532,10 @@ VALUES
                     adapter.InsertCommand = builder.GetInsertCommand();
                     adapter.DeleteCommand = builder.GetDeleteCommand();
                     adapter.UpdateCommand = builder.GetUpdateCommand();
-                    if (ActiveTransaction != null)
-                    {
-                        adapter.InsertCommand.Transaction = (MySqlTransaction)ActiveTransaction;
-                        adapter.DeleteCommand.Transaction = (MySqlTransaction)ActiveTransaction;
-                        adapter.UpdateCommand.Transaction = (MySqlTransaction)ActiveTransaction;
-                    }
+                    UseActiveTransaction(adapter.SelectCommand);
+                    UseActiveTransaction(adapter.InsertCommand);
+                    UseActiveTransaction(adapter.DeleteCommand);
+                    UseActiveTransaction(adapter.UpdateCommand);
 
                     int value = await Task.Run(() => adapter.Update(table));
                     return value == changes.Rows.Count;
@@ -488,10 +569,9 @@ VALUES
         /// </summary>
         public override async Task<int> UpdateDataBaseAsync(string command)
         {
-            MySqlCommand cmd = connect.CreateCommand();
             connect.ChangeDatabase(dataBase);
-            cmd.CommandText = command;
-            return await cmd.ExecuteNonQueryAsync();
+            using (MySqlCommand cmd = CreateCommand(command))
+                return await cmd.ExecuteNonQueryAsync();
         }
         /// <summary>
         /// Creates the new Password data or user interface element for the current workflow.
@@ -510,15 +590,15 @@ VALUES
         {
             sb.AppendLine("DROP TABLE IF EXISTS users;");
             sb.AppendLine("create table users (");
-            sb.AppendLine("name varchar(255) UNIQUE,");
+            sb.AppendLine("handsign varchar(255) UNIQUE,");
             sb.AppendLine("login varchar(255) UNIQUE,");
             sb.AppendLine("pw varchar(255),");
-            sb.AppendLine("phone varchar(64),");
-            sb.AppendLine("fax varchar(64),");
-            sb.AppendLine("email varchar(255),");
             sb.AppendLine("access int(11),");
             sb.AppendLine("admin BOOLEAN,");
-            sb.AppendLine("PRIMARY KEY(name, login)");
+            sb.AppendLine("failed_login_attempts int(11) NOT NULL DEFAULT 0,");
+            sb.AppendLine("last_failed_login DATETIME NULL,");
+            sb.AppendLine("locked_until DATETIME NULL,");
+            sb.AppendLine("PRIMARY KEY(handsign, login)");
             sb.AppendLine(");");
             sb.AppendLine("DROP TABLE IF EXISTS company;");
             sb.AppendLine("create table company (");
@@ -538,6 +618,7 @@ VALUES
             sb.AppendLine("smtp_host varchar(255),");
             sb.AppendLine("smtp_user varchar(255),");
             sb.AppendLine("smtp_key varchar(255),");
+            sb.AppendLine("currency_code varchar(3) DEFAULT 'EUR',");
             sb.AppendLine("logo mediumblob,");
             sb.AppendLine("logo_alignment Integer");
             sb.AppendLine(");");
@@ -621,7 +702,6 @@ VALUES
             sb.AppendLine("date DATE,");
             sb.AppendLine("note varchar(255),");
             sb.AppendLine("amount DECIMAL(18,2),");
-            sb.AppendLine("account varchar(64),");
             sb.AppendLine("account_id INTEGER,");
             sb.AppendLine("book_to int(11),");
             sb.AppendLine("book_cat int(11),");
@@ -635,7 +715,6 @@ VALUES
             sb.AppendLine("book_cat int(11),");
             sb.AppendLine("book_to int(11),");
             sb.AppendLine("amount DECIMAL(18,2),");
-            sb.AppendLine("account varchar(64),");
             sb.AppendLine("account_id INTEGER,");
             sb.AppendLine("handsign varchar(64)");
             sb.AppendLine(");");
@@ -698,12 +777,12 @@ VALUES
             sb.AppendLine("note varchar(512),");
             sb.AppendLine("handsign varchar(64)");
             sb.AppendLine(");");
-            sb.AppendLine("DROP TABLE IF EXISTS office_cash;");
-            sb.AppendLine("create table office_cash (");
+            sb.AppendLine("DROP TABLE IF EXISTS petty_cash;");
+            sb.AppendLine("create table petty_cash (");
             sb.AppendLine("id INTEGER PRIMARY KEY AUTO_INCREMENT,");
             sb.AppendLine("date DATE,");
             sb.AppendLine("note varchar(512),");
-            sb.AppendLine("account INTEGER,");
+            sb.AppendLine("account_id INTEGER,");
             sb.AppendLine("book_cat INTEGER,");
             sb.AppendLine("amount DECIMAL(18,2),");
             sb.AppendLine("handsign varchar(64)");

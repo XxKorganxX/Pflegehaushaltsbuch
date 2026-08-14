@@ -199,10 +199,10 @@
     <value>True</value>
   </metadata>
   <data name="handSignColumn.HeaderText" xml:space="preserve">
-    <value>Hs</value>
+    <value>✍️</value>
   </data>
   <data name="handSignColumn.Width" type="System.Int32, mscorlib">
-    <value>50</value>
+    <value>53</value>
   </data>
   <data name="view.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>

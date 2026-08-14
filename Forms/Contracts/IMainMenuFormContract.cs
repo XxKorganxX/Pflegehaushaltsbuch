@@ -7,6 +7,7 @@ namespace Pflegehaushaltsbuch.Forms
     {
         void SetWorkPanelsEnabled(bool enabled);
         void SetAdminVisible(bool visible);
+        void ApplyCurrentRights();
         void ShowError(Exception exception);
         bool ShowUserLoginDialog(SqlSession session);
         void ShowForm(Enums.Forms form);

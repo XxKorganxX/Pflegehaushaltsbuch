@@ -16,6 +16,7 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
         private readonly SemaphoreSlim databaseOperationLock = new SemaphoreSlim(1, 1);
         private readonly DataTable hardCashTable = new DataTable();
         private DataTable table;
+        private bool periodDateRangeInitialized;
 
         public CashFormPresenter(ICashFormContract view, SqlSession session)
         {
@@ -38,10 +39,78 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
         public virtual async Task EnterAsync()
         {
             hardCashTable.Clear();
+            
             await session.SQL.FillAdapterAsync(SQLBase.SELECT.Hardcash, hardCashTable);
             View.SetTable(hardCashTable);
             UpdateHardCashAmount();
+            await LoadAccountLookupAsync();
             await ConnectTableToDataBaseAsync();
+            bool periodDateRangeChanged = await InitializePeriodDateRangeAsync();
+            View.SetPeriodControlsVisible(View.PeriodChecked);
+            if (periodDateRangeChanged)
+                await ConnectTableToDataBaseAsync();
+        }
+
+        private async Task LoadAccountLookupAsync()
+        {
+            Dictionary<int, string> accountLookup = new Dictionary<int, string>
+            {
+                { 0, SQLBase.BookingTo.Barbestand.GetDisplayName() },
+                { 1, SQLBase.BookingTo.Bankbestand.GetDisplayName() }
+            };
+
+            DataTable clients = new DataTable();
+            await session.SQL.FillAdapterAsync(SQLBase.SELECT.Clients, clients, string.Empty);
+            AddAccountNames(accountLookup, clients);
+
+            DataTable employees = new DataTable();
+            await session.SQL.FillAdapterAsync(SQLBase.SELECT.Emploees, employees);
+            AddAccountNames(accountLookup, employees);
+
+            View.SetAccountLookup(accountLookup);
+        }
+
+        private static void AddAccountNames(Dictionary<int, string> accountLookup, DataTable table)
+        {
+            if (table == null || !table.Columns.Contains(Columns.AccountId) || !table.Columns.Contains(Columns.Name))
+                return;
+
+            foreach (DataRow row in table.Rows.OfType<DataRow>())
+            {
+                if (row.RowState == DataRowState.Deleted || row[Columns.AccountId] == DBNull.Value)
+                    continue;
+
+                accountLookup[Convert.ToInt32(row[Columns.AccountId])] = row[Columns.Name].ToString();
+            }
+        }
+
+        private async Task<bool> InitializePeriodDateRangeAsync()
+        {
+            if (periodDateRangeInitialized)
+                return false;
+
+            DataTable allBookings = new DataTable();
+            await session.SQL.FillAdapterAsync(SQLBase.SELECT.Cash, allBookings);
+            DateTime? fromDate = null;
+            DateTime? toDate = null;
+            foreach (DataRow row in allBookings.Rows)
+            {
+                if (row[Columns.Date] == DBNull.Value)
+                    continue;
+
+                DateTime date = Convert.ToDateTime(row[Columns.Date]);
+                if (!fromDate.HasValue || date < fromDate.Value)
+                    fromDate = date;
+                if (!toDate.HasValue || date > toDate.Value)
+                    toDate = date;
+            }
+
+            if (!fromDate.HasValue || !toDate.HasValue)
+                return false;
+
+            View.SetPeriodDateRange(fromDate.Value, toDate.Value);
+            periodDateRangeInitialized = true;
+            return true;
         }
 
         public virtual async Task ConnectTableToDataBaseAsync()
@@ -67,7 +136,7 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
             View.SetCashViewTable(table);
 
             object bargeTotalAmount = await session.SQL.GetViewAsync("cash_total_amount");
-            View.TotalAmountText = decimal.Parse(bargeTotalAmount.ToString()).ToString("C");
+            View.TotalAmountText = Convert.ToDecimal(bargeTotalAmount).ToString("C", session.Company.Currencies);
             UpdateHardCashAmount();
         }
 
@@ -93,7 +162,7 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
                 totalAmount += Int32.Parse(row["500"].ToString()) * 500.0m;
             }
 
-            View.HardCashAmountText = totalAmount.ToString("C");
+            View.HardCashAmountText = totalAmount.ToString("C", session.Company.Currencies);
             View.SetHardCashAmountWarning(!View.TotalAmountText.Equals(View.HardCashAmountText));
         }
 
@@ -184,10 +253,10 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
             else
                 ouputDate = dateBegin.ToString("MMMM yyyy") + " - " + dateEnd.ToString("MMMM yyyy");
             session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.date_long_of_paper, ouputDate);
-            session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.cash_outflow, ausgaben.ToString("C"));
-            session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.cash_inflow, einnahmen.ToString("C"));
-            session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.amount_previous_month, prevoiusAmount.ToString("C"));
-            session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.amount, (prevoiusAmount - ausgaben + einnahmen).ToString("C"));
+            session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.cash_outflow, ausgaben.ToString("C", session.Company.Currencies));
+            session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.cash_inflow, einnahmen.ToString("C", session.Company.Currencies));
+            session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.amount_previous_month, prevoiusAmount.ToString("C", session.Company.Currencies));
+            session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.amount, (prevoiusAmount - ausgaben + einnahmen).ToString("C", session.Company.Currencies));
 
             View.Print(rows);
         }
@@ -254,20 +323,21 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
                                 {
                                     int clientID = clientData.ID;
                                     string clientName = clientData.Name;
+                                    int accountId = await session.SQL.GetClientAccountIdAsync(clientID);
                                     DataRow currentBook = null;
                                     if (bookCategory == SQLBase.BookCategory.Einzahlung)
                                     {
                                         var result = await session.SQL.ToBooksAsync(clientName, clientID, payInDate.Date.Date, bookText, amount, SQLBase.BookCategory.Einzahlung, bookTo);
                                         currentBook = result.Item2;
                                         if (valid = result.Item1)
-                                            valid = await session.SQL.ToBargeAsync(payInDate.Date.Date, bookText, amount, string.Format("K{0:000}", clientID), SQLBase.BookCategory.Einzahlung, bookTo);
+                                            valid = await session.SQL.ToBargeAsync(payInDate.Date.Date, bookText, amount, accountId, SQLBase.BookCategory.Einzahlung, bookTo);
                                     }
                                     else
                                     {
                                         var result = await session.SQL.ToBooksAsync(clientName, clientID, payInDate.Date.Date, bookText, -amount, SQLBase.BookCategory.Auszahlung, bookTo);
                                         currentBook = result.Item2;
                                         if (valid = result.Item1)
-                                            valid = await session.SQL.ToBargeAsync(payInDate.Date.Date, bookText, -amount, string.Format("K{0:000}", clientID), SQLBase.BookCategory.Auszahlung, bookTo);
+                                            valid = await session.SQL.ToBargeAsync(payInDate.Date.Date, bookText, -amount, accountId, SQLBase.BookCategory.Auszahlung, bookTo);
                                     }
 
                                     if (!valid)
@@ -289,13 +359,13 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
                             {
                                 if (bookCategory == SQLBase.BookCategory.Einzahlung)
                                 {
-                                    if (valid = await session.SQL.ToBargeAsync(payInDate.Date.Date, bookText, amount, SQLBase.BookingTo.Bankbestand.GetDisplayName(), SQLBase.BookCategory.Einzahlung, bookTo))
-                                        valid = await session.SQL.ToBankAsync(payInDate.Date.Date, bookText, -amount, SQLBase.BookingTo.Barbestand.GetDisplayName(), SQLBase.BookCategory.Auszahlung, bookTo);
+                                    if (valid = await session.SQL.ToBargeAsync(payInDate.Date.Date, bookText, amount, 1, SQLBase.BookCategory.Einzahlung, bookTo))
+                                        valid = await session.SQL.ToBankAsync(payInDate.Date.Date, bookText, -amount, 0, SQLBase.BookCategory.Auszahlung, bookTo);
                                 }
                                 else
                                 {
-                                    if (valid = await session.SQL.ToBargeAsync(payInDate.Date.Date, bookText, -amount, SQLBase.BookingTo.Bankbestand.GetDisplayName(), SQLBase.BookCategory.Auszahlung, bookTo))
-                                        valid = await session.SQL.ToBankAsync(payInDate.Date.Date, bookText, amount, SQLBase.BookingTo.Barbestand.GetDisplayName(), SQLBase.BookCategory.Einzahlung, bookTo);
+                                    if (valid = await session.SQL.ToBargeAsync(payInDate.Date.Date, bookText, -amount, 1, SQLBase.BookCategory.Auszahlung, bookTo))
+                                        valid = await session.SQL.ToBankAsync(payInDate.Date.Date, bookText, amount, 0, SQLBase.BookCategory.Einzahlung, bookTo);
                                 }
                                 if (valid)
                                     View.ShowMessage(Messages.booking_sucess);
@@ -341,7 +411,7 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
             if (!View.ShowSaveFileDialog(Messages.cash_export_filename, "Excel|*.xlsx", string.Empty, out fileName))
                 return;
 
-            Excel.ExportToExcel(table.DefaultView.ToTable(), fileName);
+            Excel.ExportToExcel(table.DefaultView.ToTable(), fileName, session.Company.CurrencyCode);
             View.ShowMessage(string.Format(Messages.export_success, fileName));
         }
 

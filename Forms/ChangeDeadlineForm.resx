@@ -136,7 +136,7 @@
     <value>81, 19</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
+    <value>2</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>Description:</value>
@@ -163,7 +163,7 @@
     <value>85, 30</value>
   </data>
   <data name="cancelButton.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>1</value>
   </data>
   <data name="cancelButton.Text" xml:space="preserve">
     <value>Cancel</value>
@@ -190,7 +190,7 @@
     <value>85, 30</value>
   </data>
   <data name="okButton.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>0</value>
   </data>
   <data name="okButton.Text" xml:space="preserve">
     <value>Ok</value>
@@ -223,7 +223,7 @@
     <value>41, 19</value>
   </data>
   <data name="label4.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
+    <value>0</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>Date:</value>
@@ -259,7 +259,7 @@
     <value>412, 52</value>
   </data>
   <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
+    <value>5</value>
   </data>
   <data name="flowLayoutPanel1.WrapContents" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -292,7 +292,7 @@
     <value>325, 26</value>
   </data>
   <data name="dateTimeBox.TabIndex" type="System.Int32, mscorlib">
-    <value>18</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;dateTimeBox.Name" xml:space="preserve">
     <value>dateTimeBox</value>
@@ -316,7 +316,7 @@
     <value>110, 23</value>
   </data>
   <data name="allMonthBox.TabIndex" type="System.Int32, mscorlib">
-    <value>19</value>
+    <value>4</value>
   </data>
   <data name="allMonthBox.Text" xml:space="preserve">
     <value>For all month</value>
@@ -349,7 +349,7 @@
     <value>325, 100</value>
   </data>
   <data name="noteBox.TabIndex" type="System.Int32, mscorlib">
-    <value>20</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;noteBox.Name" xml:space="preserve">
     <value>noteBox</value>
@@ -376,7 +376,7 @@
     <value>418, 225</value>
   </data>
   <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel1.Name" xml:space="preserve">
     <value>tableLayoutPanel1</value>

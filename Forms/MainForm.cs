@@ -21,18 +21,6 @@ namespace Pflegehaushaltsbuch.Forms
             presenter = new MainFormPresenter(this, session);
             presenter.Initialize();
         }
-        /// <summary>
-        /// Handles the create Control lifecycle step and applies the related control behavior.
-        /// </summary>
-        protected override void OnCreateControl()
-        {
-            base.OnCreateControl();
-
-            if (Program.DesignMode)
-                return;
-
-            presenter.CreateControl();
-        }
 
         /// <summary>
         /// Handles the closed lifecycle step and applies the related control behavior.
@@ -52,7 +40,7 @@ namespace Pflegehaushaltsbuch.Forms
 
             MainMenuForm mainForm = new MainMenuForm(Session);
             ClientsForm clientForm = new ClientsForm(Session);
-            BookForm bookForm = new BookForm(Session);
+            ClientBooksForm bookForm = new ClientBooksForm(Session);
             OfficeCashForm officeCash = new OfficeCashForm(Session);
             CashForm cashForm = new CashForm(Session);
             EmployeesForm assistantsForm = new EmployeesForm(Session);
@@ -62,7 +50,7 @@ namespace Pflegehaushaltsbuch.Forms
             AdvisorForm advisorForm = new AdvisorForm(Session);
             CashCheckUpForm cashOfficeControlForm = new CashCheckUpForm(Session);
             BankForm bankForm = new BankForm(Session);
-            CompanySettingsForm companyForm = new CompanySettingsForm(Session);
+            CompanyForm companyForm = new CompanyForm(Session);
             LayoutManager layoutManager = new LayoutManager(Session);
             DocumentsForm recordForm = new DocumentsForm(Session);
             AdministrationForm administrationForm = new AdministrationForm(Session);
@@ -177,23 +165,6 @@ namespace Pflegehaushaltsbuch.Forms
                 form.Visible = true;
 
             tabControl1.SelectedTab = tabPage;
-        }
-
-        /// <summary>
-        /// Runs the set title view action for the presenter.
-        /// </summary>
-        void IMainFormContract.SetTitle(string title)
-        {
-            if (InvokeRequired)
-            {
-                Invoke((MethodInvoker)delegate
-                {
-                    ((IMainFormContract)this).SetTitle(title);
-                });
-                return;
-            }
-
-            Text = title;
         }
 
         /// <summary>

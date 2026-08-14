@@ -110,7 +110,7 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
 
             DataTable table = new DataTable();
             await session.SQL.FillAdapterAsync(SQLBase.SELECT.DeadlineByClient, table, View.ClientID);
-            Excel.ExportToExcel(table.DefaultView.ToTable(), selectedFileName);
+            Excel.ExportToExcel(table.DefaultView.ToTable(), selectedFileName, session.Company.CurrencyCode);
             await ConnectTableToDataBaseAsync();
         }
 
@@ -122,6 +122,21 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
         public virtual void Back()
         {
             View.ShowClientsForm();
+        }
+
+        public static List<DateTime> BuildDeadlineDates(DateTime currentDate, bool forAllMonths)
+        {
+            if (!forAllMonths)
+                return new List<DateTime> { currentDate };
+
+            List<DateTime> dates = new List<DateTime>();
+            for (int month = 1; month <= 12; ++month)
+            {
+                if (currentDate.Day <= DateTime.DaysInMonth(currentDate.Year, month))
+                    dates.Add(new DateTime(currentDate.Year, month, currentDate.Day));
+            }
+
+            return dates;
         }
 
         public virtual async Task CellClickAsync(int rowIndex, int columnIndex)
@@ -158,25 +173,12 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
                     string note = input.Description;
                     bool selectAllMonth = input.ForAllMonths;
                     bool changeTable = false;
-                    List<DataRow> existRows;
-                    List<DateTime> dates = new List<DateTime>();
+                    List<DateTime> dates = BuildDeadlineDates(currentDate, selectAllMonth);
 
-                    if (!selectAllMonth)
-                    {
-                        existRows = deadlineTable.Rows.OfType<DataRow>()
-                            .Where(a => ((DateTime)a["date"]).Day == currentDate.Day &&
-                                        ((DateTime)a["date"]).Month == currentDate.Month)
-                            .ToList();
-                        dates.Add(currentDate);
-                    }
-                    else
-                    {
-                        existRows = deadlineTable.Rows.OfType<DataRow>()
-                            .Where(a => ((DateTime)a["date"]).Day == currentDate.Day)
-                            .ToList();
-                        for (int i = 1; i <= 12; ++i)
-                            dates.Add(new DateTime(currentDate.Year, i, currentDate.Day));
-                    }
+                    List<DataRow> existRows = deadlineTable.Rows.OfType<DataRow>()
+                        .Where(a => dates.Any(date => ((DateTime)a["date"]).Day == date.Day &&
+                                                       ((DateTime)a["date"]).Month == date.Month))
+                        .ToList();
 
                     if (string.IsNullOrWhiteSpace(note))
                     {
@@ -191,9 +193,8 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
                     {
                         foreach (var date in dates)
                         {
-                            DataRow row = null;
-                            if (existRows.Count > 0)
-                                row = existRows[0];
+                            DataRow row = existRows.FirstOrDefault(a => ((DateTime)a["date"]).Day == date.Day &&
+                                                                        ((DateTime)a["date"]).Month == date.Month);
 
                             changeTable = true;
                             bool insertRow = false;
@@ -206,7 +207,7 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
                             row[Columns.Id] = View.ClientID;
                             row[Columns.Date] = date;
                             row[Columns.Note] = note;
-                            row[Columns.HandSign] = session.SQL.User.Name;
+                            row[Columns.HandSign] = session.SQL.User.Handsign;
 
                             if (insertRow)
                                 deadlineTable.Rows.Add(row);

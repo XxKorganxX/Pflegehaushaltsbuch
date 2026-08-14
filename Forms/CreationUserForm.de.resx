@@ -126,12 +126,6 @@
   <data name="changeBox.Text" xml:space="preserve">
     <value>Ändern</value>
   </data>
-  <data name="deleteBox.Text" xml:space="preserve">
-    <value>Löschen</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Telefon:</value>
-  </data>
   <data name="tableLayoutPanel2.BorderText" xml:space="preserve">
     <value>Rechte</value>
   </data>

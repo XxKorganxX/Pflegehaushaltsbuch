@@ -162,7 +162,6 @@ namespace Pflegehaushaltsbuch.Forms.Dialoge
             // tableLayoutPanel1
             // 
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label7, 0, 1);
@@ -179,7 +178,6 @@ namespace Pflegehaushaltsbuch.Forms.Dialoge
             // tableLayoutPanel3
             // 
             resources.ApplyResources(this.tableLayoutPanel3, "tableLayoutPanel3");
-            this.tableLayoutPanel3.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel3.Border = true;
             this.tableLayoutPanel3.Controls.Add(this.clientZipcodeBox, 1, 4);
             this.tableLayoutPanel3.Controls.Add(this.clientStreetBox, 1, 3);
@@ -211,6 +209,7 @@ namespace Pflegehaushaltsbuch.Forms.Dialoge
             // 
             // accountText
             // 
+            this.accountText.BorderStyle = System.Windows.Forms.BorderStyle.None;
             resources.ApplyResources(this.accountText, "accountText");
             this.accountText.Name = "accountText";
             // 

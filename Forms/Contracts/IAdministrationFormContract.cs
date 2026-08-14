@@ -23,7 +23,6 @@ namespace Pflegehaushaltsbuch.Forms
         bool ShowDatabaseServerConnectDialog(SqlSession session, XmlConfig config);
         bool ShowDatabaseManagerDialog(SqlSession session, XmlConfig config, out SQLBase sql);
         bool ShowUserLoginDialog(SqlSession loginSession, out SQLBase authenticatedSql);
-        void ShowDesignDialog(SqlSession session);
         void ShowMessage(string msg);
         void ShowError(string msg);
         bool ConfirmMessage(string msg);

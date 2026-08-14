@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -403,7 +403,7 @@ Rufnummer: {1}</value>
   </data>
   <data name="sql_rules" xml:space="preserve">
     <value>SQL Regeln:
-1. Benutzen Sie zum Erzeugen einer neuen SQL Datenbank immer 'Benutzer: sa ohne Passwort' wenn Sie sich nicht sicher sind.
+1. Verwenden Sie zum Erzeugen einer neuen SQL-Server-Datenbank ein Windows-Konto oder einen SQL-Login mit ausreichenden Administratorrechten.
 2. Erst erfolgt das Erzeugen der Datenbank und anschließend dürfen Benutzer angelegt werden.
 3. Wenn eine Datenbank neu angelegt wird, werden alle Benutzer die mit Pflegehaushaltsbuch angelegt wurden, ungültig. Diese dann also bitte löschen und erneut anlegen.
 4. Die Benutzer die mit diesem Programm angelegt werden, haben folgende Rechte:
@@ -442,7 +442,7 @@ Wenn sich eine Datenbank nicht löschen lässt, dann entfernen Sie diese bitte i
     <value>Benutzer wurde erfolgreich gelöscht.</value>
   </data>
   <data name="usermanagement_admin_delete" xml:space="preserve">
-    <value>Administrator Konten können nicht gelöscht werden.</value>
+    <value>Das letzte Administratorkonto kann nicht gelöscht werden.</value>
   </data>
   <data name="usermanagement_Change" xml:space="preserve">
     <value>Ändern</value>
@@ -567,8 +567,7 @@ Vielen Dank für Ihre Unterstützung.</value>
     <value>Bitte wählen Sie eine SQL Verbindung aus.</value>
   </data>
   <data name="database_default_login" xml:space="preserve">
-    <value>Anmeldung: Admin
-Kennwort: admin</value>
+    <value>Legen Sie vor der Anmeldung ein Administratorkonto an.</value>
   </data>
   <data name="database_default_login_title" xml:space="preserve">
     <value>SQL-Anmeldung</value>
@@ -635,6 +634,9 @@ Kennwort: admin</value>
   </data>
   <data name="advisor_delete_failed" xml:space="preserve">
     <value>Betreuer konnte nicht gelöscht werden.</value>
+  </data>
+  <data name="advisor_delete_used_by_client" xml:space="preserve">
+    <value>Betreuer kann nicht gelöscht werden, weil er mindestens einem Klienten zugeordnet ist.</value>
   </data>
   <data name="advisors_imported" xml:space="preserve">
     <value>Betreuer wurden angelegt.</value>
@@ -703,7 +705,7 @@ Kennwort: admin</value>
     <value>Nachricht konnte nicht an {0} verschickt werden.</value>
   </data>
   <data name="usermanagement_last_admin_delete_warning" xml:space="preserve">
-    <value>Sie sind dabei, den letzten Administrator zu löschen. Falls Sie das tun, wird das Standardkonto Admin/admin wieder aktiv. Sind Sie sicher?</value>
+    <value>Sie sind dabei, den letzten Administrator zu löschen. Falls Sie das tun, bleibt kein Administratorkonto mehr vorhanden. Sind Sie sicher?</value>
   </data>
   <data name="design_restart_required" xml:space="preserve">
     <value>Die Änderungen erfordern einen Neustart, bitte warten Sie.</value>
@@ -716,5 +718,11 @@ Kennwort: admin</value>
   </data>
   <data name="delete_failed" xml:space="preserve">
     <value>Löschen fehlgeschlagen.</value>
+  </data>
+  <data name="statistics_expenses" xml:space="preserve">
+    <value>Ausgaben</value>
+  </data>
+  <data name="statistics_income" xml:space="preserve">
+    <value>Einnahmen</value>
   </data>
 </root>

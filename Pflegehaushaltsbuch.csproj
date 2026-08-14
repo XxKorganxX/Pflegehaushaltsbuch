@@ -12,7 +12,7 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
     <GenerateSatelliteAssembliesForCore>true</GenerateSatelliteAssembliesForCore>
-    <SatelliteResourceLanguages>de;zh-Hans</SatelliteResourceLanguages>
+    <SatelliteResourceLanguages>de;tr;ru</SatelliteResourceLanguages>
     <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>
@@ -54,6 +54,18 @@
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ClosedXML, Version=0.105.1.0, Culture=neutral, PublicKeyToken=fd1eb21b62ae805b, processorArchitecture=MSIL">
+      <HintPath>packages\ClosedXML.0.105.1\lib\netstandard2.0\ClosedXML.dll</HintPath>
+    </Reference>
+    <Reference Include="ClosedXML.Parser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1d5f7376574c51ec, processorArchitecture=MSIL">
+      <HintPath>packages\ClosedXML.Parser.2.0.0\lib\netstandard2.0\ClosedXML.Parser.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=3.1.1.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>packages\DocumentFormat.OpenXml.3.1.1\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml.Framework, Version=3.1.1.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>packages\DocumentFormat.OpenXml.Framework.3.1.1\lib\net46\DocumentFormat.OpenXml.Framework.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -62,13 +74,11 @@
       <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Office.Interop.Excel.15.0.4795.1001\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
+    <Reference Include="ExcelNumberFormat, Version=1.1.0.0, Culture=neutral, PublicKeyToken=23c6f5d73be07eca, processorArchitecture=MSIL">
+      <HintPath>packages\ExcelNumberFormat.1.1.0\lib\net20\ExcelNumberFormat.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Office.Interop.Outlook, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Office.Interop.Outlook.15.0.4797.1004\lib\net20\Microsoft.Office.Interop.Outlook.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
+    <Reference Include="Microsoft.Bcl.HashCode, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Bcl.HashCode.1.1.1\lib\net461\Microsoft.Bcl.HashCode.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=8.0.0.2, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Extensions.DependencyInjection.Abstractions.8.0.2\lib\net462\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
@@ -81,6 +91,12 @@
     <Reference Include="MySqlConnector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=d33d3e53aa5f8c92, processorArchitecture=MSIL">
       <HintPath>packages\MySqlConnector.2.6.1\lib\net48\MySqlConnector.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="RBush, Version=4.0.0.0, Culture=neutral, PublicKeyToken=c77e27b81f4d0187, processorArchitecture=MSIL">
+      <HintPath>packages\RBush.Signed.4.0.0\lib\net47\RBush.dll</HintPath>
+    </Reference>
+    <Reference Include="SixLabors.Fonts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d998eea7b14cab13, processorArchitecture=MSIL">
+      <HintPath>packages\SixLabors.Fonts.1.0.0\lib\netstandard2.0\SixLabors.Fonts.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Runtime.CompilerServices.Unsafe.6.1.2\lib\net462\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
@@ -246,10 +262,13 @@
       <HintPath>packages\Microsoft.IdentityModel.Logging.8.16.0\lib\net462\Microsoft.IdentityModel.Logging.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationLogger.cs" />
     <Compile Include="CredentialProtector.cs" />
     <Compile Include="Databases\SqlSession.cs" />
+    <Compile Include="FormControls\ControlBindingExtensions.cs" />
     <Compile Include="FormControls\DataGridViewCheckedColumnHeaderCell.cs" />
     <Compile Include="Forms\Contracts\IDataExchangeFormContract.cs" />
     <Compile Include="Forms\DataExchangeForm.cs">
@@ -262,6 +281,7 @@
     <Compile Include="PasswordHasher.cs" />
     <Compile Include="Databases\SQLITE.cs" />
     <Compile Include="Data\Company.cs" />
+    <Compile Include="Data\MoneyFormat.cs" />
     <Compile Include="Data\Excel.cs" />
     <Compile Include="Data\Graphics\DataTableItem.cs" />
     <Compile Include="Data\DocumentLayer.cs" />
@@ -407,11 +427,11 @@
     <Compile Include="Forms\BankForm.designer.cs">
       <DependentUpon>BankForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\BookForm.cs">
+    <Compile Include="Forms\ClientBooksForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\BookForm.designer.cs">
-      <DependentUpon>BookForm.cs</DependentUpon>
+    <Compile Include="Forms\ClientBooksForm.designer.cs">
+      <DependentUpon>ClientBooksForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\CashCheckUpForm.cs">
       <SubType>Form</SubType>
@@ -443,11 +463,11 @@
     <Compile Include="Forms\DatabaseManagerForm.Designer.cs">
       <DependentUpon>DatabaseManagerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\DatabaseServerConnectForm.cs">
+    <Compile Include="Forms\DatabaseConnectionForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\DatabaseServerConnectForm.Designer.cs">
-      <DependentUpon>DatabaseServerConnectForm.cs</DependentUpon>
+    <Compile Include="Forms\DatabaseConnectionForm.Designer.cs">
+      <DependentUpon>DatabaseConnectionForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Dialoge\CashOfficeBookDialog.cs">
       <SubType>Form</SubType>
@@ -535,12 +555,6 @@
     </Compile>
     <Compile Include="Forms\Dialoge\EditTextDialog.Designer.cs">
       <DependentUpon>EditTextDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Dialoge\ImportClientsDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Dialoge\ImportClientsDialog.Designer.cs">
-      <DependentUpon>ImportClientsDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Dialoge\CreateDocumentDialog.cs">
       <SubType>Form</SubType>
@@ -632,29 +646,23 @@
     <Compile Include="Forms\DocumentsForm.designer.cs">
       <DependentUpon>DocumentsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\OfficeCashForm.cs">
+    <Compile Include="Forms\PettyCashForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\OfficeCashForm.Designer.cs">
-      <DependentUpon>OfficeCashForm.cs</DependentUpon>
+    <Compile Include="Forms\PettyCashForm.Designer.cs">
+      <DependentUpon>PettyCashForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CompanySettingsForm.cs">
+    <Compile Include="Forms\CompanyForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CompanySettingsForm.Designer.cs">
-      <DependentUpon>CompanySettingsForm.cs</DependentUpon>
+    <Compile Include="Forms\CompanyForm.Designer.cs">
+      <DependentUpon>CompanyForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\PageSettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\PageSettingsForm.Designer.cs">
       <DependentUpon>PageSettingsForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\DesignForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\DesignForm.Designer.cs">
-      <DependentUpon>DesignForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\StatisticsForm.cs">
       <SubType>Form</SubType>
@@ -699,7 +707,7 @@
     <Compile Include="Forms\Contracts\IEmployeesFormContract.cs" />
     <Compile Include="Forms\Contracts\IBankBookDialogContract.cs" />
     <Compile Include="Forms\Contracts\IBankFormContract.cs" />
-    <Compile Include="Forms\Contracts\IBookFormContract.cs" />
+    <Compile Include="Forms\Contracts\IClientBooksFormContract.cs" />
     <Compile Include="Forms\Contracts\ICashBookDialogContract.cs" />
     <Compile Include="Forms\Contracts\ICashCheckUpFormContract.cs" />
     <Compile Include="Forms\Contracts\ICashFormContract.cs" />
@@ -708,7 +716,7 @@
     <Compile Include="Forms\Contracts\IClientBookDialogContract.cs" />
     <Compile Include="Forms\Contracts\ICreateClientDialogContract.cs" />
     <Compile Include="Forms\Contracts\IClientsFormContract.cs" />
-    <Compile Include="Forms\Contracts\ICompanySettingsFormContract.cs" />
+    <Compile Include="Forms\Contracts\ICompanyFormContract.cs" />
     <Compile Include="Forms\Contracts\ICreateAdvisorDialogContract.cs" />
     <Compile Include="Forms\Contracts\ICreateEmployeesDialogContract.cs" />
     <Compile Include="Forms\Contracts\ICreateDeadlineFormContract.cs" />
@@ -716,10 +724,9 @@
     <Compile Include="Forms\Contracts\ICreationUserFormContract.cs" />
     <Compile Include="Forms\Contracts\IDatabaseFileFormContract.cs" />
     <Compile Include="Forms\Contracts\IDatabaseManagerFormContract.cs" />
-    <Compile Include="Forms\Contracts\IDatabaseServerConnectFormContract.cs" />
+    <Compile Include="Forms\Contracts\IDatabaseConnectionFormContract.cs" />
     <Compile Include="Forms\Contracts\IDatabaseUpdateDialogContract.cs" />
     <Compile Include="Forms\Contracts\IDeadLinesFormContract.cs" />
-    <Compile Include="Forms\Contracts\IDesignFormContract.cs" />
     <Compile Include="Forms\Contracts\IDocumentsFormContract.cs" />
     <Compile Include="Forms\Contracts\IEditDataTableDialogContract.cs" />
     <Compile Include="Forms\Contracts\IEditTextDialogContract.cs" />
@@ -736,7 +743,7 @@
     <Compile Include="Forms\Contracts\IPrintClientsBooksDialogContract.cs" />
     <Compile Include="Forms\Contracts\IProgressDialogContract.cs" />
     <Compile Include="Forms\Contracts\IResetLayoutsDialogContract.cs" />
-    <Compile Include="Forms\Contracts\IOfficeCashFormContract.cs" />
+    <Compile Include="Forms\Contracts\IPettyCashFormContract.cs" />
     <Compile Include="Forms\Contracts\IPageSettingsFormContract.cs" />
     <Compile Include="Forms\Contracts\IStatisticsFormContract.cs" />
     <Compile Include="Forms\Contracts\IUserLoginFormContract.cs" />
@@ -747,7 +754,7 @@
     <Compile Include="Forms\Presenters\EmployeesFormPresenter.cs" />
     <Compile Include="Forms\Presenters\BankBookDialogPresenter.cs" />
     <Compile Include="Forms\Presenters\BankFormPresenter.cs" />
-    <Compile Include="Forms\Presenters\BookFormPresenter.cs" />
+    <Compile Include="Forms\Presenters\ClientBooksFormPresenter.cs" />
     <Compile Include="Forms\Presenters\CashBookDialogPresenter.cs" />
     <Compile Include="Forms\Presenters\CashCheckUpFormPresenter.cs" />
     <Compile Include="Forms\Presenters\CashFormPresenter.cs" />
@@ -757,7 +764,7 @@
     <Compile Include="Forms\Presenters\CreateClientDialogPresenter.cs" />
     <Compile Include="Forms\Presenters\ClientsFormPresenter.cs" />
     <Compile Include="Databases\Columns.cs" />
-    <Compile Include="Forms\Presenters\CompanySettingsFormPresenter.cs" />
+    <Compile Include="Forms\Presenters\CompanyFormPresenter.cs" />
     <Compile Include="Forms\Presenters\CreateAdvisorDialogPresenter.cs" />
     <Compile Include="Forms\Presenters\CreateEmployeesDialogPresenter.cs" />
     <Compile Include="Forms\Presenters\CreateDeadlineFormPresenter.cs" />
@@ -765,10 +772,9 @@
     <Compile Include="Forms\Presenters\CreationUserFormPresenter.cs" />
     <Compile Include="Forms\Presenters\DatabaseFileFormPresenter.cs" />
     <Compile Include="Forms\Presenters\DatabaseManagerFormPresenter.cs" />
-    <Compile Include="Forms\Presenters\DatabaseServerConnectFormPresenter.cs" />
+    <Compile Include="Forms\Presenters\DatabaseConnectionFormPresenter.cs" />
     <Compile Include="Forms\Presenters\DatabaseUpdateDialogPresenter.cs" />
     <Compile Include="Forms\Presenters\DeadLinesFormPresenter.cs" />
-    <Compile Include="Forms\Presenters\DesignFormPresenter.cs" />
     <Compile Include="Forms\Presenters\DocumentsFormPresenter.cs" />
     <Compile Include="Forms\Presenters\EditDataTableDialogPresenter.cs" />
     <Compile Include="Forms\Presenters\EditTextDialogPresenter.cs" />
@@ -781,7 +787,7 @@
     <Compile Include="Forms\Presenters\MainMenuFormPresenter.cs" />
     <Compile Include="Forms\Presenters\MainFormPresenter.cs" />
     <Compile Include="Forms\Presenters\MonthCalendarDialogPresenter.cs" />
-    <Compile Include="Forms\Presenters\OfficeCashFormPresenter.cs" />
+    <Compile Include="Forms\Presenters\PettyCashFormPresenter.cs" />
     <Compile Include="Forms\Presenters\PrintBooksDialogPresenter.cs" />
     <Compile Include="Forms\Presenters\PrintClientsBooksDialogPresenter.cs" />
     <Compile Include="Forms\Presenters\ProgressDialogPresenter.cs" />
@@ -796,19 +802,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EnumResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>EnumResources1.Designer.cs</LastGenOutput>
+      <LastGenOutput>EnumResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DataExchangeForm.resx">
+      <DependentUpon>DataExchangeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DataExchangeForm.de.resx">
       <DependentUpon>DataExchangeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Dialoge\ProgressDialog.de.resx">
       <DependentUpon>ProgressDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Messages.de.resx">
-      <DependentUpon>Messages.resx</DependentUpon>
-      <SubType>Designer</SubType>
+    <EmbeddedResource Include="Forms\MainForm.da.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Messages.zh-Hans.resx">
+    <EmbeddedResource Include="Messages.de.resx">
       <DependentUpon>Messages.resx</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -816,6 +824,323 @@
       <SubType>Designer</SubType>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Messages1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="*.tr.resx">
+      <DependentUpon>$([System.Text.RegularExpressions.Regex]::Replace('%(Filename)', '\.tr$', '')).resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="*.ru.resx">
+      <DependentUpon>$([System.Text.RegularExpressions.Regex]::Replace('%(Filename)', '\.ru$', '')).resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormControls\*.tr.resx">
+      <DependentUpon>$([System.Text.RegularExpressions.Regex]::Replace('%(Filename)', '\.tr$', '')).cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormControls\*.ru.resx">
+      <DependentUpon>$([System.Text.RegularExpressions.Regex]::Replace('%(Filename)', '\.ru$', '')).cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AboutForm.tr.resx">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AdvisorForm.tr.resx">
+      <DependentUpon>AdvisorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\BankForm.tr.resx">
+      <DependentUpon>BankForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ClientBooksForm.tr.resx">
+      <DependentUpon>ClientBooksForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CashCheckUpForm.tr.resx">
+      <DependentUpon>CashCheckUpForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CashForm.tr.resx">
+      <DependentUpon>CashForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ChangeDeadlineForm.tr.resx">
+      <DependentUpon>ChangeDeadlineForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ChangeUserForm.tr.resx">
+      <DependentUpon>ChangeUserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ClientsForm.tr.resx">
+      <DependentUpon>ClientsForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CompanyForm.tr.resx">
+      <DependentUpon>CompanyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CreationUserForm.tr.resx">
+      <DependentUpon>CreationUserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DatabaseFileForm.tr.resx">
+      <DependentUpon>DatabaseFileForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DatabaseManagerForm.tr.resx">
+      <DependentUpon>DatabaseManagerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DatabaseConnectionForm.tr.resx">
+      <DependentUpon>DatabaseConnectionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DataExchangeForm.tr.resx">
+      <DependentUpon>DataExchangeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DeadLinesForm.tr.resx">
+      <DependentUpon>DeadLinesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DocumentsForm.tr.resx">
+      <DependentUpon>DocumentsForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EmployeesForm.tr.resx">
+      <DependentUpon>EmployeesForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form.tr.resx">
+      <DependentUpon>Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ImprovedForm.tr.resx">
+      <DependentUpon>ImprovedForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LayoutManager.tr.resx">
+      <DependentUpon>LayoutManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForm.tr.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainMenuForm.tr.resx">
+      <DependentUpon>MainMenuForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PettyCashForm.tr.resx">
+      <DependentUpon>PettyCashForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PageSettingsForm.tr.resx">
+      <DependentUpon>PageSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\StatisticsForm.tr.resx">
+      <DependentUpon>StatisticsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserLoginForm.tr.resx">
+      <DependentUpon>UserLoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserManagerForm.tr.resx">
+      <DependentUpon>UserManagerForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AboutForm.ru.resx">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AdvisorForm.ru.resx">
+      <DependentUpon>AdvisorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\BankForm.ru.resx">
+      <DependentUpon>BankForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ClientBooksForm.ru.resx">
+      <DependentUpon>ClientBooksForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CashCheckUpForm.ru.resx">
+      <DependentUpon>CashCheckUpForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CashForm.ru.resx">
+      <DependentUpon>CashForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ChangeDeadlineForm.ru.resx">
+      <DependentUpon>ChangeDeadlineForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ChangeUserForm.ru.resx">
+      <DependentUpon>ChangeUserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ClientsForm.ru.resx">
+      <DependentUpon>ClientsForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CompanyForm.ru.resx">
+      <DependentUpon>CompanyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CreationUserForm.ru.resx">
+      <DependentUpon>CreationUserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DatabaseFileForm.ru.resx">
+      <DependentUpon>DatabaseFileForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DatabaseManagerForm.ru.resx">
+      <DependentUpon>DatabaseManagerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DatabaseConnectionForm.ru.resx">
+      <DependentUpon>DatabaseConnectionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DataExchangeForm.ru.resx">
+      <DependentUpon>DataExchangeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DeadLinesForm.ru.resx">
+      <DependentUpon>DeadLinesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DocumentsForm.ru.resx">
+      <DependentUpon>DocumentsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EmployeesForm.ru.resx">
+      <DependentUpon>EmployeesForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form.ru.resx">
+      <DependentUpon>Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ImprovedForm.ru.resx">
+      <DependentUpon>ImprovedForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LayoutManager.ru.resx">
+      <DependentUpon>LayoutManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForm.ru.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainMenuForm.ru.resx">
+      <DependentUpon>MainMenuForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PettyCashForm.ru.resx">
+      <DependentUpon>PettyCashForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PageSettingsForm.ru.resx">
+      <DependentUpon>PageSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\StatisticsForm.ru.resx">
+      <DependentUpon>StatisticsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserLoginForm.ru.resx">
+      <DependentUpon>UserLoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserManagerForm.ru.resx">
+      <DependentUpon>UserManagerForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\BankBookDialog.tr.resx">
+      <DependentUpon>BankBookDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\CashBookDialog.tr.resx">
+      <DependentUpon>CashBookDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\CashOfficeBookDialog.tr.resx">
+      <DependentUpon>CashOfficeBookDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\ClientBookDialog.tr.resx">
+      <DependentUpon>ClientBookDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\CreateAdvisorDialog.tr.resx">
+      <DependentUpon>CreateAdvisorDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\CreateClientDialog.tr.resx">
+      <DependentUpon>CreateClientDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\CreateDocumentDialog.tr.resx">
+      <DependentUpon>CreateDocumentDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\CreateEmployeesDialog.tr.resx">
+      <DependentUpon>CreateEmployeesDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\DatabaseUpdateDialog.tr.resx">
+      <DependentUpon>DatabaseUpdateDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\EditDataTableDialog.tr.resx">
+      <DependentUpon>EditDataTableDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\EditTextDialog.tr.resx">
+      <DependentUpon>EditTextDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\InputDialog.tr.resx">
+      <DependentUpon>InputDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\IoanPaybackDialog.tr.resx">
+      <DependentUpon>IoanPaybackDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\LicenseCheckDialog.tr.resx">
+      <DependentUpon>LicenseCheckDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\MonthCalendarDialog.tr.resx">
+      <DependentUpon>MonthCalendarDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\PrintBooksDialog.tr.resx">
+      <DependentUpon>PrintBooksDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\PrintClientsBooksDialog.tr.resx">
+      <DependentUpon>PrintClientsBooksDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\ProgressDialog.tr.resx">
+      <DependentUpon>ProgressDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\ResetLayoutsDialog.tr.resx">
+      <DependentUpon>ResetLayoutsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\BankBookDialog.ru.resx">
+      <DependentUpon>BankBookDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\CashBookDialog.ru.resx">
+      <DependentUpon>CashBookDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\CashOfficeBookDialog.ru.resx">
+      <DependentUpon>CashOfficeBookDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\ClientBookDialog.ru.resx">
+      <DependentUpon>ClientBookDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\CreateAdvisorDialog.ru.resx">
+      <DependentUpon>CreateAdvisorDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\CreateClientDialog.ru.resx">
+      <DependentUpon>CreateClientDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\CreateDocumentDialog.ru.resx">
+      <DependentUpon>CreateDocumentDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\CreateEmployeesDialog.ru.resx">
+      <DependentUpon>CreateEmployeesDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\DatabaseUpdateDialog.ru.resx">
+      <DependentUpon>DatabaseUpdateDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\EditDataTableDialog.ru.resx">
+      <DependentUpon>EditDataTableDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\EditTextDialog.ru.resx">
+      <DependentUpon>EditTextDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\InputDialog.ru.resx">
+      <DependentUpon>InputDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\IoanPaybackDialog.ru.resx">
+      <DependentUpon>IoanPaybackDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\LicenseCheckDialog.ru.resx">
+      <DependentUpon>LicenseCheckDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\MonthCalendarDialog.ru.resx">
+      <DependentUpon>MonthCalendarDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\PrintBooksDialog.ru.resx">
+      <DependentUpon>PrintBooksDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\PrintClientsBooksDialog.ru.resx">
+      <DependentUpon>PrintClientsBooksDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\ProgressDialog.ru.resx">
+      <DependentUpon>ProgressDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialoge\ResetLayoutsDialog.ru.resx">
+      <DependentUpon>ResetLayoutsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\*.tr.resx">
+      <DependentUpon>$([System.Text.RegularExpressions.Regex]::Replace('%(Filename)', '\.tr$', '')).resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\*.ru.resx">
+      <DependentUpon>$([System.Text.RegularExpressions.Regex]::Replace('%(Filename)', '\.ru$', '')).resx</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormControls\Button.resx">
       <DependentUpon>Button.cs</DependentUpon>
@@ -894,6 +1219,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\EmployeesForm.de.resx">
       <DependentUpon>EmployeesForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CashCheckUpForm.de.resx">
       <DependentUpon>CashCheckUpForm.cs</DependentUpon>
@@ -904,6 +1230,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AdvisorForm.de.resx">
       <DependentUpon>AdvisorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AdvisorForm.resx">
       <DependentUpon>AdvisorForm.cs</DependentUpon>
@@ -913,15 +1240,17 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\BankForm.de.resx">
       <DependentUpon>BankForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\BankForm.resx">
       <DependentUpon>BankForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\BookForm.de.resx">
-      <DependentUpon>BookForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\ClientBooksForm.de.resx">
+      <DependentUpon>ClientBooksForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\BookForm.resx">
-      <DependentUpon>BookForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\ClientBooksForm.resx">
+      <DependentUpon>ClientBooksForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CashCheckUpForm.resx">
@@ -929,9 +1258,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CashForm.de.resx">
       <DependentUpon>CashForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CashForm.resx">
       <DependentUpon>CashForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ChangeUserForm.resx">
       <DependentUpon>ChangeUserForm.cs</DependentUpon>
@@ -939,6 +1270,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ClientsForm.de.resx">
       <DependentUpon>ClientsForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ClientsForm.resx">
       <DependentUpon>ClientsForm.cs</DependentUpon>
@@ -950,11 +1282,11 @@
     <EmbeddedResource Include="Forms\DatabaseManagerForm.resx">
       <DependentUpon>DatabaseManagerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\DatabaseServerConnectForm.de.resx">
-      <DependentUpon>DatabaseServerConnectForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\DatabaseConnectionForm.de.resx">
+      <DependentUpon>DatabaseConnectionForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\DatabaseServerConnectForm.resx">
-      <DependentUpon>DatabaseServerConnectForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\DatabaseConnectionForm.resx">
+      <DependentUpon>DatabaseConnectionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CreationUserForm.de.resx">
       <DependentUpon>CreationUserForm.cs</DependentUpon>
@@ -1009,9 +1341,6 @@
     <EmbeddedResource Include="Forms\Dialoge\EditTextDialog.de.resx">
       <DependentUpon>EditTextDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Dialoge\ImportClientsDialog.de.resx">
-      <DependentUpon>ImportClientsDialog.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Dialoge\CreateDocumentDialog.de.resx">
       <DependentUpon>CreateDocumentDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -1047,9 +1376,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Dialoge\EditTextDialog.resx">
       <DependentUpon>EditTextDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Dialoge\ImportClientsDialog.resx">
-      <DependentUpon>ImportClientsDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Dialoge\CreateDocumentDialog.resx">
       <DependentUpon>CreateDocumentDialog.cs</DependentUpon>
@@ -1090,6 +1416,12 @@
     <EmbeddedResource Include="Forms\AdministrationForm.de.resx">
       <DependentUpon>AdministrationForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AdministrationForm.tr.resx">
+      <DependentUpon>AdministrationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AdministrationForm.ru.resx">
+      <DependentUpon>AdministrationForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\AdministrationForm.resx">
       <DependentUpon>AdministrationForm.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -1115,12 +1447,6 @@
     <EmbeddedResource Include="Forms\PageSettingsForm.de.resx">
       <DependentUpon>PageSettingsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\DesignForm.de.resx">
-      <DependentUpon>DesignForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\DesignForm.resx">
-      <DependentUpon>DesignForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\UserLoginForm.de.resx">
       <DependentUpon>UserLoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1139,21 +1465,23 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DocumentsForm.de.resx">
       <DependentUpon>DocumentsForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DocumentsForm.resx">
       <DependentUpon>DocumentsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\OfficeCashForm.de.resx">
-      <DependentUpon>OfficeCashForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\PettyCashForm.de.resx">
+      <DependentUpon>PettyCashForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\OfficeCashForm.resx">
-      <DependentUpon>OfficeCashForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\PettyCashForm.resx">
+      <DependentUpon>PettyCashForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CompanySettingsForm.de.resx">
-      <DependentUpon>CompanySettingsForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\CompanyForm.de.resx">
+      <DependentUpon>CompanyForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CompanySettingsForm.resx">
-      <DependentUpon>CompanySettingsForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\CompanyForm.resx">
+      <DependentUpon>CompanyForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PageSettingsForm.resx">
       <DependentUpon>PageSettingsForm.cs</DependentUpon>
@@ -1196,6 +1524,10 @@
     <EmbeddedResource Include="Resources\ELINA.ttf" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Version\update 1.0.13.0.sql" />
+    <EmbeddedResource Include="Version\update 1.0.12.0.sql" />
+    <EmbeddedResource Include="Version\update 1.0.11.0.sql" />
+    <EmbeddedResource Include="Version\update 1.0.10.0.sql" />
     <EmbeddedResource Include="Version\update 1.0.9.0.sql" />
     <EmbeddedResource Include="Version\update 1.0.7.2.sql" />
     <EmbeddedResource Include="Version\1.0.7.1.sql" />

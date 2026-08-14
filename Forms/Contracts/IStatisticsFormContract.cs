@@ -8,6 +8,7 @@ namespace Pflegehaushaltsbuch.Forms
         int SelectedStatisticIndex { get; set; }
         DateTime BeginDate { get; set; }
         DateTime EndDate { get; set; }
+        void SetDateRange(DateTime beginDate, DateTime endDate);
         void UpdateDiagram(Dictionary<DateTime, decimal[]> values, decimal maxAmount);
         void ShowMainForm();
         void ShowMessage(string msg);

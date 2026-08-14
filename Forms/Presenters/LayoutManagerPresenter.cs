@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -50,11 +51,6 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
                 fontSizes.Add(i);
             View.BindFontSizes(fontSizes);
         }
-
-        //public virtual void OnUserRights(int access, bool admin, bool supervisor)
-        //{
-        //    View.SetSaveEnabled(admin | supervisor);
-        //}
 
         public virtual void Enter()
         {
@@ -452,9 +448,15 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
                 string fileName;
                 if (View.ShowImageFileDialog(out fileName))
                 {
-                    System.Drawing.Image image = System.Drawing.Image.FromFile(fileName);
-                    foreach (ImageItem item in imageItems)
-                        item.Image = image;
+                    using (Image image = LoadImage(fileName))
+                    {
+                        foreach (ImageItem item in imageItems)
+                        {
+                            Image previousImage = item.Image;
+                            item.Image = new Bitmap(image);
+                            previousImage?.Dispose();
+                        }
+                    }
                     UpdateLayout();
                 }
                 return;
@@ -581,6 +583,15 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
         private void SetVerticalAlignmentSelection(StringAlignment alignment)
         {
             View.SetVerticalAlignment(alignment);
+        }
+
+        private static System.Drawing.Image LoadImage(string fileName)
+        {
+            using (FileStream stream = File.OpenRead(fileName))
+            using (System.Drawing.Image image = System.Drawing.Image.FromStream(stream))
+            {
+                return new Bitmap(image);
+            }
         }
     }
 

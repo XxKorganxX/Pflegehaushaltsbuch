@@ -22,13 +22,8 @@ namespace Pflegehaushaltsbuch.Forms
             if (rights == null)
                 return;
 
-            if (rights.IsSupervisor)
-            {
-                updateButton.Visible = true;
-                view.AllowUserToDeleteRows = true;
-            }
-            insertButton.Enabled = rights.CanInsert;
-            changeButton.Enabled = rights.CanModify;
+            insertButton.Enabled = rights.CanAccessRepresentatives && rights.CanInsert;
+            changeButton.Enabled = rights.CanAccessRepresentatives && rights.CanModify;
             deleteButton.Enabled = rights.CanDelete;
         }
 

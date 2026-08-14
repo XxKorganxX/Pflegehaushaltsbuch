@@ -1,7 +1,6 @@
 using System;
 using Pflegehaushaltsbuch.Databases;
 using Pflegehaushaltsbuch.Forms.Presenters;
-using System.Data;
 using System.Windows.Forms;
 namespace Pflegehaushaltsbuch.Forms
 {
@@ -93,11 +92,13 @@ namespace Pflegehaushaltsbuch.Forms
         /// <summary>
         /// Runs the show change user dialog view action for the presenter.
         /// </summary>
-        bool IUserLoginFormContract.ShowChangeUserDialog(SqlSession session, string user, string keyword, DataTable users)
+        bool IUserLoginFormContract.ShowChangePasswordDialog(out string keyword)
         {
-            using (ChangeUserForm createPasswordForm = new ChangeUserForm(session, user, keyword, users))
+            using (ChangeUserForm createPasswordForm = new ChangeUserForm())
             {
-                return createPasswordForm.ShowDialog(this) == DialogResult.OK;
+                bool accepted = createPasswordForm.ShowDialog(this) == DialogResult.OK;
+                keyword = accepted ? ((IChangeUserFormContract)createPasswordForm).Keyword : string.Empty;
+                return accepted;
             }
         }
 

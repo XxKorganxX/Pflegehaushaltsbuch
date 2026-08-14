@@ -23,7 +23,7 @@ namespace Pflegehaushaltsbuch.Data.Graphics
         /// <summary>
         /// Runs the paint operation and updates the related application state.
         /// </summary>
-        public override void Paint(System.Drawing.Graphics g, int translateY, SQLBase sql, int page, int lastPage, out bool hasMorePages)
+        public override void Paint(System.Drawing.Graphics g, int translateY, SQLBase sql, Company company, int page, int lastPage, out bool hasMorePages)
         {
             throw new NotImplementedException();
         }

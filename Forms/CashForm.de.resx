@@ -182,9 +182,6 @@
   <data name="amountColumn.Width" type="System.Int32, mscorlib">
     <value>74</value>
   </data>
-  <data name="handsignColumn.HeaderText" xml:space="preserve">
-    <value>Hz</value>
-  </data>
   <data name="label19.Text" xml:space="preserve">
     <value>Kassenbestand</value>
   </data>

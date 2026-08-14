@@ -16,6 +16,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="Microsoft.Data.SqlClient">
+      <HintPath>..\packages\Microsoft.Data.SqlClient.7.0.2\lib\net462\Microsoft.Data.SqlClient.dll</HintPath>
+    </Reference>
     <ProjectReference Include="..\Pflegehaushaltsbuch.csproj" />
   </ItemGroup>
 

@@ -86,6 +86,7 @@ namespace Pflegehaushaltsbuch.Forms.Dialoge
             this.dateTimeBox.BackColor = System.Drawing.Color.Transparent;
             this.dateTimeBox.Days = false;
             this.dateTimeBox.Name = "dateTimeBox";
+            this.dateTimeBox.ShowYear = true;
             // 
             // label1
             // 
@@ -97,7 +98,6 @@ namespace Pflegehaushaltsbuch.Forms.Dialoge
             // tableLayoutPanel1
             // 
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel1.BorderColor = System.Drawing.Color.Empty;
             this.tableLayoutPanel1.Controls.Add(this.label7, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 6);

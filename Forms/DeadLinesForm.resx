@@ -172,7 +172,7 @@
     <value>148, 60</value>
   </data>
   <data name="backButton.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>1</value>
   </data>
   <data name="backButton.Text" xml:space="preserve">
     <value>Back</value>
@@ -238,7 +238,7 @@
     <value>288, 25</value>
   </data>
   <data name="clientNameBox.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;clientNameBox.Name" xml:space="preserve">
     <value>clientNameBox</value>
@@ -304,7 +304,7 @@
     <value>237, 26</value>
   </data>
   <data name="fromDateBox.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;fromDateBox.Name" xml:space="preserve">
     <value>fromDateBox</value>
@@ -331,7 +331,7 @@
     <value>713, 33</value>
   </data>
   <data name="tableLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel2.Name" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -403,7 +403,7 @@
     <value>713, 222</value>
   </data>
   <data name="view.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;view.Name" xml:space="preserve">
     <value>view</value>
@@ -475,7 +475,7 @@
     <value>739, 48</value>
   </data>
   <data name="label14.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+    <value>1</value>
   </data>
   <data name="label14.Text" xml:space="preserve">
     <value>Deadlines</value>

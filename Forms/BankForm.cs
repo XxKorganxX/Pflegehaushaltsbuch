@@ -6,9 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
-using System.ServiceModel;
 using System.Windows.Forms;
-using DataGridView = Pflegehaushaltsbuch.FormControls.DataGridView;
 
 namespace Pflegehaushaltsbuch.Forms
 {
@@ -18,6 +16,8 @@ namespace Pflegehaushaltsbuch.Forms
     public partial class BankForm : Form, IBankFormContract
     {
         private readonly BankFormPresenter presenter;
+        private Dictionary<int, string> accountLookup = new Dictionary<int, string>();
+        private bool initializingPeriodDateRange;
 
         /// <summary>
         /// Creates a new BankForm view.
@@ -28,6 +28,7 @@ namespace Pflegehaushaltsbuch.Forms
             Session = session;
             presenter = new BankFormPresenter(this, session);
             view.AutoGenerateColumns = false;
+            ApplyCurrencyFormat(amountColumn);
             Enter += CashForm_Enter;
             Leave += CashForm_Leave;
             view.CellFormatting += CellFormatting;
@@ -41,12 +42,7 @@ namespace Pflegehaushaltsbuch.Forms
             if (rights == null)
                 return;
 
-            if (rights.IsSupervisor)
-            {
-                updateButton.Visible = true;
-                view.AllowUserToDeleteRows = true;
-            }
-            bookButton.Enabled = rights.CanInsert | rights.CanModify;
+            bookButton.Enabled = rights.CanAccessBankBalance && rights.CanBook;
         }
 
         /// <summary>
@@ -63,6 +59,16 @@ namespace Pflegehaushaltsbuch.Forms
                     e.CellStyle.ForeColor = Color.Red;
                 e.Value = ((SQLBase.BookCategory)index).GetDisplayName();
             }
+            else if (e.ColumnIndex == bookToColumn.Index && e.Value != null)
+            {
+                int accountId;
+                string accountName;
+                if (Int32.TryParse(e.Value.ToString(), out accountId) && accountLookup.TryGetValue(accountId, out accountName))
+                {
+                    e.Value = accountName;
+                    e.FormattingApplied = true;
+                }
+            }
         }
 
         /// <summary>
@@ -71,7 +77,8 @@ namespace Pflegehaushaltsbuch.Forms
         async void CashForm_Enter(object sender, EventArgs e)
         {
             ApplyCurrentUserRights();
-            await presenter.ConnectTableToDataBaseAsync();
+            ApplyCurrencyFormat(amountColumn);
+            await presenter.EnterAsync();
         }
 
         /// <summary>
@@ -127,6 +134,8 @@ namespace Pflegehaushaltsbuch.Forms
         private async void date_ValueChanged()
         {
             if (DesignMode)
+                return;
+            if (initializingPeriodDateRange)
                 return;
 
             await presenter.DateChangedAsync();
@@ -185,6 +194,26 @@ namespace Pflegehaushaltsbuch.Forms
         bool IBankFormContract.PeriodChecked
         {
             get { return periodCheckBox.Checked; }
+        }
+
+        void IBankFormContract.SetPeriodDateRange(DateTime fromDate, DateTime toDate)
+        {
+            initializingPeriodDateRange = true;
+            try
+            {
+                fromDateBox.Date = fromDate;
+                toDateBox.Date = toDate;
+            }
+            finally
+            {
+                initializingPeriodDateRange = false;
+            }
+        }
+
+        void IBankFormContract.SetAccountLookup(Dictionary<int, string> accountLookup)
+        {
+            this.accountLookup = accountLookup ?? new Dictionary<int, string>();
+            view.InvalidateColumn(bookToColumn.Index);
         }
 
         void IBankFormContract.SetTotalAmount(string totalAmount)

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="backupFileDialog.Filter" xml:space="preserve">
+    <value>XML|*.xml</value>
+  </data>
+  <data name="openBackupFileDialog.Filter" xml:space="preserve">
+    <value>XML|*.xml</value>
+  </data>
+  <data name="userRightsButton.Text" xml:space="preserve">
+    <value>Пользователи</value>
+  </data>
+  <data name="companyButton.Text" xml:space="preserve">
+    <value>Данные организации</value>
+  </data>
+  <data name="layoutButton.Text" xml:space="preserve">
+    <value>Шаблоны печати</value>
+  </data>
+  <data name="connectDatabaseButton.Text" xml:space="preserve">
+    <value>Подключить
+базу данных</value>
+  </data>
+  <data name="dataExchangeButton.Text" xml:space="preserve">
+    <value>Обмен данными</value>
+  </data>
+  <data name="disconnectDatabaseButton.Text" xml:space="preserve">
+    <value>Отключить
+базу данных</value>
+  </data>
+  <data name="restoreButton.Text" xml:space="preserve">
+    <value>Восстановить
+базу данных</value>
+  </data>
+  <data name="databaseBackupButton.Text" xml:space="preserve">
+    <value>Резервная копия
+базы данных</value>
+  </data>
+  <data name="exitButton.Text" xml:space="preserve">
+    <value>Назад</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Настройки администрирования</value>
+  </data>
+</root>

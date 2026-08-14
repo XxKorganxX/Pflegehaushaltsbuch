@@ -39,16 +39,11 @@ namespace Pflegehaushaltsbuch.Forms.Dialoge
             // 
             // label1
             // 
-            this.label1.AttachRegion = false;
             resources.ApplyResources(this.label1, "label1");
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel1.SetColumnSpan(this.label1, 2);
-            this.label1.DrawLine = false;
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Gradiant = false;
-            this.label1.LinePadding = 0;
             this.label1.Name = "label1";
-            this.label1.Radius = 0F;
             // 
             // progressBar1
             // 
@@ -59,35 +54,22 @@ namespace Pflegehaushaltsbuch.Forms.Dialoge
             // 
             // label2
             // 
-            this.label2.AttachRegion = false;
             resources.ApplyResources(this.label2, "label2");
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.DrawLine = false;
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Gradiant = false;
-            this.label2.LinePadding = 0;
             this.label2.Name = "label2";
-            this.label2.Radius = 0F;
             // 
             // versionBox
             // 
-            this.versionBox.AttachRegion = false;
             resources.ApplyResources(this.versionBox, "versionBox");
             this.versionBox.BackColor = System.Drawing.Color.Transparent;
-            this.versionBox.DrawLine = false;
             this.versionBox.ForeColor = System.Drawing.Color.White;
-            this.versionBox.Gradiant = false;
-            this.versionBox.LinePadding = 0;
             this.versionBox.Name = "versionBox";
-            this.versionBox.Radius = 0F;
             // 
             // tableLayoutPanel1
             // 
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
-            this.tableLayoutPanel1.Border = false;
             this.tableLayoutPanel1.BorderColor = System.Drawing.Color.Empty;
-            this.tableLayoutPanel1.BorderWidth = 1F;
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.progressBar1, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);

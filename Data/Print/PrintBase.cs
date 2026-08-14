@@ -52,7 +52,6 @@ namespace Pflegehaushaltsbuch.Data.Print
             using (FormControls.PrintPreviewDialog previewDialog = new FormControls.PrintPreviewDialog(Session, printDoc, doumentPath, documentName))
             {
                 previewDialog.PrintPreviewControl.Zoom = 1.5;
-                previewDialog.UpdateEmail(email);
                 printDoc.PrintPage += printDoc_PrintPage;
                 previewDialog.PrintPDF += PrintPDF;
                 if (previewDialog.ShowDialog(owner) != System.Windows.Forms.DialogResult.OK)
@@ -109,7 +108,7 @@ namespace Pflegehaushaltsbuch.Data.Print
                 if (item.Parent != null)
                     continue;
                 bool value;
-                item.Paint(g, 0, Session.SQL, e.PageSettings.PrinterSettings.ToPage, 0, out value);
+                item.Paint(g, 0, Session.SQL, Session.Company, e.PageSettings.PrinterSettings.ToPage, 0, out value);
                 if (value)
                     e.HasMorePages = true;
             }
@@ -155,7 +154,7 @@ namespace Pflegehaushaltsbuch.Data.Print
                 if (item.Parent != null)
                     continue;
                 bool value;
-                item.PaintPDF(g, 0, Session.SQL, pdfDocument.PageCount, 0, out value);
+                item.PaintPDF(g, 0, Session.SQL, Session.Company, pdfDocument.PageCount, 0, out value);
                 if (value)
                     HasMorePages = true;
             }

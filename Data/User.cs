@@ -13,14 +13,12 @@ namespace Pflegehaushaltsbuch.Data
     {
         private bool admin, supervisor;
         private int access;
-        private string name, phone, fax, email;
+        private string handsign, login;
         public bool Admin { get { return admin; } }
         internal bool Supervisor { get { return supervisor; } }
         public int Access { get { return access; } }
-        public string Name { get { return name; } }
-        public string Phone { get { return phone; } }
-        public string Fax { get { return fax; } }
-        public string Email { get { return email; } }
+        public string Handsign { get { return handsign; } }
+        public string Login { get { return login; } }
         /// <summary>
         /// Creates a new User instance and initializes the required state.
         /// </summary>
@@ -29,32 +27,107 @@ namespace Pflegehaushaltsbuch.Data
         {
             get
             {
-                return admin | Supervisor | ((access & (int)Enums.UserRightEnum.Insert) == (int)Enums.UserRightEnum.Insert);
+                return admin | ((access & (int)Enums.UserRightEnum.Insert) == (int)Enums.UserRightEnum.Insert);
             }
         }
         public bool CanModify
         {
             get 
             {
-                return admin | Supervisor | ((access & (int)Enums.UserRightEnum.Change) == (int)Enums.UserRightEnum.Change);
+                return admin | ((access & (int)Enums.UserRightEnum.Change) == (int)Enums.UserRightEnum.Change);
             }
         }
         public bool CanDelete
         {
             get
             {
-                return admin | Supervisor | ((access & (int)Enums.UserRightEnum.Delete) == (int)Enums.UserRightEnum.Delete);
+                return admin;
+            }
+        }
+        public bool CanBook
+        {
+            get
+            {
+                return admin | HasRight(Enums.UserRightEnum.Book);
+            }
+        }
+        public bool CanCancelBooking
+        {
+            get
+            {
+                return admin | HasRight(Enums.UserRightEnum.CancelBooking);
+            }
+        }
+        public bool CanAccessCashBalance
+        {
+            get
+            {
+                return admin | CanAccessArea(Enums.UserRightEnum.CashBalance);
+            }
+        }
+        public bool CanAccessBankBalance
+        {
+            get
+            {
+                return admin | CanAccessArea(Enums.UserRightEnum.BankBalance);
+            }
+        }
+        public bool CanAccessPettyCash
+        {
+            get
+            {
+                return admin | CanAccessArea(Enums.UserRightEnum.PettyCash);
+            }
+        }
+        public bool CanAccessClients
+        {
+            get
+            {
+                return admin | CanAccessArea(Enums.UserRightEnum.Clients);
+            }
+        }
+        public bool CanAccessRepresentatives
+        {
+            get
+            {
+                return admin | CanAccessArea(Enums.UserRightEnum.Representatives);
+            }
+        }
+        public bool CanAccessEmployees
+        {
+            get
+            {
+                return admin | CanAccessArea(Enums.UserRightEnum.Employees);
+            }
+        }
+        public bool CanAccessDocuments
+        {
+            get
+            {
+                return admin | CanAccessArea(Enums.UserRightEnum.Documents);
+            }
+        }
+        public bool CanAccessCashAudit
+        {
+            get
+            {
+                return admin | CanAccessArea(Enums.UserRightEnum.CashAudit);
+            }
+        }
+        public bool CanAccessStatistics
+        {
+            get
+            {
+                return admin | CanAccessArea(Enums.UserRightEnum.Statistics);
             }
         }
         /// <summary>
         /// Creates a user object from already authenticated data.
         /// </summary>
-        internal User(string name, string phone, string fax, string email, int access, bool admin, bool supervisor)
+        internal User(string handsign, string login, int access, bool admin, bool supervisor)
         {
-            this.name = name;
-            this.phone = phone;
-            this.fax = fax;
-            this.email = email;
+            this.handsign = handsign;
+            this.login = login;
             this.access = access;
             this.admin = admin;
             this.supervisor = supervisor;
@@ -75,22 +148,47 @@ namespace Pflegehaushaltsbuch.Data
             if (rows.Length == 0)
                 throw new Exception(Messages.database_login_failed);
             DataRow row = rows.First();
-            if (!PasswordHasher.Verify(oldKeyword, row[Columns.Password].ToString()))
+            if (!PasswordMatches(oldKeyword, row[Columns.Password].ToString()))
                 throw new Exception(Messages.login_invalid_password);
             row[Columns.Login] = login;
             row[Columns.Password] = PasswordHasher.Hash(keyword);
+            ResetLoginThrottle(row);
             if (!await sql.UpdateAdapterAsync(SQLBase.SELECT.Users, table))
                 throw new Exception(Messages.createUserFailed);
             await UserAuthenticator.LoginAsync(sql, username, keyword);
         }
+
         /// <summary>
-        /// Updates the user data and refreshes the related application state.
+        /// Updates only the password for the selected user.
         /// </summary>
-        internal static async Task UpdateUser(SQLBase sql, string oldLogin, string name, string login, string phone, string fax, string email, int access, bool admin)
+        internal static async Task UpdatePassword(SQLBase sql, string username, string newKeyword, string login)
         {
             DataTable table = new DataTable();
             await sql.FillAdapterAsync(SQLBase.SELECT.Users, table);
-            CheckUniqueNames(table, oldLogin, name, email);
+            DataRow[] rows = table.Rows
+                .OfType<DataRow>()
+                .Where(userRow => MatchesIdentity(userRow, username))
+                .ToArray();
+            if (rows.Length == 0)
+                throw new Exception(Messages.database_login_failed);
+
+            DataRow row = rows.First();
+            row[Columns.Password] = PasswordHasher.Hash(newKeyword);
+            ResetLoginThrottle(row);
+            if (!await sql.UpdateAdapterAsync(SQLBase.SELECT.Users, table))
+                throw new Exception(Messages.createUserFailed);
+
+            await UserAuthenticator.LoginAsync(sql, login, newKeyword);
+        }
+
+        /// <summary>
+        /// Updates the user data and refreshes the related application state.
+        /// </summary>
+        internal static async Task UpdateUser(SQLBase sql, string oldLogin, string handsign, string login, int access, bool admin)
+        {
+            DataTable table = new DataTable();
+            await sql.FillAdapterAsync(SQLBase.SELECT.Users, table);
+            CheckUniqueNames(table, oldLogin, handsign, login);
     
             DataRow[] rows = table.Rows
                 .OfType<DataRow>()
@@ -99,11 +197,8 @@ namespace Pflegehaushaltsbuch.Data
             if (rows.Length == 0)
                 throw new Exception(Messages.database_login_failed);
             DataRow row = rows.First();
-            row[Columns.Name] = name;
+            row[Columns.HandSign] = handsign;
             row[Columns.Login] = login;
-            row[Columns.Phone] = phone;
-            row[Columns.Fax] = fax;
-            row[Columns.Email] = email;
             row[Columns.Access] = access;
             row[Columns.Admin] = admin == true ? 1 : 0;
             if (!await sql.UpdateAdapterAsync(SQLBase.SELECT.Users, table))
@@ -112,21 +207,19 @@ namespace Pflegehaushaltsbuch.Data
         /// <summary>
         /// Creates the user data or user interface element for the current workflow.
         /// </summary>
-        internal static async Task CreateUser(SQLBase sql, string name, string login, string keyword, string phone, string fax, string email, int access, bool admin)
+        internal static async Task CreateUser(SQLBase sql, string handsign, string login, string keyword, int access, bool admin)
         {
             DataTable table = new DataTable();
             await sql.FillAdapterAsync(SQLBase.SELECT.Users, table);
-            //CheckExistNames(table, name, login, email);
+            CheckExistNames(table, handsign, login);
                 
             DataRow row = table.NewRow();
-            row[Columns.Name] = name;
+            row[Columns.HandSign] = handsign;
             row[Columns.Login] = login;
             row[Columns.Password] = PasswordHasher.Hash(keyword);
-            row[Columns.Phone] = phone;
-            row[Columns.Fax] = fax;
-            row[Columns.Email] = email;
             row[Columns.Access] = access;
             row[Columns.Admin] = admin;
+            ResetLoginThrottle(row);
             table.Rows.Add(row);
             if (!await sql.UpdateAdapterAsync(SQLBase.SELECT.Users, table))
                 throw new Exception(Messages.createUserFailed);
@@ -138,7 +231,7 @@ namespace Pflegehaushaltsbuch.Data
         {
             foreach (string name in names)
             {
-                if (table.Rows.OfType<DataRow>().Any(userRow => MatchesIdentity(userRow, name)))
+                if (table.Rows.OfType<DataRow>().Any(userRow => MatchesUserNameOrLogin(userRow, name)))
                     throw new Exception(Messages.createUserFailed);
             }
         }
@@ -150,7 +243,7 @@ namespace Pflegehaushaltsbuch.Data
             HashSet<DataRow> uniqueRows = new HashSet<DataRow>();
             foreach (string currentName in names)
             {
-                foreach (DataRow rw in table.Rows.OfType<DataRow>().Where(userRow => MatchesIdentity(userRow, currentName)))
+                foreach (DataRow rw in table.Rows.OfType<DataRow>().Where(userRow => MatchesUserNameOrLogin(userRow, currentName)))
                     uniqueRows.Add(rw);
             }
             if (uniqueRows.Count > 1)
@@ -158,9 +251,43 @@ namespace Pflegehaushaltsbuch.Data
         }
         internal static bool MatchesIdentity(DataRow row, string identity)
         {
-            return string.Equals(row[Columns.Name].ToString(), identity, StringComparison.Ordinal)
-                || string.Equals(row[Columns.Login].ToString(), identity, StringComparison.Ordinal)
-                || string.Equals(row[Columns.Email].ToString(), identity, StringComparison.Ordinal);
+            return string.Equals(row[Columns.Login].ToString(), identity, StringComparison.Ordinal);
+        }
+
+        private static bool MatchesUserNameOrLogin(DataRow row, string value)
+        {
+            return string.Equals(row[Columns.HandSign].ToString(), value, StringComparison.Ordinal)
+                || string.Equals(row[Columns.Login].ToString(), value, StringComparison.Ordinal);
+        }
+
+        private static bool PasswordMatches(string keyword, string storedPassword)
+        {
+            if (string.IsNullOrEmpty(storedPassword))
+                return string.IsNullOrEmpty(keyword);
+
+            return PasswordHasher.Verify(keyword, storedPassword);
+        }
+
+        private static void ResetLoginThrottle(DataRow row)
+        {
+            if (!row.Table.Columns.Contains(Columns.FailedLoginAttempts)
+                || !row.Table.Columns.Contains(Columns.LastFailedLogin)
+                || !row.Table.Columns.Contains(Columns.LockedUntil))
+                return;
+
+            row[Columns.FailedLoginAttempts] = 0;
+            row[Columns.LastFailedLogin] = DBNull.Value;
+            row[Columns.LockedUntil] = DBNull.Value;
+        }
+
+        private bool HasRight(Enums.UserRightEnum right)
+        {
+            return (access & (int)right) == (int)right;
+        }
+
+        private bool CanAccessArea(Enums.UserRightEnum right)
+        {
+            return HasRight(right);
         }
     }
 }

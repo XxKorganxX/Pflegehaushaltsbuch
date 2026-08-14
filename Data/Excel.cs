@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ClosedXML.Excel;
+
 namespace Pflegehaushaltsbuch.Data
 {
     /// <summary>
@@ -17,20 +17,19 @@ namespace Pflegehaushaltsbuch.Data
         /// </summary>
         public static DataTable Import(string filename, DataTable table, int rowLimit = int.MaxValue, HashSet<string> ignoreColumns = null)
         {
-            var excelApp = new Microsoft.Office.Interop.Excel.Application();
-            Microsoft.Office.Interop.Excel.Workbook workBook = excelApp.Workbooks.Open(filename, false, true);
-            try
+            using (XLWorkbook workbook = new XLWorkbook(filename))
             {
-                Microsoft.Office.Interop.Excel.Sheets excelSheets = workBook.Worksheets;
-                Microsoft.Office.Interop.Excel._Worksheet workSheet = excelApp.ActiveSheet;
-                Microsoft.Office.Interop.Excel.Range usedRange = workSheet.UsedRange;
-                var data = (System.Array)usedRange.Value;
-                var rows = data.GetLength(0);
-                var columns = data.GetLength(1);
+                IXLWorksheet worksheet = workbook.Worksheets.First();
+                IXLRange usedRange = worksheet.RangeUsed();
+                if (usedRange == null)
+                    return null;
+
+                int rows = usedRange.RowCount();
+                int columns = usedRange.ColumnCount();
                 List<DataColumn> columnsList = new List<DataColumn>();
-                for (int i = 1; i <= columns; i++)
+                for (int columnIndex = 1; columnIndex <= columns; columnIndex++)
                 {
-                    string columnName = data.GetValue(1, i).ToString();
+                    string columnName = GetImportColumnName(usedRange.Cell(1, columnIndex).GetString());
                     if (ignoreColumns != null && ignoreColumns.Contains(columnName, StringComparer.CurrentCultureIgnoreCase))
                         columnsList.Add(null);
                     else
@@ -39,30 +38,30 @@ namespace Pflegehaushaltsbuch.Data
                         columnsList.Add(column);
                     }
                 }
-                for (int i = 2; i <= rows; i++)
+
+                for (int rowIndex = 2; rowIndex <= rows; rowIndex++)
                 {
                     if (table.Rows.Count == rowLimit)
                         break;
+
                     DataRow row = table.NewRow();
-                    for (int j = 0; j < columns; j++)
+                    for (int columnIndex = 0; columnIndex < columns; columnIndex++)
                     {
-                        DataColumn column1 = columnsList[j];
-                        if (column1 == null)
+                        DataColumn column = columnsList[columnIndex];
+                        if (column == null)
                             continue;
-                        var value = data.GetValue(i, j + 1);
-                        if (value == null)
-                            row[column1] = column1.DefaultValue;
+
+                        IXLCell cell = usedRange.Cell(rowIndex, columnIndex + 1);
+                        if (cell.IsEmpty())
+                            row[column] = column.DefaultValue;
                         else
-                            row[column1] = value;
+                            row[column] = GetCellValue(cell, column.DataType);
                     }
+
                     table.Rows.Add(row);
                 }
             }
-            finally
-            {
-                workBook.Close(false, filename);
-                excelApp.Quit();
-            }
+
             return null;
         }
         /// <summary>
@@ -70,46 +69,155 @@ namespace Pflegehaushaltsbuch.Data
         /// </summary>
         public static void ExportToExcel(
             DataTable tbl, 
-            string filename)
+            string filename,
+            string currencyCode = null)
         {
-            tbl.Columns.Remove("handsign");
-            var excelApp = new Microsoft.Office.Interop.Excel.Application();
-            var workBook = excelApp.Workbooks.Add();
-            try
+            DataTable exportTable = tbl.Copy();
+
+            using (XLWorkbook workbook = new XLWorkbook())
             {
-                Microsoft.Office.Interop.Excel._Worksheet workSheet = excelApp.ActiveSheet;
-                Microsoft.Office.Interop.Excel.Range HeaderRange =
-                    workSheet.get_Range((Microsoft.Office.Interop.Excel.Range)
-                    (workSheet.Cells[1, 1]), (Microsoft.Office.Interop.Excel.Range)
-                    (workSheet.Cells[1, tbl.Columns.Count]));
-                object[] Header = new object[tbl.Columns.Count];
-                // column headings               
-                for (int i = 0; i < Header.Length; i++)
-                    Header[i] = tbl.Columns[i].ColumnName;
-                HeaderRange.Value = Header;
-                Microsoft.Office.Interop.Excel.Range CellRange =
-                workSheet.get_Range((Microsoft.Office.Interop.Excel.Range)
-                    (workSheet.Cells[2, 1]), (Microsoft.Office.Interop.Excel.Range)
-                    (workSheet.Cells[tbl.Rows.Count + 1, tbl.Columns.Count]));
-                // DataCells
-                int RowsCount = tbl.Rows.Count;
-                object[,] Cells = new object[RowsCount, tbl.Columns.Count];
-                for (int j = 0; j < RowsCount; j++)
+                IXLWorksheet worksheet = workbook.Worksheets.Add(GetWorksheetName(exportTable));
+
+                for (int columnIndex = 0; columnIndex < exportTable.Columns.Count; columnIndex++)
+                    worksheet.Cell(1, columnIndex + 1).SetValue(GetExportColumnName(exportTable.Columns[columnIndex], currencyCode));
+
+                for (int rowIndex = 0; rowIndex < exportTable.Rows.Count; rowIndex++)
                 {
-                    for (int i = 0; i < tbl.Columns.Count; i++)
-                        Cells[j, i] = tbl.Rows[j][i];
+                    for (int columnIndex = 0; columnIndex < exportTable.Columns.Count; columnIndex++)
+                        SetCellValue(worksheet.Cell(rowIndex + 2, columnIndex + 1), exportTable.Rows[rowIndex][columnIndex]);
                 }
-                CellRange.Value = Cells;
-                var ext = Path.GetExtension(filename);
-                if (!string.IsNullOrWhiteSpace(ext))
-                    filename = filename.Replace(ext, "");
-                workBook.SaveAs(filename);
+
+                if (exportTable.Columns.Count > 0)
+                {
+                    IXLRange headerRange = worksheet.Range(1, 1, 1, exportTable.Columns.Count);
+                    headerRange.Style.Font.Bold = true;
+                    worksheet.Columns().AdjustToContents();
+                }
+
+                workbook.SaveAs(EnsureExcelExtension(filename));
             }
-            finally
+        }
+
+        private static string GetExportColumnName(DataColumn column, string currencyCode)
+        {
+            string columnName = column.ColumnName;
+            if (IsCurrencyColumn(column) && !string.IsNullOrWhiteSpace(currencyCode))
+                return string.Format("{0} ({1})", columnName, currencyCode.Trim().ToUpperInvariant());
+
+            return columnName;
+        }
+
+        private static string GetImportColumnName(string columnName)
+        {
+            int suffixStart = columnName.LastIndexOf(" (", StringComparison.Ordinal);
+            if (suffixStart > 0 && columnName.EndsWith(")", StringComparison.Ordinal))
+                return columnName.Substring(0, suffixStart);
+
+            return columnName;
+        }
+
+        private static bool IsCurrencyColumn(DataColumn column)
+        {
+            return column.DataType == typeof(decimal)
+                && (column.ColumnName.IndexOf("amount", StringComparison.OrdinalIgnoreCase) >= 0
+                    || column.ColumnName.Equals("account_transfer", StringComparison.OrdinalIgnoreCase));
+        }
+
+        private static string EnsureExcelExtension(string filename)
+        {
+            if (string.IsNullOrWhiteSpace(Path.GetExtension(filename)))
+                return filename + ".xlsx";
+
+            return filename;
+        }
+
+        private static string GetWorksheetName(DataTable table)
+        {
+            string name = string.IsNullOrWhiteSpace(table.TableName) ? "Sheet1" : table.TableName;
+            foreach (char invalidChar in Path.GetInvalidFileNameChars())
+                name = name.Replace(invalidChar, '_');
+
+            name = name.Replace('[', '_')
+                .Replace(']', '_')
+                .Replace(':', '_')
+                .Replace('*', '_')
+                .Replace('?', '_')
+                .Replace('/', '_')
+                .Replace('\\', '_');
+
+            if (name.Length > 31)
+                name = name.Substring(0, 31);
+
+            return string.IsNullOrWhiteSpace(name) ? "Sheet1" : name;
+        }
+
+        private static void SetCellValue(IXLCell cell, object value)
+        {
+            if (value == null || value == DBNull.Value)
+                return;
+
+            if (value is DateTime)
             {
-                workBook.Close();
-                excelApp.Quit();
+                cell.SetValue((DateTime)value);
+                cell.Style.DateFormat.Format = ((DateTime)value).TimeOfDay == TimeSpan.Zero
+                    ? "dd.MM.yyyy"
+                    : "dd.MM.yyyy HH:mm:ss";
+                return;
             }
+
+            if (value is bool)
+            {
+                cell.SetValue((bool)value);
+                return;
+            }
+
+            if (value is byte || value is short || value is int || value is long ||
+                value is float || value is double || value is decimal)
+            {
+                cell.SetValue(Convert.ToDouble(value));
+                return;
+            }
+
+            cell.SetValue(value.ToString());
+        }
+
+        private static object GetCellValue(IXLCell cell, Type targetType)
+        {
+            Type nullableType = Nullable.GetUnderlyingType(targetType);
+            if (nullableType != null)
+                targetType = nullableType;
+
+            if (targetType == typeof(string))
+                return cell.GetFormattedString();
+
+            if (targetType == typeof(DateTime))
+                return cell.GetDateTime();
+
+            if (targetType == typeof(bool))
+                return cell.GetBoolean();
+
+            if (targetType == typeof(byte))
+                return Convert.ToByte(cell.GetDouble());
+
+            if (targetType == typeof(short))
+                return Convert.ToInt16(cell.GetDouble());
+
+            if (targetType == typeof(int))
+                return Convert.ToInt32(cell.GetDouble());
+
+            if (targetType == typeof(long))
+                return Convert.ToInt64(cell.GetDouble());
+
+            if (targetType == typeof(float))
+                return Convert.ToSingle(cell.GetDouble());
+
+            if (targetType == typeof(double))
+                return cell.GetDouble();
+
+            if (targetType == typeof(decimal))
+                return Convert.ToDecimal(cell.GetDouble());
+
+            return cell.GetFormattedString();
         }
     }
 }

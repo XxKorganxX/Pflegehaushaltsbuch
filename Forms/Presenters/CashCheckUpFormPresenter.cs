@@ -46,11 +46,11 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
             {
                 SQLBase.ClientActive clientActive = (SQLBase.ClientActive)Enum.Parse(typeof(SQLBase.ClientActive), row["active"].ToString(), true);
                 if (clientActive == SQLBase.ClientActive.Active)
-                    clientsActive += decimal.Parse(row["amount"].ToString());
+                    clientsActive += Convert.ToDecimal(row["amount"]);
                 else if (clientActive == SQLBase.ClientActive.Inactive)
-                    clientsInActive += decimal.Parse(row["amount"].ToString());
+                    clientsInActive += Convert.ToDecimal(row["amount"]);
                 else if (clientActive == SQLBase.ClientActive.History)
-                    clientsHistory += decimal.Parse(row["amount"].ToString());
+                    clientsHistory += Convert.ToDecimal(row["amount"]);
             }
 
             decimal clientTotal = clientsActive + clientsInActive + clientsHistory;
@@ -60,16 +60,16 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
             decimal assistantsAmount = 0;
             foreach (DataRow row in table.Rows)
             {
-                assistantsAmount += decimal.Parse(row["amount_payout"].ToString());
+                assistantsAmount += Convert.ToDecimal(row["amount_payout"]);
             }
 
             object bankTotalAmount = await session.SQL.GetViewAsync("bank_total_amount");
-            decimal bankAmount = decimal.Parse(bankTotalAmount.ToString());
+            decimal bankAmount = Convert.ToDecimal(bankTotalAmount);
 
             decimal calculatedSaldo = clientTotal - assistantsAmount - bankAmount;
 
             object bargeTotalAmount = await session.SQL.GetViewAsync("cash_total_amount");
-            decimal bargeAmount = decimal.Parse(bargeTotalAmount.ToString());
+            decimal bargeAmount = Convert.ToDecimal(bargeTotalAmount);
             summary = new CashCheckUpSummary
             {
                 ClientsActive = clientsActive,
@@ -118,14 +118,14 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
                 return;
 
             session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.date, DateTime.Now.ToShortDateString());
-            session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.amount_clients_active, summary.ClientsActive.ToString("C"));
-            session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.amount_clients_inactive, summary.ClientsInactive.ToString("C"));
-            session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.amount_clients_history, summary.ClientsHistory.ToString("C"));
-            session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.amount_clients, summary.ClientsTotal.ToString("C"));
-            session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.amount_assistants, summary.AssistantsAmount.ToString("C"));
-            session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.amount_bank, summary.BankSaldo.ToString("C"));
-            session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.amount_hardmoney_calculated, summary.CalculatedSaldo.ToString("C"));
-            session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.amount_hardmoney_actually, summary.HardCashAmount.ToString("C"));
+            session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.amount_clients_active, summary.ClientsActive.ToString("C", session.Company.Currencies));
+            session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.amount_clients_inactive, summary.ClientsInactive.ToString("C", session.Company.Currencies));
+            session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.amount_clients_history, summary.ClientsHistory.ToString("C", session.Company.Currencies));
+            session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.amount_clients, summary.ClientsTotal.ToString("C", session.Company.Currencies));
+            session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.amount_assistants, summary.AssistantsAmount.ToString("C", session.Company.Currencies));
+            session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.amount_bank, summary.BankSaldo.ToString("C", session.Company.Currencies));
+            session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.amount_hardmoney_calculated, summary.CalculatedSaldo.ToString("C", session.Company.Currencies));
+            session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.amount_hardmoney_actually, summary.HardCashAmount.ToString("C", session.Company.Currencies));
             View.PrintCashAudit();
         }
     }

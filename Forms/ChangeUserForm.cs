@@ -1,6 +1,4 @@
 using System;
-using System.Data;
-using Pflegehaushaltsbuch.Databases;
 using Pflegehaushaltsbuch.Forms.Presenters;
 
 namespace Pflegehaushaltsbuch.Forms
@@ -15,38 +13,18 @@ namespace Pflegehaushaltsbuch.Forms
         /// <summary>
         /// Creates a new ChangeUserForm view.
         /// </summary>
-        public ChangeUserForm(SqlSession session, string username, string keyword, DataTable users)
+        public ChangeUserForm()
         {
             InitializeComponent();
-            Session = session;
-            presenter = new ChangeUserFormPresenter(this, session);
-            presenter.Initialize(username, keyword, users);
+            presenter = new ChangeUserFormPresenter(this);
         }
 
         /// <summary>
         /// Handles the click event for ok Button and updates the related state.
         /// </summary>
-        private async void okButton_Click(object sender, EventArgs e)
+        private void okButton_Click(object sender, EventArgs e)
         {
-            await presenter.OkAsync();
-        }
-
-        /// <summary>
-        /// Provides the user name value for the presenter.
-        /// </summary>
-        string IChangeUserFormContract.UserName
-        {
-            get { return usernameBox.Text.Trim(); }
-            set { usernameBox.Text = value; }
-        }
-
-        /// <summary>
-        /// Provides the login value for the presenter.
-        /// </summary>
-        string IChangeUserFormContract.Login
-        {
-            get { return loginBox.Text.Trim(); }
-            set { loginBox.Text = value; }
+            presenter.Ok();
         }
 
         /// <summary>

@@ -27,48 +27,59 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
 
         public virtual void InitializeNew()
         {
-            View.Phone = session.SQL.Company.Phone;
-            View.Fax = session.SQL.Company.Fax;
             View.InsertAllowed = true;
             View.ChangeAllowed = true;
+            View.BookAllowed = true;
+            View.CancelBookingAllowed = true;
+            View.CashBalanceAllowed = true;
+            View.BankBalanceAllowed = true;
+            View.PettyCashAllowed = true;
+            View.ClientsAllowed = true;
+            View.RepresentativesAllowed = true;
+            View.EmployeesAllowed = true;
+            View.DocumentsAllowed = true;
+            View.CashAuditAllowed = true;
+            View.StatisticsAllowed = true;
             View.BindData();
         }
 
         public virtual void InitializeExisting(DataRow row)
         {
-            oldUsername = row["name"].ToString();
-            View.UserName = oldUsername;
+            View.Handsign = row[Columns.HandSign].ToString();
             View.Login = row["login"].ToString();
-            View.Phone = row["phone"].ToString();
-            View.Fax = row["fax"].ToString();
-            View.Email = row["email"].ToString();
+            oldUsername = View.Login;
 
             int access = Int32.Parse(row["access"].ToString());
             View.Admin = bool.Parse(row["admin"].ToString());
             View.InsertAllowed = (access & (int)Enums.UserRightEnum.Insert) == (int)Enums.UserRightEnum.Insert;
             View.ChangeAllowed = (access & (int)Enums.UserRightEnum.Change) == (int)Enums.UserRightEnum.Change;
-            View.DeleteAllowed = (access & (int)Enums.UserRightEnum.Delete) == (int)Enums.UserRightEnum.Delete;
+            View.BookAllowed = (access & (int)Enums.UserRightEnum.Book) == (int)Enums.UserRightEnum.Book;
+            View.CancelBookingAllowed = (access & (int)Enums.UserRightEnum.CancelBooking) == (int)Enums.UserRightEnum.CancelBooking;
+            View.CashBalanceAllowed = (access & (int)Enums.UserRightEnum.CashBalance) == (int)Enums.UserRightEnum.CashBalance;
+            View.BankBalanceAllowed = (access & (int)Enums.UserRightEnum.BankBalance) == (int)Enums.UserRightEnum.BankBalance;
+            View.PettyCashAllowed = (access & (int)Enums.UserRightEnum.PettyCash) == (int)Enums.UserRightEnum.PettyCash;
+            View.ClientsAllowed = (access & (int)Enums.UserRightEnum.Clients) == (int)Enums.UserRightEnum.Clients;
+            View.RepresentativesAllowed = (access & (int)Enums.UserRightEnum.Representatives) == (int)Enums.UserRightEnum.Representatives;
+            View.EmployeesAllowed = (access & (int)Enums.UserRightEnum.Employees) == (int)Enums.UserRightEnum.Employees;
+            View.DocumentsAllowed = (access & (int)Enums.UserRightEnum.Documents) == (int)Enums.UserRightEnum.Documents;
+            View.CashAuditAllowed = (access & (int)Enums.UserRightEnum.CashAudit) == (int)Enums.UserRightEnum.CashAudit;
+            View.StatisticsAllowed = (access & (int)Enums.UserRightEnum.Statistics) == (int)Enums.UserRightEnum.Statistics;
             editMode = true;
             View.BindData();
         }
 
         public virtual async Task OkAsync()
         {
-            if (string.IsNullOrWhiteSpace(View.UserName))
+            if (string.IsNullOrWhiteSpace(View.Handsign))
                 throw new Exception(Messages.name);
-            if (string.IsNullOrWhiteSpace(View.Email))
-                throw new Exception(Messages.email);
 
             int access = GetAccess();
             if (editMode)
             {
                 await User.UpdateUser(session.SQL,
                     oldUsername,
-                    View.UserName,
+                    View.Handsign,
                     View.Login,
-                    View.Phone,
-                    View.Fax,
-                    View.Email,
                     access,
                     View.Admin);
                 View.ShowUserChanged();
@@ -78,28 +89,20 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
                 string login = View.Login;
                 if (string.IsNullOrWhiteSpace(login))
                 {
-                    login = View.UserName;
+                    login = View.Handsign;
                     View.Login = login;
                 }
 
                 await User.CreateUser(session.SQL,
-                    View.UserName,
+                    View.Handsign,
                     login,
                     string.Empty,
-                    View.Phone,
-                    View.Fax,
-                    View.Email,
                     access,
                     View.Admin);
                 View.ShowUserCreated();
             }
 
             View.AcceptDialog();
-        }
-
-        public virtual bool IsEmailValid()
-        {
-            return Company.IsValidEmail(View.Email);
         }
 
         private int GetAccess()
@@ -109,9 +112,37 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
                 userRight |= Enums.UserRightEnum.Insert;
             if (View.ChangeAllowed)
                 userRight |= Enums.UserRightEnum.Change;
-            if (View.DeleteAllowed)
-                userRight |= Enums.UserRightEnum.Delete;
+            if (View.BookAllowed)
+                userRight |= Enums.UserRightEnum.Book;
+            if (View.CancelBookingAllowed)
+                userRight |= Enums.UserRightEnum.CancelBooking;
+            userRight |= GetAreaAccess();
             return (int)userRight;
+        }
+
+        private Enums.UserRightEnum GetAreaAccess()
+        {
+            Enums.UserRightEnum userRight = Enums.UserRightEnum.None;
+            if (View.CashBalanceAllowed)
+                userRight |= Enums.UserRightEnum.CashBalance;
+            if (View.BankBalanceAllowed)
+                userRight |= Enums.UserRightEnum.BankBalance;
+            if (View.PettyCashAllowed)
+                userRight |= Enums.UserRightEnum.PettyCash;
+            if (View.ClientsAllowed)
+                userRight |= Enums.UserRightEnum.Clients;
+            if (View.RepresentativesAllowed)
+                userRight |= Enums.UserRightEnum.Representatives;
+            if (View.EmployeesAllowed)
+                userRight |= Enums.UserRightEnum.Employees;
+            if (View.DocumentsAllowed)
+                userRight |= Enums.UserRightEnum.Documents;
+            if (View.CashAuditAllowed)
+                userRight |= Enums.UserRightEnum.CashAudit;
+            if (View.StatisticsAllowed)
+                userRight |= Enums.UserRightEnum.Statistics;
+
+            return userRight;
         }
     }
 }

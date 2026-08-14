@@ -141,9 +141,6 @@
   <data name="paybackTypeColumn.HeaderText" xml:space="preserve">
     <value>Rückgabeart</value>
   </data>
-  <data name="handSignColumn.HeaderText" xml:space="preserve">
-    <value>Hz</value>
-  </data>
   <data name="activeColumn.HeaderText" xml:space="preserve">
     <value>Aktiv</value>
   </data>

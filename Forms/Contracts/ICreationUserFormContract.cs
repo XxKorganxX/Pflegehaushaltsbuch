@@ -2,14 +2,21 @@
 {
     public interface ICreationUserFormContract
     {
-        string UserName { get; set; }
+        string Handsign { get; set; }
         string Login { get; set; }
-        string Phone { get; set; }
-        string Fax { get; set; }
-        string Email { get; set; }
         bool InsertAllowed { get; set; }
         bool ChangeAllowed { get; set; }
-        bool DeleteAllowed { get; set; }
+        bool BookAllowed { get; set; }
+        bool CancelBookingAllowed { get; set; }
+        bool CashBalanceAllowed { get; set; }
+        bool BankBalanceAllowed { get; set; }
+        bool PettyCashAllowed { get; set; }
+        bool ClientsAllowed { get; set; }
+        bool RepresentativesAllowed { get; set; }
+        bool EmployeesAllowed { get; set; }
+        bool DocumentsAllowed { get; set; }
+        bool CashAuditAllowed { get; set; }
+        bool StatisticsAllowed { get; set; }
         bool Admin { get; set; }
         void AcceptDialog();
         void BindData();

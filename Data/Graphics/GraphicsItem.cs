@@ -177,11 +177,11 @@ namespace Pflegehaushaltsbuch.Data.Graphics
         /// <summary>
         /// Runs the paint operation and updates the related application state.
         /// </summary>
-        public virtual void Paint(System.Drawing.Graphics g, int translateY, SQLBase sql, int page, int lastPage, out bool hasMorePages) { hasMorePages = false; }
+        public virtual void Paint(System.Drawing.Graphics g, int translateY, SQLBase sql, Company company, int page, int lastPage, out bool hasMorePages) { hasMorePages = false; }
         /// <summary>
         /// Runs the paint PDF operation and updates the related application state.
         /// </summary>
-        public virtual void PaintPDF(XGraphics g, int translateY, SQLBase sql, int page, int lastPage, out bool hasMorePages) { hasMorePages = false; }
+        public virtual void PaintPDF(XGraphics g, int translateY, SQLBase sql, Company company, int page, int lastPage, out bool hasMorePages) { hasMorePages = false; }
         /// <summary>
         /// Runs the paint Design operation and updates the related application state.
         /// </summary>
@@ -228,7 +228,7 @@ namespace Pflegehaushaltsbuch.Data.Graphics
         /// <summary>
         /// Draws the sub Item output on the provided graphics surface.
         /// </summary>
-        public bool DrawSubItem(System.Drawing.Graphics g, SQLBase sql, int page, int y, int maxHeight = int.MaxValue)
+        public bool DrawSubItem(System.Drawing.Graphics g, SQLBase sql, Company company, int page, int y, int maxHeight = int.MaxValue)
         {
             if (Items.Count == 0)
                 return true;
@@ -248,14 +248,14 @@ namespace Pflegehaushaltsbuch.Data.Graphics
                     continue;
                 
                 bool hasMorePages = false;
-                item.Paint(g, y, sql, page, page, out hasMorePages);
+                item.Paint(g, y, sql, company, page, page, out hasMorePages);
             }
             return true;
         }
         /// <summary>
         /// Draws the sub Item output on the provided graphics surface.
         /// </summary>
-        public bool DrawSubItem(XGraphics g, SQLBase sql, int page, int y, int maxHeight = int.MaxValue)
+        public bool DrawSubItem(XGraphics g, SQLBase sql, Company company, int page, int y, int maxHeight = int.MaxValue)
         {
             if (Items.Count == 0)
                 return true;
@@ -276,7 +276,7 @@ namespace Pflegehaushaltsbuch.Data.Graphics
 //Rectangle itemR = item.GetRectangle(page);
 //itemR.Y = (itemR.Y - r.Y) + y;
                 bool hasMorePages = false;
-                item.PaintPDF(g, y, sql, page, page, out hasMorePages);
+                item.PaintPDF(g, y, sql, company, page, page, out hasMorePages);
 //item.Paint(g, itemR);
             }
             return true;

@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="saveButton.Text" xml:space="preserve">
+    <value>Kaydet</value>
+  </data>
+  <data name="importButton.Text" xml:space="preserve">
+    <value>İçe aktar</value>
+  </data>
+  <data name="exportButton.Text" xml:space="preserve">
+    <value>Dışa aktar</value>
+  </data>
+  <data name="printButton.Text" xml:space="preserve">
+    <value>Baskı önizleme</value>
+  </data>
+  <data name="pageSettingsButton.Text" xml:space="preserve">
+    <value>Kağıt
+özellikleri</value>
+  </data>
+  <data name="backButton.Text" xml:space="preserve">
+    <value>Geri</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>Yazdırma şablonları</value>
+  </data>
+  <data name="sizeButton.Text" xml:space="preserve">
+    <value>Boyut</value>
+  </data>
+  <data name="editButton.Text" xml:space="preserve">
+    <value>Düzenle</value>
+  </data>
+  <data name="copyButton.Text" xml:space="preserve">
+    <value>Kopyala</value>
+  </data>
+  <data name="insertButton.Text" xml:space="preserve">
+    <value>Ekle</value>
+  </data>
+  <data name="joinButton.Text" xml:space="preserve">
+    <value>Bağlan</value>
+  </data>
+  <data name="seperatButton.Text" xml:space="preserve">
+    <value>Bağlantıyı kes</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="tableButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 48</value>
+  </data>
+  <data name="tableButton.Text" xml:space="preserve">
+    <value>Veri
+tablosu</value>
+  </data>
+  <data name="imageButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 279</value>
+  </data>
+  <data name="imageButton.Text" xml:space="preserve">
+    <value>Resim</value>
+  </data>
+  <data name="textButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 316</value>
+  </data>
+  <data name="lineButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 353</value>
+  </data>
+  <data name="lineButton.Text" xml:space="preserve">
+    <value>Çizgi</value>
+  </data>
+  <data name="button2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 390</value>
+  </data>
+  <data name="button2.Text" xml:space="preserve">
+    <value>Dikdörtgen</value>
+  </data>
+  <data name="arcButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 427</value>
+  </data>
+  <data name="arcButton.Text" xml:space="preserve">
+    <value>Daire</value>
+  </data>
+  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 464</value>
+  </data>
+  <data name="button1.Text" xml:space="preserve">
+    <value>Yay</value>
+  </data>
+  <data name="textPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>957, 67</value>
+  </data>
+  <data name="italicButton.Text" xml:space="preserve">
+    <value>K</value>
+  </data>
+  <data name="strikeOutButton.Text" xml:space="preserve">
+    <value>D</value>
+  </data>
+  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 29</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Kenar boşluğu:</value>
+  </data>
+  <data name="borderBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>836, 3</value>
+  </data>
+  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>913, 3</value>
+  </data>
+  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>57, 26</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>Görünüm:</value>
+  </data>
+  <data name="pageBox.Items" xml:space="preserve">
+    <value>tüm sayfalar</value>
+  </data>
+  <data name="pageBox.Items1" xml:space="preserve">
+    <value>Sayfa 1</value>
+  </data>
+  <data name="pageBox.Items2" xml:space="preserve">
+    <value>Sayfa 2 ve altı</value>
+  </data>
+  <data name="pageBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>66, 3</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>242, 3</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>114, 26</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Öğeyi yazdır:</value>
+  </data>
+  <data name="pageBox1.Items" xml:space="preserve">
+    <value>tüm sayfalar</value>
+  </data>
+  <data name="pageBox1.Items1" xml:space="preserve">
+    <value>Sayfa 1</value>
+  </data>
+  <data name="pageBox1.Items2" xml:space="preserve">
+    <value>Sayfa 2 ve altı</value>
+  </data>
+  <data name="pageBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>362, 3</value>
+  </data>
+  <data name="calculateTextHeightBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>538, 3</value>
+  </data>
+  <data name="calculateTextHeightBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>151, 26</value>
+  </data>
+  <data name="calculateTextHeightBox.Text" xml:space="preserve">
+    <value>Metin yüksekliğini hesapla</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 31</value>
+  </data>
+  <data name="xText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>56, 3</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 31</value>
+  </data>
+  <data name="yText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>56, 34</value>
+  </data>
+  <data name="heightBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>56, 96</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 31</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Yükseklik:</value>
+  </data>
+  <data name="widthBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>56, 65</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 31</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Genişlik:</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>126, 0</value>
+  </data>
+  <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
+    <value>126, 31</value>
+  </data>
+  <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
+    <value>126, 62</value>
+  </data>
+  <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
+    <value>126, 93</value>
+  </data>
+  <data name="cashButton.Text" xml:space="preserve">
+    <value>Kasa</value>
+  </data>
+  <data name="officeCashButton.Text" xml:space="preserve">
+    <value>Ofis kasası</value>
+  </data>
+  <data name="statementButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 30</value>
+  </data>
+  <data name="statementButton.Text" xml:space="preserve">
+    <value>Hesap dökümü</value>
+  </data>
+  <data name="clientButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>325, 0</value>
+  </data>
+  <data name="clientButton.Text" xml:space="preserve">
+    <value>Müşteriler</value>
+  </data>
+  <data name="advisorButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>394, 0</value>
+  </data>
+  <data name="advisorButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 30</value>
+  </data>
+  <data name="advisorButton.Text" xml:space="preserve">
+    <value>Danışman</value>
+  </data>
+  <data name="cashAuditButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>465, 0</value>
+  </data>
+  <data name="cashAuditButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>133, 30</value>
+  </data>
+  <data name="cashAuditButton.Text" xml:space="preserve">
+    <value>Kasa doğrulama</value>
+  </data>
+  <data name="assistantButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 30</value>
+  </data>
+  <data name="assistantButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 30</value>
+  </data>
+  <data name="assistantButton.Text" xml:space="preserve">
+    <value>Çalışan</value>
+  </data>
+  <data name="quittanceButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>87, 30</value>
+  </data>
+  <data name="quittanceButton.Text" xml:space="preserve">
+    <value>Makbuz</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Yazdırma şablonlarını düzenle</value>
+  </data>
+</root>

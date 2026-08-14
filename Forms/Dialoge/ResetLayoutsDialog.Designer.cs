@@ -102,13 +102,13 @@ namespace Pflegehaushaltsbuch.Forms.Dialoge
             this.advisorsBox.UseVisualStyleBackColor = false;
             this.advisorsBox.Click += new System.EventHandler(this.cashBox_Click);
             // 
-            // assistantsBox
+            // employeeBox
             // 
-            resources.ApplyResources(this.employeeBox, "assistantsBox");
+            resources.ApplyResources(this.employeeBox, "employeeBox");
             this.employeeBox.BackColor = System.Drawing.Color.Transparent;
             this.employeeBox.BorderColor = System.Drawing.Color.White;
             this.employeeBox.CheckedImage = null;
-            this.employeeBox.Name = "assistantsBox";
+            this.employeeBox.Name = "employeeBox";
             this.employeeBox.UnCheckedImage = null;
             this.employeeBox.UseVisualStyleBackColor = false;
             this.employeeBox.Click += new System.EventHandler(this.cashBox_Click);
@@ -141,12 +141,8 @@ namespace Pflegehaushaltsbuch.Forms.Dialoge
             resources.ApplyResources(this.okButton, "okButton");
             this.okButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.okButton.BorderColor = System.Drawing.Color.DimGray;
-            this.okButton.Checked = false;
-            this.okButton.CheckedState = false;
             this.okButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.okButton.ForeColor = System.Drawing.Color.White;
             this.okButton.Name = "okButton";
-            this.okButton.PaintBackGround = true;
             this.okButton.Radius = -1F;
             this.okButton.UseVisualStyleBackColor = false;
             this.okButton.Click += new System.EventHandler(this.okButton_Click);
@@ -156,12 +152,8 @@ namespace Pflegehaushaltsbuch.Forms.Dialoge
             resources.ApplyResources(this.button1, "button1");
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.button1.BorderColor = System.Drawing.Color.DimGray;
-            this.button1.Checked = false;
-            this.button1.CheckedState = false;
             this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Name = "button1";
-            this.button1.PaintBackGround = true;
             this.button1.Radius = -1F;
             this.button1.UseVisualStyleBackColor = false;
             // 
@@ -179,10 +171,6 @@ namespace Pflegehaushaltsbuch.Forms.Dialoge
             // tableLayoutPanel1
             // 
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
-            this.tableLayoutPanel1.Border = false;
-            this.tableLayoutPanel1.BorderColor = System.Drawing.Color.White;
-            this.tableLayoutPanel1.BorderWidth = 1F;
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.quittanceBox, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.allBox, 0, 0);

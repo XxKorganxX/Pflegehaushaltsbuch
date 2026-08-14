@@ -141,9 +141,6 @@
   <data name="dateColumn.HeaderText" xml:space="preserve">
     <value>Datum</value>
   </data>
-  <data name="handSignColumn.HeaderText" xml:space="preserve">
-    <value>Hz</value>
-  </data>
   <data name="insertButton.Text" xml:space="preserve">
     <value>Anlegen</value>
   </data>

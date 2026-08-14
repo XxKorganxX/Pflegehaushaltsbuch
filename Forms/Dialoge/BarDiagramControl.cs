@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,6 +30,7 @@ namespace Pflegehaushaltsbuch.Forms.Dialoge
             "Dez."
         };
         private decimal maxAmount=0;
+        public CultureInfo CurrencyCulture { get; set; } = CultureInfo.CurrentCulture;
         private Dictionary<DateTime, decimal[]> values = new Dictionary<DateTime, decimal[]>();
         /// <summary>
         /// Creates a new Bar Diagram instance and initializes the required state.
@@ -101,10 +103,10 @@ namespace Pflegehaushaltsbuch.Forms.Dialoge
                     //payOutsDarkBrush = new SolidBrush(Color.FromArgb(255, Color.DarkRed));
                     g.FillRectangle(new SolidBrush(ControlPaint.Light(Color.FromArgb(111, 182, 118))), new Rectangle(rect.Right + 25, 50, 30, 20));
                     g.DrawRectangle(gridscalaPen, new Rectangle(rect.Right + 25, 50, 30, 20));
-                    g.DrawString("Einnahmen", Font, Brushes.White, rect.Right + 60, 52);
+                    g.DrawString(Messages.statistics_income, Font, Brushes.White, rect.Right + 60, 52);
                     g.FillRectangle(new SolidBrush(ControlPaint.Light(Color.FromArgb(172, 67, 62))), new Rectangle(rect.Right + 25, 80, 30, 20));
                     g.DrawRectangle(gridscalaPen, new Rectangle(rect.Right + 25, 80, 30, 20));
-                    g.DrawString("Ausgaben", Font, Brushes.White, rect.Right + 60, 82);
+                    g.DrawString(Messages.statistics_expenses, Font, Brushes.White, rect.Right + 60, 82);
                     int cells = values.Keys.Count + 1;// 13;
                     float cell = (rect.Width) / (float)cells;
                     g.FillRectangle(lineareBrush, rect);
@@ -119,10 +121,10 @@ namespace Pflegehaushaltsbuch.Forms.Dialoge
                         float y = yBegin - cell * i;
                         g.DrawLine(gridPen, rect.X, y, rect.X + rect.Width, y);
                         g.DrawLine(gridscalaPen, rect.X + 5, y, rect.X - 5, y);
-                        g.DrawString((maxAmount * ((decimal)(cell * i) / (decimal)rect.Height)).ToString("C"), Font, Brushes.White,
+                        g.DrawString((maxAmount * ((decimal)(cell * i) / (decimal)rect.Height)).ToString("C", CurrencyCulture), Font, Brushes.White,
                             new RectangleF(0, y - FontHeight / 2, x - 10, 25), sf);
                     }
-                    //g.DrawString("Gesamt: "+maxAmount.ToString("C"), Font, Brushes.White, rect.Left, rect.Top-30);
+                    //g.DrawString("Gesamt: "+maxAmount.ToString("C", CurrencyCulture), Font, Brushes.White, rect.Left, rect.Top-30);
                     for (int i = 1; i < cells; i++)         // float x = rect.X + cell; x < rect.Right; x += cell)
                     {
                         float x = rect.X + cell * i;

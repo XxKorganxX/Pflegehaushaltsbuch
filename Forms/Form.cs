@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 using Pflegehaushaltsbuch.Databases;
@@ -16,6 +18,8 @@ namespace Pflegehaushaltsbuch.Forms
         public static Font baseFont = new Font("Segoe UI", 10.0f);
         public static int BackColorMode = 0;
         protected SqlSession Session { get; set; }
+        protected IFormatProvider CurrencyFormatProvider => Session?.Company?.Currencies ?? CultureInfo.CurrentCulture;
+        private bool automaticTabOrderApplied;
 
         /// <summary>
         /// Handles the show Form lifecycle step and applies the related control behavior.
@@ -45,6 +49,16 @@ namespace Pflegehaushaltsbuch.Forms
         public virtual void ShowError(string msg)
         {
             FormControls.MessageBox.ShowDialog(this, msg, Messages.error_caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        protected void ApplyCurrencyFormat(params DataGridViewColumn[] columns)
+        {
+            IFormatProvider currencyFormatProvider = CurrencyFormatProvider;
+            foreach (DataGridViewColumn column in columns.Where(column => column != null))
+            {
+                column.DefaultCellStyle.Format = "C";
+                column.DefaultCellStyle.FormatProvider = currencyFormatProvider;
+            }
         }
 
         /// <summary>
@@ -137,6 +151,73 @@ namespace Pflegehaushaltsbuch.Forms
 
             DoubleBuffered = true;
             this.Font = baseFont;
+        }
+
+        protected override void OnCreateControl()
+        {
+            base.OnCreateControl();
+
+            if (Program.DesignMode || automaticTabOrderApplied)
+                return;
+
+            automaticTabOrderApplied = true;
+            ApplyAutomaticTabOrder(this);
+        }
+
+        private static void ApplyAutomaticTabOrder(Control parent)
+        {
+            int tabIndex = 0;
+            foreach (Control child in GetTabOrderedControls(parent))
+            {
+                child.TabIndex = tabIndex++;
+
+                if (IsPassiveTabControl(child))
+                    child.TabStop = false;
+
+                if (child.HasChildren)
+                    ApplyAutomaticTabOrder(child);
+            }
+        }
+
+        private static IEnumerable<Control> GetTabOrderedControls(Control parent)
+        {
+            IEnumerable<Control> controls = parent.Controls.Cast<Control>();
+
+            System.Windows.Forms.TableLayoutPanel tableLayoutPanel = parent as System.Windows.Forms.TableLayoutPanel;
+            if (tableLayoutPanel != null)
+            {
+                return controls
+                    .OrderBy(control => NormalizeTablePosition(tableLayoutPanel.GetRow(control)))
+                    .ThenBy(control => NormalizeTablePosition(tableLayoutPanel.GetColumn(control)))
+                    .ThenBy(control => control.Top)
+                    .ThenBy(control => control.Left);
+            }
+
+            if (parent is System.Windows.Forms.FlowLayoutPanel)
+                return controls;
+
+            return controls
+                .OrderBy(control => control.Top)
+                .ThenBy(control => control.Left);
+        }
+
+        private static int NormalizeTablePosition(int position)
+        {
+            return position < 0 ? int.MaxValue : position;
+        }
+
+        private static bool IsPassiveTabControl(Control control)
+        {
+            return control is Label ||
+                control is System.Windows.Forms.PictureBox ||
+                control is System.Windows.Forms.Panel ||
+                control is System.Windows.Forms.TableLayoutPanel ||
+                control is System.Windows.Forms.FlowLayoutPanel ||
+                control is System.Windows.Forms.GroupBox ||
+                control is System.Windows.Forms.SplitContainer ||
+                control is System.Windows.Forms.TabPage ||
+                control is System.Windows.Forms.ProgressBar ||
+                control is System.Windows.Forms.ToolStrip;
         }
         /// <summary>
         /// Runs the window Move operation and updates the related application state.

@@ -29,6 +29,16 @@ namespace Pflegehaushaltsbuch.Forms
             Leave += UserRightsForm_Leave;
         }
 
+        public override void ApplyUserRights(UserRights rights)
+        {
+            if (rights == null)
+                return;
+
+            createButton.Enabled = rights.CanInsert;
+            updateButton.Enabled = rights.CanModify;
+            deleteButton.Enabled = rights.CanDelete;
+        }
+
         /// <summary>
         /// Handles the cell format event.
         /// </summary>
@@ -37,18 +47,29 @@ namespace Pflegehaushaltsbuch.Forms
             if (e.ColumnIndex == accessColumn.Index)
             {
                 int access = Int32.Parse(e.Value.ToString());
-                string create = ((access & (int)Enums.UserRightEnum.Insert) == (int)Enums.UserRightEnum.Insert) ? Messages.usermanagement_Create : string.Empty;
-                string change = ((access & (int)Enums.UserRightEnum.Change) == (int)Enums.UserRightEnum.Change) ? Messages.usermanagement_Change : string.Empty;
-                string delete = ((access & (int)Enums.UserRightEnum.Delete) == (int)Enums.UserRightEnum.Delete) ? Messages.usermanagement_Delete : string.Empty;
-                string value = "";
-                if(!string.IsNullOrEmpty(create))
-                    value += create;
-                if(!string.IsNullOrEmpty(change))
-                    value += "/"+change;
-                if(!string.IsNullOrEmpty(delete))
-                    value += "/"+delete;
-                e.Value = value.Trim(new char[]{'/'});
+                e.Value = FormatAccessRights(access);
             }
+        }
+
+        private static string FormatAccessRights(int access)
+        {
+            if (access == 0)
+                return Enums.UserRightEnum.None.ToString();
+
+            string value = "";
+            foreach (Enums.UserRightEnum right in Enum.GetValues(typeof(Enums.UserRightEnum)))
+            {
+                if (right == Enums.UserRightEnum.None)
+                    continue;
+                if ((access & (int)right) != (int)right)
+                    continue;
+
+                if (!string.IsNullOrEmpty(value))
+                    value += "/";
+                value += right.GetDisplayName();
+            }
+
+            return value;
         }
         /// <summary>
         /// Handles the cell paint event.
@@ -156,13 +177,13 @@ namespace Pflegehaushaltsbuch.Forms
         void IUserManagerFormContract.BindUsers(DataTable table)
         {
             view.DataSource = table;
-            clientBox.DisplayMember = Columns.Name;
-            clientBox.DataSource = table;
+            userNameTextBox.DisplayMember = Columns.Login;
+            userNameTextBox.DataSource = table;
         }
 
         void IUserManagerFormContract.ClearUsers()
         {
-            clientBox.DataSource = null;
+            userNameTextBox.DataSource = null;
             view.DataSource = null;
         }
 

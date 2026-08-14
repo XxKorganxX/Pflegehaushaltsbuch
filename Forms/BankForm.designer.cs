@@ -34,10 +34,8 @@
             this.tableLayoutPanel1 = new Pflegehaushaltsbuch.FormControls.TableLayoutPanel();
             this.label19 = new Pflegehaushaltsbuch.FormControls.Label();
             this.flowLayoutPanel1 = new Pflegehaushaltsbuch.FormControls.FlowLayoutPanel();
-            this.updateButton = new Pflegehaushaltsbuch.FormControls.Button();
             this.bookButton = new Pflegehaushaltsbuch.FormControls.Button();
             this.printButton = new Pflegehaushaltsbuch.FormControls.Button();
-            this.exportButton = new Pflegehaushaltsbuch.FormControls.Button();
             this.backButton = new Pflegehaushaltsbuch.FormControls.Button();
             this.tableLayoutPanel2 = new Pflegehaushaltsbuch.FormControls.TableLayoutPanel();
             this.view = new Pflegehaushaltsbuch.FormControls.DataGridView();
@@ -81,23 +79,10 @@
             // 
             resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
-            this.flowLayoutPanel1.Controls.Add(this.updateButton);
             this.flowLayoutPanel1.Controls.Add(this.bookButton);
             this.flowLayoutPanel1.Controls.Add(this.printButton);
-            this.flowLayoutPanel1.Controls.Add(this.exportButton);
             this.flowLayoutPanel1.Controls.Add(this.backButton);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            // 
-            // updateButton
-            // 
-            resources.ApplyResources(this.updateButton, "updateButton");
-            this.updateButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.updateButton.BorderColor = System.Drawing.Color.DimGray;
-            this.updateButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.updateButton.Name = "updateButton";
-            this.updateButton.Radius = -1F;
-            this.updateButton.UseVisualStyleBackColor = false;
-            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
             // 
             // bookButton
             // 
@@ -120,17 +105,6 @@
             this.printButton.Radius = -1F;
             this.printButton.UseVisualStyleBackColor = false;
             this.printButton.Click += new System.EventHandler(this.printButton_Click);
-            // 
-            // exportButton
-            // 
-            resources.ApplyResources(this.exportButton, "exportButton");
-            this.exportButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.exportButton.BorderColor = System.Drawing.Color.DimGray;
-            this.exportButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.exportButton.Name = "exportButton";
-            this.exportButton.Radius = -1F;
-            this.exportButton.UseVisualStyleBackColor = false;
-            this.exportButton.Click += new System.EventHandler(this.exportButton_Click);
             // 
             // backButton
             // 
@@ -159,7 +133,6 @@
             this.view.AllowUserToResizeColumns = false;
             this.view.AllowUserToResizeRows = false;
             this.view.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.view.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.view.BackgroundColor = System.Drawing.Color.White;
             this.view.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.view.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -175,6 +148,7 @@
             this.view.RowHeadersVisible = false;
             this.view.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(177)))), ((int)(((byte)(210)))));
             this.view.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.view.RowTemplate.Height = 24;
             this.view.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.view.StandardTab = true;
             // 
@@ -198,7 +172,7 @@
             // bookToColumn
             // 
             this.bookToColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.bookToColumn.DataPropertyName = "account";
+            this.bookToColumn.DataPropertyName = "account_id";
             resources.ApplyResources(this.bookToColumn, "bookToColumn");
             this.bookToColumn.Name = "bookToColumn";
             this.bookToColumn.ReadOnly = true;
@@ -216,7 +190,6 @@
             this.amountColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.amountColumn.DataPropertyName = "amount";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "C";
             this.amountColumn.DefaultCellStyle = dataGridViewCellStyle2;
             resources.ApplyResources(this.amountColumn, "amountColumn");
             this.amountColumn.Name = "amountColumn";
@@ -280,7 +253,9 @@
             // 
             resources.ApplyResources(this.periodCheckBox, "periodCheckBox");
             this.periodCheckBox.BorderColor = System.Drawing.Color.DimGray;
+            this.periodCheckBox.Checked = true;
             this.periodCheckBox.CheckedImage = null;
+            this.periodCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.periodCheckBox.Name = "periodCheckBox";
             this.periodCheckBox.UnCheckedImage = null;
             this.periodCheckBox.UseVisualStyleBackColor = true;
@@ -313,16 +288,9 @@
         private Pflegehaushaltsbuch.FormControls.Button bookButton;
         private Pflegehaushaltsbuch.FormControls.Button backButton;
         private Pflegehaushaltsbuch.FormControls.TableLayoutPanel tableLayoutPanel1;
-        private Pflegehaushaltsbuch.FormControls.Button updateButton;
         private Pflegehaushaltsbuch.FormControls.Button printButton;
         private Pflegehaushaltsbuch.FormControls.Label label19;
         private Pflegehaushaltsbuch.FormControls.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dateColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn noteColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn bookToColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn bookCategoryColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn amountColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn handsignColumn;
         private FormControls.TableLayoutPanel tableLayoutPanel4;
         private FormControls.DateTimeBox toDateBox;
         private FormControls.Label label1;
@@ -330,6 +298,11 @@
         private FormControls.DateTimeBox fromDateBox;
         private FormControls.Label fromToLabel;
         private FormControls.CheckBox periodCheckBox;
-        private FormControls.Button exportButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn noteColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bookToColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bookCategoryColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn amountColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn handsignColumn;
     }
 }

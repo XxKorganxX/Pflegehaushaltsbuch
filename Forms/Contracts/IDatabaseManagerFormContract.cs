@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Pflegehaushaltsbuch.Databases;
 
 namespace Pflegehaushaltsbuch.Forms
 {
@@ -19,6 +20,7 @@ namespace Pflegehaushaltsbuch.Forms
         void ShowDefaultLoginMessage();
         void ShowDatabaseCreated();
         void ShowUserCreated();
+        bool ShowCreationUserDialog(SqlSession session);
         void ShowMasterPasswordChangedRestart();
         void AcceptDialog();
         void CancelDialog();

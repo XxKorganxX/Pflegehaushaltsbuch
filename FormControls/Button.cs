@@ -142,25 +142,11 @@ namespace Pflegehaushaltsbuch.FormControls
         /// </summary>
         protected override void OnPaint(PaintEventArgs e)
         {
-            //switch (Properties.Settings.Default.UIDesign)
-            //{
-            //    case 0:
-            //        base.OnPaint(e);
-            //        return;
-            //}
-            //if(this.Parent != null)
-            //    g.FillRectangle(new SolidBrush(Color.FromArgb(12, 27, 36)), ClientRectangle);
-            //g.Clear(Color.FromArgb(12,27,36));//Parent.BackColor);
-            //g.CompositingQuality = CompositingQuality.GammaCorrected;
-            //g.CompositingMode = CompositingMode.SourceCopy;
-            //if (BackColor != Color.Transparent)
-            //Color backColor, foreColor, selectionBackColor, selectionForeColor, listSelectBackColor, listSelectForeColor, disabledColor;
-            //ControlColors.Get(out backColor, out foreColor, out selectionBackColor, out selectionForeColor, out listSelectBackColor, out listSelectForeColor, out disabledColor);
             Rectangle bounds = ClientRectangle;
             Rectangle borderBounds = bounds;
             using (BufferedGraphics bg = BufferedGraphicsManager.Current.Allocate(e.Graphics, ClientRectangle))
             {
-                Graphics g = bg.Graphics;// Graphics.FromImage(bitmap);
+                Graphics g = bg.Graphics;
                 if (this.Parent != null)
                 {
                     GraphicsContainer cstate = g.BeginContainer();
@@ -170,18 +156,13 @@ namespace Pflegehaushaltsbuch.FormControls
                     PaintEventArgs pe = new PaintEventArgs(g, clip);
                     //paint the container's bg
                     InvokePaintBackground(this.Parent, pe);
-                    //paints the container fg
                     InvokePaint(this.Parent, pe);
-                    //restores graphics to its original state
                     g.EndContainer(cstate);
                 }
-                //g.FillRectangle(new SolidBrush(BackColor), ClientRectangle);
+
                 borderBounds.Width -= 1;
                 borderBounds.Height -= 1;
-                //Color textColor = ForeColor;
-                //Color backColor = Color.Orange;
-                //Color selecteDBackColor = Color.Orange;
-                //Color textColor = foreColor;
+
                 float r = 0;
                 float pad = 0;
                 Brush brush = null;
@@ -194,18 +175,7 @@ namespace Pflegehaushaltsbuch.FormControls
                        Color.LightGreen,
                        Color.Green);
                 }
-                //else if (mouseOver)
-                //{
-                //       Color.White,
-                //       Color.Gray);
-                //}
-                //else if (Focused)
-                //{
-                //        brush = Brushes.Transparent;
-                //    else
-                //           Color.White,
-                //           Color.Gray);
-                //}
+
                 else
                 {
                     if (!PaintBackGround)
@@ -230,7 +200,6 @@ namespace Pflegehaushaltsbuch.FormControls
                     if (radius <= 0)
                     {
                         r = (float)bounds.Height * 0.2f;
-                        //pad = 2.0f;
                     }
                     else
                         r = radius;
@@ -246,14 +215,8 @@ namespace Pflegehaushaltsbuch.FormControls
                         g.DrawPath(ControlColors.AccentPen, path);
                     else
                         g.DrawPath(pen, path);
-                    //if (!Enabled)
-                    //    g.FillPath(new SolidBrush(Color.FromArgb(100, 255, 255, 255)), path);
                 }
-                //if (!string.IsNullOrWhiteSpace(Text))
-                //{
-                //    if (Enabled)
-                //    else
-                //}
+
                 if (BackgroundImage != null)
                 {
                     var si = Size;
@@ -263,7 +226,7 @@ namespace Pflegehaushaltsbuch.FormControls
                     var te = e.ClipRectangle;
                     g.SmoothingMode = SmoothingMode.AntiAlias;
                     g.CompositingMode = CompositingMode.SourceOver;
-                    //g.SetClip(path);
+
                     g.InterpolationMode = InterpolationMode.High;
                     g.CompositingQuality = CompositingQuality.HighQuality;
                     g.DrawImage(BackgroundImage, e.ClipRectangle);

@@ -114,7 +114,7 @@ namespace Pflegehaushaltsbuch.Data.Graphics
         /// <summary>
         /// Runs the paint operation and updates the related application state.
         /// </summary>
-        public override void Paint(System.Drawing.Graphics g, int translateY, SQLBase sql, int page, int lastPage, out bool hasMorePages)
+        public override void Paint(System.Drawing.Graphics g, int translateY, SQLBase sql, Company company, int page, int lastPage, out bool hasMorePages)
         {
             hasMorePages = false;
             if (!IsVisible(page))
@@ -125,7 +125,7 @@ namespace Pflegehaushaltsbuch.Data.Graphics
             { 
             }
             Paint(g, currentRect);
-            DrawSubItem(g, sql, page, (int)currentRect.Bottom);
+            DrawSubItem(g, sql, company, page, (int)currentRect.Bottom);
         }
         /// <summary>
         /// Runs the paint operation and updates the related application state.
@@ -193,7 +193,7 @@ namespace Pflegehaushaltsbuch.Data.Graphics
         /// <summary>
         /// Runs the paint PDF operation and updates the related application state.
         /// </summary>
-        public override void PaintPDF(XGraphics g, int translateY, SQLBase sql, int page, int lastPage, out bool hasMorePages)
+        public override void PaintPDF(XGraphics g, int translateY, SQLBase sql, Company company, int page, int lastPage, out bool hasMorePages)
         {
             hasMorePages = false;
             if (Parent != null && translateY == 0)
@@ -204,7 +204,7 @@ namespace Pflegehaushaltsbuch.Data.Graphics
             currentRect.Y = currentRect.Y + translateY;
             
             currentRect = Paint(g, currentRect);
-            DrawSubItem(g, sql, page, (int)currentRect.Bottom);
+            DrawSubItem(g, sql, company, page, (int)currentRect.Bottom);
         }
         /// <summary>
         /// Handles the paint Design lifecycle step and applies the related control behavior.

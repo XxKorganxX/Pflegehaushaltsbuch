@@ -135,7 +135,6 @@
             this.view.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightBlue;
             this.view.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.view.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.view.BackgroundColor = System.Drawing.Color.White;
             this.view.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.view.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -155,6 +154,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.view.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.view.RowHeadersVisible = false;
+            this.view.RowTemplate.Height = 24;
             this.view.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.view.StandardTab = true;
             this.view.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.view_CellClick);

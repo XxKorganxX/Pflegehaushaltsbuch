@@ -2,11 +2,9 @@ using Pflegehaushaltsbuch.Databases;
 using Pflegehaushaltsbuch.FormControls;
 using Pflegehaushaltsbuch.Properties;
 using System;
-using System.ComponentModel;
 using System.Drawing.Printing;
+using System.Globalization;
 using System.IO;
-using System.Net;
-using System.Net.Mail;
 
 namespace Pflegehaushaltsbuch.Forms.Presenters
 {
@@ -38,10 +36,6 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
 
         public virtual void Initialize()
         {
-            view.SmtpServer = session.SQL.Company.SMTP_Host;
-            view.SmtpUser = session.SQL.Company.SMTP_User;
-            view.SmtpPassword = session.SQL.Company.SMTP_Password;
-            view.FromEmail = session.SQL.User.Email;
             view.Document = document;
             view.BindPrinterDropDown();
 
@@ -60,11 +54,6 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
         public virtual void ScrollPreview(int delta)
         {
             view.ScrollPreview(delta);
-        }
-
-        public virtual void UpdateEmail(string email)
-        {
-            view.ToEmail = email;
         }
 
         public virtual void Shown()
@@ -126,7 +115,13 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
             }
 
             double value;
-            if (double.TryParse(view.ZoomText, out value))
+            string zoomText = view.ZoomText
+                .Replace(CultureInfo.CurrentCulture.NumberFormat.PercentSymbol, string.Empty)
+                .Replace("%", string.Empty)
+                .Trim();
+
+            if (double.TryParse(zoomText, NumberStyles.Float, CultureInfo.CurrentCulture, out value) ||
+                double.TryParse(zoomText, NumberStyles.Float, CultureInfo.InvariantCulture, out value))
             {
                 view.PreviewZoom = Math.Max(0.01, value * 0.01);
             }
@@ -207,80 +202,9 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
             view.PreviewAutoZoom = true;
         }
 
-        public virtual void SendEmail()
-        {
-            string emailFrom = session.SQL.User.Email;
-            string emailTo = view.ToEmail.Trim();
-
-            if (!Data.Company.IsValidEmail(emailTo))
-            {
-                throw new Exception(Messages.printpreview_missing_valid_email);
-            }
-
-            if (!Data.Company.IsValidEmail(emailFrom))
-            {
-                throw new Exception(Messages.printpreview_email_missing_account);
-            }
-
-            string filename = CreatePdfFileName();
-            using (MemoryStream ms = new MemoryStream())
-            {
-                view.RaisePrintPdf(ms);
-                using (FileStream fs = File.Create(filename))
-                {
-                    byte[] buffer = ms.ToArray();
-                    fs.Write(buffer, 0, buffer.Length);
-                }
-            }
-
-            if (!File.Exists(filename))
-            {
-                throw new Exception(Messages.printpreview_file_create_failed);
-            }
-
-            MailMessage mail = new MailMessage(emailFrom, emailTo);
-            mail.Subject = view.DocumentName.Replace("_", " ") + " " + DateTime.Now.ToShortDateString();
-            mail.Body = string.Format(Messages.printpreview_important_email, session.SQL.User.Name, session.SQL.User.Phone);
-            mail.Attachments.Add(new Attachment(filename));
-
-            SmtpClient smtpClient = new SmtpClient();
-            smtpClient.SendCompleted += SendCompleted;
-            smtpClient.Host = view.SmtpServer.Trim();
-            smtpClient.Port = 587;
-            smtpClient.UseDefaultCredentials = true;
-            smtpClient.Credentials = new NetworkCredential(view.SmtpUser.Trim(), view.SmtpPassword.Trim());
-            smtpClient.EnableSsl = true;
-            smtpClient.SendAsync(mail, mail);
-        }
-
-        public virtual void SendCompleted(object sender, AsyncCompletedEventArgs e)
-        {
-            MailMessage mail = e.UserState as MailMessage;
-            SmtpClient smtp = sender as SmtpClient;
-
-            if (e.Cancelled == false && e.Error == null)
-            {
-                view.ShowEmailSent(mail);
-            }
-            else
-            {
-                view.ShowEmailFailed(mail);
-            }
-
-            if (smtp != null)
-            {
-                smtp.Dispose();
-            }
-        }
-
         public virtual void ZoomValidated()
         {
             view.ZoomText = view.PreviewZoom.ToString("p0");
-        }
-
-        public virtual void ToggleEmailSettings()
-        {
-            view.EmailSettingsVisible = !view.EmailSettingsVisible;
         }
 
         public virtual void ShowPrinterSettings()
@@ -301,7 +225,7 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
             string filename =
                 view.DocumentName +
                 "_" +
-                DateTime.Now.ToShortDateString().Replace("\\", "_").Replace("/", "_").Replace(".", "_");
+                DateTime.Now.ToString("yyyyMMdd", CultureInfo.InvariantCulture);
             filename = Path.Combine(path, filename);
 
             while (File.Exists(filename + sufix + ".pdf"))

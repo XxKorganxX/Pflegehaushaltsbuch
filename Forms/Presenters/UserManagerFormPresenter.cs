@@ -37,7 +37,7 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
             View.ClearUsers();
             table.Clear();
             await session.SQL.FillAdapterAsync(SQLBase.SELECT.Users, table);
-            table.PrimaryKey = new DataColumn[] { table.Columns[Columns.Name] };
+            table.PrimaryKey = new DataColumn[] { table.Columns[Columns.HandSign] };
             table.CaseSensitive = true;
             View.BindUsers(table);
         }
@@ -116,11 +116,11 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
 
                 if ((bool)row[Columns.Admin] && table.Select(Columns.Admin + "=true").Count() == 1)
                 {
-                    if (!View.ConfirmLastAdminDelete())
-                        return;
+                    View.ShowMessage(Messages.usermanagement_admin_delete);
+                    return;
                 }
 
-                if (!View.ConfirmUserDelete(row[Columns.Name].ToString()))
+                if (!View.ConfirmUserDelete(row[Columns.HandSign].ToString()))
                     return;
 
                 row.Delete();

@@ -1,14 +1,15 @@
-using Pflegehaushaltsbuch.Databases;
 using Pflegehaushaltsbuch.Data.Print;
+using Pflegehaushaltsbuch.Databases;
+using Pflegehaushaltsbuch.FormControls;
 using Pflegehaushaltsbuch.Forms.Presenters;
 using Pflegehaushaltsbuch.Properties;
 using System;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Windows.Forms;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Pflegehaushaltsbuch.Forms
 {
@@ -35,6 +36,7 @@ namespace Pflegehaushaltsbuch.Forms
             presenter = new ClientsFormPresenter(this, session);
 
             clientsView.AutoGenerateColumns = false;
+            ApplyCurrencyFormat(amountColumn);
             foreach (SQLBase.ClientActive enumval in Enum.GetValues(typeof(SQLBase.ClientActive)))
                 activeClientsBox.Items.Add(enumval.GetDisplayName());
 
@@ -62,13 +64,10 @@ namespace Pflegehaushaltsbuch.Forms
             if (rights == null)
                 return;
 
-            if (rights.IsSupervisor)
-            {
-                updateButton.Visible = true;
-                clientsView.AllowUserToDeleteRows = true;
-            }
-            insertButton.Enabled = rights.CanInsert;
-            changeButton.Enabled = rights.CanModify;
+            clientBooksButton.Enabled = rights.CanBook || rights.CanCancelBooking;
+            insertButton.Enabled = rights.CanAccessClients && rights.CanInsert;
+            changeButton.Enabled = rights.CanAccessClients && rights.CanModify;
+            deleteButton.Enabled = rights.CanDelete;
         }
 
         /// <summary>
@@ -80,6 +79,7 @@ namespace Pflegehaushaltsbuch.Forms
                 return;
 
             ApplyCurrentUserRights();
+            ApplyCurrencyFormat(amountColumn);
             await presenter.ConnectTableToDataBaseAsync();
         }
 
@@ -109,48 +109,8 @@ namespace Pflegehaushaltsbuch.Forms
         {
             if (Program.DesignMode)
                 return;
-            if (e.ColumnIndex == infoColumn.Index)
-            {
-                e.PaintBackground(e.CellBounds, (e.State & DataGridViewElementStates.Selected) == DataGridViewElementStates.Selected);
-                if (e.RowIndex >= 0)
-                {
-                    int isActive = 0;
-                    if (e.Value != null && e.Value != DBNull.Value && Int32.TryParse(e.Value.ToString(), out isActive))
-                    {
-                        Rectangle rect = e.CellBounds;
-                        rect.Height -= 10;
-                        rect.X += 5;
-                        rect.Y += 5;
-                        rect.Width = rect.Height;
-                        e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-                        Rectangle bounds = rect;
-                        using (var ellipsePath = new GraphicsPath())
-                        {
-                            ellipsePath.AddEllipse(bounds);
-                            using (var brush = new PathGradientBrush(ellipsePath))
-                            {
-                                brush.CenterPoint = new PointF(bounds.X + bounds.Width / 2f - 1, bounds.Y + bounds.Height / 2f - 1);
-                                brush.CenterColor = Color.White;
-                                brush.SurroundColors = new[] { Color.Blue };
-                                e.Graphics.FillEllipse(brush, rect);
-                            }
-                        }
-                        e.Graphics.DrawEllipse(new Pen(Brushes.Black), rect);
-                        e.Graphics.SmoothingMode = SmoothingMode.Default;
-                    }
-                }
-                else
-                {
-                    Rectangle rect = e.CellBounds;
-                    rect.Height -= 10;
-                    rect.X += 5;
-                    rect.Y += 5;
-                    rect.Width = rect.Height;
-                    e.Graphics.DrawImage(Resources.kalender, rect);
-                }
-                e.Handled = true;
-            }
-            else if (e.ColumnIndex == activeColumn.Index && e.RowIndex >= 0)
+
+            if (e.ColumnIndex == activeColumn.Index && e.RowIndex >= 0)
             {
                 e.PaintBackground(e.CellBounds, (e.State & DataGridViewElementStates.Selected) == DataGridViewElementStates.Selected);
                 int isActive = 0;
@@ -182,6 +142,41 @@ namespace Pflegehaushaltsbuch.Forms
                     e.Graphics.DrawEllipse(new Pen(Brushes.Black), rect);
                     e.Graphics.SmoothingMode = SmoothingMode.Default;
                 }
+                e.Handled = true;
+            }
+            else if (e.ColumnIndex == infoColumn.Index && e.RowIndex >= 0)
+            {
+                e.PaintBackground(e.CellBounds, (e.State & DataGridViewElementStates.Selected) == DataGridViewElementStates.Selected);
+
+                int isActive = e.Value == null || e.Value == DBNull.Value
+                               ? 0 : Convert.ToInt32(e.Value);
+
+                Rectangle rect = e.CellBounds;
+                rect.Height -= 10;
+                rect.X += 5;
+                rect.Y += 5;
+                rect.Width = rect.Height;
+                e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+                Rectangle bounds = rect;
+                using (var ellipsePath = new GraphicsPath())
+                {
+                    ellipsePath.AddEllipse(bounds);
+                    using (var brush = new PathGradientBrush(ellipsePath))
+                    {
+                        brush.CenterPoint = new PointF(bounds.X + bounds.Width / 2f - 1, bounds.Y + bounds.Height / 2f - 1);
+                        brush.CenterColor = Color.White;
+                        //if (isActive == 0)
+                        //    brush.SurroundColors = new[] { Color.Red };
+                        if (isActive == 1)
+                            brush.SurroundColors = new[] { Color.Blue };
+                        else if (isActive == 0)
+                            brush.SurroundColors = new[] { Color.White };
+                        e.Graphics.FillEllipse(brush, rect);
+                    }
+                }
+                e.Graphics.DrawEllipse(new Pen(Brushes.Black), rect);
+                e.Graphics.SmoothingMode = SmoothingMode.Default;
+
                 e.Handled = true;
             }
         }
@@ -411,11 +406,12 @@ namespace Pflegehaushaltsbuch.Forms
         /// <summary>
         /// Selects the first client with the given name.
         /// </summary>
-        void IClientsFormContract.SelectClientByName(string clientName)
+        void IClientsFormContract.SelectClientById(int clientId)
         {
             foreach (DataRowView item in clientBox.Items)
             {
-                if (item.Row[nameColumn.DataPropertyName].ToString().Equals(clientName))
+                if (item.Row[idColumn.DataPropertyName] != DBNull.Value &&
+                    Convert.ToInt32(item.Row[idColumn.DataPropertyName]) == clientId)
                 {
                     clientBox.SelectedItem = item;
                     break;

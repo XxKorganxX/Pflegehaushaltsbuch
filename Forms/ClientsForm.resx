@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -131,52 +131,15 @@
   <data name="flowLayoutPanel1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="updateButton.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="updateButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="updateButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 4</value>
-  </data>
-  <data name="updateButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="updateButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 60</value>
-  </data>
-  <data name="updateButton.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="updateButton.Text" xml:space="preserve">
-    <value>Administrator
-Update Table</value>
-  </data>
-  <data name="updateButton.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;updateButton.Name" xml:space="preserve">
-    <value>updateButton</value>
-  </data>
-  <data name="&gt;&gt;updateButton.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.Button, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;updateButton.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;updateButton.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="selectClientButton.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="selectClientButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="selectClientButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>157, 4</value>
+    <value>3, 4</value>
   </data>
   <data name="selectClientButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
@@ -185,7 +148,7 @@ Update Table</value>
     <value>148, 60</value>
   </data>
   <data name="selectClientButton.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="selectClientButton.Text" xml:space="preserve">
     <value>Books</value>
@@ -200,7 +163,7 @@ Update Table</value>
     <value>flowLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;selectClientButton.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="scheduleButton.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -209,7 +172,7 @@ Update Table</value>
     <value>NoControl</value>
   </data>
   <data name="scheduleButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>311, 4</value>
+    <value>157, 4</value>
   </data>
   <data name="scheduleButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
@@ -218,7 +181,7 @@ Update Table</value>
     <value>148, 60</value>
   </data>
   <data name="scheduleButton.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>1</value>
   </data>
   <data name="scheduleButton.Text" xml:space="preserve">
     <value>Deadlines</value>
@@ -233,7 +196,7 @@ Update Table</value>
     <value>flowLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;scheduleButton.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="insertButton.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -245,7 +208,7 @@ Update Table</value>
     <value>NoControl</value>
   </data>
   <data name="insertButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>465, 4</value>
+    <value>311, 4</value>
   </data>
   <data name="insertButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
@@ -270,7 +233,7 @@ account</value>
     <value>flowLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;insertButton.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="changeButton.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -282,7 +245,7 @@ account</value>
     <value>NoControl</value>
   </data>
   <data name="changeButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>619, 4</value>
+    <value>465, 4</value>
   </data>
   <data name="changeButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
@@ -307,7 +270,7 @@ account</value>
     <value>flowLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;changeButton.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="deleteButton.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -316,7 +279,7 @@ account</value>
     <value>NoControl</value>
   </data>
   <data name="deleteButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>773, 4</value>
+    <value>619, 4</value>
   </data>
   <data name="deleteButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
@@ -344,7 +307,7 @@ account</value>
     <value>flowLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;deleteButton.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="clientBooksButton.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -353,7 +316,7 @@ account</value>
     <value>NoControl</value>
   </data>
   <data name="clientBooksButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 72</value>
+    <value>773, 4</value>
   </data>
   <data name="clientBooksButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
@@ -362,7 +325,7 @@ account</value>
     <value>148, 60</value>
   </data>
   <data name="clientBooksButton.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="clientBooksButton.Text" xml:space="preserve">
     <value>Statement</value>
@@ -377,7 +340,7 @@ account</value>
     <value>flowLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;clientBooksButton.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="printButton.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -386,7 +349,7 @@ account</value>
     <value>NoControl</value>
   </data>
   <data name="printButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>157, 72</value>
+    <value>3, 72</value>
   </data>
   <data name="printButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
@@ -395,7 +358,7 @@ account</value>
     <value>148, 60</value>
   </data>
   <data name="printButton.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+    <value>6</value>
   </data>
   <data name="printButton.Text" xml:space="preserve">
     <value>Print clients</value>
@@ -410,7 +373,7 @@ account</value>
     <value>flowLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;printButton.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>6</value>
   </data>
   <data name="backButton.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -419,7 +382,7 @@ account</value>
     <value>NoControl</value>
   </data>
   <data name="backButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>311, 72</value>
+    <value>157, 72</value>
   </data>
   <data name="backButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
@@ -428,7 +391,7 @@ account</value>
     <value>148, 60</value>
   </data>
   <data name="backButton.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
+    <value>7</value>
   </data>
   <data name="backButton.Text" xml:space="preserve">
     <value>Back</value>
@@ -443,7 +406,7 @@ account</value>
     <value>flowLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;backButton.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>7</value>
   </data>
   <data name="flowLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -458,7 +421,7 @@ account</value>
     <value>993, 136</value>
   </data>
   <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel1.Name" xml:space="preserve">
     <value>flowLayoutPanel1</value>
@@ -536,7 +499,7 @@ account</value>
     <value>143, 29</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>Amount of all clients:</value>
@@ -557,13 +520,13 @@ account</value>
     <value>True</value>
   </metadata>
   <data name="infoColumn.HeaderText" xml:space="preserve">
-    <value>DL</value>
+    <value>📅</value>
   </data>
   <data name="infoColumn.MinimumWidth" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
   <data name="infoColumn.Width" type="System.Int32, mscorlib">
-    <value>51</value>
+    <value>53</value>
   </data>
   <metadata name="idColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -602,10 +565,10 @@ account</value>
     <value>True</value>
   </metadata>
   <data name="handSignColumn.HeaderText" xml:space="preserve">
-    <value>Hs</value>
+    <value>✍️</value>
   </data>
   <data name="handSignColumn.Width" type="System.Int32, mscorlib">
-    <value>50</value>
+    <value>53</value>
   </data>
   <data name="activeColumn.HeaderText" xml:space="preserve">
     <value>Active</value>
@@ -626,7 +589,7 @@ account</value>
     <value>964, 176</value>
   </data>
   <data name="clientsView.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;clientsView.Name" xml:space="preserve">
     <value>clientsView</value>
@@ -662,7 +625,7 @@ account</value>
     <value>143, 59</value>
   </data>
   <data name="label4.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>4</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>Current deadline:</value>
@@ -698,7 +661,7 @@ account</value>
     <value>115, 25</value>
   </data>
   <data name="clientDateBox.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>9</value>
   </data>
   <data name="&gt;&gt;clientDateBox.Name" xml:space="preserve">
     <value>clientDateBox</value>
@@ -728,7 +691,7 @@ account</value>
     <value>41, 32</value>
   </data>
   <data name="label5.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>8</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
     <value>Date:</value>
@@ -761,7 +724,7 @@ account</value>
     <value>115, 25</value>
   </data>
   <data name="bornBox.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>7</value>
   </data>
   <data name="&gt;&gt;bornBox.Name" xml:space="preserve">
     <value>bornBox</value>
@@ -791,7 +754,7 @@ account</value>
     <value>41, 32</value>
   </data>
   <data name="label3.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>6</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Born:</value>
@@ -824,7 +787,7 @@ account</value>
     <value>266, 26</value>
   </data>
   <data name="clientBox.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>5</value>
   </data>
   <data name="&gt;&gt;clientBox.Name" xml:space="preserve">
     <value>clientBox</value>
@@ -854,7 +817,7 @@ account</value>
     <value>44, 32</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Client</value>
@@ -884,7 +847,7 @@ account</value>
     <value>144, 26</value>
   </data>
   <data name="activeClientsBox.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;activeClientsBox.Name" xml:space="preserve">
     <value>activeClientsBox</value>
@@ -947,7 +910,7 @@ account</value>
     <value>41, 32</value>
   </data>
   <data name="label8.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+    <value>0</value>
   </data>
   <data name="label8.Text" xml:space="preserve">
     <value>Total:</value>
@@ -980,7 +943,7 @@ account</value>
     <value>45, 25</value>
   </data>
   <data name="totalClientsBox.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;totalClientsBox.Name" xml:space="preserve">
     <value>totalClientsBox</value>
@@ -1007,7 +970,7 @@ account</value>
     <value>964, 32</value>
   </data>
   <data name="tableLayoutPanel3.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel3.Name" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -1037,7 +1000,7 @@ account</value>
     <value>120, 25</value>
   </data>
   <data name="totalAmountBox.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="totalAmountBox.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Right</value>
@@ -1070,7 +1033,7 @@ account</value>
     <value>404, 60</value>
   </data>
   <data name="deadLineBox.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>5</value>
   </data>
   <data name="&gt;&gt;deadLineBox.Name" xml:space="preserve">
     <value>deadLineBox</value>

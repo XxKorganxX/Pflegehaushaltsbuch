@@ -36,10 +36,6 @@
             this.label7 = new Pflegehaushaltsbuch.FormControls.Label();
             this.tableLayoutPanel1 = new Pflegehaushaltsbuch.FormControls.TableLayoutPanel();
             this.view = new Pflegehaushaltsbuch.FormControls.DataGridView();
-            this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.coColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.handSignColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel3 = new Pflegehaushaltsbuch.FormControls.TableLayoutPanel();
             this.label6 = new Pflegehaushaltsbuch.FormControls.Label();
             this.activeClientsBox = new Pflegehaushaltsbuch.FormControls.ComboBox();
@@ -51,6 +47,10 @@
             this.insertButton = new Pflegehaushaltsbuch.FormControls.Button();
             this.deleteButton = new Pflegehaushaltsbuch.FormControls.Button();
             this.backButton = new Pflegehaushaltsbuch.FormControls.Button();
+            this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.coColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.handSignColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.view)).BeginInit();
@@ -102,7 +102,6 @@
             this.view.AllowUserToResizeColumns = false;
             this.view.AllowUserToResizeRows = false;
             this.view.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.view.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.view.BackgroundColor = System.Drawing.Color.White;
             this.view.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.view.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -119,46 +118,10 @@
             this.view.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.view.RowHeadersVisible = false;
             this.view.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.view.RowTemplate.Height = 24;
             this.view.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.view.StandardTab = true;
             this.view.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.view_CellDoubleClick);
-            // 
-            // idColumn
-            // 
-            this.idColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.idColumn.DataPropertyName = "index";
-            dataGridViewCellStyle1.Format = "000";
-            dataGridViewCellStyle1.NullValue = null;
-            this.idColumn.DefaultCellStyle = dataGridViewCellStyle1;
-            this.idColumn.FillWeight = 113.9086F;
-            resources.ApplyResources(this.idColumn, "idColumn");
-            this.idColumn.Name = "idColumn";
-            this.idColumn.ReadOnly = true;
-            // 
-            // nameColumn
-            // 
-            this.nameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.nameColumn.DataPropertyName = "date";
-            this.nameColumn.FillWeight = 113.9086F;
-            resources.ApplyResources(this.nameColumn, "nameColumn");
-            this.nameColumn.Name = "nameColumn";
-            this.nameColumn.ReadOnly = true;
-            // 
-            // coColumn
-            // 
-            this.coColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.coColumn.DataPropertyName = "note";
-            resources.ApplyResources(this.coColumn, "coColumn");
-            this.coColumn.Name = "coColumn";
-            this.coColumn.ReadOnly = true;
-            // 
-            // handSignColumn
-            // 
-            this.handSignColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.handSignColumn.DataPropertyName = "handsign";
-            resources.ApplyResources(this.handSignColumn, "handSignColumn");
-            this.handSignColumn.Name = "handSignColumn";
-            this.handSignColumn.ReadOnly = true;
             // 
             // tableLayoutPanel3
             // 
@@ -265,6 +228,43 @@
             this.backButton.UseVisualStyleBackColor = false;
             this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
+            // idColumn
+            // 
+            this.idColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.idColumn.DataPropertyName = "index";
+            dataGridViewCellStyle1.Format = "000";
+            dataGridViewCellStyle1.NullValue = null;
+            this.idColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            this.idColumn.FillWeight = 113.9086F;
+            resources.ApplyResources(this.idColumn, "idColumn");
+            this.idColumn.Name = "idColumn";
+            this.idColumn.ReadOnly = true;
+            // 
+            // nameColumn
+            // 
+            this.nameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.nameColumn.DataPropertyName = "date";
+            this.nameColumn.FillWeight = 113.9086F;
+            resources.ApplyResources(this.nameColumn, "nameColumn");
+            this.nameColumn.Name = "nameColumn";
+            this.nameColumn.ReadOnly = true;
+            // 
+            // coColumn
+            // 
+            this.coColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.coColumn.DataPropertyName = "note";
+            resources.ApplyResources(this.coColumn, "coColumn");
+            this.coColumn.Name = "coColumn";
+            this.coColumn.ReadOnly = true;
+            // 
+            // handSignColumn
+            // 
+            this.handSignColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.handSignColumn.DataPropertyName = "handsign";
+            resources.ApplyResources(this.handSignColumn, "handSignColumn");
+            this.handSignColumn.Name = "handSignColumn";
+            this.handSignColumn.ReadOnly = true;
+            // 
             // DocumentsForm
             // 
             resources.ApplyResources(this, "$this");
@@ -309,6 +309,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nameColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn coColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn handSignColumn;
-
     }
 }

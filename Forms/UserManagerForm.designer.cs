@@ -31,15 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserManagerForm));
             this.tableLayoutPanel1 = new Pflegehaushaltsbuch.FormControls.TableLayoutPanel();
             this.view = new Pflegehaushaltsbuch.FormControls.DataGridView();
-            this.nameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.loginColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.phoneColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.faxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.emailColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.accessColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.adminColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tableLayoutPanel3 = new Pflegehaushaltsbuch.FormControls.TableLayoutPanel();
-            this.clientBox = new Pflegehaushaltsbuch.FormControls.ComboBox();
+            this.userNameTextBox = new Pflegehaushaltsbuch.FormControls.ComboBox();
             this.label1 = new Pflegehaushaltsbuch.FormControls.Label();
             this.flowLayoutPanel1 = new Pflegehaushaltsbuch.FormControls.FlowLayoutPanel();
             this.createButton = new Pflegehaushaltsbuch.FormControls.Button();
@@ -71,15 +68,11 @@
             this.view.AllowUserToResizeColumns = false;
             this.view.AllowUserToResizeRows = false;
             this.view.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.view.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.view.BackgroundColor = System.Drawing.Color.White;
             this.view.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.view.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.nameColumn,
             this.loginColumn,
-            this.phoneColumn,
-            this.faxColumn,
-            this.emailColumn,
+            this.nameColumn,
             this.accessColumn,
             this.adminColumn});
             resources.ApplyResources(this.view, "view");
@@ -90,47 +83,25 @@
             this.view.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             this.view.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(177)))), ((int)(((byte)(210)))));
             this.view.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.view.RowTemplate.Height = 24;
             this.view.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.view.StandardTab = true;
             // 
-            // nameColumn
-            // 
-            this.nameColumn.DataPropertyName = "name";
-            resources.ApplyResources(this.nameColumn, "nameColumn");
-            this.nameColumn.Name = "nameColumn";
-            this.nameColumn.ReadOnly = true;
-            // 
             // loginColumn
             // 
-            this.loginColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.loginColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.loginColumn.DataPropertyName = "login";
             resources.ApplyResources(this.loginColumn, "loginColumn");
             this.loginColumn.Name = "loginColumn";
             this.loginColumn.ReadOnly = true;
             // 
-            // phoneColumn
+            // nameColumn
             // 
-            this.phoneColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.phoneColumn.DataPropertyName = "phone";
-            resources.ApplyResources(this.phoneColumn, "phoneColumn");
-            this.phoneColumn.Name = "phoneColumn";
-            this.phoneColumn.ReadOnly = true;
-            // 
-            // faxColumn
-            // 
-            this.faxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.faxColumn.DataPropertyName = "fax";
-            resources.ApplyResources(this.faxColumn, "faxColumn");
-            this.faxColumn.Name = "faxColumn";
-            this.faxColumn.ReadOnly = true;
-            // 
-            // emailColumn
-            // 
-            this.emailColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.emailColumn.DataPropertyName = "email";
-            resources.ApplyResources(this.emailColumn, "emailColumn");
-            this.emailColumn.Name = "emailColumn";
-            this.emailColumn.ReadOnly = true;
+            this.nameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.nameColumn.DataPropertyName = "handsign";
+            resources.ApplyResources(this.nameColumn, "nameColumn");
+            this.nameColumn.Name = "nameColumn";
+            this.nameColumn.ReadOnly = true;
             // 
             // accessColumn
             // 
@@ -153,17 +124,17 @@
             // 
             resources.ApplyResources(this.tableLayoutPanel3, "tableLayoutPanel3");
             this.tableLayoutPanel3.BorderColor = System.Drawing.Color.Empty;
-            this.tableLayoutPanel3.Controls.Add(this.clientBox, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.userNameTextBox, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             // 
-            // clientBox
+            // userNameTextBox
             // 
-            resources.ApplyResources(this.clientBox, "clientBox");
-            this.clientBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.clientBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.clientBox.FormattingEnabled = true;
-            this.clientBox.Name = "clientBox";
+            resources.ApplyResources(this.userNameTextBox, "userNameTextBox");
+            this.userNameTextBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.userNameTextBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.userNameTextBox.FormattingEnabled = true;
+            this.userNameTextBox.Name = "userNameTextBox";
             // 
             // label1
             // 
@@ -259,7 +230,7 @@
 
         #endregion
 
-        private Pflegehaushaltsbuch.FormControls.ComboBox clientBox;
+        private Pflegehaushaltsbuch.FormControls.ComboBox userNameTextBox;
         private Pflegehaushaltsbuch.FormControls.Label label1;
         private FormControls.Button backButton;
         private FormControls.Button createButton;
@@ -271,11 +242,8 @@
         private FormControls.TableLayoutPanel tableLayoutPanel3;
         private FormControls.TableLayoutPanel tableLayoutPanel2;
         private FormControls.Label label7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn loginColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn phoneColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn faxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn emailColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn accessColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn adminColumn;
     }

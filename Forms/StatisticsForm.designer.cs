@@ -63,7 +63,6 @@
             // 
             // label7
             // 
-            this.label7.AttachRegion = false;
             resources.ApplyResources(this.label7, "label7");
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.DrawLine = false;
@@ -130,7 +129,6 @@
             // 
             // label3
             // 
-            this.label3.AttachRegion = false;
             resources.ApplyResources(this.label3, "label3");
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.DrawLine = false;
@@ -150,7 +148,6 @@
             // 
             // label2
             // 
-            this.label2.AttachRegion = false;
             resources.ApplyResources(this.label2, "label2");
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.DrawLine = false;
@@ -175,7 +172,6 @@
             // 
             // label1
             // 
-            this.label1.AttachRegion = false;
             resources.ApplyResources(this.label1, "label1");
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.DrawLine = false;
@@ -199,7 +195,6 @@
             this.Controls.Add(this.tableLayoutPanel2);
             this.DoubleBuffered = true;
             this.Name = "StatisticsForm";
-            this.Load += new System.EventHandler(this.StatisticsForm_Load);
             this.Enter += new System.EventHandler(this.StatisticsForm_Enter);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();

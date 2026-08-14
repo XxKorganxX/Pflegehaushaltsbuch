@@ -57,8 +57,6 @@ namespace Pflegehaushaltsbuch.FormControls
         public float Radius { get; set; }
         [Category("Verhalten")]
         [DefaultValue(false)]
-        public bool AttachRegion { get; set; }
-        [DefaultValue(false)]
         public bool DrawLine { get; set; }
         [DefaultValue(0)]
         public int LinePadding { get; set; }
@@ -85,7 +83,6 @@ namespace Pflegehaushaltsbuch.FormControls
             // 
             // Label
             // 
-            this.VisibleChanged += new System.EventHandler(this.Label_VisibleChanged);
             this.ResumeLayout(false);
         }
         /// <summary>
@@ -119,34 +116,6 @@ namespace Pflegehaushaltsbuch.FormControls
             else if (BackColor != Color.Transparent)
             {
                 e.Graphics.FillRectangle(new SolidBrush(BackColor), ClientRectangle);
-            }
-        }
-        //protected override void OnPaint(PaintEventArgs e)
-        //{
-        //    if (AutoSize)
-        //    {
-        //        base.OnPaint(e);
-        //        return;
-        //    }
-            
-        //    var g = e.Graphics;
-        //    using (Brush brush = new SolidBrush(ForeColor))
-        //        g.DrawString(Text, Font, brush, new RectangleF(0,0, Width, 1000));// new StringFormat() { FormatFlags = StringFormatFlags.FitBlackBox});
-        //}
-        /// <summary>
-        /// Handles the visible Changed event for label and updates the related state.
-        /// </summary>
-        private void Label_VisibleChanged(object sender, EventArgs e)
-        {
-            if (Program.DesignMode)
-                return;
-            if (Visible)
-            {
-                if (AttachRegion)
-                {
-                    if (!Text.EndsWith(RegionInfo.CurrentRegion.CurrencySymbol))
-                        Text += " " + RegionInfo.CurrentRegion.CurrencySymbol;
-                }
             }
         }
     }

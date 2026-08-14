@@ -85,10 +85,8 @@
             this.handsignColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label19 = new Pflegehaushaltsbuch.FormControls.Label();
             this.flowLayoutPanel1 = new Pflegehaushaltsbuch.FormControls.FlowLayoutPanel();
-            this.updateButton = new Pflegehaushaltsbuch.FormControls.Button();
             this.bookButton = new Pflegehaushaltsbuch.FormControls.Button();
             this.printButton = new Pflegehaushaltsbuch.FormControls.Button();
-            this.exportButton = new Pflegehaushaltsbuch.FormControls.Button();
             this.backButton = new Pflegehaushaltsbuch.FormControls.Button();
             this.tableLayoutPanel2 = new Pflegehaushaltsbuch.FormControls.TableLayoutPanel();
             this.tableLayoutPanel1.SuspendLayout();
@@ -181,7 +179,6 @@
             // 
             // label1
             // 
-            this.label1.AttachRegion = true;
             resources.ApplyResources(this.label1, "label1");
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Name = "label1";
@@ -239,28 +236,24 @@
             // 
             // label15
             // 
-            this.label15.AttachRegion = true;
             resources.ApplyResources(this.label15, "label15");
             this.label15.ForeColor = System.Drawing.Color.White;
             this.label15.Name = "label15";
             // 
             // label17
             // 
-            this.label17.AttachRegion = true;
             resources.ApplyResources(this.label17, "label17");
             this.label17.ForeColor = System.Drawing.Color.White;
             this.label17.Name = "label17";
             // 
             // label16
             // 
-            this.label16.AttachRegion = true;
             resources.ApplyResources(this.label16, "label16");
             this.label16.ForeColor = System.Drawing.Color.White;
             this.label16.Name = "label16";
             // 
             // label2
             // 
-            this.label2.AttachRegion = true;
             resources.ApplyResources(this.label2, "label2");
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Name = "label2";
@@ -284,14 +277,12 @@
             // 
             // label5
             // 
-            this.label5.AttachRegion = true;
             resources.ApplyResources(this.label5, "label5");
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Name = "label5";
             // 
             // label12
             // 
-            this.label12.AttachRegion = true;
             resources.ApplyResources(this.label12, "label12");
             this.label12.ForeColor = System.Drawing.Color.White;
             this.label12.Name = "label12";
@@ -332,28 +323,24 @@
             // 
             // label6
             // 
-            this.label6.AttachRegion = true;
             resources.ApplyResources(this.label6, "label6");
             this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Name = "label6";
             // 
             // label13
             // 
-            this.label13.AttachRegion = true;
             resources.ApplyResources(this.label13, "label13");
             this.label13.ForeColor = System.Drawing.Color.White;
             this.label13.Name = "label13";
             // 
             // label9
             // 
-            this.label9.AttachRegion = true;
             resources.ApplyResources(this.label9, "label9");
             this.label9.ForeColor = System.Drawing.Color.White;
             this.label9.Name = "label9";
             // 
             // label14
             // 
-            this.label14.AttachRegion = true;
             resources.ApplyResources(this.label14, "label14");
             this.label14.ForeColor = System.Drawing.Color.White;
             this.label14.Name = "label14";
@@ -445,14 +432,12 @@
             // 
             // label10
             // 
-            this.label10.AttachRegion = true;
             resources.ApplyResources(this.label10, "label10");
             this.label10.ForeColor = System.Drawing.Color.White;
             this.label10.Name = "label10";
             // 
             // label11
             // 
-            this.label11.AttachRegion = true;
             resources.ApplyResources(this.label11, "label11");
             this.label11.ForeColor = System.Drawing.Color.White;
             this.label11.Name = "label11";
@@ -476,7 +461,6 @@
             // 
             // label7
             // 
-            this.label7.AttachRegion = true;
             resources.ApplyResources(this.label7, "label7");
             this.label7.ForeColor = System.Drawing.Color.White;
             this.label7.Name = "label7";
@@ -500,7 +484,6 @@
             // 
             // label8
             // 
-            this.label8.AttachRegion = true;
             resources.ApplyResources(this.label8, "label8");
             this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.Name = "label8";
@@ -632,7 +615,9 @@
             // 
             resources.ApplyResources(this.periodCheckBox, "periodCheckBox");
             this.periodCheckBox.BorderColor = System.Drawing.Color.DimGray;
+            this.periodCheckBox.Checked = true;
             this.periodCheckBox.CheckedImage = null;
+            this.periodCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.periodCheckBox.Name = "periodCheckBox";
             this.periodCheckBox.UnCheckedImage = null;
             this.periodCheckBox.UseVisualStyleBackColor = true;
@@ -645,7 +630,6 @@
             this.view.AllowUserToResizeColumns = false;
             this.view.AllowUserToResizeRows = false;
             this.view.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.view.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.view.BackgroundColor = System.Drawing.Color.White;
             this.view.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.view.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -661,6 +645,7 @@
             this.view.RowHeadersVisible = false;
             this.view.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(177)))), ((int)(((byte)(210)))));
             this.view.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.view.RowTemplate.Height = 24;
             this.view.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.view.StandardTab = true;
             // 
@@ -685,7 +670,7 @@
             // accountColumn
             // 
             this.accountColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.accountColumn.DataPropertyName = "account";
+            this.accountColumn.DataPropertyName = "account_id";
             resources.ApplyResources(this.accountColumn, "accountColumn");
             this.accountColumn.Name = "accountColumn";
             this.accountColumn.ReadOnly = true;
@@ -703,7 +688,6 @@
             this.amountColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.amountColumn.DataPropertyName = "amount";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "C";
             this.amountColumn.DefaultCellStyle = dataGridViewCellStyle2;
             resources.ApplyResources(this.amountColumn, "amountColumn");
             this.amountColumn.Name = "amountColumn";
@@ -728,23 +712,10 @@
             // flowLayoutPanel1
             // 
             resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
-            this.flowLayoutPanel1.Controls.Add(this.updateButton);
             this.flowLayoutPanel1.Controls.Add(this.bookButton);
             this.flowLayoutPanel1.Controls.Add(this.printButton);
-            this.flowLayoutPanel1.Controls.Add(this.exportButton);
             this.flowLayoutPanel1.Controls.Add(this.backButton);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            // 
-            // updateButton
-            // 
-            resources.ApplyResources(this.updateButton, "updateButton");
-            this.updateButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.updateButton.BorderColor = System.Drawing.Color.DimGray;
-            this.updateButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.updateButton.Name = "updateButton";
-            this.updateButton.Radius = -1F;
-            this.updateButton.UseVisualStyleBackColor = false;
-            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
             // 
             // bookButton
             // 
@@ -767,17 +738,6 @@
             this.printButton.Radius = -1F;
             this.printButton.UseVisualStyleBackColor = false;
             this.printButton.Click += new System.EventHandler(this.printButton_Click);
-            // 
-            // exportButton
-            // 
-            resources.ApplyResources(this.exportButton, "exportButton");
-            this.exportButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.exportButton.BorderColor = System.Drawing.Color.DimGray;
-            this.exportButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.exportButton.Name = "exportButton";
-            this.exportButton.Radius = -1F;
-            this.exportButton.UseVisualStyleBackColor = false;
-            this.exportButton.Click += new System.EventHandler(this.exportButton_Click);
             // 
             // backButton
             // 
@@ -883,22 +843,20 @@
         private Pflegehaushaltsbuch.FormControls.TableLayoutPanel tableLayoutPanel3;
         private Pflegehaushaltsbuch.FormControls.DateTimeBox toDateBox;
         private Pflegehaushaltsbuch.FormControls.Button printButton;
-        private Pflegehaushaltsbuch.FormControls.Button updateButton;
         private Pflegehaushaltsbuch.FormControls.Label label19;
         private Pflegehaushaltsbuch.FormControls.TableLayoutPanel tableLayoutPanel2;
         private Pflegehaushaltsbuch.FormControls.TableLayoutPanel tableLayoutPanel4;
         private Pflegehaushaltsbuch.FormControls.Button bookButton;
         private Pflegehaushaltsbuch.FormControls.TableLayoutPanel tableLayoutPanel5;
+        private FormControls.CheckBox periodCheckBox;
+        private FormControls.DateTimeBox fromDateBox;
+        private FormControls.Label fromToLabel;
+        private FormControls.Button automaticButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn noteColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn accountColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn categoryColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn amountColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn handsignColumn;
-        private FormControls.CheckBox periodCheckBox;
-        private FormControls.DateTimeBox fromDateBox;
-        private FormControls.Label fromToLabel;
-        private FormControls.Button automaticButton;
-        private FormControls.Button exportButton;
     }
 }

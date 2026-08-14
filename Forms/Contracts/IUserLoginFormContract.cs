@@ -1,6 +1,3 @@
-using Pflegehaushaltsbuch.Databases;
-using System.Data;
-
 namespace Pflegehaushaltsbuch.Forms
 {
     public interface IUserLoginFormContract
@@ -8,7 +5,7 @@ namespace Pflegehaushaltsbuch.Forms
         string UserName { get; }
         string Password { get; }
         void ClearPassword();
-        bool ShowChangeUserDialog(SqlSession session, string user, string keyword, DataTable users);
+        bool ShowChangePasswordDialog(out string keyword);
         void ShowUserDataChanged();
         void SetAccepted();
         void CloseView();

@@ -31,21 +31,25 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreationUserForm));
             this.okButton = new Pflegehaushaltsbuch.FormControls.Button();
             this.cancelButton = new Pflegehaushaltsbuch.FormControls.Button();
-            this.insertBox = new Pflegehaushaltsbuch.FormControls.CheckBox();
-            this.changeBox = new Pflegehaushaltsbuch.FormControls.CheckBox();
-            this.deleteBox = new Pflegehaushaltsbuch.FormControls.CheckBox();
-            this.adminBox = new Pflegehaushaltsbuch.FormControls.CheckBox();
+            this.createCheckBox = new Pflegehaushaltsbuch.FormControls.CheckBox();
+            this.changeCheckBox = new Pflegehaushaltsbuch.FormControls.CheckBox();
+            this.adminCheckBox = new Pflegehaushaltsbuch.FormControls.CheckBox();
             this.label2 = new Pflegehaushaltsbuch.FormControls.Label();
-            this.nameBox = new Pflegehaushaltsbuch.FormControls.TextBox();
-            this.label3 = new Pflegehaushaltsbuch.FormControls.Label();
-            this.phoneBox = new Pflegehaushaltsbuch.FormControls.TextBox();
-            this.label4 = new Pflegehaushaltsbuch.FormControls.Label();
-            this.faxBox = new Pflegehaushaltsbuch.FormControls.TextBox();
-            this.label5 = new Pflegehaushaltsbuch.FormControls.Label();
-            this.emailBox = new Pflegehaushaltsbuch.FormControls.TextBox();
+            this.handsignBox = new Pflegehaushaltsbuch.FormControls.TextBox();
             this.tableLayoutPanel1 = new Pflegehaushaltsbuch.FormControls.TableLayoutPanel();
             this.flowLayoutPanel1 = new Pflegehaushaltsbuch.FormControls.FlowLayoutPanel();
             this.tableLayoutPanel2 = new Pflegehaushaltsbuch.FormControls.TableLayoutPanel();
+            this.bookCheckBox = new Pflegehaushaltsbuch.FormControls.CheckBox();
+            this.cancelBookingCheckBox = new Pflegehaushaltsbuch.FormControls.CheckBox();
+            this.cashBalanceCheckBox = new Pflegehaushaltsbuch.FormControls.CheckBox();
+            this.bankBalanceCheckBox = new Pflegehaushaltsbuch.FormControls.CheckBox();
+            this.statisticsCheckBox = new Pflegehaushaltsbuch.FormControls.CheckBox();
+            this.cashAuditCheckBox = new Pflegehaushaltsbuch.FormControls.CheckBox();
+            this.documentsCheckBox = new Pflegehaushaltsbuch.FormControls.CheckBox();
+            this.employeesCheckBox = new Pflegehaushaltsbuch.FormControls.CheckBox();
+            this.representativesCheckBox = new Pflegehaushaltsbuch.FormControls.CheckBox();
+            this.clientsCheckBox = new Pflegehaushaltsbuch.FormControls.CheckBox();
+            this.pettyCashCheckBox = new Pflegehaushaltsbuch.FormControls.CheckBox();
             this.label1 = new Pflegehaushaltsbuch.FormControls.Label();
             this.loginBox = new Pflegehaushaltsbuch.FormControls.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
@@ -73,44 +77,36 @@
             this.cancelButton.Radius = -1F;
             this.cancelButton.UseVisualStyleBackColor = false;
             // 
-            // insertBox
+            // createCheckBox
             // 
-            resources.ApplyResources(this.insertBox, "insertBox");
-            this.insertBox.BorderColor = System.Drawing.Color.DimGray;
-            this.insertBox.CheckedImage = null;
-            this.insertBox.Name = "insertBox";
-            this.insertBox.UnCheckedImage = null;
-            this.insertBox.UseVisualStyleBackColor = true;
-            this.insertBox.CheckedChanged += new System.EventHandler(this.access_CheckedChanged);
+            resources.ApplyResources(this.createCheckBox, "createCheckBox");
+            this.createCheckBox.BorderColor = System.Drawing.Color.DimGray;
+            this.createCheckBox.Checked = true;
+            this.createCheckBox.CheckedImage = null;
+            this.createCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.createCheckBox.Name = "createCheckBox";
+            this.createCheckBox.UnCheckedImage = null;
+            this.createCheckBox.UseVisualStyleBackColor = true;
             // 
-            // changeBox
+            // changeCheckBox
             // 
-            resources.ApplyResources(this.changeBox, "changeBox");
-            this.changeBox.BorderColor = System.Drawing.Color.DimGray;
-            this.changeBox.CheckedImage = null;
-            this.changeBox.Name = "changeBox";
-            this.changeBox.UnCheckedImage = null;
-            this.changeBox.UseVisualStyleBackColor = true;
-            this.changeBox.CheckedChanged += new System.EventHandler(this.access_CheckedChanged);
+            resources.ApplyResources(this.changeCheckBox, "changeCheckBox");
+            this.changeCheckBox.BorderColor = System.Drawing.Color.DimGray;
+            this.changeCheckBox.Checked = true;
+            this.changeCheckBox.CheckedImage = null;
+            this.changeCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.changeCheckBox.Name = "changeCheckBox";
+            this.changeCheckBox.UnCheckedImage = null;
+            this.changeCheckBox.UseVisualStyleBackColor = true;
             // 
-            // deleteBox
+            // adminCheckBox
             // 
-            resources.ApplyResources(this.deleteBox, "deleteBox");
-            this.deleteBox.BorderColor = System.Drawing.Color.DimGray;
-            this.deleteBox.CheckedImage = null;
-            this.deleteBox.Name = "deleteBox";
-            this.deleteBox.UnCheckedImage = null;
-            this.deleteBox.UseVisualStyleBackColor = true;
-            this.deleteBox.CheckedChanged += new System.EventHandler(this.access_CheckedChanged);
-            // 
-            // adminBox
-            // 
-            resources.ApplyResources(this.adminBox, "adminBox");
-            this.adminBox.BorderColor = System.Drawing.Color.DimGray;
-            this.adminBox.CheckedImage = null;
-            this.adminBox.Name = "adminBox";
-            this.adminBox.UnCheckedImage = null;
-            this.adminBox.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.adminCheckBox, "adminCheckBox");
+            this.adminCheckBox.BorderColor = System.Drawing.Color.DimGray;
+            this.adminCheckBox.CheckedImage = null;
+            this.adminCheckBox.Name = "adminCheckBox";
+            this.adminCheckBox.UnCheckedImage = null;
+            this.adminCheckBox.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -119,67 +115,21 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Name = "label2";
             // 
-            // nameBox
+            // handsignBox
             // 
-            this.nameBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            resources.ApplyResources(this.nameBox, "nameBox");
-            this.nameBox.Name = "nameBox";
-            // 
-            // label3
-            // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Name = "label3";
-            // 
-            // phoneBox
-            // 
-            this.phoneBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            resources.ApplyResources(this.phoneBox, "phoneBox");
-            this.phoneBox.Name = "phoneBox";
-            // 
-            // label4
-            // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Name = "label4";
-            // 
-            // faxBox
-            // 
-            this.faxBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            resources.ApplyResources(this.faxBox, "faxBox");
-            this.faxBox.Name = "faxBox";
-            // 
-            // label5
-            // 
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Name = "label5";
-            // 
-            // emailBox
-            // 
-            this.emailBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            resources.ApplyResources(this.emailBox, "emailBox");
-            this.emailBox.Name = "emailBox";
-            this.emailBox.Validating += new System.ComponentModel.CancelEventHandler(this.emailBox_Validating);
+            this.handsignBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.handsignBox, "handsignBox");
+            this.handsignBox.Name = "handsignBox";
             // 
             // tableLayoutPanel1
             // 
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
-            this.tableLayoutPanel1.Controls.Add(this.nameBox, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.emailBox, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label5, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.phoneBox, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.faxBox, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.label4, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 6);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.loginBox, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.handsignBox, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.loginBox, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
             // flowLayoutPanel1
@@ -195,11 +145,142 @@
             resources.ApplyResources(this.tableLayoutPanel2, "tableLayoutPanel2");
             this.tableLayoutPanel2.Border = true;
             this.tableLayoutPanel1.SetColumnSpan(this.tableLayoutPanel2, 2);
-            this.tableLayoutPanel2.Controls.Add(this.adminBox, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.insertBox, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.deleteBox, 0, 2);
-            this.tableLayoutPanel2.Controls.Add(this.changeBox, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.createCheckBox, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.changeCheckBox, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.bookCheckBox, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.cancelBookingCheckBox, 0, 3);
+            this.tableLayoutPanel2.Controls.Add(this.adminCheckBox, 0, 4);
+            this.tableLayoutPanel2.Controls.Add(this.cashBalanceCheckBox, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.bankBalanceCheckBox, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.statisticsCheckBox, 1, 8);
+            this.tableLayoutPanel2.Controls.Add(this.cashAuditCheckBox, 1, 7);
+            this.tableLayoutPanel2.Controls.Add(this.documentsCheckBox, 1, 6);
+            this.tableLayoutPanel2.Controls.Add(this.employeesCheckBox, 1, 5);
+            this.tableLayoutPanel2.Controls.Add(this.representativesCheckBox, 1, 4);
+            this.tableLayoutPanel2.Controls.Add(this.clientsCheckBox, 1, 3);
+            this.tableLayoutPanel2.Controls.Add(this.pettyCashCheckBox, 1, 2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            // 
+            // bookCheckBox
+            // 
+            resources.ApplyResources(this.bookCheckBox, "bookCheckBox");
+            this.bookCheckBox.BorderColor = System.Drawing.Color.DimGray;
+            this.bookCheckBox.Checked = true;
+            this.bookCheckBox.CheckedImage = null;
+            this.bookCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.bookCheckBox.Name = "bookCheckBox";
+            this.bookCheckBox.UnCheckedImage = null;
+            this.bookCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cancelBookingCheckBox
+            // 
+            resources.ApplyResources(this.cancelBookingCheckBox, "cancelBookingCheckBox");
+            this.cancelBookingCheckBox.BorderColor = System.Drawing.Color.DimGray;
+            this.cancelBookingCheckBox.Checked = true;
+            this.cancelBookingCheckBox.CheckedImage = null;
+            this.cancelBookingCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cancelBookingCheckBox.Name = "cancelBookingCheckBox";
+            this.cancelBookingCheckBox.UnCheckedImage = null;
+            this.cancelBookingCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cashBalanceCheckBox
+            // 
+            resources.ApplyResources(this.cashBalanceCheckBox, "cashBalanceCheckBox");
+            this.cashBalanceCheckBox.BorderColor = System.Drawing.Color.DimGray;
+            this.cashBalanceCheckBox.Checked = true;
+            this.cashBalanceCheckBox.CheckedImage = null;
+            this.cashBalanceCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cashBalanceCheckBox.Name = "cashBalanceCheckBox";
+            this.cashBalanceCheckBox.UnCheckedImage = null;
+            this.cashBalanceCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // bankBalanceCheckBox
+            // 
+            resources.ApplyResources(this.bankBalanceCheckBox, "bankBalanceCheckBox");
+            this.bankBalanceCheckBox.BorderColor = System.Drawing.Color.DimGray;
+            this.bankBalanceCheckBox.Checked = true;
+            this.bankBalanceCheckBox.CheckedImage = null;
+            this.bankBalanceCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.bankBalanceCheckBox.Name = "bankBalanceCheckBox";
+            this.bankBalanceCheckBox.UnCheckedImage = null;
+            this.bankBalanceCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // statisticsCheckBox
+            // 
+            resources.ApplyResources(this.statisticsCheckBox, "statisticsCheckBox");
+            this.statisticsCheckBox.BorderColor = System.Drawing.Color.DimGray;
+            this.statisticsCheckBox.Checked = true;
+            this.statisticsCheckBox.CheckedImage = null;
+            this.statisticsCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.statisticsCheckBox.Name = "statisticsCheckBox";
+            this.statisticsCheckBox.UnCheckedImage = null;
+            this.statisticsCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cashAuditCheckBox
+            // 
+            resources.ApplyResources(this.cashAuditCheckBox, "cashAuditCheckBox");
+            this.cashAuditCheckBox.BorderColor = System.Drawing.Color.DimGray;
+            this.cashAuditCheckBox.Checked = true;
+            this.cashAuditCheckBox.CheckedImage = null;
+            this.cashAuditCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cashAuditCheckBox.Name = "cashAuditCheckBox";
+            this.cashAuditCheckBox.UnCheckedImage = null;
+            this.cashAuditCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // documentsCheckBox
+            // 
+            resources.ApplyResources(this.documentsCheckBox, "documentsCheckBox");
+            this.documentsCheckBox.BorderColor = System.Drawing.Color.DimGray;
+            this.documentsCheckBox.Checked = true;
+            this.documentsCheckBox.CheckedImage = null;
+            this.documentsCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.documentsCheckBox.Name = "documentsCheckBox";
+            this.documentsCheckBox.UnCheckedImage = null;
+            this.documentsCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // employeesCheckBox
+            // 
+            resources.ApplyResources(this.employeesCheckBox, "employeesCheckBox");
+            this.employeesCheckBox.BorderColor = System.Drawing.Color.DimGray;
+            this.employeesCheckBox.Checked = true;
+            this.employeesCheckBox.CheckedImage = null;
+            this.employeesCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.employeesCheckBox.Name = "employeesCheckBox";
+            this.employeesCheckBox.UnCheckedImage = null;
+            this.employeesCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // representativesCheckBox
+            // 
+            resources.ApplyResources(this.representativesCheckBox, "representativesCheckBox");
+            this.representativesCheckBox.BorderColor = System.Drawing.Color.DimGray;
+            this.representativesCheckBox.Checked = true;
+            this.representativesCheckBox.CheckedImage = null;
+            this.representativesCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.representativesCheckBox.Name = "representativesCheckBox";
+            this.representativesCheckBox.UnCheckedImage = null;
+            this.representativesCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // clientsCheckBox
+            // 
+            resources.ApplyResources(this.clientsCheckBox, "clientsCheckBox");
+            this.clientsCheckBox.BorderColor = System.Drawing.Color.DimGray;
+            this.clientsCheckBox.Checked = true;
+            this.clientsCheckBox.CheckedImage = null;
+            this.clientsCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.clientsCheckBox.Name = "clientsCheckBox";
+            this.clientsCheckBox.UnCheckedImage = null;
+            this.clientsCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // pettyCashCheckBox
+            // 
+            resources.ApplyResources(this.pettyCashCheckBox, "pettyCashCheckBox");
+            this.pettyCashCheckBox.BorderColor = System.Drawing.Color.DimGray;
+            this.pettyCashCheckBox.Checked = true;
+            this.pettyCashCheckBox.CheckedImage = null;
+            this.pettyCashCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.pettyCashCheckBox.Name = "pettyCashCheckBox";
+            this.pettyCashCheckBox.UnCheckedImage = null;
+            this.pettyCashCheckBox.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -238,22 +319,26 @@
 
         private Pflegehaushaltsbuch.FormControls.Button okButton;
         private Pflegehaushaltsbuch.FormControls.Button cancelButton;
-        private Pflegehaushaltsbuch.FormControls.CheckBox insertBox;
-        private Pflegehaushaltsbuch.FormControls.CheckBox changeBox;
-        private Pflegehaushaltsbuch.FormControls.CheckBox deleteBox;
-        private Pflegehaushaltsbuch.FormControls.CheckBox adminBox;
+        private Pflegehaushaltsbuch.FormControls.CheckBox createCheckBox;
+        private Pflegehaushaltsbuch.FormControls.CheckBox changeCheckBox;
+        private Pflegehaushaltsbuch.FormControls.CheckBox adminCheckBox;
         private Pflegehaushaltsbuch.FormControls.Label label2;
-        private Pflegehaushaltsbuch.FormControls.TextBox nameBox;
-        private Pflegehaushaltsbuch.FormControls.Label label3;
-        private Pflegehaushaltsbuch.FormControls.TextBox phoneBox;
-        private Pflegehaushaltsbuch.FormControls.Label label4;
-        private Pflegehaushaltsbuch.FormControls.TextBox faxBox;
-        private Pflegehaushaltsbuch.FormControls.Label label5;
-        private Pflegehaushaltsbuch.FormControls.TextBox emailBox;
+        private Pflegehaushaltsbuch.FormControls.TextBox handsignBox;
         private Pflegehaushaltsbuch.FormControls.TableLayoutPanel tableLayoutPanel1;
         private Pflegehaushaltsbuch.FormControls.FlowLayoutPanel flowLayoutPanel1;
         private Pflegehaushaltsbuch.FormControls.TableLayoutPanel tableLayoutPanel2;
         private FormControls.Label label1;
         private FormControls.TextBox loginBox;
+        private FormControls.CheckBox bookCheckBox;
+        private FormControls.CheckBox cancelBookingCheckBox;
+        private FormControls.CheckBox cashBalanceCheckBox;
+        private FormControls.CheckBox bankBalanceCheckBox;
+        private FormControls.CheckBox clientsCheckBox;
+        private FormControls.CheckBox representativesCheckBox;
+        private FormControls.CheckBox employeesCheckBox;
+        private FormControls.CheckBox documentsCheckBox;
+        private FormControls.CheckBox cashAuditCheckBox;
+        private FormControls.CheckBox statisticsCheckBox;
+        private FormControls.CheckBox pettyCashCheckBox;
     }
 }

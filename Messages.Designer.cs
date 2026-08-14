@@ -133,6 +133,15 @@ namespace Pflegehaushaltsbuch {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Advisor cannot be deleted because it is assigned to at least one client. ähnelt.
+        /// </summary>
+        public static string advisor_delete_used_by_client {
+            get {
+                return ResourceManager.GetString("advisor_delete_used_by_client", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Advisors ähnelt.
         /// </summary>
         public static string advisors_export_filename {
@@ -619,8 +628,7 @@ namespace Pflegehaushaltsbuch {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Login: Admin
-        ///Password: admin ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Create an administrator user before signing in. ähnelt.
         /// </summary>
         public static string database_default_login {
             get {
@@ -1445,7 +1453,7 @@ namespace Pflegehaushaltsbuch {
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die SQL rules:
-        ///1. To create a new database, always use user: sa without a password 
+        ///1. To create a new SQL Server database, use a Windows account or SQL login with sufficient administrator rights.
         ///2. First create the database, then create the users
         ///3. After creating a new database, recreate all users because the old users are no longer valid.
         ///4. Users created with this application have the following rights:
@@ -1453,7 +1461,7 @@ namespace Pflegehaushaltsbuch {
         ///- they can update database entries
         ///- they can add, change and delete entries
         ///- they cannot be used with other databases
-        ///5. Never try to create a database with  [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
+        /// [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
         /// </summary>
         public static string sql_rules {
             get {
@@ -1561,6 +1569,24 @@ namespace Pflegehaushaltsbuch {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Expenses ähnelt.
+        /// </summary>
+        public static string statistics_expenses {
+            get {
+                return ResourceManager.GetString("statistics_expenses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Income ähnelt.
+        /// </summary>
+        public static string statistics_income {
+            get {
+                return ResourceManager.GetString("statistics_income", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Unknown error ähnelt.
         /// </summary>
         public static string unknown_error {
@@ -1637,7 +1663,7 @@ namespace Pflegehaushaltsbuch {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Administrator accounts cannot be deleted. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die The last administrator account cannot be deleted. ähnelt.
         /// </summary>
         public static string usermanagement_admin_delete {
             get {
@@ -1673,7 +1699,7 @@ namespace Pflegehaushaltsbuch {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die You are about to delete the last administrator. If you do this, the default account Admin/admin will become active again. Are you sure? ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die You are about to delete the last administrator. If you do this, no administrator account will remain. Are you sure? ähnelt.
         /// </summary>
         public static string usermanagement_last_admin_delete_warning {
             get {

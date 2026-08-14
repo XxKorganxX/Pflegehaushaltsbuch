@@ -14,7 +14,7 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
         private readonly SqlSession session;
         private readonly SemaphoreSlim databaseOperationLock = new SemaphoreSlim(1, 1);
         private DataTable table;
-        private string totalAmountText = 0m.ToString("C");
+        private string totalAmountText;
 
         public EmployeesFormPresenter(IEmployeesFormContract view, SqlSession session)
         {
@@ -58,13 +58,12 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
             {
                 foreach (DataRow row in table.Rows)
                 {
-                    decimal amount = 0;
-                    if (decimal.TryParse(row[Columns.AmountPayout].ToString(), out amount))
-                        totalAmount += amount;
+                    if (row[Columns.AmountPayout] != DBNull.Value)
+                        totalAmount += Convert.ToDecimal(row[Columns.AmountPayout]);
                 }
             }
 
-            totalAmountText = totalAmount.ToString("C");
+            totalAmountText = totalAmount.ToString("C", session.Company.Currencies);
             View.SetTotalAmount(totalAmountText);
         }
 
@@ -90,7 +89,7 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
                         row[Columns.AmountPaybackType] = 0;
                         row[Columns.Date] = input.Date.Date;
                         row[Columns.Active] = true;
-                        row[Columns.HandSign] = session.SQL.User.Name;
+                        row[Columns.HandSign] = session.SQL.User.Handsign;
                         table.Rows.Add(row);
 
                         bool valid = false;
@@ -98,12 +97,16 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
                         {
                             try
                             {
+                                int accountId = -1;
                                 if (table.Columns.Contains(Columns.AccountId))
-                                    row[Columns.AccountId] = await session.SQL.CreateAccountIdAsync("Employee");
+                                {
+                                    accountId = await session.SQL.CreateAccountIdAsync("Employee");
+                                    row[Columns.AccountId] = accountId;
+                                }
 
                                 valid = await session.SQL.UpdateAdapterAsync(SQLBase.SELECT.Emploees, table);
                                 if (valid && input.Amount != 0)
-                                    valid = await session.SQL.ToBargeAsync(input.Date, string.Format(Messages.ioan_to, input.AssistantName), -Math.Abs(input.Amount), string.Format("M{0:000}", input.ID), SQLBase.BookCategory.Auszahlung, SQLBase.BookingTo.Barbestand);
+                                    valid = await session.SQL.ToBargeAsync(input.Date, string.Format(Messages.ioan_to, input.AssistantName), -Math.Abs(input.Amount), accountId, SQLBase.BookCategory.Auszahlung, SQLBase.BookingTo.Barbestand);
                                 if (!valid)
                                     throw new Exception(Messages.assistants_created_failed);
                                 transaction.Commit();
@@ -162,21 +165,21 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
                 DataTable bankTable = new DataTable(), bargeTable = new DataTable(), assistantsTable = new DataTable();
                 await session.SQL.FillAdapterAsync(SQLBase.SELECT.Bank, bankTable);
                 await session.SQL.FillAdapterAsync(SQLBase.SELECT.Cash, bargeTable);
-                string idNumber = string.Format("M{0:000}", id);
+                int accountId = Convert.ToInt32(rowOfView[Columns.AccountId]);
 
                 foreach (DataRow row in bargeTable.Rows.OfType<DataRow>().ToArray())
                 {
-                    if (row[Columns.Account] == DBNull.Value || string.IsNullOrWhiteSpace(row[Columns.Account].ToString()))
+                    if (row[Columns.AccountId] == DBNull.Value)
                         throw new Exception(Messages.assistants_not_deleteable_book);
-                    if (row[Columns.Account].ToString().Equals(idNumber))
+                    if (Convert.ToInt32(row[Columns.AccountId]) == accountId)
                         row.Delete();
                 }
 
                 foreach (DataRow row in bankTable.Rows.OfType<DataRow>().ToArray())
                 {
-                    if (row[Columns.Account] == DBNull.Value || string.IsNullOrWhiteSpace(row[Columns.Account].ToString()))
+                    if (row[Columns.AccountId] == DBNull.Value)
                         throw new Exception(Messages.assistants_not_deleteable_book);
-                    if (row[Columns.Account].ToString().Equals(idNumber))
+                    if (Convert.ToInt32(row[Columns.AccountId]) == accountId)
                         row.Delete();
                 }
 
@@ -230,14 +233,15 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
                 if (row == null)
                     return;
 
-                if (decimal.Parse(row[Columns.AmountPayout].ToString()) == 0)
+                if (Convert.ToDecimal(row[Columns.AmountPayout]) == 0)
                     throw new Exception(Messages.ioan_repaid_needless);
 
                 AssistantPaybackInput input;
                 if (!View.ShowIoanPaybackDialog(row[Columns.Name].ToString(), Int32.Parse(row[Columns.Id].ToString()),
-                    decimal.Parse(row[Columns.AmountPayout].ToString()), out input))
+                    Convert.ToDecimal(row[Columns.AmountPayout]), out input))
                     return;
 
+                    int accountId = Convert.ToInt32(row[Columns.AccountId]);
                     using (var transaction = session.SQL.BeginTransaction())
                     {
                         try
@@ -249,11 +253,11 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
                             {
                                 case SQLBase.Repayment.Payout:
                                     valid = await session.SQL.ToBargeAsync(input.PaybackDate,
-                                        string.Format(Messages.ioan_repaid_by, input.AssistantName), input.Amount, string.Format("M{0:000}", input.AssistantId), SQLBase.BookCategory.Einzahlung, SQLBase.BookingTo.Barbestand);
+                                        string.Format(Messages.ioan_repaid_by, input.AssistantName), input.Amount, accountId, SQLBase.BookCategory.Einzahlung, SQLBase.BookingTo.Barbestand);
                                     break;
                                 case SQLBase.Repayment.Transfered:
                                 case SQLBase.Repayment.Direct_Debit:
-                                    valid = await session.SQL.ToBankAsync(input.PaybackDate, string.Format(Messages.ioan_repaid_by, input.AssistantName), input.Amount, string.Format("M{0:000}", input.AssistantId), SQLBase.BookCategory.Einzahlung, SQLBase.BookingTo.Bankbestand);
+                                    valid = await session.SQL.ToBankAsync(input.PaybackDate, string.Format(Messages.ioan_repaid_by, input.AssistantName), input.Amount, accountId, SQLBase.BookCategory.Einzahlung, SQLBase.BookingTo.Bankbestand);
                                     break;
                             }
 
@@ -349,16 +353,16 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
                     Int32.Parse(row[Columns.Id].ToString()),
                     row[Columns.Name].ToString(),
                     DateTime.Parse(row[Columns.Date].ToString()),
-                    decimal.Parse(row[Columns.AmountPayout].ToString()),
+                    Convert.ToDecimal(row[Columns.AmountPayout]),
                     out input))
                     return;
 
                     row[Columns.Id] = input.ID;
                     row[Columns.Name] = input.AssistantName;
                     row[Columns.Date] = input.Date;
-                    row[Columns.HandSign] = session.SQL.User.Name;
+                    row[Columns.HandSign] = session.SQL.User.Handsign;
                     row[Columns.Active] = true;
-                    bool bookAssistant = decimal.Parse(row[Columns.AmountPayout].ToString()) == 0;
+                    bool bookAssistant = Convert.ToDecimal(row[Columns.AmountPayout]) == 0;
                     if (bookAssistant)
                     {
                         row[Columns.AmountPayout] = input.Amount;
@@ -371,9 +375,10 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
                     {
                         try
                         {
+                            int accountId = Convert.ToInt32(row[Columns.AccountId]);
                             valid = await session.SQL.UpdateAdapterAsync(SQLBase.SELECT.Emploees, table);
                             if (valid && bookAssistant)
-                                valid = await session.SQL.ToBargeAsync(input.Date, string.Format(Messages.ioan_to, input.AssistantName), -Math.Abs(input.Amount), string.Format("M{0:000}", input.ID), SQLBase.BookCategory.Auszahlung, SQLBase.BookingTo.Barbestand);
+                                valid = await session.SQL.ToBargeAsync(input.Date, string.Format(Messages.ioan_to, input.AssistantName), -Math.Abs(input.Amount), accountId, SQLBase.BookCategory.Auszahlung, SQLBase.BookingTo.Barbestand);
                             if (!valid)
                                 throw new Exception(Messages.assistants_changed_failed);
                             transaction.Commit();
@@ -422,7 +427,7 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
                 currentTable.Columns.Remove(Columns.AmountPayback);
                 currentTable.Columns.Remove(Columns.AmountPaybackType);
                 currentTable.Columns.Remove(Columns.Date);
-                Excel.ExportToExcel(currentTable, fileName);
+                Excel.ExportToExcel(currentTable, fileName, session.Company.CurrencyCode);
                 View.ShowMessage(string.Format(Messages.export_success, fileName));
         }
 
@@ -452,7 +457,7 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
                         if (row.RowState != DataRowState.Added)
                             continue;
                         row[Columns.Date] = DateTime.Now.Date;
-                        row[Columns.HandSign] = session.SQL.User.Name;
+                        row[Columns.HandSign] = session.SQL.User.Handsign;
                         row[Columns.AmountPayback] = 0;
                         row[Columns.AmountPaybackType] = 0;
                     }
@@ -478,10 +483,10 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
                                 DataRow row = importTable.Select(Columns.Id + "=" + addedID)[0];
                                 string name = row[Columns.Name].ToString();
                                 decimal payout = Convert.ToDecimal(row[Columns.AmountPayout]);
-                                int id = Convert.ToInt32(row[Columns.Id]);
+                                int accountId = Convert.ToInt32(row[Columns.AccountId]);
 
                                 if (payout != 0 && !await session.SQL.ToBargeAsync(DateTime.Now.Date, string.Format(Messages.ioan_to, name),
-                                    -Math.Abs(payout), string.Format("M{0:000}", id), SQLBase.BookCategory.Auszahlung,
+                                    -Math.Abs(payout), accountId, SQLBase.BookCategory.Auszahlung,
                                     SQLBase.BookingTo.Barbestand))
                                     throw new Exception(Messages.assistants_import_failed);
                             }

@@ -194,7 +194,6 @@ namespace Pflegehaushaltsbuch.Forms
             // tableLayoutPanel1
             // 
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel1.BorderColor = System.Drawing.Color.Empty;
             this.tableLayoutPanel1.Controls.Add(this.label4, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.advisorsBox, 1, 7);
@@ -236,6 +235,7 @@ namespace Pflegehaushaltsbuch.Forms
             resources.ApplyResources(this.bornBox, "bornBox");
             this.bornBox.Days = true;
             this.bornBox.Name = "bornBox";
+            this.bornBox.ShowYear = true;
             // 
             // CreateClientDialog
             // 

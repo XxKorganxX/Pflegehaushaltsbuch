@@ -1,50 +1,203 @@
+using DocumentFormat.OpenXml.ExtendedProperties;
+using Pflegehaushaltsbuch.Databases;
 using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
-using Pflegehaushaltsbuch.Databases;
 namespace Pflegehaushaltsbuch.Data
 {
     /// <summary>
     /// Represents the company component used by the application.
     /// </summary>
-    public class Company
+    public class Company : INotifyPropertyChanged
     {
-        public Image Logo { get; set; }
-        public int LogoAlignment { get; set; }
-        public string Name { get; set; }
-        public string Secretary { get; set; }
-        public string Street { get; set; }
-        public string Zipcode { get; set; }
-        public string City { get; set; }
-        public string Phone { get; set; }
-        public string Fax { get; set; }
-        public string Email { get; set; }
-        public string Language { get; set; }
-        public string Web { get; set; }
-        public string Local_court { get; set; }
-        public string Hrb { get; set; }
-        public string Ik { get; set; }
-        public string Bank { get; set; }
-        public string Bank_account_no { get; set; }
-        public string Bank_code { get; set; }
-        public string Bank_iban { get; set; }
-        public string Bank_bic { get; set; }
-        public string SMTP_Host { get; set; }
-        public string SMTP_User { get; set; }
-        public string SMTP_Password { get; set; }
-        public int licenseCount { get; set; }
-        public bool IsSMTPValid
+        Image logo;
+        int logoAlignment;
+        string name;
+        string secretary;
+        string street;
+        string zipcode;
+        string city;
+        string phone;
+        string fax;
+        string email;
+        string web;
+        string localCourt;
+        string hrb;
+        string ik;
+        string bank;
+        string bankAccountNo;
+        string bankCode;
+        string bankIban;
+        string bankBic;
+        int licenseCountValue;
+        string currencyCode = null;
+        CultureInfo cultureCurrencyCode = null;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public Image Logo
+        {
+            get { return logo; }
+            set { SetProperty(ref logo, value); }
+        }
+
+        public int LogoAlignment
+        {
+            get { return logoAlignment; }
+            set { SetProperty(ref logoAlignment, value); }
+        }
+
+        public string Name
+        {
+            get { return name; }
+            set { SetProperty(ref name, value); }
+        }
+
+        public string Secretary
+        {
+            get { return secretary; }
+            set { SetProperty(ref secretary, value); }
+        }
+
+        public string Street
+        {
+            get { return street; }
+            set { SetProperty(ref street, value); }
+        }
+
+        public string Zipcode
+        {
+            get { return zipcode; }
+            set { SetProperty(ref zipcode, value); }
+        }
+
+        public string City
+        {
+            get { return city; }
+            set { SetProperty(ref city, value); }
+        }
+
+        public string Phone
+        {
+            get { return phone; }
+            set { SetProperty(ref phone, value); }
+        }
+
+        public string Fax
+        {
+            get { return fax; }
+            set { SetProperty(ref fax, value); }
+        }
+
+        public string Email
+        {
+            get { return email; }
+            set { SetProperty(ref email, value); }
+        }
+
+        public string Web
+        {
+            get { return web; }
+            set { SetProperty(ref web, value); }
+        }
+
+        public string Local_court
+        {
+            get { return localCourt; }
+            set { SetProperty(ref localCourt, value); }
+        }
+
+        public string Hrb
+        {
+            get { return hrb; }
+            set { SetProperty(ref hrb, value); }
+        }
+
+        public string Ik
+        {
+            get { return ik; }
+            set { SetProperty(ref ik, value); }
+        }
+
+        public string Bank
+        {
+            get { return bank; }
+            set { SetProperty(ref bank, value); }
+        }
+
+        public string Bank_account_no
+        {
+            get { return bankAccountNo; }
+            set { SetProperty(ref bankAccountNo, value); }
+        }
+
+        public string Bank_code
+        {
+            get { return bankCode; }
+            set { SetProperty(ref bankCode, value); }
+        }
+
+        public string Bank_iban
+        {
+            get { return bankIban; }
+            set { SetProperty(ref bankIban, value); }
+        }
+
+        public string Bank_bic
+        {
+            get { return bankBic; }
+            set { SetProperty(ref bankBic, value); }
+        }
+
+        public int licenseCount
+        {
+            get { return licenseCountValue; }
+            set { SetProperty(ref licenseCountValue, value); }
+        }
+
+        /// <summary>
+        /// Gets or sets the currency code used for monetary values.
+        /// </summary>
+        public string CurrencyCode
         {
             get
             {
-                return !string.IsNullOrWhiteSpace(SMTP_Host) &
-                        !string.IsNullOrWhiteSpace(SMTP_User) &
-                        !string.IsNullOrWhiteSpace(SMTP_Password);
+                if (string.IsNullOrWhiteSpace(currencyCode))
+                    return "EUR";
+
+                return currencyCode;
+            }
+            set
+            {
+                string normalizedCurrencyCode = string.IsNullOrWhiteSpace(value) ? "EUR" : value.Trim().ToUpperInvariant();
+                if (currencyCode == normalizedCurrencyCode)
+                    return;
+
+                currencyCode = normalizedCurrencyCode;
+                cultureCurrencyCode = null;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(Currencies));
+            }
+        }
+
+        /// <summary>
+        /// Gets the culture used to format monetary values.
+        /// </summary>
+        public CultureInfo Currencies
+        {
+            get
+            {
+                if (cultureCurrencyCode == null)
+                    cultureCurrencyCode = MoneyFormat.GetCulture(CurrencyCode);
+
+                return cultureCurrencyCode;
             }
         }
         /// <summary>
@@ -85,11 +238,54 @@ namespace Pflegehaushaltsbuch.Data
         public Company()
         {
         }
+
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private bool SetProperty<T>(ref T storage, T value, [CallerMemberName] string propertyName = null)
+        {
+            if (object.Equals(storage, value))
+                return false;
+
+            storage = value;
+            OnPropertyChanged(propertyName);
+            return true;
+        }
+
+        private void Clear()
+        {
+            Logo = null;
+            LogoAlignment = 0;
+            Name = null;
+            Secretary = null;
+            Street = null;
+            Zipcode = null;
+            City = null;
+            Phone = null;
+            Fax = null;
+            Email = null;
+            Web = null;
+            Local_court = null;
+            Hrb = null;
+            Ik = null;
+            Bank = null;
+            Bank_account_no = null;
+            Bank_code = null;
+            Bank_iban = null;
+            Bank_bic = null;
+            licenseCount = 0;
+            CurrencyCode = "EUR";
+        }
+
         /// <summary>
         /// Loads the load data required for the current workflow.
         /// </summary>
         public async Task Load(SQLBase sql)
         {
+            Clear();
+
             DataTable companyTable = new DataTable();
             await sql.FillAdapterAsync(SQLBase.SELECT.Company, companyTable);
             if (companyTable.Rows.Count == 0)
@@ -109,27 +305,14 @@ namespace Pflegehaushaltsbuch.Data
             }
             if (row["logo_alignment"] != DBNull.Value)
                 LogoAlignment = Int32.Parse(row["logo_alignment"].ToString());
-            Language = row["language"] as string;
-            if (Language == null)
-            {
-                Language = CultureInfo.CurrentCulture.Name;
-                await Save(sql);
-            }
 
             Web = row["web"] as string;
             Local_court = row["local_court"] as string;
             Secretary = row["secretary"] as string;
             Hrb = row["hrb"] as string;
             Ik = row["ik"] as string;
-            SMTP_Host = row["smtp_host"] as string;
-            SMTP_User = row["smtp_user"] as string;
-            SMTP_Password = row["smtp_key"] as string;
-            if (!string.IsNullOrWhiteSpace(SMTP_Host))
-                SMTP_Host = CredentialProtector.Unprotect(SMTP_Host);
-            if (!string.IsNullOrWhiteSpace(SMTP_User))
-                SMTP_User = CredentialProtector.Unprotect(SMTP_User);
-            if (!string.IsNullOrWhiteSpace(SMTP_Password))
-                SMTP_Password = CredentialProtector.Unprotect(SMTP_Password);
+            if (companyTable.Columns.Contains("currency_code") && row["currency_code"] != DBNull.Value)
+                CurrencyCode = row["currency_code"] as string;
 
             DataTable bankTable = new DataTable();
             await sql.FillAdapterAsync(SQLBase.SELECT.Company_bank, bankTable);
@@ -144,7 +327,7 @@ namespace Pflegehaushaltsbuch.Data
                 Bank_bic = row["bic"] as string;
             }
 
-            sql.Printing.UpdateUserAndCompany(sql);
+            sql.Printing.UpdateUserAndCompany(this);
         }
         /// <summary>
         /// Saves the save data for the current workflow.
@@ -174,18 +357,15 @@ namespace Pflegehaushaltsbuch.Data
                 }
                 row["logo_alignment"] = (int)LogoAlignment;
             }
-            row["language"] = CultureInfo.CurrentCulture.Name;
+
             row["web"] = Web;
             row["local_court"] = Local_court;
             row["secretary"] = Secretary;
             row["hrb"] = Hrb;
             row["ik"] = Ik;
-            if (!string.IsNullOrWhiteSpace(SMTP_Host) )
-                row["smtp_host"] = CredentialProtector.Protect(SMTP_Host);
-            if (!string.IsNullOrWhiteSpace(SMTP_User))
-                row["smtp_user"] = CredentialProtector.Protect(SMTP_User);
-            if (!string.IsNullOrWhiteSpace(SMTP_Password))
-                row["smtp_key"] = CredentialProtector.Protect(SMTP_Password);
+            if (companyTable.Columns.Contains("currency_code"))
+                row["currency_code"] = string.IsNullOrWhiteSpace(CurrencyCode) ? "EUR" : CurrencyCode.Trim().ToUpperInvariant();
+
             if (companyTable.Rows.Count == 0)
                 companyTable.Rows.Add(row);
 

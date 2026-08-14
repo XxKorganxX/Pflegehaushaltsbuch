@@ -11,7 +11,7 @@ namespace Pflegehaushaltsbuch.Tests
         public async Task CreatesUsesRollsBackAndDropsSqlServerDatabase()
         {
             const string settingsFile = "sql.ini";
-            string host = DatabaseIntegrationTestSupport.GetRequiredSetting(settingsFile, "Host", "PFLEGE_TEST_SQLSERVER_HOST");
+            string host = DatabaseIntegrationTestSupport.GetSetting(settingsFile, "Host", "PFLEGE_TEST_SQLSERVER_HOST", @"localhost\SQLEXPRESS");
             string user = DatabaseIntegrationTestSupport.GetSetting(settingsFile, "User", "PFLEGE_TEST_SQLSERVER_USER", string.Empty);
             string password = DatabaseIntegrationTestSupport.GetSetting(settingsFile, "Password", "PFLEGE_TEST_SQLSERVER_PASSWORD", string.Empty);
             string database = DatabaseIntegrationTestSupport.CreateDatabaseName("pflege_sql");

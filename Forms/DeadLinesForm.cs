@@ -103,8 +103,10 @@ namespace Pflegehaushaltsbuch.Forms
         /// </summary>
         public override void ApplyUserRights(UserRights rights)
         {
-            if (rights.IsSupervisor)
-                exportButton.Visible = true;
+            if (rights == null)
+                return;
+
+            exportButton.Visible = false;
         }
 
         /// <summary>

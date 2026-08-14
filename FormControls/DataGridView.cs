@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 namespace Pflegehaushaltsbuch.FormControls
 {
@@ -13,6 +8,7 @@ namespace Pflegehaushaltsbuch.FormControls
     /// </summary>
     public class DataGridView : System.Windows.Forms.DataGridView
     {
+        private const int SafeDefaultRowHeight = 24;
         private static ColorSet colorSet = null;
         public static ColorSet ColorSet
         {
@@ -45,6 +41,7 @@ namespace Pflegehaushaltsbuch.FormControls
         protected override void OnCreateControl()
         {
             DoubleBuffered = true;
+            DisableUnsafeRowAutoSizing();
             base.OnCreateControl();
             if (colorSet == null)
                 return;
@@ -56,6 +53,15 @@ namespace Pflegehaushaltsbuch.FormControls
             RowTemplate.DefaultCellStyle.SelectionBackColor = colorSet.ListSelectBackColor;//.FromArgb(144, 177, 210);//listSelectBackColor;
             RowTemplate.DefaultCellStyle.SelectionForeColor = colorSet.ListSelectForeColor;// Color.White;
         }
+
+        private void DisableUnsafeRowAutoSizing()
+        {
+            if (AutoSizeRowsMode != DataGridViewAutoSizeRowsMode.None)
+                AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
+
+            if (RowTemplate.Height < SafeDefaultRowHeight)
+                RowTemplate.Height = SafeDefaultRowHeight;
+        }
         
         /// <summary>
         /// Handles the key Down lifecycle step and applies the related control behavior.
@@ -66,54 +72,7 @@ namespace Pflegehaushaltsbuch.FormControls
                 e.SuppressKeyPress = true;
             base.OnKeyDown(e);
         }
-        /// <summary>
-        /// Updates the UI data and refreshes the related application state.
-        /// </summary>
-        public void UpdateUI()
-        {
-            //Color backColor, foreColor, selectionBackColor, selectionForeColor;
-            //ControlColors.Get(out backColor, out foreColor, out selectionBackColor, out selectionForeColor);
-            //Color backColor, foreColor, selectionBackColor, selectionForeColor, listSelectBackColor, listSelectForeColor, disabledColor;
-            //ControlColors.Get(out backColor, out foreColor, out selectionBackColor, out selectionForeColor, out listSelectBackColor, out listSelectForeColor, out disabledColor);
-            // listSelectForeColor;
-            /*
-            switch (Properties.Settings.Default.UIDesign)
-            {
-                case 0:
-                    return;
-                case 1:
-                    //Orange
-                    RowTemplate.DefaultCellStyle.SelectionBackColor = Color.Orange;
-                    RowTemplate.DefaultCellStyle.SelectionForeColor = Color.White;
-                    break;
-                case 2:
-                    {
-                        //black
-                        Color selectionColor = Color.FromArgb(49, 49, 49);
-                        RowTemplate.DefaultCellStyle.SelectionBackColor = ControlPaint.Light(selectionColor);
-                        RowTemplate.DefaultCellStyle.SelectionForeColor = Color.White;
-                    }
-                    break;
-                case 3:
-                    {
-                        //Gray
-                        Color selectionColor = Color.FromArgb(89, 89, 89);
-                        RowTemplate.DefaultCellStyle.SelectionBackColor = ControlPaint.Light(selectionColor);
-                        RowTemplate.DefaultCellStyle.SelectionForeColor = Color.White;
-                    }
-                    break;
-                case 4:
-                    //blue
-                    {
-                        //Gray
-                        Color selectionColor = Color.FromArgb(100, 123, 164);
-                        RowTemplate.DefaultCellStyle.SelectionBackColor = ControlPaint.Light(selectionColor);
-                        RowTemplate.DefaultCellStyle.SelectionForeColor = Color.White;
-                    }
-                    break;
-            }
-             * */
-        }
+
         /// <summary>
         /// Runs the initialize Component operation and updates the related application state.
         /// </summary>
@@ -124,17 +83,12 @@ namespace Pflegehaushaltsbuch.FormControls
             // 
             // DataGridView
             // 
+            this.AllowUserToAddRows = false;
+            this.AllowUserToDeleteRows = false;
             this.StandardTab = true;
-            this.Layout += new System.Windows.Forms.LayoutEventHandler(this.DataGridView_Layout);
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
-        }
-        /// <summary>
-        /// Handles the layout event for data Grid View and updates the related state.
-        /// </summary>
-        private void DataGridView_Layout(object sender, LayoutEventArgs e)
-        {
-            UpdateUI();
+
         }
     }
 }

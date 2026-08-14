@@ -86,7 +86,7 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
             }
 
             DataTable advisorTable = new DataTable();
-            await session.SQL.FillAdapterAsync(SQLBase.SELECT.Advisors, advisorTable);
+            await session.SQL.FillAdapterAsync(SQLBase.SELECT.Representatives, advisorTable);
             advisorTable.PrimaryKey = new DataColumn[] { advisorTable.Columns[Columns.Id] };
 
             foreach (ID_Client_Data clientData in view.SelectedClients)
@@ -117,7 +117,7 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
             foreach (DataRow row in bookRows)
             {
                 int category = Int32.Parse(row[Columns.BookCategory].ToString());
-                decimal value = decimal.Parse(row[Columns.Amount].ToString());
+                decimal value = Convert.ToDecimal(row[Columns.Amount]);
                 if (category == 0)
                 {
                     einnahmen += value;
@@ -128,12 +128,12 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
                 }
             }
 
-            decimal oldAmount = decimal.Parse(clientRow[Columns.AccountTransfer].ToString());
+            decimal oldAmount = Convert.ToDecimal(clientRow[Columns.AccountTransfer]);
             DateTime previousAmountLimit = new DateTime(date.Year, date.Month, 1);
             foreach (DataRow row in allBookTable.Rows.OfType<DataRow>()
                 .Where(row => row[Columns.Date] != DBNull.Value && Convert.ToDateTime(row[Columns.Date]) < previousAmountLimit))
             {
-                oldAmount += decimal.Parse(row[Columns.Amount].ToString());
+                oldAmount += Convert.ToDecimal(row[Columns.Amount]);
             }
 
             PrintAddress address = CreatePrintAddress(clientRow, advisorRow);
@@ -154,11 +154,11 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
             session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.date, DateTime.Now.ToShortDateString());
             session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.date_of_paper, date.ToShortDateString());
             session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.date_long_of_paper, date.ToString("MMMM yyyy"));
-            session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.amount_previous_month, oldAmount.ToString("C"));
-            session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.amount, (oldAmount + ausgaben + einnahmen).ToString("C"));
+            session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.amount_previous_month, oldAmount.ToString("C", session.Company.Currencies));
+            session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.amount, (oldAmount + ausgaben + einnahmen).ToString("C", session.Company.Currencies));
             session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.client, accountName);
-            session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.cash_outflow, ausgaben.ToString("C"));
-            session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.cash_inflow, einnahmen.ToString("C"));
+            session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.cash_outflow, ausgaben.ToString("C", session.Company.Currencies));
+            session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.cash_inflow, einnahmen.ToString("C", session.Company.Currencies));
             session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.statement_note, view.StatementNote);
             view.PrintClientBooks(view.SelectedPrinter, clientName, bookRows, address.Email);
         }

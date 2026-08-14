@@ -43,7 +43,10 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
                     {
                         session.Replace(sql);
                         if (View.ShowUserLoginDialog(session))
+                        {
                             await LoadCompany(sql);
+                            View.ApplyCurrentRights();
+                        }
                         else
                             session.Disconnect();
                     }
@@ -60,7 +63,7 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
 
         public virtual void UserRights(int access, bool admin, bool supervisor)
         {
-            View.SetAdminVisible(admin | supervisor);
+            View.SetAdminVisible(admin);
         }
 
         public virtual void ClientManagement()
@@ -131,11 +134,12 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
                 if (config.DBType == XmlConfig.DataBaseTypes.MySQL)
                     sql = new MySQL();
                 else if (config.DBType == XmlConfig.DataBaseTypes.SQL)
-                    sql = new SQL();
+                    sql = new SQL { TrustServerCertificate = config.TrustServerCertificate };
                 else if (config.DBType == XmlConfig.DataBaseTypes.SQLite)
                     sql = new SQLITE();
 
                 await sql.ConnectAsync(config.Host, config.User, config.Keyword, config.Database);
+                await sql.EnsureDatabaseUpdatedAsync();
                 await sql.Printing.LoadDocuments(sql);
 
                 return sql;
@@ -146,7 +150,7 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
 
         internal async Task LoadCompany(SQLBase sql)
         {
-            await sql.Company.Load(sql);
+            await session.Company.Load(sql);
         }
 
         private static bool AcceptServerCertificate(

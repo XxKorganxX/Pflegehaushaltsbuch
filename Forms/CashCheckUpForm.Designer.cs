@@ -74,10 +74,6 @@
             // tableLayoutPanel1
             // 
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
-            this.tableLayoutPanel1.Border = false;
-            this.tableLayoutPanel1.BorderColor = System.Drawing.Color.White;
-            this.tableLayoutPanel1.BorderWidth = 1F;
             this.tableLayoutPanel1.Controls.Add(this.label19, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 2);
@@ -85,23 +81,17 @@
             // 
             // label19
             // 
-            this.label19.AttachRegion = false;
             resources.ApplyResources(this.label19, "label19");
             this.label19.BackColor = System.Drawing.Color.Transparent;
-            this.label19.DrawLine = false;
             this.label19.ForeColor = System.Drawing.Color.White;
             this.label19.Gradiant = true;
-            this.label19.LinePadding = 0;
             this.label19.Name = "label19";
-            this.label19.Radius = 0F;
             // 
             // tableLayoutPanel2
             // 
             resources.ApplyResources(this.tableLayoutPanel2, "tableLayoutPanel2");
             this.tableLayoutPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.tableLayoutPanel2.Border = true;
-            this.tableLayoutPanel2.BorderColor = System.Drawing.Color.White;
-            this.tableLayoutPanel2.BorderWidth = 1F;
             this.tableLayoutPanel2.Controls.Add(this.differenceAmountBox, 1, 15);
             this.tableLayoutPanel2.Controls.Add(this.calculatedSaldoBox, 1, 10);
             this.tableLayoutPanel2.Controls.Add(this.label6, 0, 15);
@@ -148,15 +138,10 @@
             // 
             // label6
             // 
-            this.label6.AttachRegion = false;
             resources.ApplyResources(this.label6, "label6");
             this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.DrawLine = false;
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Gradiant = false;
-            this.label6.LinePadding = 0;
             this.label6.Name = "label6";
-            this.label6.Radius = 0F;
             // 
             // hardCashAmountBox
             // 
@@ -167,63 +152,38 @@
             // 
             // label1
             // 
-            this.label1.AttachRegion = false;
             resources.ApplyResources(this.label1, "label1");
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.DrawLine = false;
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Gradiant = false;
-            this.label1.LinePadding = 0;
             this.label1.Name = "label1";
-            this.label1.Radius = 0F;
             // 
             // label5
             // 
-            this.label5.AttachRegion = false;
             resources.ApplyResources(this.label5, "label5");
             this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.DrawLine = false;
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Gradiant = false;
-            this.label5.LinePadding = 0;
             this.label5.Name = "label5";
-            this.label5.Radius = 0F;
             // 
             // label15
             // 
-            this.label15.AttachRegion = false;
             resources.ApplyResources(this.label15, "label15");
             this.label15.BackColor = System.Drawing.Color.Transparent;
-            this.label15.DrawLine = false;
             this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Gradiant = false;
-            this.label15.LinePadding = 0;
             this.label15.Name = "label15";
-            this.label15.Radius = 0F;
             // 
             // label17
             // 
-            this.label17.AttachRegion = false;
             resources.ApplyResources(this.label17, "label17");
             this.label17.BackColor = System.Drawing.Color.Transparent;
-            this.label17.DrawLine = false;
             this.label17.ForeColor = System.Drawing.Color.White;
-            this.label17.Gradiant = false;
-            this.label17.LinePadding = 0;
             this.label17.Name = "label17";
-            this.label17.Radius = 0F;
             // 
             // label18
             // 
-            this.label18.AttachRegion = false;
             resources.ApplyResources(this.label18, "label18");
             this.label18.BackColor = System.Drawing.Color.Transparent;
-            this.label18.DrawLine = false;
             this.label18.ForeColor = System.Drawing.Color.White;
-            this.label18.Gradiant = false;
-            this.label18.LinePadding = 0;
             this.label18.Name = "label18";
-            this.label18.Radius = 0F;
             // 
             // clientsActiveBox
             // 
@@ -241,27 +201,17 @@
             // 
             // label3
             // 
-            this.label3.AttachRegion = false;
             resources.ApplyResources(this.label3, "label3");
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.DrawLine = false;
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Gradiant = false;
-            this.label3.LinePadding = 0;
             this.label3.Name = "label3";
-            this.label3.Radius = 0F;
             // 
             // label11
             // 
-            this.label11.AttachRegion = false;
             resources.ApplyResources(this.label11, "label11");
             this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.DrawLine = false;
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Gradiant = false;
-            this.label11.LinePadding = 0;
             this.label11.Name = "label11";
-            this.label11.Radius = 0F;
             // 
             // clientsHistoryBox
             // 
@@ -272,15 +222,10 @@
             // 
             // label8
             // 
-            this.label8.AttachRegion = false;
             resources.ApplyResources(this.label8, "label8");
             this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.DrawLine = false;
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Gradiant = false;
-            this.label8.LinePadding = 0;
             this.label8.Name = "label8";
-            this.label8.Radius = 0F;
             // 
             // clientsBox
             // 
@@ -291,39 +236,24 @@
             // 
             // label7
             // 
-            this.label7.AttachRegion = false;
             resources.ApplyResources(this.label7, "label7");
             this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.DrawLine = false;
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Gradiant = false;
-            this.label7.LinePadding = 0;
             this.label7.Name = "label7";
-            this.label7.Radius = 0F;
             // 
             // label14
             // 
-            this.label14.AttachRegion = false;
             resources.ApplyResources(this.label14, "label14");
             this.label14.BackColor = System.Drawing.Color.Transparent;
-            this.label14.DrawLine = false;
             this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Gradiant = false;
-            this.label14.LinePadding = 0;
             this.label14.Name = "label14";
-            this.label14.Radius = 0F;
             // 
             // label16
             // 
-            this.label16.AttachRegion = false;
             resources.ApplyResources(this.label16, "label16");
             this.label16.BackColor = System.Drawing.Color.Transparent;
-            this.label16.DrawLine = false;
             this.label16.ForeColor = System.Drawing.Color.White;
-            this.label16.Gradiant = false;
-            this.label16.LinePadding = 0;
             this.label16.Name = "label16";
-            this.label16.Radius = 0F;
             // 
             // bankSaldoBox
             // 
@@ -332,36 +262,26 @@
             this.bankSaldoBox.Name = "bankSaldoBox";
             this.bankSaldoBox.ReadOnly = true;
             // 
-            // amountAssistantsBox
+            // amountEmployeesBox
             // 
             this.amountEmployeesBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            resources.ApplyResources(this.amountEmployeesBox, "amountAssistantsBox");
-            this.amountEmployeesBox.Name = "amountAssistantsBox";
+            resources.ApplyResources(this.amountEmployeesBox, "amountEmployeesBox");
+            this.amountEmployeesBox.Name = "amountEmployeesBox";
             this.amountEmployeesBox.ReadOnly = true;
             // 
             // label4
             // 
-            this.label4.AttachRegion = false;
             resources.ApplyResources(this.label4, "label4");
             this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.DrawLine = false;
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Gradiant = false;
-            this.label4.LinePadding = 0;
             this.label4.Name = "label4";
-            this.label4.Radius = 0F;
             // 
             // label2
             // 
-            this.label2.AttachRegion = false;
             resources.ApplyResources(this.label2, "label2");
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.DrawLine = false;
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Gradiant = false;
-            this.label2.LinePadding = 0;
             this.label2.Name = "label2";
-            this.label2.Radius = 0F;
             // 
             // flowLayoutPanel2
             // 
@@ -374,14 +294,9 @@
             // 
             // label10
             // 
-            this.label10.AttachRegion = false;
             resources.ApplyResources(this.label10, "label10");
             this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.DrawLine = false;
-            this.label10.Gradiant = false;
-            this.label10.LinePadding = 0;
             this.label10.Name = "label10";
-            this.label10.Radius = 0F;
             // 
             // dateTimeBox
             // 
@@ -389,6 +304,7 @@
             this.dateTimeBox.BackColor = System.Drawing.Color.Transparent;
             this.dateTimeBox.Days = true;
             this.dateTimeBox.Name = "dateTimeBox";
+            this.dateTimeBox.ShowYear = true;
             // 
             // geometryControl1
             // 
@@ -404,15 +320,10 @@
             // 
             // label9
             // 
-            this.label9.AttachRegion = false;
             resources.ApplyResources(this.label9, "label9");
             this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.DrawLine = false;
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Gradiant = false;
-            this.label9.LinePadding = 0;
             this.label9.Name = "label9";
-            this.label9.Radius = 0F;
             // 
             // cashHoldingBox
             // 
@@ -433,13 +344,8 @@
             resources.ApplyResources(this.printButton, "printButton");
             this.printButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.printButton.BorderColor = System.Drawing.Color.DimGray;
-            this.printButton.Checked = false;
-            this.printButton.CheckedState = false;
-            this.printButton.ForeColor = System.Drawing.Color.White;
             this.printButton.Name = "printButton";
-            this.printButton.PaintBackGround = true;
             this.printButton.Radius = -1F;
-            this.printButton.RoundEdges = false;
             this.printButton.UseVisualStyleBackColor = false;
             this.printButton.Click += new System.EventHandler(this.printButton_Click);
             // 
@@ -448,13 +354,8 @@
             resources.ApplyResources(this.backButton, "backButton");
             this.backButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.backButton.BorderColor = System.Drawing.Color.DimGray;
-            this.backButton.Checked = false;
-            this.backButton.CheckedState = false;
-            this.backButton.ForeColor = System.Drawing.Color.White;
             this.backButton.Name = "backButton";
-            this.backButton.PaintBackGround = true;
             this.backButton.Radius = -1F;
-            this.backButton.RoundEdges = false;
             this.backButton.UseVisualStyleBackColor = false;
             this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 

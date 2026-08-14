@@ -158,7 +158,7 @@ namespace Pflegehaushaltsbuch.Forms.Dialoge
         /// </summary>
         void IIoanPaybackDialogContract.BindAmount()
         {
-            amountBox.DataBindings.Add("Text", this, "Amount", true, DataSourceUpdateMode.OnValidation, 0, "C");
+            amountBox.DataBindings.Add("Text", this, "Amount", true, DataSourceUpdateMode.OnValidation, 0, "C", Session.Company.Currencies);
         }
     }
 }

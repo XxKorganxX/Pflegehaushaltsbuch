@@ -1,7 +1,6 @@
-using Pflegehaushaltsbuch.Databases;
+﻿using Pflegehaushaltsbuch.Databases;
 using Pflegehaushaltsbuch.Forms.Presenters;
 using System;
-using System.ComponentModel;
 using System.Data;
 
 namespace Pflegehaushaltsbuch.Forms
@@ -12,6 +11,7 @@ namespace Pflegehaushaltsbuch.Forms
     public partial class CreationUserForm : Form, ICreationUserFormContract
     {
         private readonly CreationUserFormPresenter presenter;
+        private bool requireSuccessfulCreation;
 
         /// <summary>
         /// Creates a new CreationUserForm view.
@@ -25,6 +25,23 @@ namespace Pflegehaushaltsbuch.Forms
                 return;
 
             presenter.InitializeNew();
+        }
+
+        public CreationUserForm(SqlSession session, bool requireSuccessfulCreation)
+            : this(session)
+        {
+            this.requireSuccessfulCreation = requireSuccessfulCreation;
+            if (!requireSuccessfulCreation)
+                return;
+
+            handsignBox.Text = "🛡️";
+            loginBox.Text = "Admin";
+            adminCheckBox.Checked = true;
+            adminCheckBox.Enabled = false;
+            cancelButton.Visible = false;
+            CancelButton = null;
+            ControlBox = false;
+            FormClosing += CreationUserForm_FormClosing;
         }
 
         /// <summary>
@@ -49,28 +66,19 @@ namespace Pflegehaushaltsbuch.Forms
             await presenter.OkAsync();
         }
 
-        /// <summary>
-        /// Handles the checked Changed event for access and updates the related state.
-        /// </summary>
-        private void access_CheckedChanged(object sender, EventArgs e)
+        private void CreationUserForm_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
         {
-        }
-
-        /// <summary>
-        /// Handles the validating event for email Box and updates the related state.
-        /// </summary>
-        private void emailBox_Validating(object sender, CancelEventArgs e)
-        {
-            e.Cancel = !presenter.IsEmailValid();
+            if (requireSuccessfulCreation && DialogResult != System.Windows.Forms.DialogResult.OK)
+                e.Cancel = true;
         }
 
         /// <summary>
         /// Provides the user name value for the presenter.
         /// </summary>
-        string ICreationUserFormContract.UserName
+        string ICreationUserFormContract.Handsign
         {
-            get { return nameBox.Text.Trim(); }
-            set { nameBox.Text = value; }
+            get { return handsignBox.Text.Trim(); }
+            set { handsignBox.Text = value; }
         }
 
         /// <summary>
@@ -83,39 +91,12 @@ namespace Pflegehaushaltsbuch.Forms
         }
 
         /// <summary>
-        /// Provides the phone value for the presenter.
-        /// </summary>
-        string ICreationUserFormContract.Phone
-        {
-            get { return phoneBox.Text.Trim(); }
-            set { phoneBox.Text = value; }
-        }
-
-        /// <summary>
-        /// Provides the fax value for the presenter.
-        /// </summary>
-        string ICreationUserFormContract.Fax
-        {
-            get { return faxBox.Text.Trim(); }
-            set { faxBox.Text = value; }
-        }
-
-        /// <summary>
-        /// Provides the email value for the presenter.
-        /// </summary>
-        string ICreationUserFormContract.Email
-        {
-            get { return emailBox.Text.Trim(); }
-            set { emailBox.Text = value; }
-        }
-
-        /// <summary>
         /// Provides the insert allowed value for the presenter.
         /// </summary>
         bool ICreationUserFormContract.InsertAllowed
         {
-            get { return insertBox.Checked; }
-            set { insertBox.Checked = value; }
+            get { return createCheckBox.Checked; }
+            set { createCheckBox.Checked = value; }
         }
 
         /// <summary>
@@ -123,17 +104,74 @@ namespace Pflegehaushaltsbuch.Forms
         /// </summary>
         bool ICreationUserFormContract.ChangeAllowed
         {
-            get { return changeBox.Checked; }
-            set { changeBox.Checked = value; }
+            get { return changeCheckBox.Checked; }
+            set { changeCheckBox.Checked = value; }
         }
 
-        /// <summary>
-        /// Provides the delete allowed value for the presenter.
-        /// </summary>
-        bool ICreationUserFormContract.DeleteAllowed
+        bool ICreationUserFormContract.BookAllowed
         {
-            get { return deleteBox.Checked; }
-            set { deleteBox.Checked = value; }
+            get { return bookCheckBox.Checked; }
+            set { bookCheckBox.Checked = value; }
+        }
+
+        bool ICreationUserFormContract.CancelBookingAllowed
+        {
+            get { return cancelBookingCheckBox.Checked; }
+            set { cancelBookingCheckBox.Checked = value; }
+        }
+
+        bool ICreationUserFormContract.CashBalanceAllowed
+        {
+            get { return cashBalanceCheckBox.Checked; }
+            set { cashBalanceCheckBox.Checked = value; }
+        }
+
+        bool ICreationUserFormContract.BankBalanceAllowed
+        {
+            get { return bankBalanceCheckBox.Checked; }
+            set { bankBalanceCheckBox.Checked = value; }
+        }
+
+        bool ICreationUserFormContract.PettyCashAllowed
+        {
+            get { return pettyCashCheckBox.Checked; }
+            set { pettyCashCheckBox.Checked = value; }
+        }
+
+        bool ICreationUserFormContract.ClientsAllowed
+        {
+            get { return clientsCheckBox.Checked; }
+            set { clientsCheckBox.Checked = value; }
+        }
+
+        bool ICreationUserFormContract.RepresentativesAllowed
+        {
+            get { return representativesCheckBox.Checked; }
+            set { representativesCheckBox.Checked = value; }
+        }
+
+        bool ICreationUserFormContract.EmployeesAllowed
+        {
+            get { return employeesCheckBox.Checked; }
+            set { employeesCheckBox.Checked = value; }
+        }
+
+        bool ICreationUserFormContract.DocumentsAllowed
+        {
+            get { return documentsCheckBox.Checked; }
+            set { documentsCheckBox.Checked = value; }
+        }
+
+        bool ICreationUserFormContract.CashAuditAllowed
+        {
+            get { return cashAuditCheckBox.Checked; }
+            set { cashAuditCheckBox.Checked = value; }
+        }
+
+        bool ICreationUserFormContract.StatisticsAllowed
+        {
+            get { return statisticsCheckBox.Checked; }
+            set { statisticsCheckBox.Checked = value; }
         }
 
         /// <summary>
@@ -141,8 +179,8 @@ namespace Pflegehaushaltsbuch.Forms
         /// </summary>
         bool ICreationUserFormContract.Admin
         {
-            get { return adminBox.Checked; }
-            set { adminBox.Checked = value; }
+            get { return adminCheckBox.Checked; }
+            set { adminCheckBox.Checked = value; }
         }
 
         /// <summary>

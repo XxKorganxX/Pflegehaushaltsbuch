@@ -108,6 +108,7 @@ namespace Pflegehaushaltsbuch.Forms.Dialoge
             this.date.BackColor = System.Drawing.Color.Transparent;
             this.date.Days = true;
             this.date.Name = "date";
+            this.date.ShowYear = true;
             // 
             // label4
             // 
@@ -119,7 +120,6 @@ namespace Pflegehaushaltsbuch.Forms.Dialoge
             // tableLayoutPanel1
             // 
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel1.BorderColor = System.Drawing.Color.Empty;
             this.tableLayoutPanel1.Controls.Add(this.label5, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label4, 0, 1);

@@ -502,10 +502,10 @@
     <value>True</value>
   </metadata>
   <data name="handSignColumn.HeaderText" xml:space="preserve">
-    <value>Hs</value>
+    <value>✍️</value>
   </data>
   <data name="handSignColumn.Width" type="System.Int32, mscorlib">
-    <value>50</value>
+    <value>53</value>
   </data>
   <metadata name="activeColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -585,43 +585,6 @@
   <data name="flowLayoutPanel1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="updateButton.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="updateButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="updateButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 5</value>
-  </data>
-  <data name="updateButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 5, 3, 5</value>
-  </data>
-  <data name="updateButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 60</value>
-  </data>
-  <data name="updateButton.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="updateButton.Text" xml:space="preserve">
-    <value>Administrator
-Update Table</value>
-  </data>
-  <data name="updateButton.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;updateButton.Name" xml:space="preserve">
-    <value>updateButton</value>
-  </data>
-  <data name="&gt;&gt;updateButton.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.Button, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;updateButton.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;updateButton.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="createButton.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -632,7 +595,7 @@ Update Table</value>
     <value>NoControl</value>
   </data>
   <data name="createButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>157, 5</value>
+    <value>3, 5</value>
   </data>
   <data name="createButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 5, 3, 5</value>
@@ -656,7 +619,7 @@ Update Table</value>
     <value>flowLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;createButton.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="changeButton.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -668,7 +631,7 @@ Update Table</value>
     <value>NoControl</value>
   </data>
   <data name="changeButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>311, 5</value>
+    <value>157, 5</value>
   </data>
   <data name="changeButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 5, 3, 5</value>
@@ -692,7 +655,7 @@ Update Table</value>
     <value>flowLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;changeButton.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="deleteButton.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -701,7 +664,7 @@ Update Table</value>
     <value>NoControl</value>
   </data>
   <data name="deleteButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>465, 5</value>
+    <value>311, 5</value>
   </data>
   <data name="deleteButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 5, 3, 5</value>
@@ -728,7 +691,7 @@ Update Table</value>
     <value>flowLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;deleteButton.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="payOutButton.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -740,7 +703,7 @@ Update Table</value>
     <value>NoControl</value>
   </data>
   <data name="payOutButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>619, 5</value>
+    <value>465, 5</value>
   </data>
   <data name="payOutButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 5, 3, 5</value>
@@ -764,7 +727,7 @@ Update Table</value>
     <value>flowLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;payOutButton.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="printButton.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -773,7 +736,7 @@ Update Table</value>
     <value>NoControl</value>
   </data>
   <data name="printButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 75</value>
+    <value>619, 5</value>
   </data>
   <data name="printButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 5, 3, 5</value>
@@ -797,73 +760,7 @@ Update Table</value>
     <value>flowLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;printButton.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="buttonImport.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="buttonImport.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buttonImport.Location" type="System.Drawing.Point, System.Drawing">
-    <value>157, 75</value>
-  </data>
-  <data name="buttonImport.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 5, 3, 5</value>
-  </data>
-  <data name="buttonImport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 60</value>
-  </data>
-  <data name="buttonImport.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="buttonImport.Text" xml:space="preserve">
-    <value>Import</value>
-  </data>
-  <data name="&gt;&gt;buttonImport.Name" xml:space="preserve">
-    <value>buttonImport</value>
-  </data>
-  <data name="&gt;&gt;buttonImport.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.Button, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;buttonImport.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;buttonImport.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="exportButton.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="exportButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="exportButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>311, 75</value>
-  </data>
-  <data name="exportButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 5, 3, 5</value>
-  </data>
-  <data name="exportButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 60</value>
-  </data>
-  <data name="exportButton.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="exportButton.Text" xml:space="preserve">
-    <value>Export</value>
-  </data>
-  <data name="&gt;&gt;exportButton.Name" xml:space="preserve">
-    <value>exportButton</value>
-  </data>
-  <data name="&gt;&gt;exportButton.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.Button, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;exportButton.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;exportButton.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>4</value>
   </data>
   <data name="backButton.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -872,7 +769,7 @@ Update Table</value>
     <value>NoControl</value>
   </data>
   <data name="backButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>465, 75</value>
+    <value>3, 75</value>
   </data>
   <data name="backButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 5, 3, 5</value>
@@ -896,7 +793,7 @@ Update Table</value>
     <value>flowLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;backButton.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>5</value>
   </data>
   <data name="flowLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>

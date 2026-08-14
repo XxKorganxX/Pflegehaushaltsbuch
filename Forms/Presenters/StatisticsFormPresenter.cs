@@ -1,4 +1,4 @@
-using Pflegehaushaltsbuch.Databases;
+﻿using Pflegehaushaltsbuch.Databases;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,6 +11,7 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
     {
         private readonly SqlSession session;
         private DataTable dealings;
+        private bool dateRangeInitialized;
 
         public StatisticsFormPresenter(IStatisticsFormContract view, SqlSession session)
         {
@@ -32,9 +33,6 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
 
         public virtual async Task EnterAsync()
         {
-            View.SelectedStatisticIndex = 0;
-            View.BeginDate = new DateTime(DateTime.Now.Year, 1, 1);
-            View.EndDate = new DateTime(DateTime.Now.Year, 12, 31);
             await LoadDealingsAsync();
         }
 
@@ -48,14 +46,24 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
             if (dealings == null)
                 return;
 
-            DateTime current = new DateTime(View.BeginDate.Year, View.BeginDate.Month, 1);
-            DateTime next = current.AddMonths(1);
-            DateTime end = new DateTime(View.EndDate.Year, View.EndDate.Month, 1);
-            if (current > end)
-                return;
+            decimal maxAmount;
+            Dictionary<DateTime, decimal[]> values = BuildStatisticValues(dealings, View.BeginDate, View.EndDate, out maxAmount);
+            View.UpdateDiagram(values, maxAmount);
+        }
 
-            decimal maxAmount = 0;
+        public static Dictionary<DateTime, decimal[]> BuildStatisticValues(DataTable dealings, DateTime beginDate, DateTime endDate, out decimal maxAmount)
+        {
+            maxAmount = 0;
             Dictionary<DateTime, decimal[]> values = new Dictionary<DateTime, decimal[]>();
+            if (dealings == null)
+                return values;
+
+            DateTime current = new DateTime(beginDate.Year, beginDate.Month, 1);
+            DateTime next = current.AddMonths(1);
+            DateTime end = new DateTime(endDate.Year, endDate.Month, 1);
+            if (current > end)
+                return values;
+
             do
             {
                 DataRow[] rows = dealings.Rows.OfType<DataRow>()
@@ -70,19 +78,19 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
                 values[current] = new decimal[] { 0, 0 };
                 foreach (DataRow row in rows)
                 {
-                    decimal value;
-                    if (decimal.TryParse(row["amount"].ToString(), out value))
+                    if (row["amount"] == DBNull.Value)
+                        continue;
+
+                    decimal value = Convert.ToDecimal(row["amount"]);
+                    if (value > 0)
                     {
-                        if (value > 0)
-                        {
-                            values[current][0] += value;
-                            maxAmount = Math.Max(maxAmount, values[current][0]);
-                        }
-                        else if (value < 0)
-                        {
-                            values[current][1] += Math.Abs(value);
-                            maxAmount = Math.Max(maxAmount, values[current][1]);
-                        }
+                        values[current][0] += value;
+                        maxAmount = Math.Max(maxAmount, values[current][0]);
+                    }
+                    else if (value < 0)
+                    {
+                        values[current][1] += Math.Abs(value);
+                        maxAmount = Math.Max(maxAmount, values[current][1]);
                     }
                 }
 
@@ -100,7 +108,7 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
                 }
             }
 
-            View.UpdateDiagram(values, maxAmount);
+            return values;
         }
 
         public virtual async Task StatisticSelectionChangedAsync()
@@ -118,6 +126,9 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
 
         private async Task LoadDealingsAsync()
         {
+            if (session.SQL == null)
+                return;
+
             dealings = new DataTable();
             if (View.SelectedStatisticIndex == 0)
                 await session.SQL.FillAdapterAsync(SQLBase.SELECT.Books, dealings);
@@ -126,7 +137,35 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
             if (View.SelectedStatisticIndex == 2)
                 await session.SQL.FillAdapterAsync(SQLBase.SELECT.Bank, dealings);
 
+            InitializeDateRange();
             UpdateDealings();
+        }
+
+        private void InitializeDateRange()
+        {
+            if (dateRangeInitialized || dealings == null)
+                return;
+
+            DateTime? beginDate = null;
+            DateTime? endDate = null;
+            foreach (DataRow row in dealings.Rows)
+            {
+                if (row[Columns.Date] == DBNull.Value)
+                    continue;
+
+                DateTime date = Convert.ToDateTime(row[Columns.Date]);
+                if (!beginDate.HasValue || date < beginDate.Value)
+                    beginDate = date;
+                if (!endDate.HasValue || date > endDate.Value)
+                    endDate = date;
+            }
+
+            if (!beginDate.HasValue || !endDate.HasValue)
+                return;
+
+            View.SetDateRange(beginDate.Value, endDate.Value);
+            dateRangeInitialized = true;
         }
     }
 }
+

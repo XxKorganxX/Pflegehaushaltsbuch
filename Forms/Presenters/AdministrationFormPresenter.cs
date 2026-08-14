@@ -197,7 +197,7 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
                 {
                     try
                     {
-                        await authenticatedSql.Company.Load(authenticatedSql);
+                        await session.Company.Load(authenticatedSql);
                         session.Replace(authenticatedSql);
                         authenticatedSql = null;
                     }
@@ -231,11 +231,6 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
             View.ShowForm(Enums.Forms.Company);
         }
 
-        public virtual void Design()
-        {
-            View.ShowDesignDialog(session);
-        }
-
         public virtual void DataExchange()
         {
             View.ShowForm(Enums.Forms.DataExchange);
@@ -250,7 +245,7 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
         {
             XmlConfig currentConfig = XmlConfig.LoadXml();
             XmlConfig stagingConfig = CreateStagingConfig(currentConfig);
-            SQLBase restoredSql = CreateSqlProvider(stagingConfig.DBType);
+            SQLBase restoredSql = CreateSqlProvider(stagingConfig);
             var currentUser = session.SQL.User;
             bool restoreSucceeded = false;
 
@@ -267,7 +262,7 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
                     await ValidateRestoredDatabaseAsync(restoredSql);
                     await restoredSql.OnLoadAsync();
                     await restoredSql.SetCurrentUserAsync(currentUser);
-                    await restoredSql.Company.Load(restoredSql);
+                    await session.Company.Load(restoredSql);
                 });
 
                 stagingConfig.Save();
@@ -366,13 +361,13 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
         {
             SQLBase.SELECT[] requiredTables =
             {
-                SQLBase.SELECT.Advisors,
+                SQLBase.SELECT.Representatives,
                 SQLBase.SELECT.Clients,
                 SQLBase.SELECT.Emploees,
                 SQLBase.SELECT.Books,
                 SQLBase.SELECT.Bank,
                 SQLBase.SELECT.Cash,
-                SQLBase.SELECT.OfficeCash,
+                SQLBase.SELECT.PettyCash,
                 SQLBase.SELECT.Hardcash,
                 SQLBase.SELECT.Records,
                 SQLBase.SELECT.Deadlines,
@@ -414,7 +409,7 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
                     return;
                 }
 
-                using (SQLBase cleanupSql = CreateSqlProvider(stagingConfig.DBType))
+                using (SQLBase cleanupSql = CreateSqlProvider(stagingConfig))
                 {
                     await cleanupSql.DropDatabaseAsync(stagingConfig.Host, stagingConfig.User, stagingConfig.Keyword, stagingConfig.Database);
                 }
@@ -424,11 +419,12 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
             }
         }
 
-        private static SQLBase CreateSqlProvider(XmlConfig.DataBaseTypes dbType)
+        private static SQLBase CreateSqlProvider(XmlConfig config)
         {
+            XmlConfig.DataBaseTypes dbType = config.DBType;
             if (dbType == XmlConfig.DataBaseTypes.SQL)
             {
-                return new SQL();
+                return new SQL { TrustServerCertificate = config.TrustServerCertificate };
             }
 
             if (dbType == XmlConfig.DataBaseTypes.MySQL)

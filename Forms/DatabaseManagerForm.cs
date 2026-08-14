@@ -3,6 +3,7 @@ using Pflegehaushaltsbuch.Forms.Dialoge;
 using Pflegehaushaltsbuch.Forms.Presenters;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -63,6 +64,19 @@ namespace Pflegehaushaltsbuch.Forms
         /// Handles the click event for get Dataabase Button and updates the related state.
         /// </summary>
         private void getDataabaseButton_Click(object sender, EventArgs e)
+        {
+            OpenDatabaseFile();
+        }
+
+        /// <summary>
+        /// Handles the click event for opening an existing SQLite database file.
+        /// </summary>
+        private void openDatabaseButton_Click(object sender, EventArgs e)
+        {
+            OpenDatabaseFile();
+        }
+
+        private void OpenDatabaseFile()
         {
             presenter.GetDataabase();
         }
@@ -204,15 +218,58 @@ namespace Pflegehaushaltsbuch.Forms
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
+                openFileDialog.Filter = "SQLite database (*.db)|*.db|All files (*.*)|*.*";
+                openFileDialog.DefaultExt = "db";
+                openFileDialog.CheckFileExists = true;
+                openFileDialog.Multiselect = false;
+
+                string currentDatabase = GetCurrentDatabaseFile();
+                if (!string.IsNullOrWhiteSpace(currentDatabase))
+                {
+                    if (File.Exists(currentDatabase))
+                    {
+                        openFileDialog.InitialDirectory = Path.GetDirectoryName(currentDatabase);
+                        openFileDialog.FileName = Path.GetFileName(currentDatabase);
+                    }
+                    else if (Directory.Exists(currentDatabase))
+                    {
+                        openFileDialog.InitialDirectory = currentDatabase;
+                    }
+                }
+
                 if (openFileDialog.ShowDialog(this) == DialogResult.OK)
                 {
                     databaseFileName = openFileDialog.FileName;
+                    SelectDatabaseFile(databaseFileName);
                     return true;
                 }
             }
 
             databaseFileName = null;
             return false;
+        }
+
+        private string GetCurrentDatabaseFile()
+        {
+            if (databasesBox.SelectedItem != null)
+                return databasesBox.SelectedItem.ToString();
+
+            return databaseBox.Text.Trim();
+        }
+
+        private void SelectDatabaseFile(string databaseFileName)
+        {
+            foreach (object item in databasesBox.Items)
+            {
+                if (string.Equals(item.ToString(), databaseFileName, StringComparison.CurrentCultureIgnoreCase))
+                {
+                    databasesBox.SelectedItem = item;
+                    return;
+                }
+            }
+
+            databasesBox.Items.Add(databaseFileName);
+            databasesBox.SelectedItem = databaseFileName;
         }
 
         /// <summary>
@@ -263,6 +320,17 @@ namespace Pflegehaushaltsbuch.Forms
         void IDatabaseManagerFormContract.ShowUserCreated()
         {
             MessageBox.ShowDialog(this, Messages.user_created);
+        }
+
+        /// <summary>
+        /// Runs the show creation user dialog view action for the presenter.
+        /// </summary>
+        bool IDatabaseManagerFormContract.ShowCreationUserDialog(SqlSession session)
+        {
+            using (CreationUserForm userForm = new CreationUserForm(session, true))
+            {
+                return userForm.ShowDialog(this) == DialogResult.OK;
+            }
         }
 
         /// <summary>

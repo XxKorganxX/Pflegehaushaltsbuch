@@ -8,6 +8,7 @@ namespace Pflegehaushaltsbuch.Databases
     {
         public SQLBase SQL { get; private set; }
         public bool IsConnected => SQL != null;
+        public Company Company { get; } = new Company();
         public User User => SQL?.User;
 
         public void Replace(SQLBase sql)

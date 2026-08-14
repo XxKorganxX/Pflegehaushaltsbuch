@@ -151,7 +151,7 @@
     <value>label13</value>
   </data>
   <data name="&gt;&gt;label13.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.Label, Pflegehaushaltsbuch, Version=1.4.1.62, Culture=neutral, PublicKeyToken=null</value>
+    <value>Pflegehaushaltsbuch.FormControls.Label, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;label13.Parent" xml:space="preserve">
     <value>flowLayoutPanel2</value>
@@ -178,7 +178,7 @@
     <value>unicodeTextbox</value>
   </data>
   <data name="&gt;&gt;unicodeTextbox.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.TextBox, Pflegehaushaltsbuch, Version=1.4.1.62, Culture=neutral, PublicKeyToken=null</value>
+    <value>Pflegehaushaltsbuch.FormControls.TextBox, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;unicodeTextbox.Parent" xml:space="preserve">
     <value>flowLayoutPanel2</value>
@@ -205,7 +205,7 @@
     <value>unicodeButton</value>
   </data>
   <data name="&gt;&gt;unicodeButton.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.Button, Pflegehaushaltsbuch, Version=1.4.1.62, Culture=neutral, PublicKeyToken=null</value>
+    <value>Pflegehaushaltsbuch.FormControls.Button, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;unicodeButton.Parent" xml:space="preserve">
     <value>flowLayoutPanel2</value>
@@ -217,10 +217,10 @@
     <value>Fill</value>
   </data>
   <data name="flowLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 18</value>
+    <value>3, 3</value>
   </data>
   <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>523, 31</value>
+    <value>553, 31</value>
   </data>
   <data name="flowLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -229,7 +229,7 @@
     <value>flowLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel2.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.FlowLayoutPanel, Pflegehaushaltsbuch, Version=1.4.1.62, Culture=neutral, PublicKeyToken=null</value>
+    <value>Pflegehaushaltsbuch.FormControls.FlowLayoutPanel, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel2.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -244,10 +244,10 @@
     <value>Microsoft Sans Serif, 11.25pt</value>
   </data>
   <data name="richTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 55</value>
+    <value>3, 40</value>
   </data>
   <data name="richTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>342, 143</value>
+    <value>372, 173</value>
   </data>
   <data name="richTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -259,7 +259,7 @@
     <value>richTextBox</value>
   </data>
   <data name="&gt;&gt;richTextBox.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.RichTextBox, Pflegehaushaltsbuch, Version=1.4.1.62, Culture=neutral, PublicKeyToken=null</value>
+    <value>Pflegehaushaltsbuch.FormControls.RichTextBox, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;richTextBox.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -367,10 +367,10 @@
     <value>&lt;tatsächlicher_bestand&gt;</value>
   </data>
   <data name="listBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>366, 55</value>
+    <value>381, 40</value>
   </data>
   <data name="listBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 143</value>
+    <value>175, 173</value>
   </data>
   <data name="listBox.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -379,7 +379,7 @@
     <value>listBox</value>
   </data>
   <data name="&gt;&gt;listBox.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.ListBox, Pflegehaushaltsbuch, Version=1.4.1.62, Culture=neutral, PublicKeyToken=null</value>
+    <value>Pflegehaushaltsbuch.FormControls.ListBox, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;listBox.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -392,9 +392,6 @@
   </data>
   <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 15</value>
-  </data>
-  <data name="tableLayoutPanel1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>15, 15, 15, 15</value>
   </data>
   <data name="tableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
     <value>3</value>
@@ -409,7 +406,7 @@
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel1.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.TableLayoutPanel, Pflegehaushaltsbuch, Version=1.4.1.62, Culture=neutral, PublicKeyToken=null</value>
+    <value>Pflegehaushaltsbuch.FormControls.TableLayoutPanel, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel1.Parent" xml:space="preserve">
     <value>$this</value>
@@ -439,7 +436,7 @@
     <value>okButton</value>
   </data>
   <data name="&gt;&gt;okButton.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.Button, Pflegehaushaltsbuch, Version=1.4.1.62, Culture=neutral, PublicKeyToken=null</value>
+    <value>Pflegehaushaltsbuch.FormControls.Button, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;okButton.Parent" xml:space="preserve">
     <value>flowLayoutPanel1</value>
@@ -466,7 +463,7 @@
     <value>abortButton</value>
   </data>
   <data name="&gt;&gt;abortButton.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.Button, Pflegehaushaltsbuch, Version=1.4.1.62, Culture=neutral, PublicKeyToken=null</value>
+    <value>Pflegehaushaltsbuch.FormControls.Button, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;abortButton.Parent" xml:space="preserve">
     <value>flowLayoutPanel1</value>
@@ -478,10 +475,10 @@
     <value>Fill</value>
   </data>
   <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 204</value>
+    <value>3, 219</value>
   </data>
   <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>523, 36</value>
+    <value>553, 36</value>
   </data>
   <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -490,7 +487,7 @@
     <value>flowLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel1.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.FlowLayoutPanel, Pflegehaushaltsbuch, Version=1.4.1.62, Culture=neutral, PublicKeyToken=null</value>
+    <value>Pflegehaushaltsbuch.FormControls.FlowLayoutPanel, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel1.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -6692,6 +6689,6 @@
     <value>EditTextDialog</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.Forms.Form, Pflegehaushaltsbuch, Version=1.4.1.62, Culture=neutral, PublicKeyToken=null</value>
+    <value>Pflegehaushaltsbuch.Forms.Form, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

@@ -18,7 +18,7 @@ namespace Pflegehaushaltsbuch.Forms
         void SetTotalClients(int totalClients);
         void SetTotalAmount(string totalAmount);
         void SetDeadlineText(string text);
-        void SelectClientByName(string clientName);
+        void SelectClientById(int clientId);
         void NotifyClientIdChanged(int clientID);
         bool ShowCreateClientDialog(out ClientAccountInput clientData);
         bool ShowChangeClientDialog(int clientID, out ClientAccountInput clientData);

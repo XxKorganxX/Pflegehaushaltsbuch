@@ -15,6 +15,8 @@ namespace Pflegehaushaltsbuch.Forms
         bool PeriodChecked { get; }
         string TotalAmountText { get; set; }
         string HardCashAmountText { get; set; }
+        void SetPeriodDateRange(DateTime fromDate, DateTime toDate);
+        void SetAccountLookup(Dictionary<int, string> accountLookup);
         bool ShowCashBookDialog(out CashBookingInput input);
         void SetPeriodControlsVisible(bool visible);
         void SetHardCashAmountWarning(bool warning);

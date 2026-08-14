@@ -160,7 +160,7 @@
     <value>label19</value>
   </data>
   <data name="&gt;&gt;label19.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.Label, Pflegehaushaltsbuch, Version=1.4.1.62, Culture=neutral, PublicKeyToken=null</value>
+    <value>Pflegehaushaltsbuch.FormControls.Label, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;label19.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -174,43 +174,6 @@
   <data name="flowLayoutPanel1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="updateButton.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="updateButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="updateButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 4</value>
-  </data>
-  <data name="updateButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="updateButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 60</value>
-  </data>
-  <data name="updateButton.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="updateButton.Text" xml:space="preserve">
-    <value>Administrator
-Update Table</value>
-  </data>
-  <data name="updateButton.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;updateButton.Name" xml:space="preserve">
-    <value>updateButton</value>
-  </data>
-  <data name="&gt;&gt;updateButton.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.Button, Pflegehaushaltsbuch, Version=1.4.1.62, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;updateButton.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;updateButton.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="bookButton.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -221,7 +184,7 @@ Update Table</value>
     <value>NoControl</value>
   </data>
   <data name="bookButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>157, 4</value>
+    <value>3, 4</value>
   </data>
   <data name="bookButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
@@ -230,7 +193,7 @@ Update Table</value>
     <value>148, 60</value>
   </data>
   <data name="bookButton.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="bookButton.Text" xml:space="preserve">
     <value>Book</value>
@@ -239,13 +202,13 @@ Update Table</value>
     <value>bookButton</value>
   </data>
   <data name="&gt;&gt;bookButton.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.Button, Pflegehaushaltsbuch, Version=1.4.1.62, Culture=neutral, PublicKeyToken=null</value>
+    <value>Pflegehaushaltsbuch.FormControls.Button, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bookButton.Parent" xml:space="preserve">
     <value>flowLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;bookButton.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="printButton.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -254,7 +217,7 @@ Update Table</value>
     <value>NoControl</value>
   </data>
   <data name="printButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>311, 4</value>
+    <value>157, 4</value>
   </data>
   <data name="printButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
@@ -263,7 +226,7 @@ Update Table</value>
     <value>148, 60</value>
   </data>
   <data name="printButton.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="printButton.Text" xml:space="preserve">
     <value>Print</value>
@@ -272,46 +235,13 @@ Update Table</value>
     <value>printButton</value>
   </data>
   <data name="&gt;&gt;printButton.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.Button, Pflegehaushaltsbuch, Version=1.4.1.62, Culture=neutral, PublicKeyToken=null</value>
+    <value>Pflegehaushaltsbuch.FormControls.Button, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;printButton.Parent" xml:space="preserve">
     <value>flowLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;printButton.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="exportButton.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="exportButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="exportButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>465, 4</value>
-  </data>
-  <data name="exportButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="exportButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 60</value>
-  </data>
-  <data name="exportButton.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="exportButton.Text" xml:space="preserve">
-    <value>Export</value>
-  </data>
-  <data name="&gt;&gt;exportButton.Name" xml:space="preserve">
-    <value>exportButton</value>
-  </data>
-  <data name="&gt;&gt;exportButton.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.Button, Pflegehaushaltsbuch, Version=1.4.1.62, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;exportButton.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;exportButton.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>1</value>
   </data>
   <data name="backButton.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -320,7 +250,7 @@ Update Table</value>
     <value>NoControl</value>
   </data>
   <data name="backButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>619, 4</value>
+    <value>311, 4</value>
   </data>
   <data name="backButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
@@ -329,7 +259,7 @@ Update Table</value>
     <value>148, 60</value>
   </data>
   <data name="backButton.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="backButton.Text" xml:space="preserve">
     <value>Back</value>
@@ -338,13 +268,13 @@ Update Table</value>
     <value>backButton</value>
   </data>
   <data name="&gt;&gt;backButton.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.Button, Pflegehaushaltsbuch, Version=1.4.1.62, Culture=neutral, PublicKeyToken=null</value>
+    <value>Pflegehaushaltsbuch.FormControls.Button, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;backButton.Parent" xml:space="preserve">
     <value>flowLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;backButton.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>2</value>
   </data>
   <data name="flowLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -359,13 +289,13 @@ Update Table</value>
     <value>1027, 68</value>
   </data>
   <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel1.Name" xml:space="preserve">
     <value>flowLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel1.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.FlowLayoutPanel, Pflegehaushaltsbuch, Version=1.4.1.62, Culture=neutral, PublicKeyToken=null</value>
+    <value>Pflegehaushaltsbuch.FormControls.FlowLayoutPanel, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel1.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -425,10 +355,10 @@ Update Table</value>
     <value>True</value>
   </metadata>
   <data name="handsignColumn.HeaderText" xml:space="preserve">
-    <value>Hs</value>
+    <value>✍️</value>
   </data>
   <data name="handsignColumn.Width" type="System.Int32, mscorlib">
-    <value>50</value>
+    <value>53</value>
   </data>
   <data name="view.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -443,13 +373,13 @@ Update Table</value>
     <value>998, 325</value>
   </data>
   <data name="view.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;view.Name" xml:space="preserve">
     <value>view</value>
   </data>
   <data name="&gt;&gt;view.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.DataGridView, Pflegehaushaltsbuch, Version=1.4.1.62, Culture=neutral, PublicKeyToken=null</value>
+    <value>Pflegehaushaltsbuch.FormControls.DataGridView, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;view.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -476,7 +406,7 @@ Update Table</value>
     <value>237, 26</value>
   </data>
   <data name="toDateBox.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>5</value>
   </data>
   <data name="toDateBox.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -485,7 +415,7 @@ Update Table</value>
     <value>toDateBox</value>
   </data>
   <data name="&gt;&gt;toDateBox.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.DateTimeBox, Pflegehaushaltsbuch, Version=1.4.1.62, Culture=neutral, PublicKeyToken=null</value>
+    <value>Pflegehaushaltsbuch.FormControls.DateTimeBox, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;toDateBox.Parent" xml:space="preserve">
     <value>tableLayoutPanel4</value>
@@ -512,7 +442,7 @@ Update Table</value>
     <value>93, 26</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Total amount:</value>
@@ -524,7 +454,7 @@ Update Table</value>
     <value>label1</value>
   </data>
   <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.Label, Pflegehaushaltsbuch, Version=1.4.1.62, Culture=neutral, PublicKeyToken=null</value>
+    <value>Pflegehaushaltsbuch.FormControls.Label, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;label1.Parent" xml:space="preserve">
     <value>tableLayoutPanel4</value>
@@ -554,7 +484,7 @@ Update Table</value>
     <value>totalAmountBox</value>
   </data>
   <data name="&gt;&gt;totalAmountBox.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.TextBox, Pflegehaushaltsbuch, Version=1.4.1.62, Culture=neutral, PublicKeyToken=null</value>
+    <value>Pflegehaushaltsbuch.FormControls.TextBox, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;totalAmountBox.Parent" xml:space="preserve">
     <value>tableLayoutPanel4</value>
@@ -575,13 +505,13 @@ Update Table</value>
     <value>237, 26</value>
   </data>
   <data name="fromDateBox.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;fromDateBox.Name" xml:space="preserve">
     <value>fromDateBox</value>
   </data>
   <data name="&gt;&gt;fromDateBox.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.DateTimeBox, Pflegehaushaltsbuch, Version=1.4.1.62, Culture=neutral, PublicKeyToken=null</value>
+    <value>Pflegehaushaltsbuch.FormControls.DateTimeBox, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;fromDateBox.Parent" xml:space="preserve">
     <value>tableLayoutPanel4</value>
@@ -605,7 +535,7 @@ Update Table</value>
     <value>15, 19</value>
   </data>
   <data name="fromToLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>20</value>
+    <value>4</value>
   </data>
   <data name="fromToLabel.Text" xml:space="preserve">
     <value>-</value>
@@ -617,7 +547,7 @@ Update Table</value>
     <value>fromToLabel</value>
   </data>
   <data name="&gt;&gt;fromToLabel.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.Label, Pflegehaushaltsbuch, Version=1.4.1.62, Culture=neutral, PublicKeyToken=null</value>
+    <value>Pflegehaushaltsbuch.FormControls.Label, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;fromToLabel.Parent" xml:space="preserve">
     <value>tableLayoutPanel4</value>
@@ -641,7 +571,7 @@ Update Table</value>
     <value>66, 26</value>
   </data>
   <data name="periodCheckBox.TabIndex" type="System.Int32, mscorlib">
-    <value>19</value>
+    <value>2</value>
   </data>
   <data name="periodCheckBox.Text" xml:space="preserve">
     <value>Period</value>
@@ -650,7 +580,7 @@ Update Table</value>
     <value>periodCheckBox</value>
   </data>
   <data name="&gt;&gt;periodCheckBox.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.CheckBox, Pflegehaushaltsbuch, Version=1.4.1.62, Culture=neutral, PublicKeyToken=null</value>
+    <value>Pflegehaushaltsbuch.FormControls.CheckBox, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;periodCheckBox.Parent" xml:space="preserve">
     <value>tableLayoutPanel4</value>
@@ -671,13 +601,13 @@ Update Table</value>
     <value>998, 32</value>
   </data>
   <data name="tableLayoutPanel4.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel4.Name" xml:space="preserve">
     <value>tableLayoutPanel4</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel4.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.TableLayoutPanel, Pflegehaushaltsbuch, Version=1.4.1.62, Culture=neutral, PublicKeyToken=null</value>
+    <value>Pflegehaushaltsbuch.FormControls.TableLayoutPanel, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel4.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -713,7 +643,7 @@ Update Table</value>
     <value>tableLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel2.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.TableLayoutPanel, Pflegehaushaltsbuch, Version=1.4.1.62, Culture=neutral, PublicKeyToken=null</value>
+    <value>Pflegehaushaltsbuch.FormControls.TableLayoutPanel, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel2.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -743,7 +673,7 @@ Update Table</value>
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel1.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.FormControls.TableLayoutPanel, Pflegehaushaltsbuch, Version=1.4.1.62, Culture=neutral, PublicKeyToken=null</value>
+    <value>Pflegehaushaltsbuch.FormControls.TableLayoutPanel, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel1.Parent" xml:space="preserve">
     <value>$this</value>
@@ -809,6 +739,6 @@ Update Table</value>
     <value>BankForm</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>Pflegehaushaltsbuch.Forms.Form, Pflegehaushaltsbuch, Version=1.4.1.62, Culture=neutral, PublicKeyToken=null</value>
+    <value>Pflegehaushaltsbuch.Forms.Form, Pflegehaushaltsbuch, Version=2.0.0.64, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

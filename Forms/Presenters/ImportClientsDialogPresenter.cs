@@ -205,7 +205,7 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
             row[Columns.Zipcode] = zipCode.Trim();
             row[Columns.City] = Session.SQL.TrimBetween(city);
             row[Columns.Born] = born.Date;
-            row[Columns.HandSign] = Session.SQL.User.Name;
+            row[Columns.HandSign] = Session.SQL.User.Handsign;
 
             DataRow advisorRow = advisorTable.Rows.Find(advisor);
             row[Columns.AdvisorId] = advisorRow != null ? advisorRow[Columns.Id] : DBNull.Value;

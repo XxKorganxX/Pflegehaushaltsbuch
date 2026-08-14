@@ -1,6 +1,7 @@
 using Pflegehaushaltsbuch.Databases;
 using Pflegehaushaltsbuch.Properties;
 using System;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -46,7 +47,7 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
 
         public virtual async Task ShownAsync()
         {
-            using (SQLBase sql = CreateSqlProvider(config.DBType))
+            using (SQLBase sql = CreateSqlProvider())
             {
                 databases = await sql.GetAllDatabasesAsync(config.Host, config.User, config.Keyword);
             }
@@ -80,7 +81,7 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
             SQLBase sql = null;
             try
             {
-                sql = CreateSqlProvider(config.DBType);
+                sql = CreateSqlProvider();
                 await sql.ConnectAsync(config.Host, config.User, config.Keyword, config.Database);
                 DisposeConnectedSql();
                 connectedSql = sql;
@@ -104,7 +105,7 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
 
             try
             {
-                string database = View.CreateDatabaseName;
+                string database = GetCreateDatabaseName();
                 if (string.IsNullOrWhiteSpace(database))
                 {
                     View.ShowEnterDatabaseName();
@@ -114,11 +115,12 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
                 if (!View.ConfirmDatabaseCreating())
                     return;
 
+                SQLBase sql = null;
                 using (IAdministrationProgress progressDialog = View.ShowProgressDialog(Messages.database + "..."))
-                using (SQLBase sql = CreateSqlProvider(config.DBType))
                 {
                     try
                     {
+                        sql = CreateSqlProvider();
                         await sql.DropDatabaseAsync(config.Host, config.User, config.Keyword, database);
                         await sql.CreateDataBaseAsync(config.Host, config.User, config.Keyword, database);
                     }
@@ -128,17 +130,42 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
                     }
                 }
 
-                config.Save();
-                View.ShowDefaultLoginMessage();
+                DisposeConnectedSql();
+                connectedSql = sql;
+                sql = null;
+
+                SqlSession creationSession = new SqlSession();
+                creationSession.Replace(connectedSql);
+                try
+                {
+                    if (!View.ShowCreationUserDialog(creationSession))
+                        return;
+                }
+                finally
+                {
+                    creationSession.Detach();
+                }
+
                 View.ShowDatabaseCreated();
                 AddDatabase(database);
                 config.Database = database;
+                config.Save();
                 View.ShowDatabases(databases, database);
             }
             finally
             {
                 databaseOperationLock.Release();
             }
+        }
+
+        private string GetCreateDatabaseName()
+        {
+            if (config.DBType != XmlConfig.DataBaseTypes.SQLite)
+                return View.CreateDatabaseName;
+
+            return Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                "Verwahrgeld.db");
         }
 
         private void AddDatabase(string database)
@@ -162,7 +189,7 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
 
             try
             {
-                using (SQLBase sql = CreateSqlProvider(config.DBType))
+                using (SQLBase sql = CreateSqlProvider())
                 {
                     await sql.ConnectAsync(config.Host, config.User, config.Keyword, config.Database);
                     await sql.CreateUserAsync(View.UserName, View.Keyword, config.Database, View.FromHost);
@@ -203,7 +230,7 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
 
                 SQLBase sql;
                 if (config.DBType == XmlConfig.DataBaseTypes.SQL)
-                    sql = new SQL();
+                    sql = new SQL { TrustServerCertificate = config.TrustServerCertificate };
                 else if (config.DBType == XmlConfig.DataBaseTypes.MySQL)
                     sql = new MySQL();
                 else
@@ -241,10 +268,11 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
             View.ToggleMasterkeyPanel();
         }
 
-        private static SQLBase CreateSqlProvider(XmlConfig.DataBaseTypes dbType)
+        private SQLBase CreateSqlProvider()
         {
+            XmlConfig.DataBaseTypes dbType = config.DBType;
             if (dbType == XmlConfig.DataBaseTypes.SQL)
-                return new SQL();
+                return new SQL { TrustServerCertificate = config.TrustServerCertificate };
             if (dbType == XmlConfig.DataBaseTypes.MySQL)
                 return new MySQL();
             if (dbType == XmlConfig.DataBaseTypes.SQLite)

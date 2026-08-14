@@ -13,7 +13,16 @@ namespace Pflegehaushaltsbuch.Forms
     {
         DataGridViewColumn activeColumn = null;
         private readonly DataExchangeFormPresenter presenter;
-        private DataTable clientTable, advisorTable, employeeTable, cashTable, bankTable, officeCashTable, deadlinesTable;
+        private DataTable clientTable,
+            deadlinesTable,
+            advisorTable, 
+            employeeTable, 
+            cashTransactionsTable, 
+            bankTransactionsTable, 
+            officeCashTransactionsTable, 
+            clientTransactionsTable,
+            accountsTable,
+            documentsTable;
 
         /// <summary>
         /// Creates a new DataExchangeForm view.
@@ -52,12 +61,15 @@ namespace Pflegehaushaltsbuch.Forms
         }
 
         public DataTable ClientTable { get { return clientTable; } set { clientTable = value; clientView.DataSource = value; ApplyCheckedColumnHeaders(clientView); } }
-        public DataTable AdvisorTable { get { return advisorTable; } set { advisorTable = value; advisorView.DataSource = value; ApplyCheckedColumnHeaders(advisorView); } }
-        public DataTable EmployeeTable { get { return employeeTable; } set { employeeTable = value; employeesView.DataSource = value; ApplyCheckedColumnHeaders(employeesView); } }
-        public DataTable CashTable { get { return cashTable; } set { cashTable = value; cashView.DataSource = value; ApplyCheckedColumnHeaders(cashView); } }
-        public DataTable BankTable { get { return bankTable; } set { bankTable = value; bankView.DataSource = value; ApplyCheckedColumnHeaders(bankView); } }
-        public DataTable OfficeCashTable { get { return officeCashTable; } set { officeCashTable = value; officeCashView.DataSource = value; ApplyCheckedColumnHeaders(officeCashView); } }
         public DataTable DeadlinesTable { get { return deadlinesTable; } set { deadlinesTable = value; deadlinesView.DataSource = value; ApplyCheckedColumnHeaders(deadlinesView); } }
+        public DataTable RepresentativeTable { get { return advisorTable; } set { advisorTable = value; advisorView.DataSource = value; ApplyCheckedColumnHeaders(advisorView); } }
+        public DataTable EmployeeTable { get { return employeeTable; } set { employeeTable = value; employeesView.DataSource = value; ApplyCheckedColumnHeaders(employeesView); } }
+        public DataTable CashTransactionsTable { get { return cashTransactionsTable; } set { cashTransactionsTable = value; cashTransactionsView.DataSource = value; ApplyCheckedColumnHeaders(cashTransactionsView); } }
+        public DataTable BankTransactionsTable { get { return bankTransactionsTable; } set { bankTransactionsTable = value; bankTransactionsView.DataSource = value; ApplyCheckedColumnHeaders(bankTransactionsView); } }
+        public DataTable PettyCashTransactionsTable { get { return officeCashTransactionsTable; } set { officeCashTransactionsTable = value; officeCashTransactionsView.DataSource = value; ApplyCheckedColumnHeaders(officeCashTransactionsView); } }
+        public DataTable ClientTransactionsTable { get { return clientTransactionsTable; } set { clientTransactionsTable = value; clientTransactionsView.DataSource = value; ApplyCheckedColumnHeaders(clientTransactionsView); } }
+        public DataTable AccountsTable { get { return accountsTable; } set { accountsTable = value; accountsView.DataSource = value; ApplyCheckedColumnHeaders(accountsView); } }
+        public DataTable DocumentsTable { get { return documentsTable; } set { documentsTable = value; documentsView.DataSource = value; ApplyCheckedColumnHeaders(documentsView); } }
 
         /// <summary>
         /// Runs the include button_click action.
@@ -114,12 +126,15 @@ namespace Pflegehaushaltsbuch.Forms
         {
             await presenter.ExportAsync(
                 CreateExportTable(clientView),
+                CreateExportTable(deadlinesView),
                 CreateExportTable(advisorView),
                 CreateExportTable(employeesView),
-                CreateExportTable(cashView),
-                CreateExportTable(bankView),
-                CreateExportTable(officeCashView),
-                CreateExportTable(deadlinesView));
+                CreateExportTable(cashTransactionsView),
+                CreateExportTable(bankTransactionsView),
+                CreateExportTable(officeCashTransactionsView),
+                CreateExportTable(clientTransactionsView),
+                CreateExportTable(accountsView),
+                CreateExportTable(documentsView));
         }
 
         /// <summary>
@@ -174,20 +189,26 @@ namespace Pflegehaushaltsbuch.Forms
         void ResetGridSources()
         {
             clientView.DataSource = null;
+            deadlinesView.DataSource = null;
             advisorView.DataSource = null;
             employeesView.DataSource = null;
-            cashView.DataSource = null;
-            bankView.DataSource = null;
-            officeCashView.DataSource = null;
-            deadlinesView.DataSource = null;
+            cashTransactionsView.DataSource = null;
+            bankTransactionsView.DataSource = null;
+            officeCashTransactionsView.DataSource = null;
+            clientTransactionsView.DataSource = null;
+            accountsView.DataSource = null;
+            documentsView.DataSource = null;
 
             clientView.DataSource = ClientTable;
-            advisorView.DataSource = AdvisorTable;
-            employeesView.DataSource = EmployeeTable;
-            cashView.DataSource = CashTable;
-            bankView.DataSource = BankTable;
-            officeCashView.DataSource = OfficeCashTable;
             deadlinesView.DataSource = DeadlinesTable;
+            advisorView.DataSource = RepresentativeTable;
+            employeesView.DataSource = EmployeeTable;
+            cashTransactionsView.DataSource = CashTransactionsTable;
+            bankTransactionsView.DataSource = BankTransactionsTable;
+            officeCashTransactionsView.DataSource = PettyCashTransactionsTable;
+            clientTransactionsView.DataSource = ClientTransactionsTable;
+            accountsView.DataSource = AccountsTable;
+            documentsView.DataSource = DocumentsTable;
         }
 
         /// <summary>
@@ -204,7 +225,6 @@ namespace Pflegehaushaltsbuch.Forms
             grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             grid.AllowUserToResizeRows = false;
             grid.AllowUserToOrderColumns = true;
-            grid.AllowUserToDeleteRows = false;
             grid.AllowUserToAddRows = false;
             grid.RowHeadersVisible = false;
             grid.EnableHeadersVisualStyles = false;
@@ -216,7 +236,7 @@ namespace Pflegehaushaltsbuch.Forms
         {
             grid.EndEdit();
 
-            var result = new DataTable();
+            var result = new DataTable(grid.Name.Replace("View", ""));
             var columns = grid.Columns
                 .Cast<DataGridViewColumn>()
                 .Where(c => !string.IsNullOrWhiteSpace(c.Name))
@@ -224,10 +244,13 @@ namespace Pflegehaushaltsbuch.Forms
                 .ToList();
 
             foreach (var column in columns)
-                result.Columns.Add(column.DataPropertyName, column.ValueType ?? typeof(string));
+                result.Columns.Add(column.DataPropertyName, GetExportColumnType(grid, column));
 
             foreach (DataGridViewRow row in grid.Rows)
             {
+                if (row.IsNewRow || !Convert.ToBoolean(row.Cells[0].Value ?? false))
+                    continue;
+
                 DataRow newRow = result.NewRow();
 
                 foreach (var column in columns)
@@ -240,6 +263,14 @@ namespace Pflegehaushaltsbuch.Forms
             }
 
             return result;
+        }
+
+        private static Type GetExportColumnType(DataGridView grid, DataGridViewColumn column)
+        {
+            if (grid.DataSource is DataTable table && table.Columns.Contains(column.DataPropertyName))
+                return table.Columns[column.DataPropertyName].DataType;
+
+            return column.ValueType ?? typeof(string);
         }
 
         /// <summary>

@@ -7,6 +7,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 namespace Pflegehaushaltsbuch
 {
@@ -43,9 +44,16 @@ namespace Pflegehaushaltsbuch
             Forms.Form.BackColorMode = Settings.Default.BackgroundColorMode;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            CultureInfo cu = string.IsNullOrWhiteSpace(Settings.Default.language)
+            string cultureName = NormalizeCultureName(Settings.Default.language);
+            if (!string.Equals(Settings.Default.language, cultureName, StringComparison.Ordinal))
+            {
+                Settings.Default.language = cultureName;
+                Settings.Default.Save();
+            }
+
+            CultureInfo cu = string.IsNullOrWhiteSpace(cultureName)
                 ? CultureInfo.InstalledUICulture
-                : new CultureInfo(Settings.Default.language);
+                : new CultureInfo(cultureName);
             Application.CurrentCulture = cu;
             Thread.CurrentThread.CurrentCulture = cu;
             Thread.CurrentThread.CurrentUICulture = cu;
@@ -59,11 +67,27 @@ namespace Pflegehaushaltsbuch
 
             AppDomain.CurrentDomain.UnhandledException += (sender, e) =>
             {
+                if (!(e.ExceptionObject is Exception))
+                    ApplicationLogger.LogUnhandledObject(e.ExceptionObject, "AppDomain.CurrentDomain.UnhandledException");
                 MessageBox.ShowError(null, e.ExceptionObject as Exception);
+            };
+
+            TaskScheduler.UnobservedTaskException += (sender, e) =>
+            {
+                ApplicationLogger.LogException(e.Exception, "TaskScheduler.UnobservedTaskException");
             };
 
             var session = new SqlSession();
             Application.Run(new MainForm(session));
+        }
+
+        private static string NormalizeCultureName(string cultureName)
+        {
+            if (string.Equals(cultureName, "en", StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(cultureName, "en-US", StringComparison.OrdinalIgnoreCase))
+                return "en-GB";
+
+            return cultureName;
         }
     }
 }

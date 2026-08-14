@@ -117,43 +117,68 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="databaseBackupButton.Text" xml:space="preserve">
-    <value>Datenbank
-Backup</value>
+  <data name="userRightsButton.Text" xml:space="preserve">
+    <value>Benutzer</value>
   </data>
-  <data name="restoreButton.Text" xml:space="preserve">
-    <value>Datenbank
-Wiederherstellen</value>
+  <data name="userRightsButton.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="designButton.Text" xml:space="preserve">
-    <value>Allgemeine
-Einstellungen</value>
+  <data name="companyButton.Text" xml:space="preserve">
+    <value>Firmendaten</value>
   </data>
-  <data name="improvedButton.Text" xml:space="preserve">
-    <value>Über das Pflege-
-haushaltsbuch</value>
+  <data name="companyButton.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="exitButton.Text" xml:space="preserve">
-    <value>Zurück</value>
+  <data name="layoutButton.Text" xml:space="preserve">
+    <value>Druckvorlagen</value>
+  </data>
+  <data name="layoutButton.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="connectDatabaseButton.Text" xml:space="preserve">
     <value>Datenbank</value>
+  </data>
+  <data name="connectDatabaseButton.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="dataExchangeButton.Text" xml:space="preserve">
+    <value>Datenaustausch</value>
+  </data>
+  <data name="dataExchangeButton.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="disconnectDatabaseButton.Text" xml:space="preserve">
     <value>Datenbank
 Trennen</value>
   </data>
-  <data name="userRightsButton.Text" xml:space="preserve">
-    <value>Benutzer</value>
+  <data name="disconnectDatabaseButton.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="companyButton.Text" xml:space="preserve">
-    <value>Betrieb</value>
+  <data name="restoreButton.Text" xml:space="preserve">
+    <value>Datenbank
+Wiederherstellen</value>
   </data>
-  <data name="licenseButton.Text" xml:space="preserve">
-    <value>Lizenz</value>
+  <data name="restoreButton.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="layoutButton.Text" xml:space="preserve">
-    <value>Druckvorlagen</value>
+  <data name="databaseBackupButton.Text" xml:space="preserve">
+    <value>Datenbank
+Backup</value>
+  </data>
+  <data name="databaseBackupButton.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="exitButton.Text" xml:space="preserve">
+    <value>Zurück</value>
+  </data>
+  <data name="exitButton.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tableLayoutPanel4.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tableLayoutPanel1.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

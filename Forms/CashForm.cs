@@ -7,7 +7,6 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
-using DataGridView = Pflegehaushaltsbuch.FormControls.DataGridView;
 
 namespace Pflegehaushaltsbuch.Forms
 {
@@ -16,9 +15,12 @@ namespace Pflegehaushaltsbuch.Forms
     /// </summary>
     public partial class CashForm : Form, ICashFormContract
     {
+        private Dictionary<Control, string> mapTextLabels = new Dictionary<Control, string>();
         private readonly CashFormPresenter presenter;
         private BindingSource hardCashBindingSource;
+        private Dictionary<int, string> accountLookup = new Dictionary<int, string>();
         private bool controlsInitialized;
+        private bool initializingPeriodDateRange;
 
         /// <summary>
         /// Creates a new CashForm view.
@@ -29,6 +31,7 @@ namespace Pflegehaushaltsbuch.Forms
             Session = session;
             presenter = new CashFormPresenter(this, session);
             view.AutoGenerateColumns = false;
+            ApplyCurrencyFormat(amountColumn);
         }
 
         /// <summary>
@@ -81,12 +84,26 @@ namespace Pflegehaushaltsbuch.Forms
             if (rights == null)
                 return;
 
-            if (rights.IsSupervisor)
+            bookButton.Enabled = rights.CanAccessCashBalance && rights.CanBook;
+            saveButton.Enabled = undoButton.Enabled = automaticButton.Enabled = rights.CanAccessCashBalance && rights.CanModify;
+        }
+
+        protected override void OnEnter(EventArgs e)
+        {
+            base.OnEnter(e);
+
+            foreach (Label label in new[]{ label1, label2, label5, label6, label7, label8, label9,
+                              label10, label11, label12, label13, label14, label15,
+                              label16,label17})
             {
-                updateButton.Visible = true;
-                view.AllowUserToDeleteRows = true;
+
+                string symbol = Session.Company.Currencies.NumberFormat.CurrencySymbol;
+
+                if (!mapTextLabels.ContainsKey(label))
+                    mapTextLabels[label] = label.Text;
+
+                label.Text = mapTextLabels[label] + " " + symbol;
             }
-            bookButton.Enabled = rights.CanInsert | rights.CanModify;
         }
 
         /// <summary>
@@ -122,6 +139,16 @@ namespace Pflegehaushaltsbuch.Forms
                     e.CellStyle.ForeColor = Color.Red;
                 e.Value = ((SQLBase.BookCategory)index).GetDisplayName();
             }
+            else if (e.ColumnIndex == accountColumn.Index && e.Value != null)
+            {
+                int accountId;
+                string accountName;
+                if (Int32.TryParse(e.Value.ToString(), out accountId) && accountLookup.TryGetValue(accountId, out accountName))
+                {
+                    e.Value = accountName;
+                    e.FormattingApplied = true;
+                }
+            }
         }
 
         /// <summary>
@@ -133,6 +160,7 @@ namespace Pflegehaushaltsbuch.Forms
                 return;
 
             ApplyCurrentUserRights();
+            ApplyCurrencyFormat(amountColumn);
             hardCashBindingSource.ListChanged -= hard_cash_binding_ListChanged;
             hardCashBindingSource.ListChanged += hard_cash_binding_ListChanged;
             await presenter.EnterAsync();
@@ -216,6 +244,8 @@ namespace Pflegehaushaltsbuch.Forms
         {
             if (DesignMode)
                 return;
+            if (initializingPeriodDateRange)
+                return;
 
             await presenter.DateChangedAsync();
         }
@@ -274,6 +304,26 @@ namespace Pflegehaushaltsbuch.Forms
         bool ICashFormContract.PeriodChecked
         {
             get { return periodCheckBox.Checked; }
+        }
+
+        void ICashFormContract.SetPeriodDateRange(DateTime fromDate, DateTime toDate)
+        {
+            initializingPeriodDateRange = true;
+            try
+            {
+                fromDateBox.Date = fromDate;
+                toDateBox.Date = toDate;
+            }
+            finally
+            {
+                initializingPeriodDateRange = false;
+            }
+        }
+
+        void ICashFormContract.SetAccountLookup(Dictionary<int, string> accountLookup)
+        {
+            this.accountLookup = accountLookup ?? new Dictionary<int, string>();
+            view.InvalidateColumn(accountColumn.Index);
         }
 
         /// <summary>

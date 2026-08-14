@@ -41,7 +41,7 @@ namespace Pflegehaushaltsbuch.Forms
             if (rights == null)
                 return;
 
-            insertButton.Enabled = rights.CanInsert;
+            insertButton.Enabled = rights.CanAccessDocuments && rights.CanInsert;
             deleteButton.Enabled = rights.CanDelete;
         }
         /// <summary>

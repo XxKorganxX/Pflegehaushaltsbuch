@@ -25,6 +25,18 @@ INSERT IGNORE INTO `accounts` (`id`, `type`, `active`, `created_at`)
 SELECT `account_id`, 'Employee', COALESCE(`active`, 1), CURRENT_TIMESTAMP FROM `employees` WHERE `account_id` IS NOT NULL;
 ALTER TABLE `cash_books` ADD COLUMN `account_id` int(11) DEFAULT NULL;
 ALTER TABLE `bank_books` ADD COLUMN `account_id` int(11) DEFAULT NULL;
+UPDATE `cash_books`
+LEFT JOIN `clients` ON `cash_books`.`account` = CONCAT('K', LPAD(`clients`.`id`, 3, '0'))
+LEFT JOIN `employees` ON `cash_books`.`account` = CONCAT('M', LPAD(`employees`.`id`, 3, '0'))
+SET `cash_books`.`account_id` = COALESCE(`clients`.`account_id`, `employees`.`account_id`, CASE WHEN `cash_books`.`account` IN ('Barbestand', 'Cash', 'Kasse') THEN 0 WHEN `cash_books`.`account` IN ('Bankbestand', 'Bank') THEN 1 ELSE NULL END)
+WHERE `cash_books`.`account_id` IS NULL;
+UPDATE `bank_books`
+LEFT JOIN `clients` ON `bank_books`.`account` = CONCAT('K', LPAD(`clients`.`id`, 3, '0'))
+LEFT JOIN `employees` ON `bank_books`.`account` = CONCAT('M', LPAD(`employees`.`id`, 3, '0'))
+SET `bank_books`.`account_id` = COALESCE(`clients`.`account_id`, `employees`.`account_id`, CASE WHEN `bank_books`.`account` IN ('Barbestand', 'Cash', 'Kasse') THEN 0 WHEN `bank_books`.`account` IN ('Bankbestand', 'Bank') THEN 1 ELSE NULL END)
+WHERE `bank_books`.`account_id` IS NULL;
+ALTER TABLE `office_cash` ADD COLUMN `account_id` int(11) DEFAULT NULL;
+UPDATE `office_cash` SET `account_id` = `account` WHERE `account_id` IS NULL;
 DROP TRIGGER IF EXISTS `books_AUPD`;
 DROP TRIGGER IF EXISTS `books_AINS`;
 DROP TRIGGER IF EXISTS `books_ADEL`;

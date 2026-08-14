@@ -36,7 +36,6 @@
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.tableLayoutPanel1 = new Pflegehaushaltsbuch.FormControls.TableLayoutPanel();
             this.flowLayoutPanel1 = new Pflegehaushaltsbuch.FormControls.FlowLayoutPanel();
-            this.updateButton = new Pflegehaushaltsbuch.FormControls.Button();
             this.selectClientButton = new Pflegehaushaltsbuch.FormControls.Button();
             this.scheduleButton = new Pflegehaushaltsbuch.FormControls.Button();
             this.insertButton = new Pflegehaushaltsbuch.FormControls.Button();
@@ -99,7 +98,6 @@
             // flowLayoutPanel1
             // 
             resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
-            this.flowLayoutPanel1.Controls.Add(this.updateButton);
             this.flowLayoutPanel1.Controls.Add(this.selectClientButton);
             this.flowLayoutPanel1.Controls.Add(this.scheduleButton);
             this.flowLayoutPanel1.Controls.Add(this.insertButton);
@@ -109,17 +107,6 @@
             this.flowLayoutPanel1.Controls.Add(this.printButton);
             this.flowLayoutPanel1.Controls.Add(this.backButton);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            // 
-            // updateButton
-            // 
-            resources.ApplyResources(this.updateButton, "updateButton");
-            this.updateButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.updateButton.BorderColor = System.Drawing.Color.DimGray;
-            this.updateButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.updateButton.Name = "updateButton";
-            this.updateButton.Radius = -1F;
-            this.updateButton.UseVisualStyleBackColor = false;
-            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
             // 
             // selectClientButton
             // 
@@ -247,7 +234,6 @@
             this.clientsView.AllowUserToResizeColumns = false;
             this.clientsView.AllowUserToResizeRows = false;
             this.clientsView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.clientsView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.clientsView.BackgroundColor = System.Drawing.Color.White;
             this.clientsView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.clientsView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -269,6 +255,7 @@
             this.clientsView.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.clientsView.RowHeadersVisible = false;
             this.clientsView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.clientsView.RowTemplate.Height = 24;
             this.clientsView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.clientsView.StandardTab = true;
             this.clientsView.KeyUp += new System.Windows.Forms.KeyEventHandler(this.clientsView_KeyUp);
@@ -323,7 +310,6 @@
             this.amountColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.amountColumn.DataPropertyName = "amount";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "C";
             dataGridViewCellStyle3.NullValue = null;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.amountColumn.DefaultCellStyle = dataGridViewCellStyle3;
@@ -507,7 +493,6 @@
         private FormControls.Label label4;
         private FormControls.Label label5;
         private FormControls.TextBox bornBox;
-        private FormControls.Button updateButton;
         private Pflegehaushaltsbuch.FormControls.ComboBox activeClientsBox;
         private FormControls.Label label6;
         private FormControls.Button clientBooksButton;
@@ -517,6 +502,7 @@
         private FormControls.Label label7;
         private FormControls.Label label8;
         private FormControls.TextBox totalClientsBox;
+        private FormControls.TextBox deadLineBox;
         private System.Windows.Forms.DataGridViewCheckBoxColumn infoColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameColumn;
@@ -524,6 +510,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn amountColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn handSignColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn activeColumn;
-        private FormControls.TextBox deadLineBox;
     }
 }

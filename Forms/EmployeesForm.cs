@@ -25,6 +25,7 @@ namespace Pflegehaushaltsbuch.Forms
             Session = session;
             presenter = new EmployeesFormPresenter(this, session);
             view.AutoGenerateColumns = false;
+            ApplyCurrencyFormat(amountPayoutColumn, amountPayBackColumn);
             view.CellPainting += CellPainting;
             view.CellFormatting += CellFormatting;
             this.Enter += EmployeesForm_Enter;
@@ -39,14 +40,10 @@ namespace Pflegehaushaltsbuch.Forms
             if (rights == null)
                 return;
 
-            if (rights.IsSupervisor)
-            {
-                updateButton.Visible = true;
-                view.AllowUserToDeleteRows = true;
-            }
-            createButton.Enabled = rights.CanInsert;
-            changeButton.Enabled = payOutButton.Enabled = rights.CanModify;
-            deleteButton.Visible = rights.CanDelete;
+            createButton.Enabled = rights.CanAccessEmployees && rights.CanInsert;
+            changeButton.Enabled = rights.CanAccessEmployees && rights.CanModify;
+            payOutButton.Enabled = rights.CanAccessEmployees && rights.CanBook;
+            deleteButton.Enabled = rights.CanDelete;
         }
 
         /// <summary>
@@ -120,6 +117,7 @@ namespace Pflegehaushaltsbuch.Forms
         async void EmployeesForm_Enter(object sender, EventArgs e)
         {
             ApplyCurrentUserRights();
+            ApplyCurrencyFormat(amountPayoutColumn, amountPayBackColumn);
             await presenter.ConnectTableToDataBaseAsync();
         }
 

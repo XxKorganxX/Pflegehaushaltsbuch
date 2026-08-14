@@ -13,6 +13,8 @@ namespace Pflegehaushaltsbuch.Forms
         DateTime FromDate { get; }
         DateTime ToDate { get; }
         bool PeriodChecked { get; }
+        void SetPeriodDateRange(DateTime fromDate, DateTime toDate);
+        void SetAccountLookup(Dictionary<int, string> accountLookup);
         void SetTotalAmount(string totalAmount);
         void BindBank(DataTable table);
         bool ShowBankBookDialog(out BankBookingInput input);

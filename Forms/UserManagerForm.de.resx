@@ -118,15 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="nameColumn.HeaderText" xml:space="preserve">
-    <value>Name (Hz)</value>
-  </data>
-  <data name="phoneColumn.HeaderText" xml:space="preserve">
-    <value>Telefon</value>
+    <value>handsign</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="phoneColumn.Width" type="System.Int32, mscorlib">
-    <value>78</value>
-  </data>
   <data name="accessColumn.HeaderText" xml:space="preserve">
     <value>Rechte</value>
   </data>

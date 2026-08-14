@@ -72,7 +72,7 @@ namespace Pflegehaushaltsbuch.Data.Graphics
         /// <summary>
         /// Runs the paint operation and updates the related application state.
         /// </summary>
-        public override void Paint(System.Drawing.Graphics g, int translateY, SQLBase sql, int page, int lastPage, out bool hasMorePages)
+        public override void Paint(System.Drawing.Graphics g, int translateY, SQLBase sql, Company company, int page, int lastPage, out bool hasMorePages)
         {
             hasMorePages = false;
             if (TableDesign == null)
@@ -179,7 +179,7 @@ namespace Pflegehaushaltsbuch.Data.Graphics
                     if (dataRow[id].GetType() == typeof(decimal))
                     {
                         format.Alignment = StringAlignment.Far;
-                        text = ((decimal)dataRow[id]).ToString("c");
+                        text = ((decimal)dataRow[id]).ToString("C", company.Currencies);
                     }
                     else if (dataRow[id].GetType() == typeof(DateTime))
                         text = ((DateTime)dataRow[id]).Date.ToShortDateString();
@@ -227,7 +227,7 @@ namespace Pflegehaushaltsbuch.Data.Graphics
             if (hasMorePages)
                 return;
             y += Font.Height*0.5f;
-            if (!DrawSubItem(g, sql, page, (int)y, (int)currentRect.Bottom))
+            if (!DrawSubItem(g, sql, company, page, (int)y, (int)currentRect.Bottom))
             {
                 hasMorePages = true;
                 return;
@@ -237,7 +237,7 @@ namespace Pflegehaushaltsbuch.Data.Graphics
         /// <summary>
         /// Runs the paint PDF operation and updates the related application state.
         /// </summary>
-        public override void PaintPDF(XGraphics g, int translateY, SQLBase sql, int page, int lastPage, out bool hasMorePages)
+        public override void PaintPDF(XGraphics g, int translateY, SQLBase sql, Company company, int page, int lastPage, out bool hasMorePages)
         {
             hasMorePages = false;
             if (Parent != null)
@@ -354,7 +354,7 @@ namespace Pflegehaushaltsbuch.Data.Graphics
                     if (dataRow[id].GetType() == typeof(decimal))
                     {
                         format.Alignment = XStringAlignment.Far; 
-                        text = ((decimal)dataRow[id]).ToString("c");
+                        text = ((decimal)dataRow[id]).ToString("C", company.Currencies);
                     }
                     else if (dataRow[id].GetType() == typeof(DateTime))
                         text = ((DateTime)dataRow[id]).Date.ToShortDateString();
@@ -409,7 +409,7 @@ namespace Pflegehaushaltsbuch.Data.Graphics
             if (hasMorePages)
                 return;
             y += Font.Height * 0.5f;
-            if (!DrawSubItem(g, sql, page, (int)y, (int)tableRect.Bottom))
+            if (!DrawSubItem(g, sql, company, page, (int)y, (int)tableRect.Bottom))
             {
                 hasMorePages = true;
                 return;

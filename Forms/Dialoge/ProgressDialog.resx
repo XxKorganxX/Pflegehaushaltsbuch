@@ -130,10 +130,10 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="progressBar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 32</value>
+    <value>3, 22</value>
   </data>
   <data name="progressBar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>412, 34</value>
+    <value>423, 54</value>
   </data>
   <data name="progressBar.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -157,10 +157,10 @@
     <value>Fill</value>
   </data>
   <data name="currentLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 10</value>
+    <value>3, 0</value>
   </data>
   <data name="currentLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>412, 19</value>
+    <value>423, 19</value>
   </data>
   <data name="currentLabel.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -185,9 +185,6 @@
   </data>
   <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 15</value>
-  </data>
-  <data name="tableLayoutPanel1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 10, 10, 10</value>
   </data>
   <data name="tableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
     <value>2</value>

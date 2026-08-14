@@ -13,8 +13,7 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
         private readonly SemaphoreSlim databaseOperationLock = new SemaphoreSlim(1, 1);
         private readonly DataTable deadLinesTable = new DataTable();
         private DataTable table;
-        private string client;
-        private int clientID;
+        private int? clientID;
 
         public ClientsFormPresenter(IClientsFormContract view, SqlSession session)
         {
@@ -39,10 +38,12 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
             table = new DataTable();
             await session.SQL.FillAdapterAsync(SQLBase.SELECT.Clients, table);
             table.PrimaryKey = new DataColumn[] { table.Columns[Columns.Id] };
+            foreach (DataRow clientRow in table.Rows)
+                clientRow[Columns.Info] = 0;
 
             DateTime today = DateTime.Now;
             deadLinesTable.Clear();
-            await session.SQL.FillAdapterAsync(SQLBase.SELECT.DeadlineByDay, deadLinesTable, today.Day);
+            await session.SQL.FillAdapterAsync(SQLBase.SELECT.DeadlineByDay, deadLinesTable, today.Date);
             foreach (DataRow deadlineRow in deadLinesTable.Rows)
             {
                 DataRow clientRow = table.Rows.Find(deadlineRow[Columns.Id]);
@@ -75,9 +76,8 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
             DataRow row = GetSelectedRow();
             if (row != null)
             {
-                client = row[Columns.Name].ToString();
                 clientID = Int32.Parse(row[Columns.Id].ToString());
-                View.NotifyClientIdChanged(clientID);
+                View.NotifyClientIdChanged(clientID.Value);
             }
 
             View.ClearClients();
@@ -113,14 +113,13 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
             {
                 foreach (DataRowView rowView in table.DefaultView)
                 {
-                    decimal amount = 0;
                     DataRow row = rowView.Row;
-                    if (decimal.TryParse(row[Columns.Amount].ToString(), out amount))
-                        totalAmount += amount;
+                    if (row[Columns.Amount] != DBNull.Value)
+                        totalAmount += Convert.ToDecimal(row[Columns.Amount]);
                 }
             }
 
-            View.SetTotalAmount(totalAmount.ToString("C"));
+            View.SetTotalAmount(totalAmount.ToString("C", session.Company.Currencies));
         }
 
         public virtual async Task CreateAccountAsync()
@@ -164,13 +163,13 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
                 await session.SQL.FillAdapterAsync(SQLBase.SELECT.Books, bookTable);
                 await session.SQL.FillAdapterAsync(SQLBase.SELECT.Bank, bankTable);
                 await session.SQL.FillAdapterAsync(SQLBase.SELECT.Cash, bargeTable);
-                string clientIdNumber = string.Format("K{0:000}", selectedClientID);
+                int accountId = Convert.ToInt32(rowOfView[Columns.AccountId]);
 
                 foreach (DataRow row in bargeTable.Rows.OfType<DataRow>().ToArray())
                 {
-                    if (row[Columns.Account] == DBNull.Value || string.IsNullOrWhiteSpace(row[Columns.Account].ToString()))
+                    if (row[Columns.AccountId] == DBNull.Value)
                         throw new Exception(Messages.clients_delete_cash_not_assignable);
-                    if (row[Columns.Account].ToString().Equals(clientIdNumber))
+                    if (Convert.ToInt32(row[Columns.AccountId]) == accountId)
                         row.Delete();
                 }
 
@@ -184,9 +183,9 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
 
                 foreach (DataRow row in bankTable.Rows.OfType<DataRow>().ToArray())
                 {
-                    if (row[Columns.Account] == DBNull.Value || string.IsNullOrWhiteSpace(row[Columns.Account].ToString()))
+                    if (row[Columns.AccountId] == DBNull.Value)
                         throw new Exception(Messages.clients_delete_bank_not_assignable);
-                    if (row[Columns.Account].ToString().Equals(clientIdNumber))
+                    if (Convert.ToInt32(row[Columns.AccountId]) == accountId)
                         row.Delete();
                 }
 
@@ -323,7 +322,7 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
                 row[Columns.City] = clientData.City;
                 row[Columns.Born] = clientData.BornDate;
                 row[Columns.AdvisorId] = clientData.AdvisorId.HasValue ? (object)clientData.AdvisorId.Value : DBNull.Value;
-                row[Columns.HandSign] = session.SQL.User.Name;
+                row[Columns.HandSign] = session.SQL.User.Handsign;
 
                 if (!updateClient)
                 {
@@ -339,8 +338,12 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
                 {
                     try
                     {
+                        int accountId = -1;
                         if (!updateClient && table.Columns.Contains(Columns.AccountId))
-                            row[Columns.AccountId] = await session.SQL.CreateAccountIdAsync("Client");
+                        {
+                            accountId = await session.SQL.CreateAccountIdAsync("Client");
+                            row[Columns.AccountId] = accountId;
+                        }
 
                         bool value = await session.SQL.UpdateAdapterAsync(SQLBase.SELECT.Clients, table);
                         if (!value)
@@ -352,7 +355,7 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
                                 DateTime.Now.Date,
                                 string.Format(Messages.clients_previous_amount, clientData.Name),
                                 clientData.Amount,
-                                string.Format("K{0:000}", clientData.ClientID),
+                                accountId,
                                 SQLBase.BookCategory.Einzahlung,
                                 SQLBase.BookingTo.Altbestand);
                             if (!openingBalanceBooked)
@@ -369,6 +372,7 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
                     }
                 }
 
+                clientID = clientData.ClientID;
                 await ConnectTableToDataBaseAsync();
                 View.ShowMessage(Messages.clients_changed);
             }
@@ -401,7 +405,7 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
                 row[Columns.AccountTransfer] = clientData.OpeningBalance;
                 row[Columns.Active] = (int)SQLBase.ClientActive.Active;
                 row[Columns.AdvisorId] = clientData.AdvisorId.HasValue ? (object)clientData.AdvisorId.Value : DBNull.Value;
-                row[Columns.HandSign] = session.SQL.User.Name;
+                row[Columns.HandSign] = session.SQL.User.Handsign;
                 importTable.Rows.Add(row);
             }
 
@@ -428,7 +432,7 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
                             clientData.CreatedDate,
                             string.Format(Messages.clients_previous_amount, clientData.Name),
                             clientData.OpeningBalance,
-                            string.Format("K{0:000}", clientData.Id),
+                            Convert.ToInt32(importTable.Rows.Find(clientData.Id)[Columns.AccountId]),
                             SQLBase.BookCategory.Einzahlung,
                             SQLBase.BookingTo.Altbestand);
                         if (!booked)
@@ -488,10 +492,10 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
 
         private void RestoreSelectedClient()
         {
-            if (string.IsNullOrWhiteSpace(client))
+            if (!clientID.HasValue)
                 return;
 
-            View.SelectClientByName(client);
+            View.SelectClientById(clientID.Value);
         }
 
         private DataRow GetSelectedRow()

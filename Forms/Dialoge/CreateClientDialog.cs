@@ -187,7 +187,7 @@ namespace Pflegehaushaltsbuch.Forms
         void ICreateClientDialogContract.BindSaldo()
         {
             saldoBox.DataBindings.Clear();
-            saldoBox.DataBindings.Add("Text", this, "Amount", true, DataSourceUpdateMode.OnPropertyChanged, 0, "c");
+            saldoBox.DataBindings.Add("Text", this, "Amount", true, DataSourceUpdateMode.OnPropertyChanged, 0, "C", Session.Company.Currencies);
         }
 
         /// <summary>

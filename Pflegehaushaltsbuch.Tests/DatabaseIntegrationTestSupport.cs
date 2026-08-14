@@ -2,9 +2,11 @@ using System;
 using System.Data;
 using System.IO;
 using System.Globalization;
+using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Pflegehaushaltsbuch.Data;
 using Pflegehaushaltsbuch.Databases;
 
 namespace Pflegehaushaltsbuch.Tests
@@ -67,7 +69,7 @@ namespace Pflegehaushaltsbuch.Tests
                 userType,
                 BindingFlags.Instance | BindingFlags.NonPublic,
                 binder: null,
-                args: new object[] { "Integration Test", string.Empty, string.Empty, "integration@example.invalid", 0, true, true },
+                args: new object[] { "Integration Test", "integration.test", 0, true, true },
                 culture: CultureInfo.InvariantCulture);
 
             typeof(SQLBase)
@@ -77,10 +79,31 @@ namespace Pflegehaushaltsbuch.Tests
 
         public static async Task RunSmokeAndRollbackChecks(SQLBase sql)
         {
+            await sql.EnsureDatabaseUpdatedAsync();
+            await UserAuthenticator.LoginAsync(sql, "Admin", string.Empty);
+            Assert.AreEqual("🛡️", sql.User.Handsign);
+            Assert.AreEqual("Admin", sql.User.Login);
+            Assert.IsTrue(sql.User.Admin);
+
             SetTestUser(sql);
 
+            await User.CreateUser(sql, "IT", "integration.test", "integration-password", 0, true);
+            await UserAuthenticator.LoginAsync(sql, "integration.test", "integration-password");
+            Assert.AreEqual("IT", sql.User.Handsign);
+            Assert.AreEqual("integration.test", sql.User.Login);
+
+            await AssertUserManagementAsync(sql);
+            SetTestUser(sql);
+
+            int clientAccountId = await sql.CreateAccountIdAsync("Client");
+            int employeeAccountId = await sql.CreateAccountIdAsync("Employee");
+            int clientWithoutBalanceAccountId = await sql.CreateAccountIdAsync("Client");
+            int employeeWithoutBalanceAccountId = await sql.CreateAccountIdAsync("Employee");
+            Assert.AreEqual(clientAccountId, await GetAccountIdFromAccountsTableAsync(sql, clientAccountId, "Client"));
+            Assert.AreEqual(employeeAccountId, await GetAccountIdFromAccountsTableAsync(sql, employeeAccountId, "Employee"));
+
             DataTable advisors = new DataTable();
-            await sql.FillAdapterAsync(SQLBase.SELECT.Advisors, advisors);
+            await sql.FillAdapterAsync(SQLBase.SELECT.Representatives, advisors);
             DataRow advisor = advisors.NewRow();
             advisor["id"] = 10;
             advisor["title"] = "Frau";
@@ -93,10 +116,10 @@ namespace Pflegehaushaltsbuch.Tests
             advisor["date"] = new DateTime(2026, 8, 1);
             advisor["handsign"] = "Integration Test";
             advisors.Rows.Add(advisor);
-            Assert.IsTrue(await sql.UpdateAdapterAsync(SQLBase.SELECT.Advisors, advisors));
+            Assert.IsTrue(await sql.UpdateAdapterAsync(SQLBase.SELECT.Representatives, advisors));
 
             advisors.Clear();
-            await sql.FillAdapterAsync(SQLBase.SELECT.Advisors, advisors);
+            await sql.FillAdapterAsync(SQLBase.SELECT.Representatives, advisors);
             Assert.AreEqual(1, advisors.Rows.Count);
             Assert.AreEqual("Integration Advisor", advisors.Rows[0]["name"].ToString());
 
@@ -104,6 +127,7 @@ namespace Pflegehaushaltsbuch.Tests
             await sql.FillAdapterAsync(SQLBase.SELECT.Emploees, assistants);
             DataRow assistant = assistants.NewRow();
             assistant["id"] = 20;
+            assistant["account_id"] = employeeAccountId;
             assistant["name"] = "Integration Assistant";
             assistant["account_transfer"] = 100m;
             assistant["amount_payout"] = 100m;
@@ -113,20 +137,39 @@ namespace Pflegehaushaltsbuch.Tests
             assistant["active"] = 1;
             assistant["handsign"] = "Integration Test";
             assistants.Rows.Add(assistant);
+            DataRow assistantWithoutBalance = assistants.NewRow();
+            assistantWithoutBalance["id"] = 21;
+            assistantWithoutBalance["account_id"] = employeeWithoutBalanceAccountId;
+            assistantWithoutBalance["name"] = "Integration Assistant Without Balance";
+            assistantWithoutBalance["account_transfer"] = 0m;
+            assistantWithoutBalance["amount_payout"] = 0m;
+            assistantWithoutBalance["amount_payback"] = 0m;
+            assistantWithoutBalance["amount_payback_type"] = 0;
+            assistantWithoutBalance["date"] = new DateTime(2026, 8, 1);
+            assistantWithoutBalance["active"] = 1;
+            assistantWithoutBalance["handsign"] = "Integration Test";
+            assistants.Rows.Add(assistantWithoutBalance);
             Assert.IsTrue(await sql.UpdateAdapterAsync(SQLBase.SELECT.Emploees, assistants));
             Assert.IsTrue(await sql.UpdateAsistanceAsync("Integration Assistant", new DateTime(2026, 8, 2), 40m, 2));
 
             assistants.Clear();
             await sql.FillAdapterAsync(SQLBase.SELECT.Emploees, assistants);
-            Assert.AreEqual(1, assistants.Rows.Count);
-            AssertDecimal(60m, assistants.Rows[0]["amount_payout"]);
-            AssertDecimal(40m, assistants.Rows[0]["amount_payback"]);
-            Assert.AreEqual(2, Convert.ToInt32(assistants.Rows[0]["amount_payback_type"], CultureInfo.InvariantCulture));
+            Assert.AreEqual(2, assistants.Rows.Count);
+            DataRow repaidAssistant = FindRowByValue(assistants, "name", "Integration Assistant");
+            AssertDecimal(60m, repaidAssistant["amount_payout"]);
+            AssertDecimal(40m, repaidAssistant["amount_payback"]);
+            Assert.AreEqual(2, Convert.ToInt32(repaidAssistant["amount_payback_type"], CultureInfo.InvariantCulture));
+            Assert.AreEqual(employeeAccountId, await sql.GetEmployeeAccountIdAsync(20));
+            DataRow noBalanceAssistant = FindRowByValue(assistants, "name", "Integration Assistant Without Balance");
+            AssertDecimal(0m, noBalanceAssistant["amount_payout"]);
+            AssertDecimal(0m, noBalanceAssistant["amount_payback"]);
+            Assert.AreEqual(employeeWithoutBalanceAccountId, await sql.GetEmployeeAccountIdAsync(21));
 
             DataTable clients = new DataTable();
             await sql.FillAdapterAsync(SQLBase.SELECT.Clients, clients);
             DataRow client = clients.NewRow();
             client["id"] = 1;
+            client["account_id"] = clientAccountId;
             client["title"] = "Herr";
             client["name"] = "Integration Client";
             client["street"] = "Teststrasse 1";
@@ -142,10 +185,32 @@ namespace Pflegehaushaltsbuch.Tests
             client["advisor_id"] = DBNull.Value;
             client["handsign"] = "Integration Test";
             clients.Rows.Add(client);
+            DataRow clientWithoutBalance = clients.NewRow();
+            clientWithoutBalance["id"] = 2;
+            clientWithoutBalance["account_id"] = clientWithoutBalanceAccountId;
+            clientWithoutBalance["title"] = "Frau";
+            clientWithoutBalance["name"] = "Integration Client Without Balance";
+            clientWithoutBalance["street"] = "Second Street 1";
+            clientWithoutBalance["zipcode"] = "23456";
+            clientWithoutBalance["city"] = "Second City";
+            clientWithoutBalance["born"] = new DateTime(1975, 2, 3);
+            clientWithoutBalance["date"] = new DateTime(2026, 8, 1);
+            clientWithoutBalance["account_transfer"] = 0m;
+            clientWithoutBalance["amount"] = 0m;
+            clientWithoutBalance["active"] = 1;
+            clientWithoutBalance["info"] = 0;
+            clientWithoutBalance["note"] = string.Empty;
+            clientWithoutBalance["advisor_id"] = DBNull.Value;
+            clientWithoutBalance["handsign"] = "Integration Test";
+            clients.Rows.Add(clientWithoutBalance);
             Assert.IsTrue(await sql.UpdateAdapterAsync(SQLBase.SELECT.Clients, clients));
+            Assert.AreEqual(clientAccountId, await sql.GetClientAccountIdAsync(1));
+            Assert.AreEqual(clientWithoutBalanceAccountId, await sql.GetClientAccountIdAsync(2));
 
-            Assert.IsTrue(await sql.ToBankAsync(new DateTime(2026, 8, 1), "Bank booking", 10m, "K001", SQLBase.BookCategory.Einzahlung, SQLBase.BookingTo.Bankbestand));
-            Assert.IsTrue(await sql.ToBargeAsync(new DateTime(2026, 8, 1), "Cash booking", 5m, "K001", SQLBase.BookCategory.Einzahlung, SQLBase.BookingTo.Barbestand));
+            await AssertDeadlinesAsync(sql);
+
+            Assert.IsTrue(await sql.ToBankAsync(new DateTime(2026, 8, 1), "Bank booking", 10m, clientAccountId, SQLBase.BookCategory.Einzahlung, SQLBase.BookingTo.Bankbestand));
+            Assert.IsTrue(await sql.ToBargeAsync(new DateTime(2026, 8, 1), "Cash booking", 5m, clientAccountId, SQLBase.BookCategory.Einzahlung, SQLBase.BookingTo.Barbestand));
             var bookResult = await sql.ToBooksAsync("Integration Client", 1, new DateTime(2026, 8, 1), "Client booking", 7m, SQLBase.BookCategory.Einzahlung, SQLBase.BookingTo.Bankbestand);
             Assert.IsTrue(bookResult.Item1);
             var officeResult = await sql.Book2CashOfficeAsync(new DateTime(2026, 8, 1), "Office booking", 3m, SQLBase.BookCategory.Auszahlung, 1);
@@ -156,7 +221,7 @@ namespace Pflegehaushaltsbuch.Tests
             Assert.AreEqual(1, bank.Rows.Count);
             Assert.AreEqual("Bank booking", bank.Rows[0]["note"].ToString());
             AssertDecimal(10m, bank.Rows[0]["amount"]);
-            Assert.AreEqual("K001", bank.Rows[0]["account"].ToString());
+            Assert.AreEqual(clientAccountId, Convert.ToInt32(bank.Rows[0]["account_id"], CultureInfo.InvariantCulture));
             Assert.AreEqual((int)SQLBase.BookCategory.Einzahlung, Convert.ToInt32(bank.Rows[0]["book_cat"], CultureInfo.InvariantCulture));
             Assert.AreEqual((int)SQLBase.BookingTo.Bankbestand, Convert.ToInt32(bank.Rows[0]["book_to"], CultureInfo.InvariantCulture));
 
@@ -165,7 +230,7 @@ namespace Pflegehaushaltsbuch.Tests
             Assert.AreEqual(1, barge.Rows.Count);
             Assert.AreEqual("Cash booking", barge.Rows[0]["note"].ToString());
             AssertDecimal(5m, barge.Rows[0]["amount"]);
-            Assert.AreEqual("K001", barge.Rows[0]["account"].ToString());
+            Assert.AreEqual(clientAccountId, Convert.ToInt32(barge.Rows[0]["account_id"], CultureInfo.InvariantCulture));
 
             DataTable books = new DataTable();
             await sql.FillAdapterAsync(SQLBase.SELECT.Books, books);
@@ -175,7 +240,7 @@ namespace Pflegehaushaltsbuch.Tests
             Assert.AreEqual(1, Convert.ToInt32(books.Rows[0]["document_id"], CultureInfo.InvariantCulture));
 
             DataTable officeCash = new DataTable();
-            await sql.FillAdapterAsync(SQLBase.SELECT.OfficeCash, officeCash);
+            await sql.FillAdapterAsync(SQLBase.SELECT.PettyCash, officeCash);
             Assert.AreEqual(1, officeCash.Rows.Count);
             Assert.AreEqual("Office booking", officeCash.Rows[0]["note"].ToString());
             AssertDecimal(-3m, officeCash.Rows[0]["amount"]);
@@ -185,11 +250,15 @@ namespace Pflegehaushaltsbuch.Tests
             Assert.AreEqual(1, clientById.Rows.Count);
             AssertDecimal(7m, clientById.Rows[0]["amount"]);
             AssertDate(new DateTime(2026, 8, 1), clientById.Rows[0]["lastbook"]);
+            DataTable clientWithoutBalanceById = new DataTable();
+            await sql.FillAdapterAsync(SQLBase.SELECT.Client, clientWithoutBalanceById, 2);
+            Assert.AreEqual(1, clientWithoutBalanceById.Rows.Count);
+            AssertDecimal(0m, clientWithoutBalanceById.Rows[0]["amount"]);
 
             using (var transaction = sql.BeginTransaction())
             {
-                Assert.IsTrue(await sql.ToBankAsync(new DateTime(2026, 8, 2), "Rolled back bank", 11m, "K001", SQLBase.BookCategory.Einzahlung, SQLBase.BookingTo.Bankbestand));
-                Assert.IsTrue(await sql.ToBargeAsync(new DateTime(2026, 8, 2), "Rolled back cash", 6m, "K001", SQLBase.BookCategory.Einzahlung, SQLBase.BookingTo.Barbestand));
+                Assert.IsTrue(await sql.ToBankAsync(new DateTime(2026, 8, 2), "Rolled back bank", 11m, clientAccountId, SQLBase.BookCategory.Einzahlung, SQLBase.BookingTo.Bankbestand));
+                Assert.IsTrue(await sql.ToBargeAsync(new DateTime(2026, 8, 2), "Rolled back cash", 6m, clientAccountId, SQLBase.BookCategory.Einzahlung, SQLBase.BookingTo.Barbestand));
                 transaction.Rollback();
             }
 
@@ -213,6 +282,75 @@ namespace Pflegehaushaltsbuch.Tests
             books.Clear();
             await sql.FillAdapterAsync(SQLBase.SELECT.Books, books);
             Assert.AreEqual(1, books.Rows.Count);
+        }
+
+        private static async Task AssertUserManagementAsync(SQLBase sql)
+        {
+            await User.CreateUser(sql, "BL", "blank.login", string.Empty, 0, false);
+            await UserAuthenticator.LoginAsync(sql, "blank.login", string.Empty);
+            Assert.AreEqual("BL", sql.User.Handsign);
+            Assert.AreEqual("blank.login", sql.User.Login);
+            Assert.IsFalse(sql.User.Admin);
+
+            await User.UpdateUser(sql, "blank.login", "BZ", "blank.changed", 0, false);
+            await UserAuthenticator.LoginAsync(sql, "blank.changed", string.Empty);
+            Assert.AreEqual("BZ", sql.User.Handsign);
+            Assert.AreEqual("blank.changed", sql.User.Login);
+
+            await User.UpdatePassword(sql, "blank.changed", "changed-password", "blank.changed");
+            await UserAuthenticator.LoginAsync(sql, "blank.changed", "changed-password");
+            Assert.AreEqual("blank.changed", sql.User.Login);
+        }
+
+        private static async Task AssertDeadlinesAsync(SQLBase sql)
+        {
+            DateTime todayInDifferentYear = DateTime.Today.AddYears(-1);
+            DataTable deadlines = new DataTable();
+            await sql.FillAdapterAsync(SQLBase.SELECT.Deadlines, deadlines);
+
+            DataRow deadline = deadlines.NewRow();
+            deadline["id"] = 1;
+            deadline["date"] = todayInDifferentYear.Date;
+            deadline["note"] = "Integration deadline";
+            deadline["handsign"] = "Integration Test";
+            deadlines.Rows.Add(deadline);
+            Assert.IsTrue(await sql.UpdateAdapterAsync(SQLBase.SELECT.Deadlines, deadlines));
+
+            deadlines.Clear();
+            await sql.FillAdapterAsync(SQLBase.SELECT.DeadlineByClient, deadlines, 1);
+            Assert.AreEqual(1, deadlines.Rows.Count);
+            Assert.AreEqual("Integration deadline", deadlines.Rows[0]["note"].ToString());
+
+            deadlines.Clear();
+            await sql.FillAdapterAsync(SQLBase.SELECT.DeadlineByDay, deadlines, DateTime.Today.Date);
+            Assert.AreEqual(1, deadlines.Rows.Count);
+            Assert.AreEqual("Integration deadline", deadlines.Rows[0]["note"].ToString());
+
+            await sql.FillAdapterAsync(SQLBase.SELECT.Clients, deadlines);
+            await sql.FillAdapterAsync(SQLBase.SELECT.DeadlineByDay, deadlines, DateTime.Today.Date);
+            Assert.IsTrue(deadlines.Columns.Contains("no"));
+            Assert.AreEqual(1, deadlines.Rows.Count);
+        }
+
+        private static async Task<int> GetAccountIdFromAccountsTableAsync(SQLBase sql, int accountId, string type)
+        {
+            DataTable accounts = new DataTable();
+            await sql.FillAdapterAsync(SQLBase.SELECT.Accounts, accounts);
+            DataRow row = accounts.Rows
+                .OfType<DataRow>()
+                .FirstOrDefault(item => Convert.ToInt32(item["id"], CultureInfo.InvariantCulture) == accountId);
+            Assert.IsNotNull(row);
+            Assert.AreEqual(type, row["type"].ToString());
+            return Convert.ToInt32(row["id"], CultureInfo.InvariantCulture);
+        }
+
+        private static DataRow FindRowByValue(DataTable table, string columnName, string value)
+        {
+            DataRow row = table.Rows
+                .OfType<DataRow>()
+                .FirstOrDefault(item => string.Equals(item[columnName].ToString(), value, StringComparison.Ordinal));
+            Assert.IsNotNull(row);
+            return row;
         }
 
         public static SQLBase CreateInternalProvider(string typeName)

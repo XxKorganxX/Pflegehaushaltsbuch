@@ -166,9 +166,8 @@ namespace Pflegehaushaltsbuch.Data
         /// <summary>
         /// Updates the user And Company data and refreshes the related application state.
         /// </summary>
-        public void UpdateUserAndCompany(SQLBase sql)
+        public void UpdateUserAndCompany(Company company)
         {
-            Company company = sql.Company;
             UpdateVariable(VarNames.company_name, company.Name);
             UpdateVariable(VarNames.company_addr, company.Street);
             UpdateVariable(VarNames.company_city, company.City);
@@ -198,7 +197,6 @@ namespace Pflegehaushaltsbuch.Data
                 UpdateVariable(VarNames.company_bank_iban, company.Bank_iban);
             if (company.Bank_bic != null)
                 UpdateVariable(VarNames.company_bank_bic, company.Bank_bic);
-            User user = sql.User;
         }
         /// <summary>
         /// Loads the documents data required for the current workflow.

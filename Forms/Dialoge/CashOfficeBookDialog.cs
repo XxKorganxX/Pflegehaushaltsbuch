@@ -88,7 +88,7 @@ namespace Pflegehaushaltsbuch.Forms.Dialoge
         void ICashOfficeBookDialogContract.BindFields()
         {
             bookTextBox.DataBindings.Add("Text", this, "BookText");
-            amountBox.DataBindings.Add("Text", this, "Amount", true, DataSourceUpdateMode.OnPropertyChanged, 0, "C");
+            amountBox.DataBindings.Add("Text", this, "Amount", true, DataSourceUpdateMode.OnPropertyChanged, 0, "C", Session.Company.Currencies);
         }
 
         /// <summary>

@@ -35,16 +35,28 @@ namespace Pflegehaushaltsbuch.Forms
             if (Program.DesignMode)
                 return;
 
-            ApplyCurrentUserRights();
             await presenter.EnterAsync();
+            ApplyCurrentUserRights();
         }
 
         /// <summary>
-        /// Runs the user Rights operation and updates the related application state.
+        /// Handles the user Rights lifecycle step and applies the related control behavior.
         /// </summary>
-        public void UserRights(int access, bool admin, bool supervisor)
+        public override void ApplyUserRights(UserRights rights)
         {
-            presenter.UserRights(access, admin, supervisor);
+            if (rights == null)
+                return;
+
+            adminPanel.Enabled = rights.IsAdmin;
+            cashPanel.Enabled = rights.CanAccessCashBalance;
+            bankingPanel.Enabled = rights.CanAccessBankBalance;
+            clientsPanel.Enabled = rights.CanAccessClients;
+            advisorPanel.Enabled = rights.CanAccessRepresentatives;
+            employeesPanel.Enabled = rights.CanAccessEmployees;
+            cashCheckPanel.Enabled = rights.CanAccessCashAudit;
+            statisticsPanel.Enabled = rights.CanAccessStatistics;
+            OfficeCashPanel.Enabled = rights.CanAccessPettyCash;
+            recordPanel.Enabled = rights.CanAccessDocuments;
         }
 
         /// <summary>
@@ -157,7 +169,12 @@ namespace Pflegehaushaltsbuch.Forms
         /// </summary>
         void IMainMenuFormContract.SetAdminVisible(bool visible)
         {
-            adminPanel.Visible = visible;
+            adminPanel.Enabled = visible;
+        }
+
+        void IMainMenuFormContract.ApplyCurrentRights()
+        {
+            ApplyCurrentUserRights();
         }
 
         /// <summary>
@@ -194,7 +211,7 @@ namespace Pflegehaushaltsbuch.Forms
 
         private void englischToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ChangeLanguage("en");
+            ChangeLanguage("en-GB");
         }
 
         private void germanToolStripMenuItem_Click(object sender, EventArgs e)
@@ -204,12 +221,12 @@ namespace Pflegehaushaltsbuch.Forms
 
         private void chineseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ChangeLanguage("zh-Hans");
+            ChangeLanguage("tr");
         }
 
         private void spainToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ChangeLanguage("es-ES");
+            ChangeLanguage("ru");
         }
 
         private void ChangeLanguage(string cultureName)

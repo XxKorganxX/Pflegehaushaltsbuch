@@ -121,7 +121,7 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
         private async Task ConnectTableToDataBaseAsync()
         {
             await session.SQL.FillAdapterAsync(SQLBase.SELECT.Clients, clientTable);
-            await session.SQL.FillAdapterAsync(SQLBase.SELECT.Advisors, advisorTable);
+            await session.SQL.FillAdapterAsync(SQLBase.SELECT.Representatives, advisorTable);
             clientTable.PrimaryKey = new DataColumn[] { clientTable.Columns[Columns.Id] };
             advisorTable.PrimaryKey = new DataColumn[] { advisorTable.Columns[Columns.Name] };
             view.SetAdvisorsDataSource(advisorTable);

@@ -131,5 +131,25 @@ namespace Pflegehaushaltsbuch.Tests
             StringAssert.Contains(connectionString, "Integrated Security=True");
             StringAssert.Contains(connectionString, "Trust Server Certificate=True");
         }
+        /// <summary>
+        /// Runs the connection String Supports Trusted Server Certificate operation and updates the related application state.
+        /// </summary>
+        [TestMethod]
+        public void ConnectionStringSupportsTrustedServerCertificate()
+        {
+            SQL sql = new SQL { TrustServerCertificate = true };
+            string connectionString = sql.GetConnectionString("SERVER\\SQLEXPRESS", "db_user", "password", "pflege");
+            StringAssert.Contains(connectionString, "Trust Server Certificate=True");
+        }
+        /// <summary>
+        /// Runs the connection String Supports Disabled Trusted Server Certificate operation and updates the related application state.
+        /// </summary>
+        [TestMethod]
+        public void ConnectionStringSupportsDisabledTrustedServerCertificate()
+        {
+            SQL sql = new SQL { TrustServerCertificate = false };
+            string connectionString = sql.GetConnectionString("SERVER\\SQLEXPRESS", "db_user", "password", "pflege");
+            StringAssert.Contains(connectionString, "Trust Server Certificate=False");
+        }
     }
 }

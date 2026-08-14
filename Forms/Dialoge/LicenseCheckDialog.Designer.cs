@@ -36,16 +36,11 @@ namespace Pflegehaushaltsbuch.Forms.Dialoge
             // 
             // textBox
             // 
-            this.textBox.AttachRegion = false;
             this.textBox.AutoSize = true;
-            this.textBox.DrawLine = false;
             this.textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox.ForeColor = System.Drawing.Color.White;
-            this.textBox.Gradiant = false;
-            this.textBox.LinePadding = 0;
-            this.textBox.Location = new System.Drawing.Point(11, 7);
+            this.textBox.Location = new System.Drawing.Point(3, 0);
             this.textBox.Name = "textBox";
-            this.textBox.Radius = 0F;
             this.textBox.Size = new System.Drawing.Size(58, 20);
             this.textBox.TabIndex = 0;
             this.textBox.Text = "Output";
@@ -56,13 +51,9 @@ namespace Pflegehaushaltsbuch.Forms.Dialoge
             this.okButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.okButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.okButton.BorderColor = System.Drawing.Color.DimGray;
-            this.okButton.Checked = false;
-            this.okButton.CheckedState = false;
-            this.okButton.ForeColor = System.Drawing.Color.White;
             this.okButton.Location = new System.Drawing.Point(153, 67);
             this.okButton.Margin = new System.Windows.Forms.Padding(3, 15, 3, 3);
             this.okButton.Name = "okButton";
-            this.okButton.PaintBackGround = true;
             this.okButton.Radius = -1F;
             this.okButton.Size = new System.Drawing.Size(85, 30);
             this.okButton.TabIndex = 1;
@@ -73,12 +64,7 @@ namespace Pflegehaushaltsbuch.Forms.Dialoge
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.AutoSize = true;
-            this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel1.Border = true;
-            this.tableLayoutPanel1.BorderColor = System.Drawing.Color.White;
-            this.tableLayoutPanel1.BorderText = "";
-            this.tableLayoutPanel1.BorderWidth = 1F;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.textBox, 0, 0);
@@ -86,7 +72,6 @@ namespace Pflegehaushaltsbuch.Forms.Dialoge
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(1, 1);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -94,9 +79,9 @@ namespace Pflegehaushaltsbuch.Forms.Dialoge
             this.tableLayoutPanel1.TabIndex = 2;
             this.tableLayoutPanel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.tableLayoutPanel1_MouseMove);
             // 
-            // LicenseCheckForm
+            // LicenseCheckDialog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;

@@ -69,7 +69,7 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
                     row[Columns.Zipcode] = Trim(view.AdvisorZipcodeText);
                     row[Columns.City] = Trim(view.AdvisorCityText);
                     row[Columns.Date] = DateTime.Now.Date;
-                    row[Columns.HandSign] = session.SQL.User.Name;
+                    row[Columns.HandSign] = session.SQL.User.Handsign;
                     table.Rows.Add(row);
                 }
                 else

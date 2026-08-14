@@ -126,9 +126,6 @@
   <data name="coColumn.HeaderText" xml:space="preserve">
     <value>Bezeichnung</value>
   </data>
-  <data name="handSignColumn.HeaderText" xml:space="preserve">
-    <value>Hz</value>
-  </data>
   <data name="label6.Text" xml:space="preserve">
     <value>Auswahl:</value>
   </data>

@@ -155,7 +155,7 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
                 row["note"] = document.Description;
                 row["filename"] = document.DocumentFileName;
                 row["file"] = stream;
-                row["handsign"] = session.SQL.User.Name;
+                row["handsign"] = session.SQL.User.Handsign;
                 recordsTable.Rows.Add(row);
 
                 int index = 1;

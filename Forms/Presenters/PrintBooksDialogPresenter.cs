@@ -76,18 +76,18 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
             clientTable.PrimaryKey = new DataColumn[] { clientTable.Columns[Columns.Id] };
             DataRow clientRow = clientTable.Rows.Find(clientID);
 
-            await session.SQL.FillAdapterAsync(SQLBase.SELECT.Advisors, advisorTable);
+            await session.SQL.FillAdapterAsync(SQLBase.SELECT.Representatives, advisorTable);
             advisorTable.PrimaryKey = new DataColumn[] { advisorTable.Columns[Columns.Id] };
             DataRow advisorRow = advisorTable.Rows.Find(clientRow[Columns.AdvisorId]);
 
             await session.SQL.FillAdapterAsync(SQLBase.SELECT.BooksByUser, bookAll, clientID);
 
-            oldAmount = decimal.Parse(clientRow[Columns.AccountTransfer].ToString());
+            oldAmount = Convert.ToDecimal(clientRow[Columns.AccountTransfer]);
             DateTime previousAmountLimit = new DateTime(dateBegin.Year, dateBegin.Month, 1);
             foreach (DataRow row in bookAll.Rows.OfType<DataRow>()
                 .Where(row => row[Columns.Date] != DBNull.Value && Convert.ToDateTime(row[Columns.Date]) < previousAmountLimit))
             {
-                oldAmount += decimal.Parse(row[Columns.Amount].ToString());
+                oldAmount += Convert.ToDecimal(row[Columns.Amount]);
             }
 
             accountName = clientRow[Columns.Name].ToString();
@@ -128,7 +128,7 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
             foreach (DataRow row in rows)
             {
                 int category = Int32.Parse(row[Columns.BookCategory].ToString());
-                decimal value = decimal.Parse(row[Columns.Amount].ToString());
+                decimal value = Convert.ToDecimal(row[Columns.Amount]);
                 if (category == 0)
                 {
                     einnahmen += Math.Abs(value);
@@ -156,11 +156,11 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
             session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.date, DateTime.Now.ToShortDateString());
             session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.date_of_paper, dateEnd.ToShortDateString());
             session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.date_long_of_paper, CreateOutputDate());
-            session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.amount_previous_month, oldAmount.ToString("C"));
-            session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.amount, (oldAmount - ausgaben + einnahmen).ToString("C"));
+            session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.amount_previous_month, oldAmount.ToString("C", session.Company.Currencies));
+            session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.amount, (oldAmount - ausgaben + einnahmen).ToString("C", session.Company.Currencies));
             session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.client, accountName);
-            session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.cash_outflow, ausgaben.ToString("C"));
-            session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.cash_inflow, einnahmen.ToString("C"));
+            session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.cash_outflow, ausgaben.ToString("C", session.Company.Currencies));
+            session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.cash_inflow, einnahmen.ToString("C", session.Company.Currencies));
             session.SQL.Printing.UpdateVariable(Data.Printing.VarNames.statement_note, view.StatementNote);
 
             foreach (var item in session.SQL.Printing.Layouts[Data.Printing.LayoutEnum.accounts].Items)

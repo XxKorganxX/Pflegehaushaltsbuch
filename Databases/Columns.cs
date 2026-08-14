@@ -19,13 +19,13 @@ namespace Pflegehaushaltsbuch.Databases
         public static string Access => SQLBase.Names(SQLBase.ColumnNames.access);
         public static string Date => SQLBase.Names(SQLBase.ColumnNames.date);
         public static string Type => SQLBase.Names(SQLBase.ColumnNames.type);
-        public static string Account => SQLBase.Names(SQLBase.ColumnNames.account);
         public static string AccountId => SQLBase.Names(SQLBase.ColumnNames.account_id);
         public static string AccountTransfer => SQLBase.Names(SQLBase.ColumnNames.account_transfer);
         public static string Amount => SQLBase.Names(SQLBase.ColumnNames.amount);
         public static string AmountPayout => SQLBase.Names(SQLBase.ColumnNames.amount_payout);
         public static string AmountPayback => SQLBase.Names(SQLBase.ColumnNames.amount_payback);
         public static string AmountPaybackType => SQLBase.Names(SQLBase.ColumnNames.amount_payback_type);
+        public static string LastBook => SQLBase.Names(SQLBase.ColumnNames.lastbook);
         public static string Active => SQLBase.Names(SQLBase.ColumnNames.active);
         public static string Info => SQLBase.Names(SQLBase.ColumnNames.info);
         public static string Note => SQLBase.Names(SQLBase.ColumnNames.note);
@@ -35,6 +35,9 @@ namespace Pflegehaushaltsbuch.Databases
         public static string BookCategory => SQLBase.Names(SQLBase.ColumnNames.book_cat);
         public static string HandSign => SQLBase.Names(SQLBase.ColumnNames.handsign);
         public static string CreatedAt => SQLBase.Names(SQLBase.ColumnNames.created_at);
+        public static string FailedLoginAttempts => SQLBase.Names(SQLBase.ColumnNames.failed_login_attempts);
+        public static string LastFailedLogin => SQLBase.Names(SQLBase.ColumnNames.last_failed_login);
+        public static string LockedUntil => SQLBase.Names(SQLBase.ColumnNames.locked_until);
         public static string Admin => SQLBase.Names(SQLBase.ColumnNames.admin);
         public const string Co = "co";
 

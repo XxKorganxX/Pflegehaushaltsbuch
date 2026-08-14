@@ -38,8 +38,10 @@
             this.tabControl1.AutoSizeTabs = false;
             this.tabControl1.BorderColor = System.Drawing.Color.White;
             this.tabControl1.BorderWidth = 1F;
-            resources.ApplyResources(this.tabControl1, "tabControl1");
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -47,10 +49,12 @@
             this.tabControl1.SelectedTabBottomColor = System.Drawing.Color.Green;
             this.tabControl1.SelectedTabForeColor = System.Drawing.Color.White;
             this.tabControl1.SelectedTabTopColor = System.Drawing.Color.Green;
+            this.tabControl1.Size = new System.Drawing.Size(1264, 762);
             this.tabControl1.TabBackcolor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
             this.tabControl1.TabBorderColor = System.Drawing.Color.DarkGray;
             this.tabControl1.TabBottomColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(207)))), ((int)(((byte)(207)))));
             this.tabControl1.TabForeColor = System.Drawing.Color.Black;
+            this.tabControl1.TabIndex = 2;
             this.tabControl1.TabStop = false;
             this.tabControl1.TabTopColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.tabControl1.VisibleTabs = false;
@@ -59,10 +63,16 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Orange;
-            resources.ApplyResources(this, "$this");
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ClientSize = new System.Drawing.Size(1264, 762);
             this.Controls.Add(this.tabControl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 8, 4, 8);
             this.Name = "MainForm";
+            this.Padding = new System.Windows.Forms.Padding(0);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Pflegehaushaltsbuch";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
 

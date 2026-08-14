@@ -20,14 +20,14 @@ namespace Pflegehaushaltsbuch.Tests
         {
             FakeSqlDatabase sql = new FakeSqlDatabase();
 
-            bool saved = await sql.ToBargeAsync(new DateTime(2026, 8, 1), "Cash in", 12.50m, "K001", SQLBase.BookCategory.Einzahlung, SQLBase.BookingTo.Barbestand);
+            bool saved = await sql.ToBargeAsync(new DateTime(2026, 8, 1), "Cash in", 12.50m, 2, SQLBase.BookCategory.Einzahlung, SQLBase.BookingTo.Barbestand);
 
             Assert.IsTrue(saved);
             DataRow row = sql.Table(SQLBase.SELECT.Cash).Rows[0];
             Assert.AreEqual(new DateTime(2026, 8, 1), row["date"]);
             Assert.AreEqual("Cash in", row["note"]);
             Assert.AreEqual(12.50m, row["amount"]);
-            Assert.AreEqual("K001", row["account"]);
+            Assert.AreEqual(2, row["account_id"]);
             Assert.AreEqual(SQLBase.BookCategory.Einzahlung, row["book_cat"]);
             Assert.AreEqual(SQLBase.BookingTo.Barbestand, row["book_to"]);
             Assert.AreEqual("Test User", row["handsign"]);
@@ -38,13 +38,13 @@ namespace Pflegehaushaltsbuch.Tests
         {
             FakeSqlDatabase sql = new FakeSqlDatabase();
 
-            bool saved = await sql.ToBankAsync(new DateTime(2026, 8, 1), "Bank in", 99m, "K002", SQLBase.BookCategory.Einzahlung, SQLBase.BookingTo.Bankbestand);
+            bool saved = await sql.ToBankAsync(new DateTime(2026, 8, 1), "Bank in", 99m, 3, SQLBase.BookCategory.Einzahlung, SQLBase.BookingTo.Bankbestand);
 
             Assert.IsTrue(saved);
             DataRow row = sql.Table(SQLBase.SELECT.Bank).Rows[0];
             Assert.AreEqual("Bank in", row["note"]);
             Assert.AreEqual(99m, row["amount"]);
-            Assert.AreEqual("K002", row["account"]);
+            Assert.AreEqual(3, row["account_id"]);
             Assert.AreEqual(SQLBase.BookingTo.Bankbestand, row["book_to"]);
         }
 
@@ -75,7 +75,7 @@ namespace Pflegehaushaltsbuch.Tests
 
             Assert.IsTrue(payout.Item1);
             Assert.IsTrue(deposit.Item1);
-            DataRow[] rows = sql.Table(SQLBase.SELECT.OfficeCash).Select("", "date");
+            DataRow[] rows = sql.Table(SQLBase.SELECT.PettyCash).Select("", "date");
             Assert.AreEqual(-25m, rows[0]["amount"]);
             Assert.AreEqual(30m, rows[1]["amount"]);
         }
@@ -104,8 +104,8 @@ namespace Pflegehaushaltsbuch.Tests
 
             using (var transaction = sql.BeginTransaction())
             {
-                Assert.IsTrue(await sql.ToBankAsync(new DateTime(2026, 8, 1), "Bank", 10m, "K001", SQLBase.BookCategory.Einzahlung, SQLBase.BookingTo.Bankbestand));
-                Assert.IsTrue(await sql.ToBargeAsync(new DateTime(2026, 8, 1), "Cash", 20m, "K001", SQLBase.BookCategory.Einzahlung, SQLBase.BookingTo.Barbestand));
+                Assert.IsTrue(await sql.ToBankAsync(new DateTime(2026, 8, 1), "Bank", 10m, 2, SQLBase.BookCategory.Einzahlung, SQLBase.BookingTo.Bankbestand));
+                Assert.IsTrue(await sql.ToBargeAsync(new DateTime(2026, 8, 1), "Cash", 20m, 2, SQLBase.BookCategory.Einzahlung, SQLBase.BookingTo.Barbestand));
                 transaction.Commit();
             }
 
@@ -123,8 +123,8 @@ namespace Pflegehaushaltsbuch.Tests
             {
                 using (var transaction = sql.BeginTransaction())
                 {
-                    Assert.IsTrue(sql.ToBankAsync(new DateTime(2026, 8, 1), "Bank", 10m, "K001", SQLBase.BookCategory.Einzahlung, SQLBase.BookingTo.Bankbestand).GetAwaiter().GetResult());
-                    if (!sql.ToBargeAsync(new DateTime(2026, 8, 1), "Cash", 20m, "K001", SQLBase.BookCategory.Einzahlung, SQLBase.BookingTo.Barbestand).GetAwaiter().GetResult())
+                    Assert.IsTrue(sql.ToBankAsync(new DateTime(2026, 8, 1), "Bank", 10m, 2, SQLBase.BookCategory.Einzahlung, SQLBase.BookingTo.Bankbestand).GetAwaiter().GetResult());
+                    if (!sql.ToBargeAsync(new DateTime(2026, 8, 1), "Cash", 20m, 2, SQLBase.BookCategory.Einzahlung, SQLBase.BookingTo.Barbestand).GetAwaiter().GetResult())
                         throw new InvalidOperationException("Simulated write failure.");
                     transaction.Commit();
                 }
@@ -145,7 +145,7 @@ namespace Pflegehaushaltsbuch.Tests
                 tables[SELECT.Cash] = CreateBookingTable("barge", includeAccount: true);
                 tables[SELECT.Bank] = CreateBookingTable("bank", includeAccount: true);
                 tables[SELECT.Books] = CreateBookingTable("books", includeAccount: false);
-                tables[SELECT.OfficeCash] = CreateBookingTable("office_cash", includeAccount: true);
+                tables[SELECT.PettyCash] = CreateBookingTable("petty_cash", includeAccount: true);
                 tables[SELECT.Emploees] = CreateAssistantsTable();
                 SetTestUser();
             }
@@ -326,7 +326,7 @@ namespace Pflegehaushaltsbuch.Tests
                     userType,
                     BindingFlags.Instance | BindingFlags.NonPublic,
                     binder: null,
-                    args: new object[] { "Test User", string.Empty, string.Empty, "test@example.invalid", 0, true, true },
+                    args: new object[] { "Test User", "test.user", 0, true, true },
                     culture: CultureInfo.InvariantCulture);
 
                 typeof(SQLBase)
@@ -344,8 +344,8 @@ namespace Pflegehaushaltsbuch.Tests
                     return SELECT.Cash;
                 if (select == SELECT.BankByDate || select == SELECT.BankByPeriod)
                     return SELECT.Bank;
-                if (select == SELECT.OfficeCashByDate || select == SELECT.OfficeByPeriod)
-                    return SELECT.OfficeCash;
+                if (select == SELECT.PettyCashByDate || select == SELECT.OfficeByPeriod)
+                    return SELECT.PettyCash;
                 return select;
             }
 
@@ -361,7 +361,7 @@ namespace Pflegehaushaltsbuch.Tests
                 table.Columns.Add("document_id", typeof(int));
                 table.Columns.Add("book_to", typeof(object));
                 if (includeAccount)
-                    table.Columns.Add("account", typeof(object));
+                    table.Columns.Add("account_id", typeof(int));
                 return table;
             }
 

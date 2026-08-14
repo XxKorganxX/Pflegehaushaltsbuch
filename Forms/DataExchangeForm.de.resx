@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Datenaustausch</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>Datenaustausch</value>
+  </data>
+  <data name="exportButton.Text" xml:space="preserve">
+    <value>Daten exportieren</value>
+  </data>
+  <data name="backButton.Text" xml:space="preserve">
+    <value>Zurück</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Die exportierte CSV folgt den ausgewählten Spalten und ihrer Reihenfolge.</value>
+  </data>
+  <data name="includeButton.Text" xml:space="preserve">
+    <value>Einschließen</value>
+  </data>
+  <data name="excludeButton.Text" xml:space="preserve">
+    <value>Ausschließen</value>
+  </data>
+  <data name="resetButton.Text" xml:space="preserve">
+    <value>Zurücksetzen</value>
+  </data>
+  <data name="clientsTabPage.Text" xml:space="preserve">
+    <value>Klienten</value>
+  </data>
+  <data name="DeadlinesTabPage.Text" xml:space="preserve">
+    <value>Fristen</value>
+  </data>
+  <data name="representativesTabPage.Text" xml:space="preserve">
+    <value>Betreuer</value>
+  </data>
+  <data name="employeesTabPage.Text" xml:space="preserve">
+    <value>Mitarbeiter</value>
+  </data>
+  <data name="pettyCashTransactionsTabPage.Text" xml:space="preserve">
+    <value>Bürokasse</value>
+  </data>
+  <data name="cashTransactionsTabPage.Text" xml:space="preserve">
+    <value>Kassenbuchungen</value>
+  </data>
+  <data name="bankTransactionsTabPage.Text" xml:space="preserve">
+    <value>Bankbuchungen</value>
+  </data>
+  <data name="clientsTransactionsTabPage.Text" xml:space="preserve">
+    <value>Klientenbuchungen</value>
+  </data>
+  <data name="accountsTabPage.Text" xml:space="preserve">
+    <value>Konten</value>
+  </data>
+  <data name="documentTabPage.Text" xml:space="preserve">
+    <value>Dokumente</value>
+  </data>
+</root>

@@ -44,6 +44,13 @@
             this.label1 = new Pflegehaushaltsbuch.FormControls.Label();
             this.totalAmountBox = new Pflegehaushaltsbuch.FormControls.TextBox();
             this.view = new Pflegehaushaltsbuch.FormControls.DataGridView();
+            this.flowLayoutPanel1 = new Pflegehaushaltsbuch.FormControls.FlowLayoutPanel();
+            this.createButton = new Pflegehaushaltsbuch.FormControls.Button();
+            this.changeButton = new Pflegehaushaltsbuch.FormControls.Button();
+            this.deleteButton = new Pflegehaushaltsbuch.FormControls.Button();
+            this.payOutButton = new Pflegehaushaltsbuch.FormControls.Button();
+            this.printButton = new Pflegehaushaltsbuch.FormControls.Button();
+            this.backButton = new Pflegehaushaltsbuch.FormControls.Button();
             this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,16 +59,6 @@
             this.paybackTypeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.handSignColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.activeColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.flowLayoutPanel1 = new Pflegehaushaltsbuch.FormControls.FlowLayoutPanel();
-            this.updateButton = new Pflegehaushaltsbuch.FormControls.Button();
-            this.createButton = new Pflegehaushaltsbuch.FormControls.Button();
-            this.changeButton = new Pflegehaushaltsbuch.FormControls.Button();
-            this.deleteButton = new Pflegehaushaltsbuch.FormControls.Button();
-            this.payOutButton = new Pflegehaushaltsbuch.FormControls.Button();
-            this.printButton = new Pflegehaushaltsbuch.FormControls.Button();
-            this.buttonImport = new Pflegehaushaltsbuch.FormControls.Button();
-            this.exportButton = new Pflegehaushaltsbuch.FormControls.Button();
-            this.backButton = new Pflegehaushaltsbuch.FormControls.Button();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -165,7 +162,6 @@
             this.view.AllowUserToResizeColumns = false;
             this.view.AllowUserToResizeRows = false;
             this.view.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.view.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.view.BackgroundColor = System.Drawing.Color.White;
             this.view.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.view.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -182,109 +178,21 @@
             this.view.Name = "view";
             this.view.ReadOnly = true;
             this.view.RowHeadersVisible = false;
+            this.view.RowTemplate.Height = 24;
             this.view.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.view.StandardTab = true;
             this.view.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.view_CellContentDoubleClick);
             // 
-            // idColumn
-            // 
-            this.idColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.idColumn.DataPropertyName = "id";
-            dataGridViewCellStyle1.Format = "000";
-            this.idColumn.DefaultCellStyle = dataGridViewCellStyle1;
-            resources.ApplyResources(this.idColumn, "idColumn");
-            this.idColumn.Name = "idColumn";
-            this.idColumn.ReadOnly = true;
-            // 
-            // nameColumn
-            // 
-            this.nameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nameColumn.DataPropertyName = "name";
-            resources.ApplyResources(this.nameColumn, "nameColumn");
-            this.nameColumn.Name = "nameColumn";
-            this.nameColumn.ReadOnly = true;
-            // 
-            // dateColumn
-            // 
-            this.dateColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dateColumn.DataPropertyName = "date";
-            resources.ApplyResources(this.dateColumn, "dateColumn");
-            this.dateColumn.Name = "dateColumn";
-            this.dateColumn.ReadOnly = true;
-            // 
-            // amountPayoutColumn
-            // 
-            this.amountPayoutColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.amountPayoutColumn.DataPropertyName = "amount_payout";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "C";
-            this.amountPayoutColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            resources.ApplyResources(this.amountPayoutColumn, "amountPayoutColumn");
-            this.amountPayoutColumn.Name = "amountPayoutColumn";
-            this.amountPayoutColumn.ReadOnly = true;
-            // 
-            // amountPayBackColumn
-            // 
-            this.amountPayBackColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.amountPayBackColumn.DataPropertyName = "amount_payback";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "C";
-            this.amountPayBackColumn.DefaultCellStyle = dataGridViewCellStyle3;
-            resources.ApplyResources(this.amountPayBackColumn, "amountPayBackColumn");
-            this.amountPayBackColumn.Name = "amountPayBackColumn";
-            this.amountPayBackColumn.ReadOnly = true;
-            // 
-            // paybackTypeColumn
-            // 
-            this.paybackTypeColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.paybackTypeColumn.DataPropertyName = "amount_payback_type";
-            resources.ApplyResources(this.paybackTypeColumn, "paybackTypeColumn");
-            this.paybackTypeColumn.Name = "paybackTypeColumn";
-            this.paybackTypeColumn.ReadOnly = true;
-            this.paybackTypeColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // handSignColumn
-            // 
-            this.handSignColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.handSignColumn.DataPropertyName = "handsign";
-            resources.ApplyResources(this.handSignColumn, "handSignColumn");
-            this.handSignColumn.Name = "handSignColumn";
-            this.handSignColumn.ReadOnly = true;
-            // 
-            // activeColumn
-            // 
-            this.activeColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.activeColumn.DataPropertyName = "active";
-            resources.ApplyResources(this.activeColumn, "activeColumn");
-            this.activeColumn.Name = "activeColumn";
-            this.activeColumn.ReadOnly = true;
-            this.activeColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.activeColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
             // flowLayoutPanel1
             // 
             resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
-            this.flowLayoutPanel1.Controls.Add(this.updateButton);
             this.flowLayoutPanel1.Controls.Add(this.createButton);
             this.flowLayoutPanel1.Controls.Add(this.changeButton);
             this.flowLayoutPanel1.Controls.Add(this.deleteButton);
             this.flowLayoutPanel1.Controls.Add(this.payOutButton);
             this.flowLayoutPanel1.Controls.Add(this.printButton);
-            this.flowLayoutPanel1.Controls.Add(this.buttonImport);
-            this.flowLayoutPanel1.Controls.Add(this.exportButton);
             this.flowLayoutPanel1.Controls.Add(this.backButton);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            // 
-            // updateButton
-            // 
-            resources.ApplyResources(this.updateButton, "updateButton");
-            this.updateButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.updateButton.BorderColor = System.Drawing.Color.DimGray;
-            this.updateButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.updateButton.Name = "updateButton";
-            this.updateButton.Radius = -1F;
-            this.updateButton.UseVisualStyleBackColor = false;
-            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
             // 
             // createButton
             // 
@@ -341,28 +249,6 @@
             this.printButton.UseVisualStyleBackColor = false;
             this.printButton.Click += new System.EventHandler(this.printButton_Click);
             // 
-            // buttonImport
-            // 
-            resources.ApplyResources(this.buttonImport, "buttonImport");
-            this.buttonImport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.buttonImport.BorderColor = System.Drawing.Color.DimGray;
-            this.buttonImport.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonImport.Name = "buttonImport";
-            this.buttonImport.Radius = -1F;
-            this.buttonImport.UseVisualStyleBackColor = false;
-            this.buttonImport.Click += new System.EventHandler(this.buttonImport_Click);
-            // 
-            // exportButton
-            // 
-            resources.ApplyResources(this.exportButton, "exportButton");
-            this.exportButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.exportButton.BorderColor = System.Drawing.Color.DimGray;
-            this.exportButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.exportButton.Name = "exportButton";
-            this.exportButton.Radius = -1F;
-            this.exportButton.UseVisualStyleBackColor = false;
-            this.exportButton.Click += new System.EventHandler(this.exportButton_Click);
-            // 
             // backButton
             // 
             resources.ApplyResources(this.backButton, "backButton");
@@ -373,6 +259,79 @@
             this.backButton.Radius = -1F;
             this.backButton.UseVisualStyleBackColor = false;
             this.backButton.Click += new System.EventHandler(this.backButton_Click);
+            // 
+            // idColumn
+            // 
+            this.idColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.idColumn.DataPropertyName = "id";
+            dataGridViewCellStyle1.Format = "000";
+            this.idColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            resources.ApplyResources(this.idColumn, "idColumn");
+            this.idColumn.Name = "idColumn";
+            this.idColumn.ReadOnly = true;
+            // 
+            // nameColumn
+            // 
+            this.nameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nameColumn.DataPropertyName = "name";
+            resources.ApplyResources(this.nameColumn, "nameColumn");
+            this.nameColumn.Name = "nameColumn";
+            this.nameColumn.ReadOnly = true;
+            // 
+            // dateColumn
+            // 
+            this.dateColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dateColumn.DataPropertyName = "date";
+            resources.ApplyResources(this.dateColumn, "dateColumn");
+            this.dateColumn.Name = "dateColumn";
+            this.dateColumn.ReadOnly = true;
+            // 
+            // amountPayoutColumn
+            // 
+            this.amountPayoutColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.amountPayoutColumn.DataPropertyName = "amount_payout";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.amountPayoutColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            resources.ApplyResources(this.amountPayoutColumn, "amountPayoutColumn");
+            this.amountPayoutColumn.Name = "amountPayoutColumn";
+            this.amountPayoutColumn.ReadOnly = true;
+            // 
+            // amountPayBackColumn
+            // 
+            this.amountPayBackColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.amountPayBackColumn.DataPropertyName = "amount_payback";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.amountPayBackColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            resources.ApplyResources(this.amountPayBackColumn, "amountPayBackColumn");
+            this.amountPayBackColumn.Name = "amountPayBackColumn";
+            this.amountPayBackColumn.ReadOnly = true;
+            // 
+            // paybackTypeColumn
+            // 
+            this.paybackTypeColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.paybackTypeColumn.DataPropertyName = "amount_payback_type";
+            resources.ApplyResources(this.paybackTypeColumn, "paybackTypeColumn");
+            this.paybackTypeColumn.Name = "paybackTypeColumn";
+            this.paybackTypeColumn.ReadOnly = true;
+            this.paybackTypeColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // handSignColumn
+            // 
+            this.handSignColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.handSignColumn.DataPropertyName = "handsign";
+            resources.ApplyResources(this.handSignColumn, "handSignColumn");
+            this.handSignColumn.Name = "handSignColumn";
+            this.handSignColumn.ReadOnly = true;
+            // 
+            // activeColumn
+            // 
+            this.activeColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.activeColumn.DataPropertyName = "active";
+            resources.ApplyResources(this.activeColumn, "activeColumn");
+            this.activeColumn.Name = "activeColumn";
+            this.activeColumn.ReadOnly = true;
+            this.activeColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.activeColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // EmployeesForm
             // 
@@ -407,7 +366,6 @@
         private FormControls.TableLayoutPanel tableLayoutPanel2;
         private FormControls.Label label1;
         private FormControls.TextBox totalAmountBox;
-        private FormControls.Button updateButton;
         private FormControls.Button printButton;
         private FormControls.Label label5;
         private FormControls.ComboBox nameBox;
@@ -425,7 +383,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn paybackTypeColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn handSignColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn activeColumn;
-        private FormControls.Button exportButton;
-        private FormControls.Button buttonImport;
     }
 }

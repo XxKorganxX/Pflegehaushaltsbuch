@@ -39,6 +39,14 @@
             this.advisorsBox = new Pflegehaushaltsbuch.FormControls.ComboBox();
             this.dateBox = new Pflegehaushaltsbuch.FormControls.TextBox();
             this.view = new Pflegehaushaltsbuch.FormControls.DataGridView();
+            this.flowLayoutPanel1 = new Pflegehaushaltsbuch.FormControls.FlowLayoutPanel();
+            this.insertButton = new Pflegehaushaltsbuch.FormControls.Button();
+            this.changeButton = new Pflegehaushaltsbuch.FormControls.Button();
+            this.deleteButton = new Pflegehaushaltsbuch.FormControls.Button();
+            this.printButton = new Pflegehaushaltsbuch.FormControls.Button();
+            this.backButton = new Pflegehaushaltsbuch.FormControls.Button();
+            this.tableLayoutPanel3 = new Pflegehaushaltsbuch.FormControls.TableLayoutPanel();
+            this.label19 = new Pflegehaushaltsbuch.FormControls.Label();
             this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.titleColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,15 +57,6 @@
             this.cityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.handSignColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.flowLayoutPanel1 = new Pflegehaushaltsbuch.FormControls.FlowLayoutPanel();
-            this.updateButton = new Pflegehaushaltsbuch.FormControls.Button();
-            this.insertButton = new Pflegehaushaltsbuch.FormControls.Button();
-            this.changeButton = new Pflegehaushaltsbuch.FormControls.Button();
-            this.deleteButton = new Pflegehaushaltsbuch.FormControls.Button();
-            this.printButton = new Pflegehaushaltsbuch.FormControls.Button();
-            this.backButton = new Pflegehaushaltsbuch.FormControls.Button();
-            this.tableLayoutPanel3 = new Pflegehaushaltsbuch.FormControls.TableLayoutPanel();
-            this.label19 = new Pflegehaushaltsbuch.FormControls.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.view)).BeginInit();
@@ -131,7 +130,6 @@
             this.view.AllowUserToResizeColumns = false;
             this.view.AllowUserToResizeRows = false;
             this.view.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.view.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.view.BackgroundColor = System.Drawing.Color.White;
             this.view.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.view.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -155,9 +153,92 @@
             this.view.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.view.RowHeadersVisible = false;
             this.view.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.view.RowTemplate.Height = 24;
             this.view.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.view.StandardTab = true;
             this.view.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.view_CellDoubleClick);
+            // 
+            // flowLayoutPanel1
+            // 
+            resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
+            this.flowLayoutPanel1.Controls.Add(this.insertButton);
+            this.flowLayoutPanel1.Controls.Add(this.changeButton);
+            this.flowLayoutPanel1.Controls.Add(this.deleteButton);
+            this.flowLayoutPanel1.Controls.Add(this.printButton);
+            this.flowLayoutPanel1.Controls.Add(this.backButton);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            // 
+            // insertButton
+            // 
+            resources.ApplyResources(this.insertButton, "insertButton");
+            this.insertButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.insertButton.BorderColor = System.Drawing.Color.DimGray;
+            this.insertButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.insertButton.Name = "insertButton";
+            this.insertButton.Radius = -1F;
+            this.insertButton.UseVisualStyleBackColor = false;
+            this.insertButton.Click += new System.EventHandler(this.createAccountButton_Click);
+            // 
+            // changeButton
+            // 
+            resources.ApplyResources(this.changeButton, "changeButton");
+            this.changeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.changeButton.BorderColor = System.Drawing.Color.DimGray;
+            this.changeButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.changeButton.Name = "changeButton";
+            this.changeButton.Radius = -1F;
+            this.changeButton.UseVisualStyleBackColor = false;
+            this.changeButton.Click += new System.EventHandler(this.changeButton_Click);
+            // 
+            // deleteButton
+            // 
+            resources.ApplyResources(this.deleteButton, "deleteButton");
+            this.deleteButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.deleteButton.BorderColor = System.Drawing.Color.DimGray;
+            this.deleteButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Radius = -1F;
+            this.deleteButton.UseVisualStyleBackColor = false;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            // 
+            // printButton
+            // 
+            resources.ApplyResources(this.printButton, "printButton");
+            this.printButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.printButton.BorderColor = System.Drawing.Color.DimGray;
+            this.printButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.printButton.Name = "printButton";
+            this.printButton.Radius = -1F;
+            this.printButton.UseVisualStyleBackColor = false;
+            this.printButton.Click += new System.EventHandler(this.printButton_Click);
+            // 
+            // backButton
+            // 
+            resources.ApplyResources(this.backButton, "backButton");
+            this.backButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.backButton.BorderColor = System.Drawing.Color.DimGray;
+            this.backButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.backButton.Name = "backButton";
+            this.backButton.Radius = -1F;
+            this.backButton.UseVisualStyleBackColor = false;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.BorderColor = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.tableLayoutPanel3, "tableLayoutPanel3");
+            this.tableLayoutPanel3.Controls.Add(this.label19, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.flowLayoutPanel1, 0, 2);
+            this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel1, 0, 1);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            // 
+            // label19
+            // 
+            resources.ApplyResources(this.label19, "label19");
+            this.label19.BackColor = System.Drawing.Color.Transparent;
+            this.label19.ForeColor = System.Drawing.Color.White;
+            this.label19.Gradiant = true;
+            this.label19.Name = "label19";
             // 
             // idColumn
             // 
@@ -242,100 +323,6 @@
             this.handSignColumn.Name = "handSignColumn";
             this.handSignColumn.ReadOnly = true;
             // 
-            // flowLayoutPanel1
-            // 
-            resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
-            this.flowLayoutPanel1.Controls.Add(this.updateButton);
-            this.flowLayoutPanel1.Controls.Add(this.insertButton);
-            this.flowLayoutPanel1.Controls.Add(this.changeButton);
-            this.flowLayoutPanel1.Controls.Add(this.deleteButton);
-            this.flowLayoutPanel1.Controls.Add(this.printButton);
-            this.flowLayoutPanel1.Controls.Add(this.backButton);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            // 
-            // updateButton
-            // 
-            resources.ApplyResources(this.updateButton, "updateButton");
-            this.updateButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.updateButton.BorderColor = System.Drawing.Color.DimGray;
-            this.updateButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.updateButton.Name = "updateButton";
-            this.updateButton.Radius = -1F;
-            this.updateButton.UseVisualStyleBackColor = false;
-            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
-            // 
-            // insertButton
-            // 
-            resources.ApplyResources(this.insertButton, "insertButton");
-            this.insertButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.insertButton.BorderColor = System.Drawing.Color.DimGray;
-            this.insertButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.insertButton.Name = "insertButton";
-            this.insertButton.Radius = -1F;
-            this.insertButton.UseVisualStyleBackColor = false;
-            this.insertButton.Click += new System.EventHandler(this.createAccountButton_Click);
-            // 
-            // changeButton
-            // 
-            resources.ApplyResources(this.changeButton, "changeButton");
-            this.changeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.changeButton.BorderColor = System.Drawing.Color.DimGray;
-            this.changeButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.changeButton.Name = "changeButton";
-            this.changeButton.Radius = -1F;
-            this.changeButton.UseVisualStyleBackColor = false;
-            this.changeButton.Click += new System.EventHandler(this.changeButton_Click);
-            // 
-            // deleteButton
-            // 
-            resources.ApplyResources(this.deleteButton, "deleteButton");
-            this.deleteButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.deleteButton.BorderColor = System.Drawing.Color.DimGray;
-            this.deleteButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Radius = -1F;
-            this.deleteButton.UseVisualStyleBackColor = false;
-            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
-            // 
-            // printButton
-            // 
-            resources.ApplyResources(this.printButton, "printButton");
-            this.printButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.printButton.BorderColor = System.Drawing.Color.DimGray;
-            this.printButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.printButton.Name = "printButton";
-            this.printButton.Radius = -1F;
-            this.printButton.UseVisualStyleBackColor = false;
-            this.printButton.Click += new System.EventHandler(this.printButton_Click);
-            // 
-            // backButton
-            // 
-            resources.ApplyResources(this.backButton, "backButton");
-            this.backButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.backButton.BorderColor = System.Drawing.Color.DimGray;
-            this.backButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.backButton.Name = "backButton";
-            this.backButton.Radius = -1F;
-            this.backButton.UseVisualStyleBackColor = false;
-            this.backButton.Click += new System.EventHandler(this.backButton_Click);
-            // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.BorderColor = System.Drawing.Color.Empty;
-            resources.ApplyResources(this.tableLayoutPanel3, "tableLayoutPanel3");
-            this.tableLayoutPanel3.Controls.Add(this.label19, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.flowLayoutPanel1, 0, 2);
-            this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel1, 0, 1);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            // 
-            // label19
-            // 
-            resources.ApplyResources(this.label19, "label19");
-            this.label19.BackColor = System.Drawing.Color.Transparent;
-            this.label19.ForeColor = System.Drawing.Color.White;
-            this.label19.Gradiant = true;
-            this.label19.Name = "label19";
-            // 
             // AdvisorForm
             // 
             resources.ApplyResources(this, "$this");
@@ -373,16 +360,15 @@
         private FormControls.TableLayoutPanel tableLayoutPanel3;
         private FormControls.Label label19;
         private FormControls.TextBox dateBox;
-        private FormControls.Button updateButton;
-        private System.Windows.Forms.DataGridViewTextBoxColumn handSignColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dateColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cityColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn zipCodeColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn streetColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn coColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn emailColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn titleColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn titleColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn emailColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn coColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn streetColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn zipCodeColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cityColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn handSignColumn;
     }
 }
