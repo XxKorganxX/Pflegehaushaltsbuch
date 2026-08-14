@@ -1,0 +1,113 @@
+name: Windows Desktop CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+    inputs:
+      run-ui-tests:
+        description: "Run FlaUI UI tests"
+        required: false
+        default: false
+        type: boolean
+
+env:
+  APP_PROJECT: Pflegehaushaltsbuch.csproj
+  UNIT_TEST_PROJECT: Pflegehaushaltsbuch.Tests/Pflegehaushaltsbuch.Tests.csproj
+  UI_TEST_PROJECT: Pflegehaushaltsbuch.UiTests/Pflegehaushaltsbuch.UiTests.csproj
+  CI_TEST_FILTER: "FullyQualifiedName!~SQLTest&FullyQualifiedName!~MySQLTest&FullyQualifiedName!~SQLiteTest&FullyQualifiedName!~DatabaseFunctionTests&FullyQualifiedName!~Verwahrgeld2SeedTest"
+
+jobs:
+  build:
+    name: Build and test (${{ matrix.configuration }})
+    runs-on: windows-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        configuration: [ Debug, Release ]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v2
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Restore application packages
+        run: nuget restore $env:APP_PROJECT -PackagesDirectory packages
+
+      - name: Restore test packages
+        run: |
+          dotnet restore $env:UNIT_TEST_PROJECT
+          dotnet restore $env:UI_TEST_PROJECT
+
+      - name: Build application
+        run: msbuild $env:APP_PROJECT /m /p:Configuration=${{ matrix.configuration }} /p:Platform="AnyCPU" /p:RestorePackages=false
+
+      - name: Run unit tests
+        run: dotnet test $env:UNIT_TEST_PROJECT --configuration ${{ matrix.configuration }} --no-restore --filter "$env:CI_TEST_FILTER" --logger "trx;LogFileName=unit-tests-${{ matrix.configuration }}.trx"
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: unit-test-results-${{ matrix.configuration }}
+          path: Pflegehaushaltsbuch.Tests/TestResults/*.trx
+          if-no-files-found: ignore
+
+      - name: Upload application artifact
+        uses: actions/upload-artifact@v4
+        if: matrix.configuration == 'Release'
+        with:
+          name: Pflegehaushaltsbuch-Release
+          path: bin/Release/
+
+  ui-tests:
+    name: UI tests
+    runs-on: windows-latest
+    if: github.event_name == 'workflow_dispatch' && inputs.run-ui-tests
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v2
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Restore packages
+        run: |
+          nuget restore $env:APP_PROJECT -PackagesDirectory packages
+          dotnet restore $env:UI_TEST_PROJECT
+
+      - name: Build application
+        run: msbuild $env:APP_PROJECT /m /p:Configuration=Release /p:Platform="AnyCPU" /p:RestorePackages=false
+
+      - name: Run UI tests
+        run: dotnet test $env:UI_TEST_PROJECT --configuration Release --no-restore --logger "trx;LogFileName=ui-tests.trx"
+
+      - name: Upload UI test results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ui-test-results
+          path: Pflegehaushaltsbuch.UiTests/TestResults/*.trx
+          if-no-files-found: ignore
