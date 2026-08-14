@@ -140,21 +140,17 @@
     <value>510, 551</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
-    <value>Das Pflegehaushaltsbuch unterstützt ambulante Pflegeeinrichtungen bei der übersichtlichen Verwaltung ihrer betrieblichen und finanziellen Abläufe.
+    <value>Pflegehaushaltsbuch, ayakta bakım hizmeti sunan kuruluşların operasyonel ve finansal süreçlerini anlaşılır şekilde yönetmelerine yardımcı olur.
 
-Die Anwendung umfasst unter anderem die Verwaltung von Kassen- und Bankbeständen, Bürokassen, Klienten, Betreuern und Mitarbeitern. Ergänzt wird sie durch eine zentrale Dokumentenverwaltung, Kassenprüfungen, statistische Auswertungen, individuell anpassbare Druckvorlagen sowie Funktionen zur Datensicherung und Wiederherstellung.
+Uygulama; kasa ve banka bakiyelerinin, büro kasasının, klientlerin, danışmanların ve çalışanların yönetimini kapsar. Bunlara merkezi belge yönetimi, kasa denetimleri, istatistiksel değerlendirmeler, kişiselleştirilebilir yazdırma şablonları ve veri yedekleme ile geri yükleme işlevleri eklenir.
 
-Das Pflegehaushaltsbuch ist freie und quelloffene Software und wird unter den Bedingungen der GNU Affero General Public License, Version 3 (AGPLv3), veröffentlicht.
+Pflegehaushaltsbuch ücretsiz ve açık kaynaklı bir yazılımdır ve GNU Affero General Public License, Version 3 (AGPLv3) koşulları altında yayımlanır.
 
-Sie dürfen die Software verwenden, untersuchen, verändern und weitergeben. Wenn Sie eine veränderte Version verbreiten oder über ein Netzwerk zur Nutzung bereitstellen, müssen Sie den zugehörigen Quellcode ebenfalls unter der AGPLv3 zugänglich machen.
+Yazılımı kullanabilir, inceleyebilir, değiştirebilir ve yeniden dağıtabilirsiniz. Değiştirilmiş bir sürümü dağıtırsanız veya ağ üzerinden kullanıma sunarsanız, ilgili kaynak kodunu da AGPLv3 kapsamında erişilebilir hale getirmeniz gerekir.
 
-Die Software wird ohne Gewährleistung bereitgestellt. Weitere Informationen sowie den vollständigen Lizenztext finden Sie in der Datei „LICENSE“ beziehungsweise unter:
+Yazılım herhangi bir garanti olmaksızın sunulur. Daha fazla bilgiye ve tam lisans metnine "LICENSE" dosyasından veya aşağıdaki adresten ulaşabilirsiniz:
 
-https://ftp.gnu.org/pub/pub/gnu/Licenses/agpl-3.0.txt
-
-Wenn Ihnen das Pflegehaushaltsbuch gefällt und Sie seine zukünftige Weiterentwicklung unterstützen möchten, freue ich mich über eine freiwillige Spende.
-
-Vielen Dank für Ihre Unterstützung.</value>
+https://ftp.gnu.org/pub/pub/gnu/Licenses/agpl-3.0.txt</value>
   </data>
   <data name="label4.ToolTip" xml:space="preserve">
     <value />

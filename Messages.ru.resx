@@ -526,27 +526,21 @@ Wenn sich eine Datenbank nicht löschen lässt, dann entfernen Sie diese bitte i
     <value>Version: {0}
 Copyright: © Michael Richter, 2013–2026
 
-Das Pflegehaushaltsbuch unterstützt ambulante Pflegeeinrichtungen bei der übersichtlichen Verwaltung ihrer betrieblichen und finanziellen Abläufe.
+Pflegehaushaltsbuch помогает службам амбулаторного ухода наглядно управлять своими операционными и финансовыми процессами.
 
-Zu den Funktionen gehören die Verwaltung von Kassen- und Bankbeständen, Bürokassen, Klienten, Betreuern und Mitarbeitern. Ergänzt wird die Anwendung durch Dokumentenverwaltung, Kassenprüfungen, statistische Auswertungen, anpassbare Druckvorlagen sowie Funktionen zur Datensicherung und Wiederherstellung.
+Возможности программы включают ведение кассовых и банковских остатков, офисной кассы, клиентов, попечителей и сотрудников. Приложение также предоставляет централизованное управление документами, проверки кассы, статистические отчеты, настраиваемые печатные шаблоны, а также функции резервного копирования и восстановления данных.
 
-Freie und quelloffene Software
+Свободное программное обеспечение с открытым исходным кодом
 
-Das Pflegehaushaltsbuch ist freie und quelloffene Software und wird unter der GNU Affero General Public License, Version 3 (AGPLv3) veröffentlicht.
+Pflegehaushaltsbuch является свободным программным обеспечением с открытым исходным кодом и распространяется на условиях GNU Affero General Public License, Version 3 (AGPLv3).
 
-Sie dürfen die Software verwenden, untersuchen, verändern und weitergeben. Wenn Sie eine veränderte Version verbreiten oder über ein Netzwerk bereitstellen, müssen Sie auch den dazugehörigen Quellcode gemäß der AGPLv3 zugänglich machen.
+Вы можете использовать, изучать, изменять и распространять это программное обеспечение. Если вы распространяете измененную версию или предоставляете ее для использования по сети, вы также должны предоставить соответствующий исходный код в соответствии с AGPLv3.
 
-Die Software wird ohne Gewährleistung bereitgestellt.
+Программное обеспечение предоставляется без каких-либо гарантий.
 
-Lizenzinformationen:
-Vollständiger Lizenztext: Datei „LICENSE“
-https://ftp.gnu.org/pub/pub/gnu/Licenses/agpl-3.0.txt
-
-Entwicklung unterstützen
-
-Wenn Ihnen das Pflegehaushaltsbuch gefällt und Sie seine zukünftige Weiterentwicklung unterstützen möchten, freue ich mich über eine freiwillige Spende.
-
-Vielen Dank für Ihre Unterstützung.</value>
+Информация о лицензии:
+Полный текст лицензии: файл "LICENSE"
+https://ftp.gnu.org/pub/pub/gnu/Licenses/agpl-3.0.txt</value>
   </data>
   <data name="unknown_error" xml:space="preserve">
     <value>Неизвестная ошибка</value>
