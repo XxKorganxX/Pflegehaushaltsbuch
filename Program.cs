@@ -24,7 +24,7 @@ namespace Pflegehaushaltsbuch
         {
             if (string.IsNullOrWhiteSpace(Settings.Default.documentPath))
             {
-                Settings.Default.documentPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Pflegehaushaltsbuch");
+                Settings.Default.documentPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Richter Pflegehaushaltsbuch");
                 Settings.Default.Save();
             }
             colorSet = new ColorSet();

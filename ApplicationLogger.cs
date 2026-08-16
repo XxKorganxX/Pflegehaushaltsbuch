@@ -17,7 +17,7 @@ namespace Pflegehaushaltsbuch
             get
             {
                 string basePath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-                return Path.Combine(basePath, "Pflegehaushaltsbuch", "logs", "exceptions.log");
+                return Path.Combine(basePath, "Richter Pflegehaushaltsbuch", "logs", "exceptions.log");
             }
         }
 

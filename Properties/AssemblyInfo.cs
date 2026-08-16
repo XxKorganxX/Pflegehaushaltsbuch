@@ -1,12 +1,12 @@
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-[assembly: AssemblyTitle("Das Pflege Haushaltsbuch")]
+[assembly: AssemblyTitle("Pflegehaushaltsbuch")]
 [assembly: AssemblyDescription("Pflege Verwaltung")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Michael Richter")]
 [assembly: AssemblyProduct("Pflegehaushaltsbuch")]
-[assembly: AssemblyCopyright("© Michael Richter, 2013-2018")]
+[assembly: AssemblyCopyright("© Michael Richter, 2013-2026")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]

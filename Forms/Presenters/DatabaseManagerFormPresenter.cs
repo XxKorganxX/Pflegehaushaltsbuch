@@ -163,9 +163,8 @@ namespace Pflegehaushaltsbuch.Forms.Presenters
             if (config.DBType != XmlConfig.DataBaseTypes.SQLite)
                 return View.CreateDatabaseName;
 
-            return Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-                "Verwahrgeld.db");
+            string folder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Richter Pflegehaushaltsbuch");
+            return Path.Combine(folder, "Verwahrgeld.db");
         }
 
         private void AddDatabase(string database)
