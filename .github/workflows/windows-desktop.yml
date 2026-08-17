@@ -15,10 +15,11 @@ on:
 
 env:
   APP_PROJECT: Pflegehaushaltsbuch.csproj
+  PACKAGE_PROJECT: Pflegehaushaltsbuch.Package/Pflegehaushaltsbuch.Package.wapproj
   UNIT_TEST_PROJECT: Pflegehaushaltsbuch.Tests/Pflegehaushaltsbuch.Tests.csproj
   UI_TEST_PROJECT: Pflegehaushaltsbuch.UiTests/Pflegehaushaltsbuch.UiTests.csproj
   CI_TEST_FILTER: "FullyQualifiedName!~SQLTest&FullyQualifiedName!~MySQLTest&FullyQualifiedName!~SQLiteTest&FullyQualifiedName!~DatabaseFunctionTests&FullyQualifiedName!~Verwahrgeld2SeedTest"
-
+  
 jobs:
   build:
     name: Build and test (${{ matrix.configuration }})
@@ -47,6 +48,16 @@ jobs:
       - name: Restore application packages
         run: nuget restore $env:APP_PROJECT -PackagesDirectory packages
 
+      - name: Restore packaging project
+        if: >
+            matrix.configuration == 'Release' &&
+            github.event_name != 'pull_request'
+        run: >
+          msbuild $env:PACKAGE_PROJECT
+          /t:Restore
+          /p:Configuration=Release
+          /p:Platform=x64
+
       - name: Restore test packages
         run: |
           dotnet restore $env:UNIT_TEST_PROJECT
@@ -72,7 +83,32 @@ jobs:
         with:
           name: Pflegehaushaltsbuch-Release
           path: bin/Release/
+          
+      - name: Build MSIX package
+        if: >
+          matrix.configuration == 'Release' &&
+          github.event_name != 'pull_request'
+        shell: pwsh
+        run: |
+          msbuild $env:PACKAGE_PROJECT `
+            /m `
+            /p:Configuration=Release `
+            /p:Platform=x64 `
+            /p:AppxBundle=Never `
+            /p:UapAppxPackageBuildMode=StoreUpload `
+            /p:AppxPackageSigningEnabled=false `
+            /p:AppxPackageDir="$env:GITHUB_WORKSPACE\AppPackages\"
 
+      - name: Upload Microsoft Store package
+        if: >
+          matrix.configuration == 'Release' &&
+          github.event_name != 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: Pflegehaushaltsbuch-Microsoft-Store
+          path: AppPackages/**/*.msixupload
+          if-no-files-found: error
+          
   ui-tests:
     name: UI tests
     runs-on: windows-latest
