@@ -6,10 +6,16 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="Pflegehaushaltsbuch.csproj" Id="16985666-bec4-4fed-bf97-5b8f1efce96f" />
+  <Project Path="Pflegehaushaltsbuch.csproj" Id="16985666-bec4-4fed-bf97-5b8f1efce96f">
+    <Platform Solution="Release|x64" Project="x64" />
+  </Project>
   <Project Path="Pflegehaushaltsbuch.Package/Pflegehaushaltsbuch.Package.wapproj" Type="c7167f0d-bc9f-4e6e-afe1-012c56b48db5" Id="8634ab74-e3e8-45fd-83b6-466b866d589d">
     <Deploy />
   </Project>
-  <Project Path="Pflegehaushaltsbuch.Tests/Pflegehaushaltsbuch.Tests.csproj" Id="f4e26d89-64a1-4b5b-8a60-0328b0776a15" />
-  <Project Path="Pflegehaushaltsbuch.UiTests/Pflegehaushaltsbuch.UiTests.csproj" Id="33b3d6b2-5816-4296-a714-768992f46d12" />
+  <Project Path="Pflegehaushaltsbuch.Tests/Pflegehaushaltsbuch.Tests.csproj" Id="f4e26d89-64a1-4b5b-8a60-0328b0776a15">
+    <Platform Solution="Release|x64" Project="x64" />
+  </Project>
+  <Project Path="Pflegehaushaltsbuch.UiTests/Pflegehaushaltsbuch.UiTests.csproj" Id="33b3d6b2-5816-4296-a714-768992f46d12">
+    <Platform Solution="Release|x64" Project="x64" />
+  </Project>
 </Solution>
